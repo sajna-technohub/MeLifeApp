@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_back"
+    tools:context=".views.LoginActivity">
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loginSpinKit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        style="@style/SpinKitView.Large.Circle"
+        app:SpinKit_Color="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_32"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/margin_20"
+            android:paddingLeft="@dimen/margin_42"
+            android:paddingRight="@dimen/margin_42">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:drawablePadding="@dimen/fab_margin"
+                android:paddingRight="@dimen/margin_20"
+                android:background="@drawable/edittext_background"
+                android:drawableRight="@drawable/ic_email_white_24dp"
+                android:hint="Email"
+                android:id="@+id/loginEdtTextEmail"
+                android:textColorHint="@color/whiteLogocolor"
+                android:paddingLeft="@dimen/margin_25"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/fab_marginsp" />
+            <TextView
+                android:id="@+id/loginTxtEmailError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/loginEdtTextPassword"
+                android:drawableStart="@drawable/ic_new_releases_red_24dp"
+                android:drawablePadding="2dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:drawablePadding="@dimen/fab_margin"
+                android:layout_marginTop="@dimen/margin_30"
+                android:background="@drawable/edittext_background"
+                android:drawableRight="@drawable/ic_lock_white_24dp"
+                android:hint="Password"
+                android:id="@+id/loginEdtTextPassword"
+                android:paddingRight="@dimen/margin_20"
+                android:textColorHint="@color/whiteLogocolor"
+                android:paddingLeft="@dimen/margin_25"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/fab_marginsp" />
+            <TextView
+                android:id="@+id/loginTxtPasswordError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/lin"
+                android:drawableStart="@drawable/ic_new_releases_red_24dp"
+                android:drawablePadding="2dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="@dimen/fab_marginsp"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lin"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/fab_margin"
+                    android:id="@+id/loginBtnSignup"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:text="@string/Title_signup"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fab_margin" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fab_margin"
+                    android:background="@drawable/buttonshapewhitebg"
+                    android:text="@string/Title_signin"
+                    android:id="@+id/loginBtnSignin"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fab_margin"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/loginTxtForgotPassword"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:fontFamily="@font/calibri"
+                android:text="Forgot Password?"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/fab_marginsp" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

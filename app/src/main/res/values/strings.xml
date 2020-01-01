@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MeLife</string>
+
+    <!--Register-->
+    <string name="Title_Name"> Name </string>
+    <string name="Title_LastName">Last Name </string>
+    <string name="Title_Email">Email ID</string>
+    <string name="Title_mobile">Mobile Number</string>
+    <string name="Title_pincode">Pincode</string>
+    <string name="Title_signup">Sign Up</string>
+    <!--    Login-->
+    <string name="Title_signin">Sign In</string>
+</resources>
