@@ -28,6 +28,10 @@ public interface IRegister {
 
         void goToLoginActivity();
 
+        void loginSuccessFully();
+
+        void loginFail();
+
     }
 
     interface Presenter {

@@ -5,12 +5,14 @@ import com.technohub.melifeapp.models.User;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface IRetrofitApi {
     /*for register on RegisterActivity*/
-    @POST("signup")
-    Call<ApiToken> Register(@Body User user);
+    @Headers({"Accept: application/json"})
+    @POST("create")
+    Call<User> Register(@Body User user);
 
 
     /*for Log in on LoginActivity*/

@@ -1,5 +1,8 @@
 package com.technohub.melifeapp.presenter;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.technohub.melifeapp.Interfaces.IRegister;
 import com.technohub.melifeapp.classes.ApiToken;
 import com.technohub.melifeapp.models.JsonModel;
@@ -19,7 +22,6 @@ public class RegisterPresenter implements IRegister.Presenter {
     }
     @Override
     public void created() {
-
         view.init();
         view.initClicks();
     }
@@ -30,20 +32,22 @@ public class RegisterPresenter implements IRegister.Presenter {
         view.showLoading();
         view.clearErrors();
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-        User user = new User(name, email,mobile,pincode);
-        Call<ApiToken> call = retrofitApi.Register(user);
-        call.enqueue(new Callback<ApiToken>() {
+        User user = new User(name, email,mobile);
+        Call<User> call = retrofitApi.Register(user);
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<ApiToken> call, Response<ApiToken> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
 
-                ApiToken apiToken = response.body();
+                User apiToken = response.body();
                 if (response.isSuccessful() && response.body() != null) {
-                    apiToken.setSharedPreferences(view.getContext());
+                    Log.e("Response",response.toString());
+                    Log.e("Response",apiToken.name+apiToken.id+apiToken.email);
+//                    apiToken.setSharedPreferences(view.getContext());
                     view.goToMainActivity();
                 } else if (response.errorBody() != null) {
 
                     try {
-
+                        Log.e("Response",response.toString());
                         view.hideLoading();
                         JsonModel jsonParseHelper = new JsonModel(response.errorBody().string());
                         view.showErrorMessages(jsonParseHelper.getErrorList());
@@ -53,7 +57,7 @@ public class RegisterPresenter implements IRegister.Presenter {
             }
 
             @Override
-            public void onFailure(Call<ApiToken> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
 
                 view.hideLoading();
             }

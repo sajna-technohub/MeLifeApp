@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.technohub.melifeapp.Interfaces.IRegister;
@@ -30,7 +31,6 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View{
         setContentView(R.layout.activity_sign_up);
         registerPresenter = new RegisterPresenter(this);
         registerPresenter.created();
-
     }
 
     @Override
@@ -52,6 +52,7 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View{
         registerBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                         registerPresenter.registerButtonClick(registerEditTxtName.getText().toString().trim(),
                         registerEditTxtEmail.getText().toString().trim(), registerEditTxtMobile.getText().toString().trim(),registerEditTxtPincode.getText().toString().trim());
             }
@@ -119,7 +120,7 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View{
     @Override
     public void goToLoginActivity() {
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
@@ -131,5 +132,16 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View{
         super.onBackPressed();
     }
 
+    @Override
+    public void loginSuccessFully()
+    {
+        Toast.makeText(this, "Login SuccessFully", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loginFail()
+    {
+        Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+    }
 
 }
