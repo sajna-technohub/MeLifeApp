@@ -1,5 +1,7 @@
 package com.technohub.melifeapp.presenter;
 
+import android.util.Log;
+
 import com.technohub.melifeapp.Interfaces.ILogin;
 import com.technohub.melifeapp.classes.ApiToken;
 import com.technohub.melifeapp.models.JsonModel;
@@ -40,12 +42,12 @@ public class LoginPresenter implements ILogin.Presenter {
 
                 ApiToken apiToken = response.body();
                 if (response.isSuccessful() && response.body() != null) {
+                    Log.e("apitoken",apiToken.getToken());
                     apiToken.setSharedPreferences(view.getContext());
                     view.goToMainActivity();
                 } else if (response.errorBody() != null) {
 
                     try {
-
                         view.hideLoading();
                         JsonModel jsonParseHelper = new JsonModel(response.errorBody().string());
                         view.showErrorMessages(jsonParseHelper.getErrorList());

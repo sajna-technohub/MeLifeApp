@@ -1,0 +1,1661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reportlayout"
+   >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:typeface="serif"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp">
+
+                <!--Top Profile Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circularbordersolid"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="150dp"
+                        android:layout_height="90dp"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp">
+
+<!--                        <com.mikhaellopez.circularimageview.CircularImageView-->
+<!--                            android:layout_width="150dp"-->
+<!--                            android:id="@+id/skill_Img_profileimg"-->
+<!--                            android:layout_gravity="center_horizontal"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:src="@drawable/profile" />-->
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/skill_Txt_Name"
+                            android:fontFamily="@font/proximanovaregular"
+                            android:text="Tony Stork"
+                            android:textColor="@color/yellow"
+                            android:textSize="21sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/darkblue"
+                            android:id="@+id/skill_Txt_education"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:fontFamily="@font/proximanovaregular"
+                            android:text="Persuing B-tech"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingBottom="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/circular_grey_bordersolid"
+                                android:padding="10dp"
+                                android:src="@drawable/age" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="32 years"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="2dp"-->
+<!--                                    android:text="Job success"-->
+<!--                                    android:textSize="12sp" />-->
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+
+
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center"
+                            android:padding="8dp">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/circular_grey_bordersolid"
+                                android:padding="10dp"
+                                android:src="@drawable/star" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="4.8/5"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Star Ratings"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--Option Bar-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/circularbordersolid"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/personalinfobtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/proximanovaregular"
+                        android:gravity="center"
+                        android:padding="13dp"
+                        android:text="Test Date :"
+                        android:textAllCaps="true"
+                        android:textColor="@color/darkblue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/greycolor" />
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/experiencebtn"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="2"-->
+<!--                        android:fontFamily="@font/proximanovaregular"-->
+<!--                        android:gravity="center"-->
+<!--                        android:padding="13dp"-->
+<!--                        android:text=""-->
+<!--                        android:textAllCaps="true"-->
+<!--                        android:textColor="@color/darkblue"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:textStyle="bold" />-->
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/greycolor" />
+
+                    <TextView
+                        android:id="@+id/skill_Txt_testdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/proximanovaregular"
+                        android:gravity="center"
+                        android:padding="13dp"
+                        android:text="22-11-2019"
+                        android:textAllCaps="true"
+                        android:textColor="@color/darkblue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!--Bootom Cards with sections-->
+                <LinearLayout
+                    android:id="@+id/personalinfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--About Me Card-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circularbordersolid"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="About Me"
+                                    android:textColor="#FFCF66"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold" />
+
+                                <Space
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Edit"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="#FFCF66"
+                                    android:layout_marginEnd="10dp"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:textColor="@color/darkblue"
+                                android:text="@string/Title_signin" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--Contact Details-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circularbordersolid"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Contact"
+                                android:textSize="17sp"
+                                android:textColor="#FFCF66"
+                                android:fontFamily="@font/proximanovaregular"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edit"
+                                android:textColor="#FFCF66"
+                                android:layout_marginEnd="10dp"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/circular_grey_bordersolid"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_call_24dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:id="@+id/skill_Txt_mobile"
+                                    android:text="+91 7999193854"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/darkblue"
+                                    android:fontFamily="@font/proximanovaregular" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/circular_grey_bordersolid"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_email_24dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:textColor="@color/darkblue"
+                                    android:text="tony_sstrok@3gtechnohub.com"
+                                    android:textSize="15sp"
+                                    android:id="@+id/skill_Txt_email"
+                                    android:fontFamily="@font/proximanovaregular" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/circular_grey_bordersolid"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_location_24dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:text="Kerala,India"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/darkblue"
+                                    android:fontFamily="@font/proximanovaregular" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--Skills Details-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circularbordersolid"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Skills"
+                                android:textColor="#FFCF66"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edit"
+                                android:textColor="#FFCF66"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/circular_grey_bordersolid"
+                                    android:padding="10dp"
+                                    android:src="@drawable/paintbrush" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:text="Expert in Photoshop, Adobe XD"
+
+                                    android:textColor="@color/darkblue"
+                                    android:textSize="15sp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/circular_grey_bordersolid"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_email_24dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:text="sanskar@3gtechnohub.com"
+                                    android:textColor="@color/darkblue"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/circular_grey_bordersolid"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_location_24dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/darkblue"
+                                    android:layout_marginLeft="20dp"
+                                    android:text="Kerala, India"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--Experience Bottom Cards-->
+                <LinearLayout
+                    android:id="@+id/experience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circularbordersolid"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:padding="20dp">
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="2"-->
+
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="40dp"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:padding="6dp"-->
+<!--                                android:src="@drawable/playstore" />-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginLeft="10dp"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:fontFamily="@font/proximanovaregular"-->
+<!--                                    android:text="Android Developer"-->
+<!--                                    android:textColor="@color/darkblue"-->
+<!--                                    android:textSize="14sp"-->
+<!--                                    android:textStyle="bold" />-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="3dp"-->
+<!--                                    android:textColor="@color/darkblue"-->
+<!--                                    android:fontFamily="@font/proximanovaregular"-->
+<!--                                    android:text="at 3gtechnohub"-->
+<!--                                    android:textSize="12sp" />-->
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="9dp"-->
+<!--                                android:layout_height="9dp"-->
+<!--                                android:padding="1dp"-->
+<!--                                android:src="@drawable/circleyellowfil" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:text="Sep 2010 - Jan 2013"-->
+<!--                                android:textColor="@color/darkblue"-->
+<!--                                android:textSize="12sp"-->
+<!--                                android:textStyle="bold" />-->
+<!--                        </LinearLayout>-->
+
+                    </LinearLayout>
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@drawable/circularbordersolid"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="20dp">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="2"-->
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="40dp"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:padding="6dp"-->
+<!--                                android:src="@drawable/android" />-->
+
+<!--&lt;!&ndash;                            <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_marginLeft="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:orientation="vertical">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:fontFamily="@font/proximanovaregular"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:text="Android Developer"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textColor="@color/darkblue"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textSize="14sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textStyle="bold" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_marginTop="3dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:fontFamily="@font/proximanovaregular"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:text="at 3gtechnohub"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textColor="@color/darkblue"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textSize="12sp" />&ndash;&gt;-->
+<!--&lt;!&ndash;                            </LinearLayout>&ndash;&gt;-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="9dp"-->
+<!--                                android:layout_height="9dp"-->
+<!--                                android:padding="1dp"-->
+<!--                                android:src="@drawable/circleyellowfil" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:text="Sep 2010 - Jan 2013"-->
+<!--                                android:textColor="@color/darkblue"-->
+<!--                                android:textSize="12sp"-->
+<!--                                android:textStyle="bold" />-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@drawable/circularbordersolid"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="20dp">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="2"-->
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="40dp"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:padding="6dp"-->
+<!--                                android:src="@drawable/search" />-->
+
+<!--&lt;!&ndash;                            <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_marginLeft="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:orientation="vertical">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:fontFamily="@font/proximanovaregular"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:text="Android Developer"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textColor="@color/darkblue"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textSize="14sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textStyle="bold" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:layout_marginTop="3dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:fontFamily="@font/proximanovaregular"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:text="at 3gtechnohub"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    android:textColor="@color/darkblue"&ndash;&gt;-->
+<!--&lt;!&ndash;                                    android:textSize="12sp" />&ndash;&gt;-->
+<!--&lt;!&ndash;                            </LinearLayout>&ndash;&gt;-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="9dp"-->
+<!--                                android:layout_height="9dp"-->
+<!--                                android:padding="1dp"-->
+<!--                                android:src="@drawable/circleyellowfil" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:text="Sep 2010 - Jan 2013"-->
+<!--                                android:textColor="@color/darkblue"-->
+<!--                                android:textSize="12sp"-->
+<!--                                android:textStyle="bold" />-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+                </LinearLayout>
+
+                <!--Review Bottom Cards-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/review"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/circularbordersolid"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:padding="20dp">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="2"-->
+
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="70dp"-->
+<!--                                app:cardCornerRadius="6dp"-->
+<!--                                app:cardElevation="0dp">-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="70dp"-->
+<!--                                    android:layout_height="70dp"-->
+<!--                                    android:scaleType="centerCrop"-->
+<!--                                    android:src="@drawable/person1" />-->
+
+<!--                            </androidx.cardview.widget.CardView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginLeft="10dp"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:fontFamily="@font/proximanovaregular"-->
+<!--                                    android:maxLines="3"-->
+<!--                                    android:text="Review"-->
+<!--                                    android:textColor="@color/darkblue"-->
+<!--                                    android:textSize="14sp" />-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="3dp"-->
+<!--                                    android:textColor="@color/darkblue"-->
+<!--                                    android:fontFamily="@font/proximanovaregular"-->
+<!--                                    android:text="Saswat Tiwari"-->
+<!--                                    android:textSize="12sp"-->
+<!--                                    android:textStyle="bold" />-->
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@drawable/circularbordersolid"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="20dp">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="2"-->
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="70dp"-->
+<!--                                app:cardCornerRadius="6dp"-->
+<!--                                app:cardElevation="0dp">-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="70dp"-->
+<!--                                    android:layout_height="70dp"-->
+<!--                                    android:scaleType="centerCrop"-->
+<!--                                    android:src="@drawable/person2" />-->
+
+<!--                            </androidx.cardview.widget.CardView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginLeft="10dp"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:maxLines="3"-->
+<!--                                    android:textColor="@color/darkblue"-->
+<!--                                    android:text="Review"-->
+<!--                                    android:textSize="14sp" />-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="3dp"-->
+<!--                                    android:text="Mr Sk TATA"-->
+<!--                                    android:textColor="@color/darkblue"-->
+<!--                                    android:textSize="12sp"-->
+<!--                                    android:textStyle="bold" />-->
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:background="@drawable/circularbordersolid"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="20dp">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="2"-->
+<!--                            android:gravity="center_vertical">-->
+
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="70dp"-->
+<!--                                app:cardCornerRadius="6dp"-->
+<!--                                app:cardElevation="0dp">-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="70dp"-->
+<!--                                    android:layout_height="70dp"-->
+<!--                                    android:scaleType="centerCrop"-->
+<!--                                    android:src="@drawable/person3" />-->
+
+<!--                            </androidx.cardview.widget.CardView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginLeft="10dp"-->
+<!--                                android:orientation="vertical">-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:maxLines="3"-->
+<!--                                    android:text="Review"-->
+<!--                                    android:textColor="@color/darkblue"-->
+<!--                                    android:textSize="14sp" />-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="3dp"-->
+<!--                                    android:textColor="@color/darkblue"-->
+<!--                                    android:text="Shikha Tiwari"-->
+<!--                                    android:textSize="12sp"-->
+<!--                                    android:textStyle="bold" />-->
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+            </LinearLayout>
+
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/profile_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:background="#6a0080"-->
+<!--                android:paddingBottom="24dp">-->
+<!--                <com.mikhaellopez.circularimageview.CircularImageView-->
+<!--                    android:id="@+id/user_profile_photo"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    android:layout_below="@+id/header_cover_image"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    app:civ_border_color="#fff"-->
+<!--                    app:civ_border_width="4dp"-->
+<!--                    app:civ_shadow="true"-->
+<!--                    app:civ_shadow_color="#3f51b5"-->
+<!--                    android:elevation="5dp"-->
+<!--                    android:src="@drawable/profile" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/user_profile_name"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="206dp"-->
+<!--                    android:text="Tony Stork"-->
+<!--                    android:textColor="@color/whiteLogocolor"-->
+<!--                    android:textSize="24sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/user_profile_short_bio"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/user_profile_name"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:text="If you can dream it you can do it"-->
+<!--                    android:textColor="@color/whiteLogocolor"-->
+<!--                    android:textSize="17sp" />-->
+
+<!--            </RelativeLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/profile_layout"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:orientation="vertical">-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:src="@drawable/portfolio"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="5dp"-->
+<!--                        android:textColor="#FFA500"-->
+<!--                        android:clickable="true"-->
+<!--                        android:elevation="4dp"-->
+<!--                        android:padding="20dp"-->
+<!--                        android:textStyle="bold|italic"-->
+<!--                        android:text="Profession" />-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:src="@drawable/edit"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:layout_height="wrap_content"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="Android Developer" />-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:src="@drawable/call"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="5dp"-->
+<!--                        android:textColor="#FFA500"-->
+<!--                        android:clickable="true"-->
+<!--                        android:elevation="4dp"-->
+<!--                        android:padding="20dp"-->
+<!--                        android:textStyle="bold|italic"-->
+<!--                        android:text="Account Details" />-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:src="@drawable/edit"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:layout_height="wrap_content"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="+1110- 111-111" />-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:src="@drawable/user"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="5dp"-->
+<!--                        android:clickable="true"-->
+<!--                        android:elevation="4dp"-->
+<!--                        android:textColor="#FFA500"-->
+<!--                        android:padding="20dp"-->
+<!--                        android:textStyle="bold|italic"-->
+<!--                        android:text="Profile Details" />-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:src="@drawable/edit"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:layout_height="wrap_content"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="Tony Stork Williams" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="tony4williams@yahoo.com" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="Los Angels ,US" />-->
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="fill_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginTop="20dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/darkblue"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_margin="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:clickable="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:elevation="4dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity="center_vertical|center_horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="Intersted in Software development,technically exposed" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="fill_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginTop="20dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="@color/darkblue"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_margin="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:clickable="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:elevation="4dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity="center_vertical|center_horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="Jovial Type"/>&ndash;&gt;-->
+<!--            </LinearLayout>-->
+
+        </LinearLayout>
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/profile_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="#6a0080"-->
+<!--                android:elevation="4dp"-->
+<!--                android:paddingBottom="24dp">-->
+<!--                <com.mikhaellopez.circularimageview.CircularImageView-->
+<!--                    android:id="@+id/user_profile_photo"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    android:layout_below="@+id/header_cover_image"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    app:civ_border_color="#fff"-->
+<!--                    app:civ_border_width="4dp"-->
+<!--                    app:civ_shadow="true"-->
+<!--                    app:civ_shadow_color="#3f51b5"-->
+<!--                    android:elevation="5dp"-->
+<!--                    android:src="@drawable/profile" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/user_profile_name"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="206dp"-->
+<!--                    android:text="Tony Stork"-->
+<!--                    android:textColor="#fff"-->
+<!--                    android:textSize="24sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/user_profile_short_bio"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/user_profile_name"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:text="If you can dream it you can do it"-->
+<!--                    android:textColor="#fff"-->
+<!--                    android:textSize="14sp" />-->
+
+<!--            </RelativeLayout>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="fill_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/profile_layout"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:orientation="vertical">-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:src="@drawable/portfolio"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:textColor="#FFA500"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:padding="20dp"-->
+<!--                    android:textStyle="bold|italic"-->
+<!--                    android:text="Profession" />-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                          android:src="@drawable/edit"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:layout_height="wrap_content"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="Android Developer" />-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:src="@drawable/call"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="5dp"-->
+<!--                        android:textColor="#FFA500"-->
+<!--                        android:clickable="true"-->
+<!--                        android:elevation="4dp"-->
+<!--                        android:padding="20dp"-->
+<!--                        android:textStyle="bold|italic"-->
+<!--                        android:text="Account Details" />-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:src="@drawable/edit"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:layout_height="wrap_content"/>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="+1110- 111-111" />-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:src="@drawable/user"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="5dp"-->
+<!--                        android:clickable="true"-->
+<!--                        android:elevation="4dp"-->
+<!--                        android:textColor="#FFA500"-->
+<!--                        android:padding="20dp"-->
+<!--                        android:textStyle="bold|italic"-->
+<!--                        android:text="Profile Details" />-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:src="@drawable/edit"-->
+<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
+<!--                        android:layout_height="wrap_content"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="Tony Stork Williams" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="tony4williams@yahoo.com" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:textColor="@color/darkblue"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:clickable="true"-->
+<!--                    android:elevation="4dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    android:text="Los Angels ,US" />-->
+
+<!--            </LinearLayout>-->
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button_yellobg"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:textColor="#FFA500"
+            android:padding="15dp"
+            android:textStyle="bold|italic"
+            android:text="Report Details" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:lineSpacingExtra="8dp"
+            android:text="Skill ﬁnder test is designed to identify your interests and multiple intelligence. It will help you to ﬁnd the skills already developed in you and to identify the skills to be developed based on your interests. This test report will map out your interest areas and multiple intelligences and provide you with suggestions on which career ﬁeld you can ﬂourish. "
+            android:textColor="@color/darkblue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Needs of Interest" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:background="@drawable/button_yellobg"-->
+<!--            android:gravity="center"-->
+<!--            android:text="IDENTIFY SKILLS BASED ON YOUR INTERESTS"-->
+<!--            android:textColor="@color/whiteLogocolor" />-->
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:lineSpacingExtra="8dp"
+            android:text="»  This test report will help you to identify your interests and multiple intelligences "
+            android:textColor="@color/darkblue" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            android:lineSpacingExtra="8dp"
+            android:text="»  This test report will help you to identify your interests and multiple intelligences "
+            android:textColor="@color/darkblue"  />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="8dp"
+            android:text="»  This test report will help you to identify your interests and multiple intelligences "
+            android:textColor="@color/darkblue"  />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="8dp"
+            android:text="»  This test report will help you to identify your interests and multiple intelligences "
+            android:textColor="@color/darkblue"  />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="8dp"
+            android:text="»  This test report will help you to identify your interests and multiple intelligences "
+            android:textColor="@color/darkblue"  />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Your Interests" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:lineSpacingExtra="8dp"
+            android:text="Interests refer to an individual’s preference for engaging in one or more speciﬁc activities relative to others. It involves the activities that excites and gives you enjoyment, including what you like to watch, shows you like to attend, and the kind of people you admire and like to be with. Interests reﬂect a person’s preferences, attitudes, values, talents, and qualities. Interest is important in choosing a career because interest keeps you motivated and engaged in your work. Since you spend most of your time during a day and week at the workplace; if you have no interest in what you are doing, it can adversely aﬀect your personal life."
+            android:textColor="@color/darkblue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Graph based on Interests" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/graph" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            android:text="TABLE SHOWING SCORES IN INTEREST AREAS"
+            android:textColor="@color/darkblue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Suggested Career" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/first" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+
+            android:lineSpacingExtra="8dp"
+            android:text="Wellness and sports activity has long been used as a tool to improve mental, physical and social well-being. Each day we work to maximize our dimension of wellbeing and comfort to live long with healthy lives. The wellness sector in India has quickly advanced from a highly unstructured ecosystem in the 90s to a more active and developing sector of today. As this industry become mainstream, there expects a massive boom in the coming years. The beauty business in India becomes triple in the next WELLNESS  "
+            android:textColor="@color/darkblue" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/second" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:lineSpacingExtra="8dp"
+            android:text="Public administration concerns policy formulation and implementation and management of public aﬀairs by competent civil servants who constitute public services or civil services. Public administration is essential for executing government orders and functions. A whole range of new career opportunities can be taken up in this sector.
+    "
+            android:textColor="@color/darkblue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Taking Action" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+
+            android:lineSpacingExtra="8dp"
+            android:text="This assessment report gives understanding of your interest areas, multiple intelligences, career ﬁelds you are good at, and the description of career ﬁelds. Based on this information you can explore and get a job that gives you happiness and satisfaction.
+      "
+            android:textColor="@color/darkblue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Consult a career councellor" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            android:lineSpacingExtra="8dp"
+            android:text="Career counselor plays an important role in accurately interpreting the psychometric test result. Assessment tests are surely beneﬁcial, but ultimately it has to be your own choice by considering all factors in selecting a career and/or course-discipline. Career counselors can help sort out these issues. Career counselor provides guidance in setting goal and preparing an action plan based on the results obtained by the student in the psychometric test. Career counselors always keep the information obtained from the tests conﬁdential.
+    "
+            android:textColor="@color/darkblue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Create Career development plan" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Read and gain knowledge about your career or ﬁeld of interest by asking yourself and analyzing the test report. Seek advice from career counselor, family, friends, and teachers to create a career development plan.
+
+    "
+            android:layout_marginTop="30dp"
+            android:textColor="@color/darkblue"
+            android:lineSpacingExtra="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Seek Advice from Career Coach" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:lineSpacingExtra="8dp"
+
+            android:text="Seek advice from your career coach to get a more broad view on careers.
+    "
+            android:textColor="@color/darkblue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_yellobg"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:textColor="#FFA500"
+        android:padding="15dp"
+        android:textStyle="bold|italic"
+        android:text="Start Networking" />
+
+        <com.codesgood.views.JustifiedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:lineSpacingExtra="7dp"
+
+            android:text="Networking is about developing lasting relationships for mutual gain and creating a long-lasting favorable impression with people so they may think of you when an opportunity arises.” Networking starts with a mindset and an intention to discover, explore, and be open to what you may encounter. It helps building mutually beneﬁcial relationships with people of inﬂuence. It enables you to stand out from the crowd.
+    Skill Finder Test is a standard and scientiﬁc method designed to measure an individual’s suitability for a role/career based on his/her interests, skills, multiple intelligences and other related factors. This test can evaluate an individual and provide an objective measure of his/her interests or career preferences. It is constructed by following the psychometric testing guidelines and scientiﬁcally proven theories and it is scientiﬁcally validated and standardized. This test is suitable for the Indian context.
+    "
+            android:textColor="@color/darkblue" />
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="download"
+                android:textColor="@color/darkblue" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/download" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+</ScrollView>

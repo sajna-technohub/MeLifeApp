@@ -12,5 +12,11 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/login_back" />
-
+ <com.github.ybq.android.spinkit.SpinKitView
+     android:layout_width="match_parent"
+     android:id="@+id/mainSpinKit"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintBottom_toBottomOf="@+id/imageView"
+     android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

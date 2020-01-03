@@ -2,36 +2,63 @@ package com.technohub.melifeapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.SpinKitView;
+import com.technohub.melifeapp.Interfaces.IMain;
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.classes.Constants;
+import com.technohub.melifeapp.presenter.MainPresenter;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements IMain.View {
+    private MainPresenter mainPresenter;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        new Handler().postDelayed(new Runnable() {
-
-            /*
-             * Showing splash screen with a timer. This will be useful when you
-             * want to show case your app logo / company
-             */
-
-            @Override
-            public void run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
-                Intent i = new Intent(MainActivity.this, ChoosePage.class);
-                startActivity(i);
-                // Close this activity
-                finish();
-            }
-        }, Constants.TIME_OUT  );
+        mainPresenter = new MainPresenter(this);
+        mainPresenter.created();
     }
+
+    @Override
+    public void init() {
+        progressBar = (SpinKitView) findViewById(R.id.mainSpinKit);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public void tokenError() {
+        Toast.makeText(this, getString(R.string.app_name), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void hideLoading() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void finishApp() {
+         this.finish();
+    }
+
 }

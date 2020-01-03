@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.technohub.melifeapp.R;
 
-public class ChoosePage extends AppCompatActivity {
+public class ChoosePageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

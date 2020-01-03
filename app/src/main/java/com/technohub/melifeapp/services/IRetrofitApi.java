@@ -16,6 +16,6 @@ public interface IRetrofitApi {
 
 
     /*for Log in on LoginActivity*/
-    @POST("auth")
+    @POST("login")
     Call<ApiToken> Login(@Body User user);
 }
