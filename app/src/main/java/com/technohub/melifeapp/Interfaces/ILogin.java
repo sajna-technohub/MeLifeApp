@@ -27,7 +27,7 @@ public interface ILogin {
 
         void goToMainActivity();
 
-        void goToWebBrowser(int id);
+
     }
 
     interface Presenter {
@@ -38,8 +38,5 @@ public interface ILogin {
 
         void registerButtonClick();
 
-        void githubLinkClick();
-
-        void privacyPolicyLinkClick();
     }
 }

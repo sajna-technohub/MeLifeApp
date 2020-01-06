@@ -89,18 +89,17 @@
                 android:textColorHint="@color/whiteLogocolor"
                 android:gravity="center"
                 android:hint="@string/Title_Email"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/whiteLogocolor" />
             <TextView
                 android:id="@+id/registerTxtEmailError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/registerEditTxtMobile"
-                android:text="dkfjhsdklh"
                 android:drawableStart="@drawable/ic_new_releases_red_24dp"
                 android:drawablePadding="2dp"
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="16sp"
+                android:textSize="@dimen/fab_marginsp"
                 android:visibility="gone"/>
             <EditText
                 android:id="@+id/registerEditTxtMobile"
@@ -109,7 +108,7 @@
                 android:background="@drawable/edittext_background"
                 android:layout_marginTop="@dimen/margin_20"
                 android:gravity="center"
-                android:inputType="textPassword"
+                android:inputType="number"
                 android:hint="@string/Title_mobile"
                 android:textColorHint="@color/whiteLogocolor"
                 android:textColor="@color/whiteLogocolor" />
@@ -121,7 +120,7 @@
                 android:drawableStart="@drawable/ic_new_releases_red_24dp"
                 android:drawablePadding="2dp"
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="16sp"
+                android:textSize="@dimen/fab_marginsp"
                 android:visibility="gone"/>
             <EditText
                 android:id="@+id/registerEditTxtPincode"
@@ -130,7 +129,7 @@
                 android:background="@drawable/edittext_background"
                 android:layout_marginTop="@dimen/margin_20"
                 android:textColorHint="@color/whiteLogocolor"
-                android:inputType="textPassword"
+                android:inputType="number"
                 android:gravity="center"
                 android:hint="@string/Title_pincode"
                 android:textColor="@color/whiteLogocolor" />
@@ -142,7 +141,7 @@
                 android:drawableStart="@drawable/ic_new_releases_red_24dp"
                 android:drawablePadding="2dp"
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="16sp"
+                android:textSize="@dimen/fab_marginsp"
                 android:visibility="gone"/>
 
             <LinearLayout

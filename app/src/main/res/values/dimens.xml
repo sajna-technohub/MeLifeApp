@@ -20,4 +20,9 @@
     <dimen name="margin_42">42dp</dimen>
     <dimen name="margin_32">32dp</dimen>
     <dimen name="margin_0">0dp</dimen>
+<!--    -->
+<!--    Dashboard-->
+    <dimen name="dimen_40">40dp</dimen>
+    <dimen name="dimen_156">156dp</dimen>
+    <dimen name="dimen_130">130dp</dimen>
 </resources>

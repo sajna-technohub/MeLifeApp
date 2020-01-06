@@ -70,15 +70,15 @@ public class LoginPresenter implements ILogin.Presenter {
         view.goToRegisterActivity();
     }
 
-    @Override
-    public void githubLinkClick() {
-
-        view.goToWebBrowser(0);
-    }
-
-    @Override
-    public void privacyPolicyLinkClick() {
-
-        view.goToWebBrowser(1);
-    }
+//    @Override
+//    public void githubLinkClick() {
+//
+//        view.goToWebBrowser(0);
+//    }
+//
+//    @Override
+//    public void privacyPolicyLinkClick() {
+//
+//        view.goToWebBrowser(1);
+//    }
 }

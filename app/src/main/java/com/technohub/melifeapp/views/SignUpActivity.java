@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,13 +54,51 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View{
         registerBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                        registerPresenter.registerButtonClick(registerEditTxtName.getText().toString().trim(),
-                        registerEditTxtEmail.getText().toString().trim(), registerEditTxtMobile.getText().toString().trim(),registerEditTxtPincode.getText().toString().trim());
-            }
+if(validate()) {
+            registerPresenter.registerButtonClick(registerEditTxtName.getText().toString().trim(),
+            registerEditTxtEmail.getText().toString().trim(), registerEditTxtMobile.getText().toString().trim(), registerEditTxtPincode.getText().toString().trim());
+} }
         });
     }
+    public boolean validate() {
+        boolean valid = true;
+        String name = registerEditTxtName.getText().toString();
+        String email = registerEditTxtEmail.getText().toString();
+        String mobile = registerEditTxtMobile.getText().toString();
+        String pincode = registerEditTxtPincode.getText().toString();
+        if (name.isEmpty() || name.length() < 4) {
+            registerEditTxtName.setError("Name should be minimum 3 charecters");
+            valid = false;
+        } else {
+            registerEditTxtName.setError(null);
+        }
 
+
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            registerEditTxtEmail.setError("Enter a valid email address");
+            valid = false;
+        } else {
+            registerEditTxtEmail.setError(null);
+        }
+
+
+        if (mobile.isEmpty() || !android.util.Patterns.PHONE.matcher(mobile).matches()) {
+            registerEditTxtMobile.setError("Enter valid mobile number");
+            valid = false;
+        } else {
+            registerEditTxtMobile.setError(null);
+        }
+
+        if (pincode.isEmpty() || !pincode.matches("^[1-9][0-9]{5}$") ) {
+            registerEditTxtPincode.setError("Enter a valid pin");
+            valid = false;
+        } else {
+            registerEditTxtPincode.setError(null);
+        }
+
+        return valid;
+
+    }
     @Override
     public Context getContext() {
         return this;

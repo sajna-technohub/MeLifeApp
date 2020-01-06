@@ -2,63 +2,48 @@ package com.technohub.melifeapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import com.github.ybq.android.spinkit.SpinKitView;
-import com.technohub.melifeapp.Interfaces.IMain;
 import com.technohub.melifeapp.R;
-import com.technohub.melifeapp.classes.Constants;
-import com.technohub.melifeapp.presenter.MainPresenter;
 
-public class MainActivity extends AppCompatActivity implements IMain.View {
-    private MainPresenter mainPresenter;
-    private ProgressBar progressBar;
+public class MainActivity extends AppCompatActivity {
+    Intent intent;
+    ProgressBar mainSpinKit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        mainPresenter = new MainPresenter(this);
-        mainPresenter.created();
+        mainSpinKit=findViewById(R.id.mainSpinKit);
+        mainSpinKit.setVisibility(View.VISIBLE);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String storedUsername = prefs.getString("apiToken", "");
+                Log.e("log", storedUsername);
+                if (!storedUsername.equalsIgnoreCase("")) {
+                    intent = new Intent(getApplicationContext(), DashBoardActivity.class);
+                    startActivity(intent);
+                    mainSpinKit.setVisibility(View.GONE);
+                    finish();
+
+                } else {
+                    intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    mainSpinKit.setVisibility(View.GONE);
+                }
+            }
+        }, 3000);
+
+
     }
 
-    @Override
-    public void init() {
-        progressBar = (SpinKitView) findViewById(R.id.mainSpinKit);
-    }
-
-    @Override
-    public Context getContext() {
-        return this;
-    }
-
-    @Override
-    public void tokenError() {
-        Toast.makeText(this, getString(R.string.app_name), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void hideLoading() {
-        progressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showLoading() {
-        progressBar.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void finishApp() {
-         this.finish();
-    }
 
 }

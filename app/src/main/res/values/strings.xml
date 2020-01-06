@@ -31,4 +31,14 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_Reports">Reports</string>
     <string name="title_user">User</string>
+
+    <!--home fragment-->
+
+
+    <string name="text_psy_test"> Tests</string>
+    <string name="text_faq">FAQ </string>
+    <string name="text_contactus">Contact Us   </string>
+    <string name="text_aboutus">About Us</string>
+    <string name="text_setting">Setting </string>
+    <string name="text_testreports">Reports </string>
 </resources>
