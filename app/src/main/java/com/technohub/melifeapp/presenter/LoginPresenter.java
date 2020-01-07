@@ -5,9 +5,12 @@ import android.util.Log;
 import com.technohub.melifeapp.Interfaces.ILogin;
 import com.technohub.melifeapp.classes.ApiToken;
 import com.technohub.melifeapp.models.JsonModel;
+import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.services.ApiClient;
 import com.technohub.melifeapp.services.IRetrofitApi;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,22 +36,31 @@ public class LoginPresenter implements ILogin.Presenter {
 
         view.showLoading();
         view.clearErrors();
-        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-        User user = new User(email, password);
-        Call<ApiToken> call = retrofitApi.Login(user);
-        call.enqueue(new Callback<ApiToken>() {
-            @Override
-            public void onResponse(Call<ApiToken> call, Response<ApiToken> response) {
 
-                ApiToken apiToken = response.body();
+        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+        Call<LoginResponse> call = retrofitApi.Login(email,password);
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
+                LoginResponse loginResponse = response.body();
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.e("apitoken",apiToken.getToken());
-                    apiToken.setSharedPreferences(view.getContext());
+                    Log.e("message",loginResponse.getMessage());
+                    List<User> userdata=response.body().getData();
+                    for (User user:userdata) {
+                      Log.e("id",user.getMelife_user_id()+"");
+                        Log.e("complete status",user.getCompletion_status());
+                        Log.e("Email",user.getEmail());
+                        Log.e("Name",user.getName());
+                        new LoginResponse().setSharedPreferences(view.getContext(),user.getName(),user.getMelife_user_id(),user.getCompletion_status(),user.getToken());
+                    }
+//
                     view.goToMainActivity();
                 } else if (response.errorBody() != null) {
 
                     try {
                         view.hideLoading();
+                        Log.e("apitoken","failed");
                         JsonModel jsonParseHelper = new JsonModel(response.errorBody().string());
                         view.showErrorMessages(jsonParseHelper.getErrorList());
 
@@ -57,7 +69,7 @@ public class LoginPresenter implements ILogin.Presenter {
             }
 
             @Override
-            public void onFailure(Call<ApiToken> call, Throwable t) {
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
                 view.hideLoading();
             }
         });

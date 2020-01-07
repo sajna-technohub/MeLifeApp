@@ -18,6 +18,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:background="@color/white"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -158,13 +159,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_30"
-                android:background="#fff"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <GridLayout
                     android:id="@+id/mainGrid"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:background="@color/white"
                     android:layout_weight="8"
                     android:alignmentMode="alignMargins"
                     android:columnCount="2"
@@ -181,6 +183,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="16dp"
+                        app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="8dp"
                         app:cardPreventCornerOverlap="true">
@@ -219,6 +222,7 @@
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
                         android:layout_marginLeft="10dp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="16dp"
                         app:cardCornerRadius="10dp"
@@ -254,7 +258,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/txt_faq"
+                        android:id="@+id/txtfaq"
                         android:layout_width="@dimen/dimen_130"
                         android:layout_height="@dimen/margin_80"
                         android:layout_rowWeight="1"
@@ -262,17 +266,16 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="16dp"
-
+                        app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="8dp">
+                        app:cardElevation="8dp"
+                        app:cardPreventCornerOverlap="true">
 
                         <LinearLayout
                             android:layout_width="@dimen/dimen_156"
                             android:layout_height="@dimen/margin_80"
-                            android:layout_gravity="center_horizontal|center_vertical"
                             android:background="@drawable/gridfaq"
-                            android:gravity="center_vertical|center_horizontal">
-
+                            android:gravity="center_horizontal|center_vertical">
                             <ImageView
                                 android:layout_width="@dimen/dimen_40"
                                 android:layout_height="@dimen/dimen_40"
@@ -280,17 +283,17 @@
                                 android:src="@drawable/iconfaq" />
 
                             <TextView
+                                android:id="@+id/btn_faq"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal|center_vertical"
                                 android:text="@string/text_faq"
+                                android:fontFamily="@font/goodtimesrg"
                                 android:textAlignment="center"
                                 android:textColor="#fff"
-                                android:fontFamily="@font/goodtimesrg"
-                                android:textSize="15sp"
+                                android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:typeface="serif" />
-
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
@@ -301,6 +304,7 @@
                         android:layout_height="@dimen/margin_80"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="16dp"
@@ -341,6 +345,7 @@
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
                         android:layout_marginLeft="16dp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="16dp"
                         app:cardCornerRadius="10dp"
@@ -380,6 +385,7 @@
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
                         android:layout_marginLeft="10dp"
+                        app:cardBackgroundColor="@color/white"
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="16dp"
                         app:cardCornerRadius="10dp"
@@ -414,9 +420,6 @@
 
                 </GridLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_60" />
             </LinearLayout>
         </LinearLayout>
 

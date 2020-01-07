@@ -10,6 +10,8 @@
     <string name="Title_signup">Sign Up</string>
     <!--    Login-->
     <string name="Title_signin">Sign In</string>
+    <string name="Title_forgot">Forgot Password</string>
+    <string name="Title_enter_email">Enter Your registered Email-ID</string>
     <string name="title_activity_dash_board">DashBoardActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -41,4 +43,21 @@
     <string name="text_aboutus">About Us</string>
     <string name="text_setting">Setting </string>
     <string name="text_testreports">Reports </string>
+
+
+<!--Exam section-->
+    <string name="answera">A. Like extremely </string>
+    <string name="answerb">B. Like very much </string>
+    <string name="answerc">  C. Neutral </string>
+    <string name="answerd"> D. Dislike very much </string>
+    <string name="answere">E. Dislike extremely</string>
+    <string name="terms"> I have read and understood the instructions.</string>
+    <string name="Title_proceed">Proceed</string>
+
+    <string name="Title_Qno">Question</string>
+    <string name="Title_Qn">Like to do research on science ?</string>
+    <string name="Title_next">Next</string>
+    <string name="Title_cele">cELeBrAtiONs</string>
+
+
 </resources>

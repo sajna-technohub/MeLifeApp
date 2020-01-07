@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
         loginPresenter = new LoginPresenter(this);

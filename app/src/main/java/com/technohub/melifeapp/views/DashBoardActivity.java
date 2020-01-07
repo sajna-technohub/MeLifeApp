@@ -40,6 +40,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         setContentView(R.layout.activity_dash_board);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().hide();
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override

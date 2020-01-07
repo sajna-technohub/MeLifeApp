@@ -15,7 +15,7 @@
     tools:context=".views.SignUpActivity">
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/registerSpinKit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         style="@style/SpinKitView.Large.Circle"

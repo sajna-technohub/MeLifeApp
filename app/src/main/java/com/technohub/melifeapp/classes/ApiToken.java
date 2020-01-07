@@ -46,5 +46,7 @@ public class ApiToken {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         sharedPreferences.edit().putString("apiToken", this.token).apply();
+        sharedPreferences.edit().putString("userid", this.userid).apply();
+        sharedPreferences.edit().putString("status", this.completion_status).apply();
     }
 }

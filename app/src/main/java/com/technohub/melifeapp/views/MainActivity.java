@@ -25,24 +25,14 @@ public class MainActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                String storedUsername = prefs.getString("apiToken", "");
-                Log.e("log", storedUsername);
-                if (!storedUsername.equalsIgnoreCase("")) {
-                    intent = new Intent(getApplicationContext(), DashBoardActivity.class);
+
+                    intent = new Intent(getApplicationContext(), ChoosePageActivity.class);
                     startActivity(intent);
                     mainSpinKit.setVisibility(View.GONE);
                     finish();
 
-                } else {
-                    intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                    mainSpinKit.setVisibility(View.GONE);
-                }
             }
         }, 3000);
-
-
     }
 
 

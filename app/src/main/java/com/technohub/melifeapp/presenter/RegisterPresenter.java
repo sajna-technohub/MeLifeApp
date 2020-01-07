@@ -41,7 +41,7 @@ public class RegisterPresenter implements IRegister.Presenter {
                 User apiToken = response.body();
                 if (response.isSuccessful() && response.body() != null) {
                     Log.e("Response",response.toString());
-                    Log.e("Response",apiToken.name+apiToken.id+apiToken.email);
+                    Log.e("Response",apiToken.name+apiToken.email);
 //                    apiToken.setSharedPreferences(view.getContext());
                     view.goToMainActivity();
                 } else if (response.errorBody() != null) {
