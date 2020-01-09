@@ -28,7 +28,6 @@ public class LoginPresenter implements ILogin.Presenter {
     public void created() {
 
         view.init();
-        view.initClicks();
     }
 
     @Override
@@ -59,7 +58,8 @@ public class LoginPresenter implements ILogin.Presenter {
                 } else if (response.errorBody() != null) {
 
                     try {
-                        view.hideLoading();
+                         view.hideLoading();
+                         view.ShowToast();
                         Log.e("apitoken","failed");
                         JsonModel jsonParseHelper = new JsonModel(response.errorBody().string());
                         view.showErrorMessages(jsonParseHelper.getErrorList());
@@ -82,15 +82,4 @@ public class LoginPresenter implements ILogin.Presenter {
         view.goToRegisterActivity();
     }
 
-//    @Override
-//    public void githubLinkClick() {
-//
-//        view.goToWebBrowser(0);
-//    }
-//
-//    @Override
-//    public void privacyPolicyLinkClick() {
-//
-//        view.goToWebBrowser(1);
-//    }
 }

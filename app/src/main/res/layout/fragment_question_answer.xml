@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.ExamFragment">
+
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/dimen_40"
         android:layout_height="match_parent"
         >
 
@@ -33,76 +35,72 @@
             android:orientation="vertical"
             >
             <LinearLayout
-                android:layout_width="330dp"
+                android:layout_width="@dimen/dimen_330"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textSize="15dp"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:textSize="@dimen/dimen_15"
                     android:textStyle="bold"
                     android:textColor="@color/darkblue"
-                    android:text="@string/Title_Qno"/>
+                    android:text="@string/Title_Qn"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="@dimen/margin_20"
                     android:paddingLeft="5dp"
-                    android:textSize="15dp"
+                    android:textSize="@dimen/dimen_15"
                     android:textStyle="bold"
-                    android:id="@+id/txtQno"
+                    android:id="@+id/examTxtQno"
                     android:textColor="@color/darkblue"
                     />
             </LinearLayout>
-            <TextView
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:layout_width="wrap_content"
+                android:id="@+id/examSpinKit"
+                android:layout_gravity="center_horizontal|center"
+                style="@style/SpinKitView.Large.Circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                android:layout_height="60dp"/>
+            <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textSize="17dp"
+                android:textSize="@dimen/dimen_17"
                 android:typeface="serif"
-                android:id="@+id/txtQuestion"
+                android:id="@+id/examTxtQuestion"
                 android:textColor="@color/darkblue"
                 android:textStyle="bold"
                 />
-            <Button
+
+            <com.skydoves.elasticviews.ElasticButton
                 style="@style/style_answer_button"
-                android:id="@+id/answera"
+                android:id="@+id/examBtnOption1"
                 android:text="@string/answera"/>
-            <Button
+            <com.skydoves.elasticviews.ElasticButton
                 style="@style/style_answer_button"
-                android:id="@+id/answerb"
+                android:id="@+id/examBtnOption2"
                 android:text="@string/answerb"/>
-            <Button
+            <com.skydoves.elasticviews.ElasticButton
                 style="@style/style_answer_button"
-                android:id="@+id/answerc"
+                android:id="@+id/examBtnOption3"
                 android:text="@string/answerc"/>
-            <Button
+
+            <com.skydoves.elasticviews.ElasticButton
                 style="@style/style_answer_button"
-                android:id="@+id/answerd"
+                android:id="@+id/examBtnOption4"
                 android:text="@string/answerd"/>
-            <Button
+            <com.skydoves.elasticviews.ElasticButton
                 style="@style/style_answer_button"
-                android:id="@+id/answere"
+                android:id="@+id/examBtnOption5"
                 android:text="@string/answere"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
 
-            <!--            <com.skydoves.elasticviews.ElasticButton-->
-            <!--                android:id="@+id/btn_next"-->
-            <!--                android:layout_width="150dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="center_horizontal|center_vertical"-->
-            <!--                android:background="@drawable/button_drawable"-->
-            <!--                android:text="@string/Title_next"-->
-            <!--                android:textColor="@color/darkblue" />-->
-        </LinearLayout>
 
     </LinearLayout>
 

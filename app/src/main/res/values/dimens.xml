@@ -25,4 +25,10 @@
     <dimen name="dimen_40">40dp</dimen>
     <dimen name="dimen_156">156dp</dimen>
     <dimen name="dimen_130">130dp</dimen>
+<!--    exam-->
+    <dimen name="dimen_15">15dp</dimen>
+    <dimen name="dimen_17">17dp</dimen>
+    <dimen name="dimen_330">330dp</dimen>
+
+
 </resources>

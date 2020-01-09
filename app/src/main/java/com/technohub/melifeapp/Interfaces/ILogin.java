@@ -27,6 +27,7 @@ public interface ILogin {
 
         void goToMainActivity();
 
+        void ShowToast();
 
     }
 

@@ -1,12 +1,14 @@
 package com.technohub.melifeapp.services;
 
-import com.technohub.melifeapp.classes.ApiToken;
+import com.technohub.melifeapp.classes.Root;
+import com.technohub.melifeapp.models.ExamResponse;
 import com.technohub.melifeapp.models.LoginResponse;
-import com.technohub.melifeapp.models.QuestionModel;
+import com.technohub.melifeapp.models.ExamModel;
 import com.technohub.melifeapp.models.User;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -25,7 +27,8 @@ public interface IRetrofitApi {
 
     /*for getting question in exam fragment*/
     @Headers({"Accept: application/json"})
-    @POST("exam")
-    Call<QuestionModel> getQuestions();
+    @GET("users?")
+    Call<Root> getQuestions(@Query("page") String page);
+
 
 }

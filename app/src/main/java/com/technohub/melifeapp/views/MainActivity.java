@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import com.technohub.melifeapp.R;
+import com.technohub.melifeapp.classes.MyService;
 
 public class MainActivity extends AppCompatActivity {
     Intent intent;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+//        startService(new Intent(getBaseContext(), MyService.class));
         mainSpinKit=findViewById(R.id.mainSpinKit);
         mainSpinKit.setVisibility(View.VISIBLE);
         Handler handler = new Handler();

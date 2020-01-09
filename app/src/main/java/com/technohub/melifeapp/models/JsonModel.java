@@ -21,7 +21,6 @@ public class JsonModel {
             JSONObject jsonObject = new JSONObject(errorBody);
             JSONArray jsonArray = jsonObject.getJSONArray("errors");
             for (int i=0; i<jsonArray.length(); i++) {
-
                 JSONObject error = jsonArray.getJSONObject(i);
                 ErrorModel errorModel = new ErrorModel();
                 errorModel.setMessage(error.get("msg").toString());

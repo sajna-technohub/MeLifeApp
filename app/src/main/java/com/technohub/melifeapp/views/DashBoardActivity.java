@@ -51,6 +51,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
 //        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -61,6 +62,17 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        //        botton navigatiomn
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home, R.id.navigation_loc, R.id.navigation_like, R.id.navigation_user).build();
+        NavController navController1 = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController1, appBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController1);
+
+        loadFragment(new HomeFragment());
+
+        navView.setOnNavigationItemSelectedListener(this);
+
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -72,7 +84,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 break;
 
             case R.id.navigation_loc:
-                    fragment = new SendFragment();
+                    fragment = new ExamFragment();
                 break;
 
             case R.id.navigation_like:
