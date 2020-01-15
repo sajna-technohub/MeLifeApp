@@ -8,7 +8,7 @@ import java.util.List;
 
 public class JsonModel {
     String errorBody;
-    List<ErrorModel> errorList;
+        List<ErrorModel> errorList;
 
     public JsonModel(String errorBody) {
         this.errorBody = errorBody;

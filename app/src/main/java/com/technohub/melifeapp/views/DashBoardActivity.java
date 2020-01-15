@@ -41,14 +41,6 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().hide();
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
@@ -70,9 +62,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         NavigationUI.setupWithNavController(navView, navController1);
 
         loadFragment(new HomeFragment());
-
         navView.setOnNavigationItemSelectedListener(this);
-
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

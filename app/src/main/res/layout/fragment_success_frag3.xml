@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    tools:context=".views.SuccessFrag3">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/present"
+        android:id="@+id/suc3"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:textColor="@color/whiteLogocolor"
+            android:id="@+id/spo"
+            android:text=" Spontaneouss"/>
+
+</LinearLayout>
+</FrameLayout>

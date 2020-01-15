@@ -2,6 +2,8 @@ package com.technohub.melifeapp.Interfaces;
 
 import android.content.Context;
 
+import com.technohub.melifeapp.classes.Data;
+import com.technohub.melifeapp.classes.Root;
 import com.technohub.melifeapp.models.ErrorModel;
 
 import java.util.List;
@@ -18,11 +20,13 @@ public interface IExam {
 
         void showLoading();
 
+        void ShowQuestionList(List<Data> root);
+
         void hideLoading();
 
         void goToNextFragment();
 
-
+        void setQuestion();
     }
 
     interface Presenter {
@@ -30,6 +34,7 @@ public interface IExam {
         void created();
 
         void getQuestionsFromServer();
+
 
     }
 }

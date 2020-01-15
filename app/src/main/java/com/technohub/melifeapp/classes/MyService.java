@@ -46,7 +46,6 @@ public class MyService extends Service {
                                     ConnectionHelper.lastNoConnectionTs = System.currentTimeMillis();
                                 }
                             }
-
                             if (show && ConnectionHelper.isOnline) {
 
                                 ConnectionHelper.isOnline = false;

@@ -52,12 +52,12 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View{
         registerBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-if(validate()) {
+                if(validate()) {
             registerPresenter.registerButtonClick(registerEditTxtName.getText().toString().trim(),
             registerEditTxtEmail.getText().toString().trim(), registerEditTxtMobile.getText().toString().trim(), registerEditTxtPincode.getText().toString().trim());
-} }
-        });
-    }
+                                } }
+                         });
+                             }
     public boolean validate() {
         boolean valid = true;
         String name = registerEditTxtName.getText().toString();
