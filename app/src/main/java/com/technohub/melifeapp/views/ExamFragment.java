@@ -68,7 +68,7 @@ SpinKitView spinExam;
 
         examTxtQuestion=v.findViewById(R.id.examTxtQuestion);
         examTxtQno=v.findViewById(R.id.examTxtQno);
-         spinExam=v.findViewById(R.id.examSpinKit);
+          spinExam=v.findViewById(R.id.examSpinKit);
 
     }
 
@@ -149,8 +149,6 @@ SpinKitView spinExam;
             Log.e("flag",flag+"");
         }
         if(flag==data.size())
-
-
         {
             Fragment f=new SuccessFrag2();
             fun(f);
@@ -176,6 +174,7 @@ SpinKitView spinExam;
     public void goToNextFragment() {
 
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

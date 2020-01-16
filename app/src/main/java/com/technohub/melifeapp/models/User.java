@@ -4,13 +4,21 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
+
     public String name;
-    public String email;
+    public String user_email;
+
+
     public String mobile;
     public String pincode;
-    public String password;
+    public String user_Password;
     public String token;
+    public String DeviceType;
+
+    public String DeviceToken;
     public int melife_user_id;
     private String completion_status;
 
@@ -24,8 +32,21 @@ public class User {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+
+    public String getDeviceType() {
+        return DeviceType;
+    }
+
+    public void setDeviceType(String deviceType) {
+        DeviceType = deviceType;
+    }
+
+    public String getDeviceToken() {
+        return DeviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        DeviceToken = deviceToken;
     }
 
     public String getToken() {
@@ -36,9 +57,7 @@ public class User {
         this.token = token;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
 
     public String getMobile() {
         return mobile;
@@ -56,25 +75,22 @@ public class User {
         this.pincode = pincode;
     }
 
-    public User(String name, String email, String mobile, String pincode) {
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
-        this.pincode = pincode;
+
+    public String getUser_email() {
+        return user_email;
     }
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 
-    public User(String name, String email, String mobile) {
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
+    public String getUser_Password() {
+        return user_Password;
     }
 
-
+    public void setUser_Password(String user_Password) {
+        this.user_Password = user_Password;
+    }
 
     public int getMelife_user_id() {
         return melife_user_id;
@@ -88,13 +104,15 @@ public class User {
         return completion_status;
     }
 
-    public User(String email, int melife_user_id, String completion_status) {
-        this.email = email;
-        this.melife_user_id = melife_user_id;
-        this.completion_status = completion_status;
-    }
+
 
     public User() {
+    }
+
+    public User(String name, String user_email, String mobile) {
+        this.name = name;
+        this.user_email = user_email;
+        this.mobile = mobile;
     }
 
     public void setCompletion_status(String completion_status) {

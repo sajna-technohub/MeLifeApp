@@ -46,6 +46,7 @@ public class LoginResponse {
         sharedPreferences.edit().putString("userid", userid+"").apply();
         sharedPreferences.edit().putString("completion_status", completion_status).apply();
         sharedPreferences.edit().putString("token",  token).apply();
+
     }
 
 }

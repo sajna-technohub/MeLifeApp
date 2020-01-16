@@ -65,8 +65,9 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         loginBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validate())
-                loginPresenter.loginButtonClick(loginEditTxtEmail.getText().toString().trim(), loginEditTxtPassword.getText().toString().trim());
+                if(validate()) {
+                    loginPresenter.loginButtonClick(loginEditTxtEmail.getText().toString().trim(), loginEditTxtPassword.getText().toString().trim());
+                }
             }
         });
 

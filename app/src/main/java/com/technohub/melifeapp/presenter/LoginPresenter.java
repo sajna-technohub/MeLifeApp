@@ -23,11 +23,11 @@ public class LoginPresenter implements ILogin.Presenter {
 
         this.view = view;
     }
-
     @Override
     public void created() {
 
         view.init();
+        view.initClicks();
     }
 
     @Override
@@ -37,30 +37,34 @@ public class LoginPresenter implements ILogin.Presenter {
         view.clearErrors();
 
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-        Call<LoginResponse> call = retrofitApi.Login(email,password);
+         User user=new User();
+         user.setDeviceToken("jgskjgdsjk");
+        user.setUser_email(email);
+        user.setUser_Password(password);
+        user.setDeviceType("1");
+        Call<LoginResponse> call = retrofitApi.Login(user);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-
                 LoginResponse loginResponse = response.body();
                 if (response.isSuccessful() && response.body() != null) {
                     Log.e("message",loginResponse.getMessage());
-                    List<User> userdata=response.body().getData();
+                                       List<User> userdata=response.body().getData();
                     for (User user:userdata) {
-                      Log.e("id",user.getMelife_user_id()+"");
+                        Log.e("id",user.getMelife_user_id()+"");
                         Log.e("complete status",user.getCompletion_status());
-                        Log.e("Email",user.getEmail());
                         Log.e("Name",user.getName());
-                        new LoginResponse().setSharedPreferences(view.getContext(),user.getName(),user.getMelife_user_id(),user.getCompletion_status(),user.getToken());
+                        new LoginResponse().setSharedPreferences(view.getContext(),user.getName(),user.getMelife_user_id(),user.getCompletion_status(),user.getDeviceToken());
+                        view.goToMainActivity();
                     }
-//
-                    view.goToMainActivity();
-                } else if (response.errorBody() != null) {
+                } else if (response.body().getMessage().equals("invalid login")) {
 
                     try {
-                         view.hideLoading();
+                        Log.e("toast","null1");
                          view.ShowToast();
-                        Log.e("apitoken","failed");
+                        Log.e("toast","null2");
+                         view.hideLoading();
+
                         JsonModel jsonParseHelper = new JsonModel(response.errorBody().string());
                         view.showErrorMessages(jsonParseHelper.getErrorList());
 

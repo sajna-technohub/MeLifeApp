@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.technohub.melifeapp.Interfaces.IRegister;
 import com.technohub.melifeapp.classes.ApiToken;
 import com.technohub.melifeapp.models.JsonModel;
+import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.services.ApiClient;
 import com.technohub.melifeapp.services.IRetrofitApi;
@@ -32,17 +33,19 @@ public class RegisterPresenter implements IRegister.Presenter {
         view.showLoading();
         view.clearErrors();
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-        User user = new User(name, email,mobile);
-        Call<User> call = retrofitApi.Register(user);
-        call.enqueue(new Callback<User>() {
+        User user = new User();
+        user.setName(name);
+        user.setUser_email(email);
+        user.setMobile(mobile);
+        user.setPincode(pincode);
+        Call<LoginResponse> call = retrofitApi.Register(user);
+        call.enqueue(new Callback<LoginResponse>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
-                User apiToken = response.body();
+                LoginResponse loginResponse = response.body();
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.e("Response",response.toString());
-                    Log.e("Response",apiToken.name+apiToken.email);
-//                    apiToken.setSharedPreferences(view.getContext());
+                    Log.e("Response",loginResponse.toString());
                     view.goToMainActivity();
                 } else if (response.errorBody() != null) {
 
@@ -57,7 +60,7 @@ public class RegisterPresenter implements IRegister.Presenter {
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
 
                 view.hideLoading();
             }
