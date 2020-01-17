@@ -39,9 +39,10 @@ public class LoginResponse {
         Data = data;
     }
 
+    SharedPreferences sharedPreferences;
     public void setSharedPreferences(Context context,String name,int userid,String completion_status,String token) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-//        sharedPreferences.edit().putString("apiToken", this.ErrorCode).apply();
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         sharedPreferences.edit().putString("name", name).apply();
         sharedPreferences.edit().putString("userid", userid+"").apply();
         sharedPreferences.edit().putString("completion_status", completion_status).apply();
@@ -49,4 +50,9 @@ public class LoginResponse {
 
     }
 
+    public String getSharedPreferences(Context context,String key)
+    {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPreferences.getString(key,"");
+    }
 }

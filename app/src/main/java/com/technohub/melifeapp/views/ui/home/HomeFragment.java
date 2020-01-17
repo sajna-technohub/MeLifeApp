@@ -14,15 +14,24 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.technohub.melifeapp.R;
+import com.technohub.melifeapp.models.LoginResponse;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private TextView homeTxtName;
+    View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        root.setBackgroundColor(Color.WHITE);
-        return root;
+         root = inflater.inflate(R.layout.fragment_home, container, false);
+         root.setBackgroundColor(Color.WHITE);
+         init();
+         return root;
+    }
+    void init()
+    {
+        homeTxtName=root.findViewById(R.id.homeTxtName);
+        String name=new LoginResponse().getSharedPreferences(getContext(),"name");
+        homeTxtName.setText(name);
     }
 }

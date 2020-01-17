@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MeLife</string>
-
     <!--Register-->
     <string name="Title_Name"> Name </string>
     <string name="Title_LastName">Last Name </string>
@@ -26,6 +25,9 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+<!--    forgot-->
+
 
     <!--    navigations-->
     <string name="title_home">Home</string>

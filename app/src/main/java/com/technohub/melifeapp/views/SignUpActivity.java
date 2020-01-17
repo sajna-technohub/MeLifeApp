@@ -1,7 +1,6 @@
 package com.technohub.melifeapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ import com.technohub.melifeapp.presenter.RegisterPresenter;
 
 import java.util.List;
 
-public class SignUpActivity extends AppCompatActivity implements IRegister.View{
+public class SignUpActivity extends AppCompatActivity implements IRegister.View {
     EditText registerEditTxtName,registerEditTxtPincode, registerEditTxtEmail, registerEditTxtMobile;
     TextView registerTxtNameError, registerTxtEmailError, registerTxtPinError,registerTxtMobileError;
     Button registerBtnRegister;
@@ -55,7 +54,8 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View{
                 if(validate()) {
             registerPresenter.registerButtonClick(registerEditTxtName.getText().toString().trim(),
             registerEditTxtEmail.getText().toString().trim(), registerEditTxtMobile.getText().toString().trim(), registerEditTxtPincode.getText().toString().trim());
-                                } }
+                                }
+        }
                          });
                              }
     public boolean validate() {
@@ -171,13 +171,18 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View{
     }
 
     @Override
-    public void loginSuccessFully()
-    {
-        Toast.makeText(this, "Login SuccessFully", Toast.LENGTH_SHORT).show();
+    public void RegisterExists() {
+        Toast.makeText(this, "User Already Exists", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void loginFail()
+    public void RegisterSuccessFully()
+    {
+        Toast.makeText(this, "Registered SuccessFully", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void RegisterFail()
     {
         Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
     }

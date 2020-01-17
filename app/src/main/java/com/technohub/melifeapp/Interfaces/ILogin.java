@@ -27,7 +27,12 @@ public interface ILogin {
 
         void goToMainActivity();
 
-        void ShowToast();
+        void LoginFailed();
+
+        void LoginSuccessful();
+
+        void  goToForgotActivity();
+
 
     }
 
@@ -38,6 +43,8 @@ public interface ILogin {
         void loginButtonClick(String username, String password);
 
         void registerButtonClick();
+
+        void forgotButtonClick();
 
     }
 }

@@ -28,9 +28,11 @@ public interface IRegister {
 
         void goToLoginActivity();
 
-        void loginSuccessFully();
+        void RegisterSuccessFully();
 
-        void loginFail();
+        void RegisterFail();
+
+        void RegisterExists();
 
     }
 

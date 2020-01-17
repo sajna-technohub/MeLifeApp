@@ -69,21 +69,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_300"
-                    android:gravity="center"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:font="@font/goodtimesrg">
+
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_gravity="center_vertical|center_horizontal"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
                             <com.mikhaellopez.circularimageview.CircularImageView
-                                android:layout_width="@dimen/dimen_100"
-                                android:layout_height="@dimen/dimen_100"
+                                android:layout_width="@dimen/margin_120"
+                                android:layout_height="@dimen/margin_120"
                                 android:layout_marginLeft="30dp"
                                 android:src="@drawable/profile"
                                 android:id="@+id/homeImageProfile"
@@ -95,23 +95,28 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:orientation="vertical"
-                                android:layout_gravity="center_vertical"
                                 android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Jaydon Ann"
-                                    android:textSize="@dimen/margin_20"
-                                    android:id="@+id/homeTxtName"
-                                    android:textColor="#fff"
-                                    android:textStyle="bold"
-                                    android:typeface="serif" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_marginTop="@dimen/margin_30"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text=""
+                                        android:textSize="15sp"
+                                        android:id="@+id/homeTxtName"
+                                        android:textColor="#fff"
+                                        android:textStyle="bold"
+                                        android:typeface="serif" />
+                                </LinearLayout>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:id="@+id/homeTxtDesc"
                                     android:textStyle="bold"
+                                    android:layout_marginTop="@dimen/dimen_10"
                                     android:text="Class 9,CBSC,Board Exam"
                                     android:textColor="#fff"
                                     android:typeface="serif" />
@@ -137,10 +142,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="vertical"
-                    android:layout_marginTop="@dimen/margin_20"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:layout_marginTop="@dimen/margin_30"
+                        android:layout_marginTop="@dimen/margin_20"
                         android:layout_width="match_parent"
                         android:textSize="@dimen/margin_20"
                         android:textStyle="bold"
@@ -161,13 +165,13 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:orientation="vertical"
-                            android:padding="@dimen/fab_margin"
+                            android:padding="@dimen/dimen_10"
                             android:layout_height="wrap_content">
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginTop="40dp"
+                                android:layout_marginTop="@dimen/margin_20"
                                 android:weightSum="2" >
                                 <androidx.cardview.widget.CardView
                                     android:id="@+id/homeCardTests"

@@ -48,33 +48,34 @@ public class LoginPresenter implements ILogin.Presenter {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.e("message",loginResponse.getMessage());
-                                       List<User> userdata=response.body().getData();
-                    for (User user:userdata) {
-                        Log.e("id",user.getMelife_user_id()+"");
-                        Log.e("complete status",user.getCompletion_status());
-                        Log.e("Name",user.getName());
-                        new LoginResponse().setSharedPreferences(view.getContext(),user.getName(),user.getMelife_user_id(),user.getCompletion_status(),user.getDeviceToken());
+                    if(response.body().getMessage().equals("Success")) {
+                        Log.e("LoginResponse", loginResponse.getMessage());
+                        List<User> userdata = response.body().getData();
+                        for (User user : userdata) {
+                            Log.e("id", user.getMelife_user_id() + "");
+                            Log.e("complete status", user.getCompletion_status());
+                            Log.e("Name", user.getName());
+                            new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken());
+
+                        }
+                        view.hideLoading();
+                        view.LoginSuccessful();
                         view.goToMainActivity();
                     }
-                } else if (response.body().getMessage().equals("invalid login")) {
-
-                    try {
-                        Log.e("toast","null1");
-                         view.ShowToast();
-                        Log.e("toast","null2");
-                         view.hideLoading();
-
-                        JsonModel jsonParseHelper = new JsonModel(response.errorBody().string());
-                        view.showErrorMessages(jsonParseHelper.getErrorList());
-
-                    } catch (Exception e) {}
+                    else
+                    {
+                        Log.e("LoginResponse", loginResponse.getMessage());
+                        view.LoginFailed();
+                        view.hideLoading();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Log.e("LoginResponse","faileddd");
                 view.hideLoading();
+                view.LoginFailed();
             }
         });
     }
@@ -86,4 +87,9 @@ public class LoginPresenter implements ILogin.Presenter {
         view.goToRegisterActivity();
     }
 
+    @Override
+    public void forgotButtonClick() {
+
+        view.goToForgotActivity();
+    }
 }

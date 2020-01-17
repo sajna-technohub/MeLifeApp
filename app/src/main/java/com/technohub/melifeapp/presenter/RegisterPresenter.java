@@ -7,6 +7,8 @@ import com.technohub.melifeapp.Interfaces.IRegister;
 import com.technohub.melifeapp.classes.ApiToken;
 import com.technohub.melifeapp.models.JsonModel;
 import com.technohub.melifeapp.models.LoginResponse;
+import com.technohub.melifeapp.models.RegisterResponse;
+import com.technohub.melifeapp.models.SignUpModel;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.services.ApiClient;
 import com.technohub.melifeapp.services.IRetrofitApi;
@@ -29,40 +31,43 @@ public class RegisterPresenter implements IRegister.Presenter {
 
     @Override
     public void registerButtonClick(String name,String email ,String mobile, String pincode) {
-
         view.showLoading();
         view.clearErrors();
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-        User user = new User();
+        SignUpModel user = new SignUpModel();
         user.setName(name);
-        user.setUser_email(email);
+        user.setEmail(email);
         user.setMobile(mobile);
         user.setPincode(pincode);
-        Call<LoginResponse> call = retrofitApi.Register(user);
-        call.enqueue(new Callback<LoginResponse>() {
+        user.setDeviceToken("rhrhryrty");
+        user.setDeviceType("1");
+        Call<RegisterResponse> call = retrofitApi.Register(user);
+        call.enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-
-                LoginResponse loginResponse = response.body();
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                RegisterResponse registerResponse = response.body();
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.e("Response",loginResponse.toString());
-                    view.goToMainActivity();
-                } else if (response.errorBody() != null) {
-
-                    try {
-                        Log.e("Response",response.toString());
+                    Log.e("Response",registerResponse.getMessage());
+                    if(response.body().getMessage().equals("Please check your mail to continue registration process".trim())) {
                         view.hideLoading();
-                        JsonModel jsonParseHelper = new JsonModel(response.errorBody().string());
-                        view.showErrorMessages(jsonParseHelper.getErrorList());
-
-                    } catch (Exception e) {}
+                        view.RegisterSuccessFully();
+                        view.goToLoginActivity();
+                    }
+                    else
+                    {
+                        Log.e("Response",registerResponse.getMessage());
+                        view.hideLoading();
+                        view.RegisterExists();
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
 
+                Log.e("Response","failed");
                 view.hideLoading();
+                view.RegisterFail();
             }
         });
     }

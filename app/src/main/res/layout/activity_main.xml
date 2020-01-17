@@ -15,6 +15,7 @@
  <com.github.ybq.android.spinkit.SpinKitView
      android:layout_width="match_parent"
      android:id="@+id/mainSpinKit"
+     android:visibility="visible"
      style="@style/SpinKitView.Large.Circle"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toTopOf="parent"

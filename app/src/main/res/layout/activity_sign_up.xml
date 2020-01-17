@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        style="@style/SpinKitView.Large.Circle"
+        style="@style/SpinKitView.Small.WanderingCubes"
         app:SpinKit_Color="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -68,7 +68,8 @@
                 android:textColorHint="@color/whiteLogocolor"
                 android:layout_height="@dimen/margin_60"
                 android:hint="@string/Title_Name"
-                android:textColor="@color/lightblue" />
+                android:textSize="20dp"
+                android:textColor="#000" />
             <TextView
                 android:id="@+id/registerTxtNameError"
                 android:layout_width="match_parent"
@@ -90,7 +91,8 @@
                 android:gravity="center"
                 android:hint="@string/Title_Email"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/whiteLogocolor" />
+                android:textSize="20dp"
+                android:textColor="#000" />
             <TextView
                 android:id="@+id/registerTxtEmailError"
                 android:layout_width="match_parent"
@@ -111,7 +113,8 @@
                 android:inputType="number"
                 android:hint="@string/Title_mobile"
                 android:textColorHint="@color/whiteLogocolor"
-                android:textColor="@color/whiteLogocolor" />
+                android:textSize="20dp"
+                android:textColor="#000" />
             <TextView
                 android:id="@+id/registerTxtMobileError"
                 android:layout_width="match_parent"
@@ -132,7 +135,8 @@
                 android:inputType="number"
                 android:gravity="center"
                 android:hint="@string/Title_pincode"
-                android:textColor="@color/whiteLogocolor" />
+                android:textSize="20dp"
+                android:textColor="#000" />
             <TextView
                 android:id="@+id/registerTxtpinError"
                 android:layout_width="match_parent"

@@ -4,20 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.google.gson.annotations.SerializedName;
-
 public class User {
 
     public String name;
     public String user_email;
-
-
     public String mobile;
     public String pincode;
     public String user_Password;
     public String token;
     public String DeviceType;
-
     public String DeviceToken;
     public int melife_user_id;
     private String completion_status;
@@ -31,7 +26,6 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getDeviceType() {
         return DeviceType;
@@ -57,8 +51,6 @@ public class User {
         this.token = token;
     }
 
-
-
     public String getMobile() {
         return mobile;
     }
@@ -74,7 +66,6 @@ public class User {
     public void setPincode(String pincode) {
         this.pincode = pincode;
     }
-
 
     public String getUser_email() {
         return user_email;

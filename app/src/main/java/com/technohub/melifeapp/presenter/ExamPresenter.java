@@ -34,7 +34,6 @@ public class ExamPresenter implements IExam.Presenter {
     }
 
 
-
     @Override
     public void getQuestionsFromServer() {
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);

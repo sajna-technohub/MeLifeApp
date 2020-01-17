@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.SpinKitView;
-import com.github.ybq.android.spinkit.style.DoubleBounce;
+
 import com.technohub.melifeapp.Interfaces.ILogin;
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.models.ErrorModel;
@@ -26,20 +26,24 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
     EditText loginEditTxtEmail,loginEditTxtPassword;
     Button loginBtnRegister,loginBtnLogin;
-    TextView loginTxtEmailError,loginTxtPasswordError;
-    private ProgressBar loginSpinKit;
+    TextView loginTxtEmailError,loginTxtPasswordError,loginTxtForgotPassword;
+    private SpinKitView loginSpinKit;
     private LoginPresenter loginPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
         loginPresenter = new LoginPresenter(this);
         loginPresenter.created();
     }
     @Override
-    public void ShowToast(){
-        Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show();
+    public void LoginFailed(){
+        Toast.makeText(this, "Bad Credentials,Login Failed!!!!", Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void LoginSuccessful(){
+        Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show();
     }
     @Override
     protected void onStart() {
@@ -49,14 +53,13 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     @Override
     public void init() {
         loginSpinKit = (SpinKitView) findViewById(R.id.loginSpinKit);
-        DoubleBounce doubleBounce = new DoubleBounce();
-        loginSpinKit.setIndeterminateDrawable(doubleBounce);
         loginEditTxtEmail = (EditText) findViewById(R.id.loginEdtTextEmail);
         loginEditTxtPassword = (EditText) findViewById(R.id.loginEdtTextPassword);
         loginTxtEmailError = (TextView) findViewById(R.id.loginTxtEmailError);
         loginTxtPasswordError = (TextView) findViewById(R.id.loginTxtPasswordError);
         loginBtnLogin = (Button) findViewById(R.id.loginBtnSignin);
         loginBtnRegister = (Button) findViewById(R.id.loginBtnSignup);
+        loginTxtForgotPassword=(TextView)findViewById(R.id.loginTxtForgotPassword);
     }
 
     @Override
@@ -78,7 +81,12 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
                 loginPresenter.registerButtonClick();
             }
         });
-
+        loginTxtForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginPresenter.forgotButtonClick();
+            }
+        });
     }
     public boolean validate() {
         boolean valid = true;
@@ -130,7 +138,6 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         for (int i=0; i<errorList.size(); i++) {
 
             if (errorList.get(i).getParam().equals("email")) {
-
                 loginTxtEmailError.setText(errorList.get(i).getMessage());
                 loginTxtEmailError.setVisibility(View.VISIBLE);
             } else if(errorList.get(i).getParam().equals("password")) {
@@ -154,5 +161,10 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         finish();
     }
 
-
+    @Override
+    public void goToForgotActivity() {
+        Intent intent = new Intent(this, ForgotPasswordActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
