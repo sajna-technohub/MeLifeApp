@@ -28,6 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        getSupportActionBar().hide();
         registerPresenter = new RegisterPresenter(this);
         registerPresenter.created();
     }

@@ -25,8 +25,8 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
 
     EditText loginEditTxtEmail,loginEditTxtPassword;
-    Button loginBtnRegister,loginBtnLogin;
-    TextView loginTxtEmailError,loginTxtPasswordError,loginTxtForgotPassword;
+    Button loginBtnLogin;
+    TextView loginTxtEmailError,loginTxtPasswordError,loginTxtForgotPassword,loginBtnRegister;
     private SpinKitView loginSpinKit;
     private LoginPresenter loginPresenter;
     @Override
@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
+
         loginPresenter = new LoginPresenter(this);
         loginPresenter.created();
     }
@@ -58,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         loginTxtEmailError = (TextView) findViewById(R.id.loginTxtEmailError);
         loginTxtPasswordError = (TextView) findViewById(R.id.loginTxtPasswordError);
         loginBtnLogin = (Button) findViewById(R.id.loginBtnSignin);
-        loginBtnRegister = (Button) findViewById(R.id.loginBtnSignup);
+        loginBtnRegister = (TextView) findViewById(R.id.loginBtnSignup);
         loginTxtForgotPassword=(TextView)findViewById(R.id.loginTxtForgotPassword);
     }
 

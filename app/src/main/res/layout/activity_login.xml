@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/login_back"
     tools:context=".views.LoginActivity">
-    <!--    -->
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="0dp"
@@ -18,23 +18,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
             android:orientation="vertical">
+
             <com.github.ybq.android.spinkit.SpinKitView
                 android:id="@+id/loginSpinKit"
                 style="@style/SpinKitView.Small.CubeGrid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_width="@dimen/dimen_40"
+                app:SpinKit_Color="@color/transparent_blue"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_gravity="center"
                 android:visibility="gone"
-                app:SpinKit_Color="@color/colorPrimaryDark"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_60"
                 android:orientation="vertical">
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,7 +59,6 @@
                         android:drawablePadding="@dimen/fab_margin"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
-                        android:maxLines="1"
                         android:paddingLeft="@dimen/margin_25"
                         android:paddingRight="@dimen/margin_20"
                         android:textColor="#000"
@@ -111,22 +113,12 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/loginBtnSignup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/fab_margin"
-                            android:background="@drawable/buttonshapewhitebg"
-                            android:text="@string/Title_signup"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/fab_margin"
-                            android:textStyle="bold" />
 
                         <Button
                             android:id="@+id/loginBtnSignin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/calibri"
                             android:layout_marginLeft="@dimen/fab_margin"
                             android:background="@drawable/buttonshapewhitebg"
                             android:text="@string/Title_signin"
@@ -137,20 +129,36 @@
 
 
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:layout_height="wrap_content" >
 
+                        <TextView
+                            android:gravity="left"
+                            android:id="@+id/loginBtnSignup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/calibri"
+                            android:typeface="serif"
+                            android:layout_weight="1"
+                            android:text="@string/Title_create" />
 
-                    <TextView
-                        android:id="@+id/loginTxtForgotPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/fab_margin"
-                        android:fontFamily="@font/calibri"
-                        android:text="Forgot Password?"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/fab_marginsp" />
+                        <TextView
+                            android:gravity="right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:typeface="serif"
+                            android:fontFamily="@font/calibri"
+                            android:id="@+id/loginTxtForgotPassword"
+                            android:layout_weight="1"
+                            android:text="@string/Title_forgot"/>
 
-
+                    </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

@@ -25,6 +25,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements IForgot
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        getSupportActionBar().hide();
 
         fogotPwdPresenter=new ForgotPwdPresenter(this);
         fogotPwdPresenter.created();
@@ -44,7 +45,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements IForgot
 
     @Override
     public void initClicks() {
-                forgotBtn.setOnClickListener(new View.OnClickListener() {
+                forgotBtn.setOnClickListener(
+                        new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(validate())

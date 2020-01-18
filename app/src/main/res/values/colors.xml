@@ -10,6 +10,7 @@
     <color name="google_red">#DC143C</color>
     <color name="edittext_blue">#dbF0F6</color>
     <color name="transparent_blue">#8C29B6F6</color>
+    <color name="transparent_white">#8CA9A9A9</color>
     <color name="greycolor"> #80778899</color>
     <color name="themecolor">#14a0ca</color>
     <color name="grey">#A9A9A9</color>

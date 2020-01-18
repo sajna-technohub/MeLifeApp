@@ -7,6 +7,7 @@
     <string name="Title_mobile">Mobile Number</string>
     <string name="Title_pincode">Pincode</string>
     <string name="Title_signup">Sign Up</string>
+    <string name="Title_create">Create an Account</string>
     <!--    Login-->
     <string name="Title_signin">Sign In</string>
     <string name="Title_forgot">Forgot Password</string>
@@ -35,9 +36,10 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_Reports">Reports</string>
     <string name="title_user">User</string>
+    <string name="title_logout">LogOut</string>
+
 
     <!--home fragment-->
-
 
     <string name="text_psy_test"> Tests</string>
     <string name="text_faq">FAQ </string>
