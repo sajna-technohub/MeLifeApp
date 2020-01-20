@@ -31,12 +31,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class DashBoardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener  {
-
     private AppBarConfiguration mAppBarConfiguration;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +44,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         setSupportActionBar(toolbar);
         getSupportActionBar().hide();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -59,7 +59,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         NavigationUI.setupWithNavController(navigationView, navController);
         //        botton navigatiomn
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_loc, R.id.navigation_like, R.id.navigation_user).build();
+                R.id.navigation_home, R.id.navigation_loc, R.id.navigation_like, R.id.navigation_user, R.id.navigation_logout).build();
         NavController navController1 = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController1, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController1);
@@ -77,15 +77,16 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 break;
 
             case R.id.navigation_loc:
-                    fragment = new ExamFragment();
+                fragment = new HomeFragment();
+//                    fragment = new ExamFragment();
                 break;
 
             case R.id.navigation_like:
-                    fragment = new ShareFragment();
+                fragment = new HomeFragment();
                 break;
 
             case R.id.navigation_user:
-                fragment = new ToolsFragment();
+                fragment = new HomeFragment();
                 break;
             case R.id.navigation_logout:
                 startActivity( new Intent(getApplicationContext(),LoginActivity.class));
@@ -138,5 +139,6 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 doubleBackToExitPressedOnce = false;
             }
         }, 2000);
+
     }
 }

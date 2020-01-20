@@ -19,7 +19,7 @@ import com.technohub.melifeapp.classes.MyService;
 public class MainActivity extends AppCompatActivity {
         Intent intent;
         ProgressBar mainSpinKit;
-        private static int TIME_OUT = 3000;
+        private static int TIME_OUT = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

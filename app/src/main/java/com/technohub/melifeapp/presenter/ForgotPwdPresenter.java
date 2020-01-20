@@ -50,7 +50,6 @@ public class ForgotPwdPresenter implements IForgot.Presenter{
                         Log.e("ResponseForgot", loginResponse.getMessage());
                         view.ForgotToast(response.body().getMessage());
                         view.hideLoading();
-
                     }
                 }
             }
