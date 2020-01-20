@@ -37,7 +37,8 @@ public class ForgotPwdPresenter implements IForgot.Presenter{
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
-                if (response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null)
+                {
                     if(response.body().getMessage().equals("Please check your email to reset your password".trim()))
                     {
                         Log.e("ResponseForgot", loginResponse.getMessage());

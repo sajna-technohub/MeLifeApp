@@ -8,9 +8,18 @@
     tools:layout_editor_absoluteY="0dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@drawable/loginbackground"
         android:layout_height="match_parent"
         tools:context=".views.SignUpActivity">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/loginbackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/registerSpinKit"
             android:layout_width="match_parent"

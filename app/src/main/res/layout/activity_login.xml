@@ -4,12 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbackground"
     tools:context=".views.LoginActivity">
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/loginbackground"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +27,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="130dp"
             android:orientation="vertical">
 
             <com.github.ybq.android.spinkit.SpinKitView
@@ -36,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_60"
+                android:layout_marginTop="@dimen/margin_80"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -44,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/dimen_40"
                     android:layout_marginBottom="@dimen/margin_32"
                     android:orientation="vertical"
                     android:paddingLeft="@dimen/margin_42"
@@ -112,8 +121,6 @@
                         android:layout_marginBottom="@dimen/margin_8"
                         android:gravity="center"
                         android:orientation="horizontal">
-
-
                         <Button
                             android:id="@+id/loginBtnSignin"
                             android:layout_width="120dp"
@@ -165,5 +172,5 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/margin_120"/>
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

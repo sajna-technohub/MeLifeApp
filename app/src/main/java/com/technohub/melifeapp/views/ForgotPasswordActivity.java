@@ -71,6 +71,11 @@ public class ForgotPasswordActivity extends AppCompatActivity implements IForgot
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     public void hideLoading() {
 
         forgotSpinKit.setVisibility(View.GONE);

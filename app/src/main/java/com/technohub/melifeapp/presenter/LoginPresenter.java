@@ -20,7 +20,6 @@ public class LoginPresenter implements ILogin.Presenter {
     private ILogin.View view;
 
     public LoginPresenter(ILogin.View view) {
-
         this.view = view;
     }
     @Override
@@ -39,9 +38,9 @@ public class LoginPresenter implements ILogin.Presenter {
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
          User user=new User();
          user.setDeviceToken("jgskjgdsjk");
-        user.setUser_email(email);
-        user.setUser_Password(password);
-        user.setDeviceType("1");
+         user.setUser_email(email);
+         user.setUser_Password(password);
+         user.setDeviceType("1");
         Call<LoginResponse> call = retrofitApi.Login(user);
         call.enqueue(new Callback<LoginResponse>() {
             @Override

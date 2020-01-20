@@ -40,9 +40,11 @@ public class ExamPresenter implements IExam.Presenter {
         Call<Root> call = retrofitApi.getQuestions("2");
         call.enqueue(new Callback<Root>() {
             @Override
-            public void onResponse(Call<Root> call, Response<Root> response) {
+            public void onResponse(Call<Root> call, Response<Root> response)
+            {
                         r=response.body();
-                if (response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null)
+                {
                     datumList=response.body().getData();
                     Integer text = r.getPage();
                     Integer total = r.getTotal();
@@ -61,8 +63,8 @@ public class ExamPresenter implements IExam.Presenter {
                     view.ShowQuestionList(datumList);
                     view.setQuestion();
                     Log.e("size",datumList.size()+"");
-                } else if (response.errorBody() != null) {
-
+                }
+                else if (response.errorBody() != null) {
                     try {
                         view.hideLoading();
                         Log.e("Qname","failed");

@@ -52,7 +52,8 @@ SpinKitView spinExam;
     }
 
     @Override
-    public void setQuestion() {
+    public void setQuestion()
+    {
         examTxtQno.setText(data.get(flag).getId()+" ");
         examTxtQuestion.setText(data.get(flag).getFirst_name());
     }
