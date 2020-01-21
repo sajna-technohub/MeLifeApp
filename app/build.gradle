@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility = 1.8
+        sourceCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -43,5 +47,8 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:4.1.1'
 //    Justified Text View
     implementation 'com.codesgood:justifiedtextview:1.1.0'
+//   material bottom navigation
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
 
 }

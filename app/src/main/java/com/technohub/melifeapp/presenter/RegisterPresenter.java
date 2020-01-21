@@ -34,6 +34,7 @@ public class RegisterPresenter implements IRegister.Presenter {
         view.showLoading();
         view.clearErrors();
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+
         SignUpModel user = new SignUpModel();
         user.setName(name);
         user.setEmail(email);
@@ -41,6 +42,7 @@ public class RegisterPresenter implements IRegister.Presenter {
         user.setPincode(pincode);
         user.setDeviceToken("rhrhryrty");
         user.setDeviceType("1");
+
         Call<RegisterResponse> call = retrofitApi.Register(user);
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
@@ -48,15 +50,13 @@ public class RegisterPresenter implements IRegister.Presenter {
                 RegisterResponse registerResponse = response.body();
                 if (response.isSuccessful() && response.body() != null) {
                     Log.e("Response",registerResponse.getMessage());
-                    if(response.body().getMessage().equals("Please check your mail to continue registration process".trim())) {
-                        view.hideLoading();
+                    if(response.body().getMessage().equals("Please check your mail to continue registration process".trim()))
+                    {
                         view.RegisterSuccessFully();
-                        view.goToLoginActivity();
                     }
                     else
                     {
                         Log.e("Response",registerResponse.getMessage());
-                        view.hideLoading();
                         view.RegisterExists();
                     }
                 }

@@ -20,16 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:id="@+id/registerSpinKit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            style="@style/SpinKitView.Small.WanderingCubes"
-            app:SpinKit_Color="@color/colorPrimaryDark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
+
         <LinearLayout
             android:id="@+id/linear"
             android:layout_width="match_parent"
@@ -39,6 +30,7 @@
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
 <!--            <ImageView-->
 <!--                android:id="@+id/logo"-->
 <!--                android:layout_width="@dimen/margin_120"-->
@@ -160,7 +152,22 @@
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="@dimen/fab_marginsp"
                     android:visibility="gone" />
-
+                <LinearLayout
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="@dimen/margin_300"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/registerSpinKit"
+                    android:layout_width="@dimen/dimen_40"
+                    android:layout_height="@dimen/dimen_40"
+                    style="@style/SpinKitView.Small.WanderingCubes"
+                    app:SpinKit_Color="@color/colorPrimaryDark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone"/>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -174,7 +181,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/buttonshapewhitebg"
+                        android:background="@drawable/buttonbackgroundother"
                         android:fontFamily="@font/calibri"
                         android:text="@string/Title_signup"
                         android:textAllCaps="false"

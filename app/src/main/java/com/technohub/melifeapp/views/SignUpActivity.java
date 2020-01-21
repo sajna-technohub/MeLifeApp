@@ -18,6 +18,8 @@ import com.technohub.melifeapp.presenter.RegisterPresenter;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class SignUpActivity extends AppCompatActivity implements IRegister.View {
     EditText registerEditTxtName,registerEditTxtPincode, registerEditTxtEmail, registerEditTxtMobile;
     TextView registerTxtNameError, registerTxtEmailError, registerTxtPinError,registerTxtMobileError;
@@ -174,13 +176,30 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View 
     @Override
     public void RegisterExists() {
         Toast.makeText(this, "User Already Exists", Toast.LENGTH_SHORT).show();
+        hideLoading();
     }
 
     @Override
     public void RegisterSuccessFully()
     {
-        Toast.makeText(this, "Registered SuccessFully", Toast.LENGTH_SHORT).show();
-    }
+         hideLoading();
+                new SweetAlertDialog(SignUpActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Alert")
+                        .setContentText("Please Check Your Email")
+                        .setConfirmText("Ok!")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                goToLoginActivity();
+                                sDialog.dismissWithAnimation();
+
+                            }
+                        })
+                        .show();
+            }
+
+//        Toast.makeText(this, "Registered SuccessFully", Toast.LENGTH_SHORT).show();
+
 
     @Override
     public void RegisterFail()
