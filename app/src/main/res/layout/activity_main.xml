@@ -19,7 +19,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
@@ -31,12 +31,13 @@
             android:id="@+id/mainSpinKit"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="500dp"
-            android:foregroundGravity="center"
             android:indeterminate="true"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="450dp"
+            android:foregroundGravity="center"
             app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

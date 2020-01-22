@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                     mainSpinKit.setVisibility(View.GONE);
-                    finish();
 
-                } else {
+                } else
+                    {
                     intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();

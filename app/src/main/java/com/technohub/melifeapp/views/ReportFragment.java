@@ -1,6 +1,7 @@
 package com.technohub.melifeapp.views;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.technohub.melifeapp.R;
 
@@ -69,6 +74,34 @@ public class ReportFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v=inflater.inflate(R.layout.fragment_report2, container, false);
+        v.setBackgroundColor(Color.WHITE);
+
+        WebView webview = v.findViewById(R.id.webview);
+        webview.getSettings().setAppCacheEnabled(false);
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.setInitialScale(1);
+        webview.getSettings().setPluginState(WebSettings.PluginState.ON);
+
+        webview.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+
+        WebSettings webSettings = webview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setAllowContentAccess(true);
+        webSettings.setEnableSmoothTransition(true);
+        webSettings.setLoadsImagesAutomatically(true);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setSupportZoom(true);
+        webSettings.setUseWideViewPort(true);
+
+//        v.setContentView(webview);
+        webview.loadUrl("http://13.232.66.95/melife/report/667/8");
         return v;
     }
 

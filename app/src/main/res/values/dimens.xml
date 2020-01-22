@@ -19,6 +19,7 @@
     <dimen name="margin_8">8dp</dimen>
     <dimen name="margin_42">42dp</dimen>
     <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_200">200dp</dimen>
     <dimen name="margin_0">0dp</dimen>
 <!--    -->
 <!--    Dashboard-->

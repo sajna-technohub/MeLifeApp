@@ -45,6 +45,7 @@ SpinKitView spinExam;
 
         examPresenter = new ExamPresenter(this);
         examPresenter.created();
+
 //        examTxtQuestion.setText(data.get(flag).getFirst_name());
 //        examTxtQno.setText(data.get(flag).getId()+" ");
 
