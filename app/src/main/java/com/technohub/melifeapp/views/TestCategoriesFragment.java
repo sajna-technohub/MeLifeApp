@@ -1,7 +1,7 @@
 package com.technohub.melifeapp.views;
 
 import android.content.Context;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,48 +14,52 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.technohub.melifeapp.R;
-import com.technohub.melifeapp.models.TestCategoriesModel;
+import com.technohub.melifeapp.classes.TestAdapter;
 
 import java.util.ArrayList;
 
 
 public class TestCategoriesFragment extends Fragment {
-    private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    private static ArrayList<TestCategoriesModel> data;
-    static View.OnClickListener myOnClickListener;
+    private static ArrayList<String> data;
     View v;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         v=inflater.inflate(R.layout.fragment_test__categories_, container, false);
-        recyclerView = (RecyclerView)v. findViewById(R.id.my_recycler_view);
+
+        v=inflater.inflate(R.layout.fragment_test__categories, container, false);
+
+        v.setBackgroundColor(Color.WHITE);
+
+        recyclerView = (RecyclerView)v.findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        data = new ArrayList<TestCategoriesModel>();
 
-//            data.add(new TestCategoriesModel().getTesttitle());
+        data = new ArrayList();
 
+        AddItemsToRecyclerViewArrayList();
 
+        RecyclerView.Adapter adapter = new TestAdapter(data);
         recyclerView.setAdapter(adapter);
+
         return v;
     }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-
+    public void AddItemsToRecyclerViewArrayList()
+    {
+        data = new ArrayList<>();
+        data.add("Skill FInder Test");
+        data.add("Humanity Test");
+        data.add("Psychometric Test");
+        data.add("Right Skill test");
     }
+
 
     @Override
     public void onAttach(Context context) {

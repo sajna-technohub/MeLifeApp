@@ -34,4 +34,5 @@ public class HomeFragment extends Fragment {
         String name=new LoginResponse().getSharedPreferences(getContext(),"name");
         homeTxtName.setText(name);
     }
+
 }

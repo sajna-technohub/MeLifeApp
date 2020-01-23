@@ -72,6 +72,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         Fragment fragment = null;
 
         switch (item.getItemId()) {
+
             case R.id.navigation_home:
                 fragment = new HomeFragment();
                 break;
@@ -86,7 +87,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 break;
 
             case R.id.navigation_user:
-                fragment = new HomeFragment();
+                fragment = new TestCategoriesFragment();
                 break;
             case R.id.navigation_logout:
                 startActivity( new Intent(getApplicationContext(),LoginActivity.class));
@@ -98,12 +99,13 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
     }
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
-        if (fragment != null) {
-            getSupportFragmentManager()
+        if (fragment != null)
+        {
+                     getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.homelayout, fragment)
                     .commit();
-            return true;
+                     return true;
         }
         return false;
     }

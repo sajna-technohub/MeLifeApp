@@ -37,3 +37,4 @@ public interface IRetrofitApi {
       @POST("forgot_password")
       Call<LoginResponse> forgot_password(@Body SignUpModel user);
 }
+
