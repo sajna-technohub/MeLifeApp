@@ -78,7 +78,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 break;
 
             case R.id.navigation_loc:
-                fragment = new ReportFragment();
+//                fragment = new ReportFragment();
 //                    fragment = new ExamFragment();
                 break;
 
@@ -87,7 +87,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 break;
 
             case R.id.navigation_user:
-                fragment = new TestCategoriesFragment();
+//                fragment = new TestCategoriesFragment();
                 break;
             case R.id.navigation_logout:
                 startActivity( new Intent(getApplicationContext(),LoginActivity.class));

@@ -13,18 +13,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.ybq.android.spinkit.SpinKitView;
+import com.technohub.melifeapp.Interfaces.Itestcategory;
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.classes.TestAdapter;
+import com.technohub.melifeapp.models.LoginResponse;
+import com.technohub.melifeapp.models.TestcategoryResponse;
+import com.technohub.melifeapp.models.Tests;
+import com.technohub.melifeapp.models.User;
+import com.technohub.melifeapp.presenter.TestCategoryPresenter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class TestCategoriesFragment extends Fragment {
+public class TestCategoriesFragment extends Fragment implements Itestcategory.View {
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    private static ArrayList<String> data;
+    SpinKitView testSpinkit;
+    TestCategoryPresenter testCategoryPresenter;
+    TestcategoryResponse testcategoryResponse=new TestcategoryResponse();
     View v;
-
+    String email;
+    String userid;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +45,16 @@ public class TestCategoriesFragment extends Fragment {
 
         v.setBackgroundColor(Color.WHITE);
 
-        recyclerView = (RecyclerView)v.findViewById(R.id.my_recycler_view);
+         email=new LoginResponse().getSharedPreferences(getContext(),"name");
+         userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
+
+         User user=new User();
+         user.setUser_email(email);
+         user.setUserid(userid);
+
+        testCategoryPresenter = new TestCategoryPresenter(this,user);
+        testCategoryPresenter.created();
+
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
@@ -42,24 +62,13 @@ public class TestCategoriesFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        data = new ArrayList();
-
-        AddItemsToRecyclerViewArrayList();
-
-        RecyclerView.Adapter adapter = new TestAdapter(data);
-        recyclerView.setAdapter(adapter);
-
         return v;
     }
-    public void AddItemsToRecyclerViewArrayList()
-    {
-        data = new ArrayList<>();
-        data.add("Skill FInder Test");
-        data.add("Humanity Test");
-        data.add("Psychometric Test");
-        data.add("Right Skill test");
-    }
 
+    @Override
+    public void initClicks() {
+
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -73,5 +82,28 @@ public class TestCategoriesFragment extends Fragment {
 
     }
 
+    @Override
+    public void loadTestList(TestcategoryResponse testlist) {
+        this.testcategoryResponse=testlist;
+        RecyclerView.Adapter adapter = new TestAdapter(testcategoryResponse,getContext());
+        recyclerView.setAdapter(adapter);
+    }
 
+    @Override
+    public void showLoading() {
+
+        testSpinkit.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoading() {
+
+        testSpinkit.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void init() {
+        testSpinkit=v.findViewById(R.id.testSpinkit);
+        recyclerView = (RecyclerView)v.findViewById(R.id.test_recycler_view);
+    }
 }

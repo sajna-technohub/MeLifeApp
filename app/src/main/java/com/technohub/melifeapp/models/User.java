@@ -15,12 +15,21 @@ public class User {
     public String DeviceType;
     public String DeviceToken;
     public int melife_user_id;
+    String userid;
     private String completion_status;
 
     /*User Sign Up*/
 
     public String getName() {
         return name;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public void setName(String name) {

@@ -40,12 +40,13 @@ public class LoginResponse {
     }
 
     SharedPreferences sharedPreferences;
-    public void setSharedPreferences(Context context,String name,int userid,String completion_status,String token) {
+    public void setSharedPreferences(Context context,String name,int userid,String completion_status,String token,String email) {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         sharedPreferences.edit().putString("name", name).apply();
         sharedPreferences.edit().putString("userid", userid+"").apply();
         sharedPreferences.edit().putString("completion_status", completion_status).apply();
+        sharedPreferences.edit().putString("email", email).apply();
         sharedPreferences.edit().putString("token",  token).apply();
 
     }

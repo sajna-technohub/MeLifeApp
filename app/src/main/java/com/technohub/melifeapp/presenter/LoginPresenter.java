@@ -3,8 +3,6 @@ package com.technohub.melifeapp.presenter;
 import android.util.Log;
 
 import com.technohub.melifeapp.Interfaces.ILogin;
-import com.technohub.melifeapp.classes.ApiToken;
-import com.technohub.melifeapp.models.JsonModel;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.services.ApiClient;
@@ -35,7 +33,7 @@ public class LoginPresenter implements ILogin.Presenter {
         view.showLoading();
         view.clearErrors();
 
-        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
          User user=new User();
          user.setDeviceToken("jgskjgdsjk");
          user.setUser_email(email);
@@ -50,11 +48,12 @@ public class LoginPresenter implements ILogin.Presenter {
                     if(response.body().getMessage().equals("Success")) {
                         Log.e("LoginResponse", loginResponse.getMessage());
                         List<User> userdata = response.body().getData();
-                        for (User user : userdata) {
+                        for (User user : userdata)
+                        {
                             Log.e("id", user.getMelife_user_id() + "");
                             Log.e("complete status", user.getCompletion_status());
                             Log.e("Name", user.getName());
-                            new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken());
+                            new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken(),email);
 
                         }
                         view.hideLoading();

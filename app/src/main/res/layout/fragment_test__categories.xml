@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="	#D3D3D3"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.TestCategoriesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/themecolor"
-        android:padding="@dimen/margin_40"
+        android:padding="@dimen/margin_20"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_height="match_parent">
@@ -16,14 +17,28 @@
         <TextView
             android:layout_width="match_parent"
             android:text="Test Categories"
+            android:textStyle="bold"
             android:gravity="center"
+            android:typeface="serif"
+            android:textColor="@color/darkblue"
             android:layout_marginTop="@dimen/margin_20"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:layout_height="30dp"/>
 
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/testSpinkit"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/dimen_40"
+            android:layout_height="@dimen/dimen_40"
+            style="@style/SpinKitView.Small.ChasingDots"
+            app:SpinKit_Color="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:scrollbars="vertical"
+        android:id="@+id/test_recycler_view"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

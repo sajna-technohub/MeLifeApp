@@ -6,6 +6,8 @@ import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.ExamModel;
 import com.technohub.melifeapp.models.RegisterResponse;
 import com.technohub.melifeapp.models.SignUpModel;
+import com.technohub.melifeapp.models.TestCategoriesModel;
+import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.User;
 
 import retrofit2.Call;
@@ -36,5 +38,10 @@ public interface IRetrofitApi {
       @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
       @POST("forgot_password")
       Call<LoginResponse> forgot_password(@Body SignUpModel user);
+
+    /*for  TestCategory*/
+    @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
+    @POST("dashboard")
+    Call<TestcategoryResponse> dashboard(@Body TestCategoriesModel testCategoriesModel);
 }
 
