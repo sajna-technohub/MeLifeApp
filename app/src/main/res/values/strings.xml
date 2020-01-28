@@ -28,6 +28,9 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
+    <string name="edit">Edit</string>
+
+
 
     <!--    navigations-->
     <string name="title_home">Home</string>

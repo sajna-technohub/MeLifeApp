@@ -33,6 +33,10 @@
     <dimen name="dimen_15">15dp</dimen>
     <dimen name="dimen_17">17dp</dimen>
     <dimen name="dimen_330">330dp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_35">35dp</dimen>
+    <dimen name="dimen_17sp">17sp</dimen>
+
 
 
 </resources>

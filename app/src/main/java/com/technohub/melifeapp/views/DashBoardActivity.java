@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Handler;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,9 +18,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.views.ui.home.HomeFragment;
-import com.technohub.melifeapp.views.ui.send.SendFragment;
-import com.technohub.melifeapp.views.ui.share.ShareFragment;
-import com.technohub.melifeapp.views.ui.tools.ToolsFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -31,13 +25,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class DashBoardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener  {
     private AppBarConfiguration mAppBarConfiguration;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -58,13 +52,18 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         //        botton navigatiomn
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_loc, R.id.navigation_like, R.id.navigation_user, R.id.navigation_logout).build();
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home,
+                R.id.navigation_loc,
+                R.id.navigation_like,
+                R.id.navigation_user,
+                R.id.navigation_logout)
+                .build();
         NavController navController1 = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController1, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController1);
 
         loadFragment(new HomeFragment());
+
         navView.setOnNavigationItemSelectedListener(this);
     }
     @Override
@@ -87,7 +86,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
                 break;
 
             case R.id.navigation_user:
-//                fragment = new TestCategoriesFragment();
+                fragment = new ProfileFragment();
                 break;
             case R.id.navigation_logout:
                 startActivity( new Intent(getApplicationContext(),LoginActivity.class));
