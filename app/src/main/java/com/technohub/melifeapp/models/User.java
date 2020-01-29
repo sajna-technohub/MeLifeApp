@@ -16,8 +16,16 @@ public class User {
     public String DeviceToken;
     public int melife_user_id;
     String userid;
+    int user_id;
     private String completion_status;
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
     /*User Sign Up*/
 
     public String getName() {

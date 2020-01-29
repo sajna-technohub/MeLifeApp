@@ -61,20 +61,20 @@
                                 android:layout_marginTop="@dimen/dimen_10"
                                 android:gravity="center"
                                 android:orientation="horizontal">
-                            <TextView
+                            <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
                                 android:id="@+id/profileTxtName"
                                 android:fontFamily="@font/proximanovaregular"
                                 android:text="Tony Stork"
                                 android:textColor="@color/yellow"
                                 android:textSize="21sp"
+                                android:enabled="false"
                                 android:textStyle="bold" />
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:src="@drawable/edit"
-                                    android:id="@+id/profilepictureEdit"
+                                    android:id="@+id/profilenameEdit"
                                     android:paddingLeft="@dimen/dimen_10"
                                     android:layout_height="wrap_content"/>
                             </LinearLayout>
@@ -287,12 +287,13 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/ic_call_24dp" />
 
-                                    <TextView
+                                    <EditText
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:id="@+id/profileTxtmobile"
                                         android:text="+91 7999193854"
+                                        android:enabled="false"
                                         android:textSize="15sp"
                                         android:textColor="@color/darkblue"
                                         android:fontFamily="@font/proximanovaregular" />
@@ -312,13 +313,14 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/ic_email_24dp" />
 
-                                    <TextView
+                                    <EditText
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:textColor="@color/darkblue"
                                         android:text="tony_sstrok@3gtechnohub.com"
                                         android:textSize="15sp"
+                                        android:enabled="false"
                                         android:id="@+id/profileTxtemail"
                                         android:fontFamily="@font/proximanovaregular" />
                                 </LinearLayout>
@@ -336,13 +338,14 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/ic_location_24dp" />
 
-                                    <TextView
+                                    <EditText
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/darkblue"
                                         android:id="@+id/profileTxtstate"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:text="Kerala"
+                                        android:enabled="false"
                                         android:textSize="15sp" />
                                 </LinearLayout>
                                 <LinearLayout
@@ -359,12 +362,13 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/country" />
 
-                                    <TextView
+                                    <EditText
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/darkblue"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:text="India"
+                                        android:enabled="false"
                                         android:id="@+id/profileTxtCountry"
                                         android:textSize="15sp" />
                                 </LinearLayout>
@@ -382,13 +386,14 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/pincode" />
 
-                                    <TextView
+                                    <EditText
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:text="688537"
                                         android:id="@+id/profileTxtpincode"
                                         android:textSize="15sp"
+                                        android:enabled="false"
                                         android:textColor="@color/darkblue"
                                         android:fontFamily="@font/proximanovaregular" />
                                 </LinearLayout>
@@ -450,11 +455,12 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/qualifi" />
 
-                                    <TextView
+                                    <EditText
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:id="@+id/profileTxtQuali"
                                         android:layout_marginLeft="20dp"
+                                        android:enabled="false"
                                         android:text="Expert in Photoshop, Adobe XD"
                                         android:textColor="@color/darkblue"
                                         android:textSize="15sp"/>
@@ -482,30 +488,30 @@
 <!--                                        android:textSize="15sp" />-->
 <!--                                </LinearLayout>-->
 
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen_10"
-                                    android:gravity="center_vertical"
-                                    android:paddingRight="8dp">
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="@dimen/dimen_10"-->
+<!--                                    android:gravity="center_vertical"-->
+<!--                                    android:paddingRight="8dp">-->
 
-                                    <ImageView
-                                        android:layout_width="@dimen/dimen_40"
-                                        android:layout_height="@dimen/dimen_40"
-                                        android:background="@drawable/circular_grey_bordersolid"
-                                        android:padding="@dimen/dimen_10"
-                                        android:src="@drawable/ic_location_24dp" />
+<!--                                    <ImageView-->
+<!--                                        android:layout_width="@dimen/dimen_40"-->
+<!--                                        android:layout_height="@dimen/dimen_40"-->
+<!--                                        android:background="@drawable/circular_grey_bordersolid"-->
+<!--                                        android:padding="@dimen/dimen_10"-->
+<!--                                        android:src="@drawable/ic_location_24dp" />-->
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:textColor="@color/darkblue"
-                                        android:id="@+id/profileTxtqualiloc"
-                                        android:layout_marginLeft="@dimen/margin_20"
-                                        android:text="Kerala, India"
-                                        android:textSize="15sp" />
+<!--                                    <EditText-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:textColor="@color/darkblue"-->
+<!--                                        android:id="@+id/profileTxtqualiloc"-->
+<!--                                        android:layout_marginLeft="@dimen/margin_20"-->
+<!--                                        android:text="Kerala, India"-->
+<!--                                        android:textSize="15sp" />-->
 
-                                </LinearLayout>
+<!--                                </LinearLayout>-->
 
                             </LinearLayout>
                         </LinearLayout>
@@ -523,10 +529,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/circularbordersolid"
-                            android:orientation="horizontal"
+                            android:orientation="vertical"
                             android:layout_marginTop="@dimen/dimen_10"
                             android:padding="@dimen/margin_20">
-
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/darkblue"
+    android:id="@+id/profileBtnSave"
+    android:text="@string/saveprofile"/>
 
 
                         </LinearLayout>

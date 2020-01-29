@@ -67,7 +67,6 @@ SpinKitView spinExam;
         examBtnOption3=v.findViewById(R.id.examBtnOption3);
         examBtnOption4=v.findViewById(R.id.examBtnOption4);
         examBtnOption5=v.findViewById(R.id.examBtnOption5);
-
         examTxtQuestion=v.findViewById(R.id.examTxtQuestion);
         examTxtQno=v.findViewById(R.id.examTxtQno);
           spinExam=v.findViewById(R.id.examSpinKit);
