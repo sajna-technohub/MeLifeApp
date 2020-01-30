@@ -14,6 +14,42 @@ public class ProfileModel {
     int melife_user_id;
     String completion_status;
     String mobile_no;
+    String user_id;
+    String date;
+    String mobno;
+    String country_name;
+
+    public String getCountry_name() {
+        return country_name;
+    }
+
+    public void setCountry_name(String country_name) {
+        this.country_name = country_name;
+    }
+
+    public String getMobno() {
+        return mobno;
+    }
+
+    public void setMobno(String mobno) {
+        this.mobno = mobno;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getDob() {
         return dob;
@@ -60,8 +96,7 @@ public class ProfileModel {
     }
 
     public void setCompletion_status(String completion_status) {
-        this.completion_status = completion_status;
-    }
+        this.completion_status = completion_status; }
 
     public String getName() {
         return name;

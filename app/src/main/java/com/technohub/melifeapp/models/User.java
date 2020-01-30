@@ -9,14 +9,70 @@ public class User {
     public String name;
     public String user_email;
     public String mobile;
+    public String mobno;
+    public String email;
     public String pincode;
     public String user_Password;
     public String token;
     public String DeviceType;
     public String DeviceToken;
+    public String state;
+    public String country;
+    public String qualification;
     public int melife_user_id;
     String userid;
     int user_id;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    String date;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMobno() {
+        return mobno;
+    }
+
+    public void setMobno(String mobno) {
+        this.mobno = mobno;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     private String completion_status;
 
     public int getUser_id() {

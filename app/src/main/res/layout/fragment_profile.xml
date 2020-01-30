@@ -275,7 +275,7 @@
                                 android:orientation="vertical">
 
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:paddingRight="@dimen/margin_8">
@@ -300,7 +300,7 @@
                                 </LinearLayout>
 
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_10"
                                     android:gravity="center_vertical"
@@ -325,7 +325,7 @@
                                         android:fontFamily="@font/proximanovaregular" />
                                 </LinearLayout>
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_10"
                                     android:gravity="center_vertical"
@@ -338,18 +338,18 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/ic_location_24dp" />
 
-                                    <EditText
-                                        android:layout_width="wrap_content"
+                                    <Spinner
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/darkblue"
-                                        android:id="@+id/profileTxtstate"
+                                        android:id="@+id/profileSprstate"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:text="Kerala"
                                         android:enabled="false"
                                         android:textSize="15sp" />
                                 </LinearLayout>
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_10"
                                     android:gravity="center_vertical"
@@ -362,18 +362,18 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/country" />
 
-                                    <EditText
-                                        android:layout_width="wrap_content"
+                                     <Spinner
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/darkblue"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:text="India"
                                         android:enabled="false"
-                                        android:id="@+id/profileTxtCountry"
+                                        android:id="@+id/profileSprCountry"
                                         android:textSize="15sp" />
                                 </LinearLayout>
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_10"
                                     android:gravity="center_vertical"
@@ -443,7 +443,7 @@
                                 android:orientation="vertical">
 
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:paddingRight="@dimen/margin_8">
@@ -455,10 +455,10 @@
                                         android:padding="@dimen/dimen_10"
                                         android:src="@drawable/qualifi" />
 
-                                    <EditText
-                                        android:layout_width="wrap_content"
+                                    <Spinner
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/profileTxtQuali"
+                                        android:id="@+id/profileSprQuali"
                                         android:layout_marginLeft="20dp"
                                         android:enabled="false"
                                         android:text="Expert in Photoshop, Adobe XD"

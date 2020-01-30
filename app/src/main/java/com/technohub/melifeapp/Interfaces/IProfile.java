@@ -1,7 +1,6 @@
 package com.technohub.melifeapp.Interfaces;
-
-import com.technohub.melifeapp.models.ProfileModel;
 import com.technohub.melifeapp.models.ProfileResponse;
+import com.technohub.melifeapp.models.User;
 
 public interface IProfile {
 
@@ -27,7 +26,7 @@ public interface IProfile {
 
         void created();
 
-        void UpdateButtonClick();
+        void UpdateButtonClick(User user);
 
         void getProfile();
     }
