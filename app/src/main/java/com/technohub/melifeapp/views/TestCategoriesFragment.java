@@ -45,7 +45,7 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
 
         v.setBackgroundColor(Color.WHITE);
 
-         email=new LoginResponse().getSharedPreferences(getContext(),"name");
+         email=new LoginResponse().getSharedPreferences(getContext(),"email");
          userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
 
          User user=new User();

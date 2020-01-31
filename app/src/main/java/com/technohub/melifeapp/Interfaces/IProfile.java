@@ -12,7 +12,7 @@ public interface IProfile {
 
         void hideLoading();
 
-        void UpdateMessage();
+        void UpdateMessage(String msg);
 
         void goToDashboard();
 

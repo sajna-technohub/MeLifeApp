@@ -33,6 +33,8 @@ public interface ILogin {
 
         void  goToForgotActivity();
 
+        void  goToProfileEdit();
+
 
     }
 

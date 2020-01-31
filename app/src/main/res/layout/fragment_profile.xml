@@ -38,6 +38,15 @@
                         android:orientation="vertical"
                         android:padding="@dimen/dimen_16">
 
+                        <com.github.ybq.android.spinkit.SpinKitView
+                            android:id="@+id/profileSpinKit"
+                            android:layout_width="@dimen/dimen_40"
+                            android:layout_height="@dimen/dimen_40"
+                            style="@style/SpinKitView.Small.MultiplePulse"
+                            app:SpinKit_Color="@color/colorPrimaryDark"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:visibility="gone"/>
                         <com.mikhaellopez.circularimageview.CircularImageView
                             android:id="@+id/profileImgphoto"
                             android:layout_width="@dimen/margin_150"

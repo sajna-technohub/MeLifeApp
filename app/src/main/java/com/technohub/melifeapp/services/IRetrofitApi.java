@@ -55,17 +55,17 @@ public interface IRetrofitApi {
     @POST("userdetails")
     Call<ProfileResponse> userdetails(@Body User profileRequest);
 
-    /*for  Get userprofile*/
+
+    /*for   userprofileUpdate*/
     @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
     @POST("userprofile")
     Call<ProfileResponse> userprofile(@Body User user);
 
+    /*for  upload image*/
     @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
     @Multipart
-    @POST("user/updateprofile")
-    Observable<ResponseBody> updateImage(@Part("user_id") String user_id,
-                                           @Part MultipartBody.Part image);
-
+    @POST("uploadimage")
+    Call<User> uploadImage(@Part("profile") RequestBody file, @Part("userid") RequestBody userid);
 
 }
 

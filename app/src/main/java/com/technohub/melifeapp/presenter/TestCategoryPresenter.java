@@ -2,7 +2,6 @@ package com.technohub.melifeapp.presenter;
 
 import android.util.Log;
 import com.technohub.melifeapp.Interfaces.Itestcategory;
-import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.TestCategoriesModel;
 import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.Tests;
@@ -37,9 +36,8 @@ public class TestCategoryPresenter implements Itestcategory.Presenter {
 
         view.showLoading();
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-
-        testCategoriesModel.setUser_email(user.getUser_email());
-        testCategoriesModel.setUser_id(Integer.parseInt(user.getUserid()));
+        testCategoriesModel.setUser_email("7f7063c23d@mailboxok.club");
+        testCategoriesModel.setUser_id(448);
 
         Call<TestcategoryResponse> call = retrofitApi.dashboard(testCategoriesModel);
         call.enqueue(new Callback<TestcategoryResponse>() {

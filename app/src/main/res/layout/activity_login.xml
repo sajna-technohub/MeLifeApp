@@ -8,6 +8,7 @@
     tools:layout_editor_absoluteY="0dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:id="@+id/loginlayout"
         android:layout_height="match_parent"
         tools:context=".views.LoginActivity">
         <ImageView

@@ -58,7 +58,15 @@ public class LoginPresenter implements ILogin.Presenter {
                         }
                         view.hideLoading();
                         view.LoginSuccessful();
-                        view.goToMainActivity();
+                        if( response.body().getData().get(0).getCompletion_status().equals("Y"))
+                        {
+                            view.goToMainActivity();
+                         }
+                        else
+                            {
+                            view.goToProfileEdit();
+                            }
+
                     }
                     else
                     {

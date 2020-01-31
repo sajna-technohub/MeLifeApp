@@ -1,6 +1,7 @@
 package com.technohub.melifeapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -150,6 +151,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
 
     @Override
     public void clearErrors() {
+
         loginTxtEmailError.setVisibility(View.GONE);
         loginTxtPasswordError.setVisibility(View.GONE);
     }
@@ -160,6 +162,17 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         Intent intent = new Intent(this, DashBoardActivity.class);
         startActivity(intent);
         finish();
+
+    }
+
+    @Override
+    public void goToProfileEdit() {
+
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.loginlayout, new ProfileFragment())
+                        .commit();
+
     }
 
     @Override
@@ -168,4 +181,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
         startActivity(intent);
         finish();
     }
+
+
+
 }

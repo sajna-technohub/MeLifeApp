@@ -1,12 +1,18 @@
 package com.technohub.melifeapp.views;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.loader.content.CursorLoader;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.technohub.melifeapp.Interfaces.IProfile;
 import com.technohub.melifeapp.R;
@@ -31,10 +38,16 @@ import com.technohub.melifeapp.models.Qualification;
 import com.technohub.melifeapp.models.State;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.presenter.ProfilePresenter;
+import com.technohub.melifeapp.services.ApiClient;
+import com.technohub.melifeapp.services.IRetrofitApi;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class ProfileFragment extends Fragment implements IProfile.View {
@@ -51,6 +64,9 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     User user=new User();
     String completion_status,userid;
     String strcountry,strstate,strqualification;
+    SpinKitView profProgressspin;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
@@ -62,8 +78,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
         completion_status=new LoginResponse().getSharedPreferences(getContext(),"completion_status");
         userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
 
-        Log.e("sessions profile",userid+"  "+completion_status);
-
+        Log.e("Sessions Profile",userid+"  "+completion_status);
 
         user.setUser_id(Integer.parseInt(userid));
         user.setCompletion_status(completion_status);
@@ -92,6 +107,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
                 profileContactEdit=v.findViewById(R.id.profileContactEdit);
                 profileBtnSave=v.findViewById(R.id.profileBtnSave);
                 profileImgphoto=v.findViewById(R.id.profileImgphoto);
+                 profProgressspin=v.findViewById(R.id.profileSpinKit);
                 profileSprCountry.setSelection(0);
     }
 
@@ -273,6 +289,8 @@ public boolean validate() {
                          @Override
                          public void onClick(View v) {
                              Toast.makeText(getContext(), "Choose Photo", Toast.LENGTH_SHORT).show();
+                             Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                             startActivityForResult(i, 100);
                          }
                      });
 
@@ -280,7 +298,28 @@ public boolean validate() {
 
 
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            //the image URI
+            Uri selectedImage = data.getData();
 
+            //calling the upload file method after choosing the file
+            File file = new File(getRealPathFromURI(selectedImage));
+            profilePresenter.uploadFile(file,selectedImage, "My Image",getContext());
+        }
+    }
+    private String getRealPathFromURI(Uri contentUri) {
+        String[] proj = {MediaStore.Images.Media.DATA};
+        CursorLoader loader = new CursorLoader(getContext(), contentUri, proj, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(column_index);
+        cursor.close();
+        return result;
+    }
     @Override
     public void setProfile(ProfileResponse profile) {
 
@@ -334,21 +373,23 @@ public boolean validate() {
 
     @Override
     public void hideLoading() {
-
+        profProgressspin.setVisibility(View.GONE);
     }
 
     @Override
-    public void UpdateMessage() {
-
+    public void UpdateMessage(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void goToDashboard() {
 
+        startActivity(new Intent(getContext(),DashBoardActivity.class));
+
     }
 
     @Override
     public void showLoading() {
-
+        profProgressspin.setVisibility(View.VISIBLE);
     }
 }
