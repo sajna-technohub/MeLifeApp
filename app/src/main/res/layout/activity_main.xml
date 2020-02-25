@@ -33,7 +33,7 @@
             android:layout_width="250dp"
             android:indeterminate="true"
             android:layout_height="wrap_content"
-            android:layout_marginTop="450dp"
+            android:layout_marginTop="0dp"
             android:foregroundGravity="center"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintBottom_toBottomOf="@+id/imageView" />

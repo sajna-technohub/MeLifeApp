@@ -43,4 +43,16 @@ public class Data
         return this.avatar;
     }
 
+    public Data(int id, String email, String first_name, String last_name, String avatar) {
+        this.id = id;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.avatar = avatar;
+    }
+
+    public Data(int id, String first_name) {
+        this.id = id;
+        this.first_name = first_name;
+    }
 }

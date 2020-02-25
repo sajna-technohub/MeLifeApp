@@ -45,14 +45,14 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send).setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        //        botton navigatiomn
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home,
+        //botton navigatiomn
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder
+                (R.id.navigation_home,
                 R.id.navigation_loc,
                 R.id.navigation_like,
                 R.id.navigation_user,
@@ -75,16 +75,13 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
             case R.id.navigation_home:
                 fragment = new HomeFragment();
                 break;
-
             case R.id.navigation_loc:
-//                fragment = new ReportFragment();
+//                    fragment = new ReportFragment();
 //                    fragment = new ExamFragment();
                 break;
-
             case R.id.navigation_like:
-                fragment = new HomeFragment();
+                fragment = new ExamFragment();
                 break;
-
             case R.id.navigation_user:
                 fragment = new ProfileFragment();
                 break;

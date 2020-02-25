@@ -39,9 +39,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(TestAdapter.ViewHolder Viewholder, int i) {
-//        int[] androidColors =context.getResources().getIntArray(R.array.androidcolors);
-//        int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
-//        Viewholder.cardView.setBackgroundColor(randomAndroidColor);
+
         Viewholder.TestTitle.setText(testDataModel.getData().get(i).test_name);
         String test_id=testDataModel.getData().get(i).getTest_id()+"";
         Log.e("adapter",test_id);

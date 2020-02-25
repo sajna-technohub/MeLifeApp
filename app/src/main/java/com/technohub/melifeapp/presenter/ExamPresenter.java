@@ -9,6 +9,8 @@ import com.technohub.melifeapp.classes.Data;
 import com.technohub.melifeapp.classes.Root;
 import com.technohub.melifeapp.services.ApiClient;
 import com.technohub.melifeapp.services.IRetrofitApi;
+
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,19 +20,31 @@ public class ExamPresenter implements IExam.Presenter {
     private IExam.View view;
     Root r=new Root();
     List<Data> datumList;
+    String htmltext;
 
 
 
-    public ExamPresenter(IExam.View view) {
+    public ExamPresenter(IExam.View view,String htmltext) {
         this.view = view;
-
+        this.htmltext=htmltext;
     }
 
     @Override
     public void created() {
         view.init();
         view.initClicks();
-        getQuestionsFromServer();
+
+        datumList=new ArrayList<>();
+        datumList.add(new Data(1,htmltext));
+        datumList.add(new Data(2,htmltext));
+        datumList.add(new Data(3,htmltext));
+        datumList.add(new Data(4,htmltext));
+
+        //test with dummy data
+
+        view.ShowQuestionList(datumList);
+        view.setQuestion();
+//        getQuestionsFromServer();
     }
 
 
@@ -63,6 +77,7 @@ public class ExamPresenter implements IExam.Presenter {
                     view.ShowQuestionList(datumList);
                     view.setQuestion();
                     Log.e("size",datumList.size()+"");
+
                 }
                 else if (response.errorBody() != null) {
                     try {

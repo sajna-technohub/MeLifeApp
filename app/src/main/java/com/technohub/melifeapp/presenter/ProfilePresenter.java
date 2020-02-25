@@ -3,10 +3,6 @@ package com.technohub.melifeapp.presenter;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.technohub.melifeapp.Interfaces.IProfile;
 import com.technohub.melifeapp.models.ProfileModel;
 import com.technohub.melifeapp.models.ProfileResponse;
@@ -21,7 +17,6 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 
 public class ProfilePresenter implements IProfile.Presenter {
@@ -108,7 +103,8 @@ public class ProfilePresenter implements IProfile.Presenter {
                     if (response.body().getMessage() != null) {
                         getProfile();
                         Log.e("ProfUpdate resss", profileResponse.getData() + "");
-                        for (ProfileModel p : profileResponse.getData()) {
+                        for (ProfileModel p : profileResponse.getData())
+                        {
                             Log.e("prof up name", p.getName());
                             Log.e("email", p.getEmail());
                             Log.e("phone", p.getMobile_no());

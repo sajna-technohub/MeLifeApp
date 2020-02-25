@@ -21,7 +21,6 @@
             android:name=".views.DashBoardActivity"
             android:label="@string/title_activity_dash_board"
             android:theme="@style/AppTheme.NoActionBar" >
-
         </activity>
         <activity android:name=".views.ChoosePageActivity" />
         <activity android:name=".views.LoginActivity">

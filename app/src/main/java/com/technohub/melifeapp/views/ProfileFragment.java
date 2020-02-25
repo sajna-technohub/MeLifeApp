@@ -30,16 +30,11 @@ import com.github.ybq.android.spinkit.SpinKitView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.technohub.melifeapp.Interfaces.IProfile;
 import com.technohub.melifeapp.R;
-import com.technohub.melifeapp.models.Country;
 import com.technohub.melifeapp.models.LoginResponse;
-import com.technohub.melifeapp.models.ProfileModel;
 import com.technohub.melifeapp.models.ProfileResponse;
-import com.technohub.melifeapp.models.Qualification;
-import com.technohub.melifeapp.models.State;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.presenter.ProfilePresenter;
-import com.technohub.melifeapp.services.ApiClient;
-import com.technohub.melifeapp.services.IRetrofitApi;
+
 
 import java.io.File;
 import java.util.ArrayList;
@@ -328,18 +323,20 @@ public boolean validate() {
         profileTxtpincode.setText(profile.getData().get(0).getPincode());
         profileTxtDob.setText(profile.getData().get(0).getDob());
 
-
             List<String> countrylist=new ArrayList<>();
             List<String> statelist=new ArrayList<>();
             List<String> qualificatiobnlist=new ArrayList<>();
 
-            for (int i = 0; i < profile.getCountry().size(); i++){
+            for (int i = 0; i < profile.getCountry().size(); i++)
+            {
             countrylist.add(profile.getCountry().get(i).getCountry_name());
-        }
-        for (int i = 0; i < profile.getState().size(); i++){
+            }
+        for (int i = 0; i < profile.getState().size(); i++)
+            {
             statelist.add(profile.getState().get(i).getState_name());
-        }
-        for (int i = 0; i < profile.getQualification().size(); i++){
+            }
+        for (int i = 0; i < profile.getQualification().size(); i++)
+        {
             qualificatiobnlist.add(profile.getQualification().get(i).getQualification());
         }
 
@@ -351,10 +348,10 @@ public boolean validate() {
         stateArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprstate.setAdapter(stateArrayAdapter);
 
-
         ArrayAdapter<String> qualificationArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,qualificatiobnlist);
         qualificationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprQuali.setAdapter(qualificationArrayAdapter);
+
         profileTxtmobile.setText(profile.getData().get(0).getMobile_no());
 
     }
