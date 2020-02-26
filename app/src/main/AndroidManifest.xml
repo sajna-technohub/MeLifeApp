@@ -13,6 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/smalllogo"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
         <service android:name=".classes.MyService" />
         <activity android:name=".views.ResetPasswordActivity"></activity>

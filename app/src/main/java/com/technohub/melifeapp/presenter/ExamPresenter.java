@@ -1,7 +1,4 @@
 package com.technohub.melifeapp.presenter;
-
-
-import android.os.Handler;
 import android.util.Log;
 
 import com.technohub.melifeapp.Interfaces.IExam;
@@ -33,18 +30,26 @@ public class ExamPresenter implements IExam.Presenter {
     public void created() {
         view.init();
         view.initClicks();
-
         datumList=new ArrayList<>();
-        datumList.add(new Data(1,htmltext));
-        datumList.add(new Data(2,htmltext));
-        datumList.add(new Data(3,htmltext));
-        datumList.add(new Data(4,htmltext));
+
+        datumList.add(new Data(1,htmltext,"option1","option2","option3","option4"));
+        datumList.add(new Data(2,"<p>A particle of mass m is moving along the side of a square of side &lsquo;a&rsquo;, with a uniform speed v in the x-y plane as shown in the&nbsp;<br />\n" +
+                "figure :<br />\n" +
+                "<img alt=\"\" src=\"http://192.168.1.4/prepido/ckfinder/userfiles/files/2016Q2.png\" style=\"height:166px; width:223px\" /></p>","option1","option2","option3","option4"));
+        datumList.add(new Data(3,"<p><span class=\"math-tex\">\\(\\mathrm{E}_{\\mathrm{Cr}^{3+} / \\mathrm{Cr}}^{0}=-0.74 \\mathrm{V} ; \\mathrm{E}_{\\mathrm{MnO}_{\\mathrm{i}} / \\mathrm{Mn}^{2+}}^{0}=1.51 \\mathrm{V}\\)</span></p>\n","option1","option2","option3","option4"));
+        datumList.add(new Data(4,"<p>For the reaction, <span class=\"math-tex\">\\(2 \\mathrm{C}_{57} \\mathrm{H}_{110} \\mathrm{O}_{6}(\\mathrm{s})+163 \\mathrm{O}_{2}(\\mathrm{g}) \\rightarrow 114 \\mathrm{CO}_{2}(\\mathrm{g})+110 \\mathrm{H}_{2} \\mathrm{O}_{(\\rm{l})}\\)</span></p>","option1","option2","option3","option4"));
+        datumList.add(new Data(5,"sdhsdgdkfggf","option1","option2","option3","option4"));
+        datumList.add(new Data(6,"what is your name???","option1","option2","option3","option4"));
+        datumList.add(new Data(7,"Hi how are you","option1","option2","option3","option4"));
+        datumList.add(new Data(8,"Hellooooooo","option1","option2","option3","option4"));
+        datumList.add(new Data(9,"Pls be quiettttt","option1","option2","option3","option4"));
+        datumList.add(new Data(10,"Be ambitioussssssssssssssssss","option1","option2","option3","option4"));
 
         //test with dummy data
 
         view.ShowQuestionList(datumList);
         view.setQuestion();
-//        getQuestionsFromServer();
+//      getQuestionsFromServer();
     }
 
 

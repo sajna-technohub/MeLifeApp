@@ -29,7 +29,7 @@ public class SuccessFrag4 extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         v= inflater.inflate(R.layout.fragment_success_frag4, container, false);
         newsuc=(ImageView)v.findViewById(R.id.newsuc) ;
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.sequential);

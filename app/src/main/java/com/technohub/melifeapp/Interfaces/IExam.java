@@ -35,6 +35,5 @@ public interface IExam {
 
         void getQuestionsFromServer();
 
-
     }
 }

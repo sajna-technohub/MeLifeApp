@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/qa_layout"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.ExamFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="vertical"
-        android:id="@+id/qa_layout"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/dimen_40"
         android:layout_height="match_parent">
 
-
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:layout_width="wrap_content"
+                android:id="@+id/examSpinKit"
+                style="@style/SpinKitView.Small.ChasingDots"
+                android:visibility="visible"
+                android:layout_height="@dimen/margin_60"/>
         <!--        <LinearLayout-->
         <!--            android:layout_width="wrap_content"-->
         <!--            android:layout_height="wrap_content"-->
@@ -58,15 +65,16 @@
                     android:textColor="@color/darkblue"
                     />
             </LinearLayout>
-            <com.github.ybq.android.spinkit.SpinKitView
-                android:layout_width="wrap_content"
-                android:id="@+id/examSpinKit"
-                android:layout_gravity="center_horizontal|center"
-                style="@style/SpinKitView.Large.Circle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                android:layout_height="60dp"/>
+<!--            <com.github.ybq.android.spinkit.SpinKitView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:id="@+id/examSpinKit"-->
+<!--                android:visibility="visible"-->
+<!--                android:layout_gravity="center_horizontal|center"-->
+<!--                style="@style/SpinKitView.Large.Circle"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/imageView"-->
+<!--                android:layout_height="60dp"/>-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,7 +114,5 @@
     android:layout_height="100dp"/>
 
     </LinearLayout>
-
-
-
 </ScrollView>
+</FrameLayout>
