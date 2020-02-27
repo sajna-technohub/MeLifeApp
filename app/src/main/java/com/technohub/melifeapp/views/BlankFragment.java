@@ -1,6 +1,7 @@
-package com.technohub.melifeapp.views.ui;
+package com.technohub.melifeapp.views;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,15 +13,17 @@ import android.view.ViewGroup;
 
 import com.technohub.melifeapp.R;
 
+import io.github.kexanie.library.MathView;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MathViewFragment.OnFragmentInteractionListener} interface
+ * {@link BlankFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MathViewFragment#newInstance} factory method to
+ * Use the {@link BlankFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MathViewFragment extends Fragment {
+public class BlankFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,9 +33,14 @@ public class MathViewFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    MathView formula_two;
+    String tex = "This come from string. You can insert inline formula:" +
+            " \\(ax^2 + bx + c = 0\\) " +
+            "or displayed formula: $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$";
+    String s="\\(x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}\\)";
+    String s1="\\(\\mathrm{E}_{\\mathrm{Cr}_{2} \\mathrm{O}_{7}^{2-} / \\mathrm{Cr}^{3+}}=1.33 \\mathrm{V} ; \\mathrm{E}_{\\mathrm{Cl} / \\mathrm{Cl}^{-}}^{0}=1.36 \\mathrm{V}\\)";
 
-    public MathViewFragment() {
+    public BlankFragment() {
         // Required empty public constructor
     }
 
@@ -42,11 +50,11 @@ public class MathViewFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MathViewFragment.
+     * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MathViewFragment newInstance(String param1, String param2) {
-        MathViewFragment fragment = new MathViewFragment();
+    public static BlankFragment newInstance(String param1, String param2) {
+        BlankFragment fragment = new BlankFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,31 +75,28 @@ public class MathViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_math_view, container, false);
+        View v=inflater.inflate(R.layout.fragment_blank, container, false);
+        v.setBackgroundColor(Color.WHITE);
+        formula_two = (MathView)v. findViewById(R.id.formula_one);
+        formula_two.setText(s);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
     /**
@@ -104,8 +109,5 @@ public class MathViewFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

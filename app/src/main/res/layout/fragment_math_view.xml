@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
     android:id="@+id/qa_layout"
     android:layout_height="match_parent">
     <ScrollView
@@ -16,7 +17,7 @@
 
             <com.github.ybq.android.spinkit.SpinKitView
                 android:layout_width="wrap_content"
-                android:id="@+id/examSpinKit"
+                android:id="@+id/mathSpinKit"
                 style="@style/SpinKitView.Small.ChasingDots"
                 android:visibility="visible"
                 android:layout_height="@dimen/margin_60"/>
@@ -59,7 +60,7 @@
                         android:paddingLeft="5dp"
                         android:textSize="@dimen/dimen_15"
                         android:textStyle="bold"
-                        android:id="@+id/examTxtQno"
+                        android:id="@+id/mathTxtQno"
                         android:textColor="@color/darkblue"
                         />
                 </LinearLayout>
@@ -73,37 +74,38 @@
                 <!--                app:layout_constraintTop_toTopOf="parent"-->
                 <!--                app:layout_constraintBottom_toBottomOf="@+id/imageView"-->
                 <!--                android:layout_height="60dp"/>-->
-                <TextView
+                <io.github.kexanie.library.MathView
+                    android:id="@+id/mathQuestionTxt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textSize="@dimen/dimen_17"
-                    android:typeface="serif"
-                    android:id="@+id/examTxtQuestion"
-                    android:textColor="@color/darkblue"
-                    android:textStyle="bold"
-                    />
+                    android:layout_height="200dp"
+                    auto:text="When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\)
+        and they are $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
+                    auto:engine="MathJax"
+                    >
+                </io.github.kexanie.library.MathView>
 
                 <com.skydoves.elasticviews.ElasticButton
                     style="@style/style_answer_button"
-                    android:id="@+id/examBtnOption1"
+                    android:id="@+id/mathBtnOption1"
                     android:text="@string/answera"/>
+
                 <com.skydoves.elasticviews.ElasticButton
                     style="@style/style_answer_button"
-                    android:id="@+id/examBtnOption2"
+                    android:id="@+id/mathBtnOption2"
                     android:text="@string/answerb"/>
+
                 <com.skydoves.elasticviews.ElasticButton
                     style="@style/style_answer_button"
-                    android:id="@+id/examBtnOption3"
+                    android:id="@+id/mathBtnOption3"
                     android:text="@string/answerc"/>
 
                 <com.skydoves.elasticviews.ElasticButton
                     style="@style/style_answer_button"
-                    android:id="@+id/examBtnOption4"
+                    android:id="@+id/mathBtnOption4"
                     android:text="@string/answerd"/>
                 <com.skydoves.elasticviews.ElasticButton
                     style="@style/style_answer_button"
-                    android:id="@+id/examBtnOption5"
+                    android:id="@+id/mathBtnOption5"
                     android:text="@string/answere"/>
             </LinearLayout>
 

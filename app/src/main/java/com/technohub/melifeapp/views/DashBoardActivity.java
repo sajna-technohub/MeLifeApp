@@ -80,7 +80,7 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
 //                    fragment = new ExamFragment();
                 break;
             case R.id.navigation_like:
-                fragment = new ExamFragment();
+                fragment = new MathViewFragment();
                 break;
             case R.id.navigation_user:
                 fragment = new ProfileFragment();

@@ -75,7 +75,6 @@ int catid=0;
     @Override
     public void setQuestion()
     {
-
         examTxtQno.setText(data.get(flag).getId()+" ");
 //      examTxtQuestion.setText(data.get(flag).getFirst_name());
         examTxtQuestion.setText(Html.fromHtml(data.get(flag).getFirst_name(),
@@ -299,6 +298,7 @@ int catid=0;
 
     @Override
     public void showDialog(DialogFragment dialogFragment) {
+
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("dialog");
         if (prev != null) {
@@ -306,6 +306,7 @@ int catid=0;
         }
         ft.addToBackStack(null);
         dialogFragment.show(ft, "dialog");
+
     }
 
     @Override

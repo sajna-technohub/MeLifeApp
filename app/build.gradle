@@ -52,6 +52,6 @@ dependencies {
 //    alerts
     implementation 'com.github.f0ris.sweetalert:library:1.5.6'
     // for showing mathematical/Chemical  expressions
-    implementation 'io.github.kexanie.library:MathView:0.0.6'
+    compile 'io.github.kexanie.library:MathView:0.0.6'
 
 }
