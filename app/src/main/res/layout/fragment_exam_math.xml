@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/qa_layout"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:layout_height="match_parent">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:layout_width="wrap_content"
+                android:id="@+id/examSpinKit"
+                style="@style/SpinKitView.Small.ChasingDots"
+                android:visibility="visible"
+                android:layout_height="@dimen/margin_60"/>
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_gravity="left"-->
+            <!--            android:layout_weight="0.2">-->
+            <!--
+              <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:gravity="center"-->
+            <!--                android:textSize="20dp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                android:textColor="@color/lightblue"-->
+            <!--                android:text="@string/Title_Qno"/>-->
+            <!--        </LinearLayout>-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="@dimen/dimen_330"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:textSize="@dimen/dimen_15"
+                        android:textStyle="bold"
+                        android:textColor="@color/darkblue"
+                        android:text="@string/Title_Qn"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:paddingLeft="5dp"
+                        android:textSize="@dimen/dimen_15"
+                        android:textStyle="bold"
+                        android:id="@+id/examTxtQno"
+                        android:textColor="@color/darkblue"
+                        />
+                </LinearLayout>
+                <!--            <com.github.ybq.android.spinkit.SpinKitView-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:id="@+id/examSpinKit"-->
+                <!--                android:visibility="visible"-->
+                <!--                android:layout_gravity="center_horizontal|center"-->
+                <!--                style="@style/SpinKitView.Large.Circle"-->
+                <!--                app:layout_constraintStart_toStartOf="parent"-->
+                <!--                app:layout_constraintTop_toTopOf="parent"-->
+                <!--                app:layout_constraintBottom_toBottomOf="@+id/imageView"-->
+                <!--                android:layout_height="60dp"/>-->
+                <io.github.kexanie.library.MathView
+                    android:id="@+id/examTxtQuestion1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_17"
+                    android:typeface="serif"
+                    auto:text="When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\)
+                    and they are $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
+                    auto:engine="MathJax"
+                    android:textColor="@color/darkblue"
+                    android:textStyle="bold"
+                    >
+                </io.github.kexanie.library.MathView>
+
+                <com.skydoves.elasticviews.ElasticButton
+                    style="@style/style_answer_button"
+                    android:id="@+id/examBtnOption1"
+                    android:text="@string/answera"/>
+                <com.skydoves.elasticviews.ElasticButton
+                    style="@style/style_answer_button"
+                    android:id="@+id/examBtnOption2"
+                    android:text="@string/answerb"/>
+                <com.skydoves.elasticviews.ElasticButton
+                    style="@style/style_answer_button"
+                    android:id="@+id/examBtnOption3"
+                    android:text="@string/answerc"/>
+
+                <com.skydoves.elasticviews.ElasticButton
+                    style="@style/style_answer_button"
+                    android:id="@+id/examBtnOption4"
+                    android:text="@string/answerd"/>
+                <com.skydoves.elasticviews.ElasticButton
+                    style="@style/style_answer_button"
+                    android:id="@+id/examBtnOption5"
+                    android:text="@string/answere"/>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

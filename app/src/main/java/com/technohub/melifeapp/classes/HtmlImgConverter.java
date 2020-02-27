@@ -61,7 +61,8 @@ public class HtmlImgConverter  extends AsyncTask<String, Void, Drawable> {
 
         final Drawable taskDrawable = result;
 
-        if (taskDrawable != null) {
+        if (taskDrawable != null)
+        {
             taskTextView.setText(Html.fromHtml(taskHtmlString,
                     source -> taskDrawable, null));
         }

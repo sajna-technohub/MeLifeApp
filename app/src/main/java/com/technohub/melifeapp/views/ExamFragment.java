@@ -40,24 +40,28 @@ public class ExamFragment extends Fragment implements IExam.View {
 ElasticButton examBtnOption1,examBtnOption2,examBtnOption3,examBtnOption4,examBtnOption5;
 TextView examTxtQuestion,examTxtQno;
 SpinKitView spinExam;
+int catid=0;
      int flag=0;
     DialogFragment dialogFragment;
     private static int TIME_OUT = 1000;
     List<Data> data=new ArrayList<>();
     View v;
-    String htmlText = "<h2>What is Android?</h2>\n" +
+        String htmlText = "<h2>What is Android?</h2>\n" +
             "<p>Android is an open source and Linux-based <b>Operating System</b> for mobile devices such as smartphones and tablet computers.Android was developed by the <i>Open Handset Alliance</i>, led by Google, and other companies.</p>\n" +
             "<p>Android offers a unified approach to application development for mobile devices which means developers need onlydevelop for Android, and their applications should be able to run on different devices powered by Android.</p>\n" +
             "<p>The first beta version of the Android Software Development Kit (SDK) was released by Google in 2007 whereasthe first commercial version, Android 1.0, was released in September 2008.</p><img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png'>";
-String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-image-0013.gif";
+        String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-image-0013.gif";
    ExamPresenter examPresenter;
+    Animation animation ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        v=inflater.inflate(R.layout.fragment_question_answer, container, false);
+        v=inflater.inflate(R.layout.fragment_exam, container, false);
         v.setBackgroundColor(Color.WHITE);
+
+        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.bounce_animation);
 
         examPresenter = new ExamPresenter(this,htmlText);
         examPresenter.created();
@@ -73,7 +77,7 @@ String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-i
     {
 
         examTxtQno.setText(data.get(flag).getId()+" ");
-//        examTxtQuestion.setText(data.get(flag).getFirst_name());
+//      examTxtQuestion.setText(data.get(flag).getFirst_name());
         examTxtQuestion.setText(Html.fromHtml(data.get(flag).getFirst_name(),
                 new Html.ImageGetter() {
 
@@ -97,6 +101,8 @@ String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-i
         examBtnOption2.setText(data.get(flag).getOption2());
         examBtnOption3.setText(data.get(flag).getOption3());
         examBtnOption4.setText(data.get(flag).getOption4());
+
+
     }
 
     @Override
@@ -118,10 +124,13 @@ String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-i
         examBtnOption1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.bounce_animation);
+
                 //I want to start animation here
                 examBtnOption1.startAnimation(animation);
-                dialog();
+                dialogFragment=new SuccessFrag2();
+                showDialog(dialogFragment);
+
+
                 new Handler().postDelayed(new Runnable() {
 
                     @Override
@@ -134,37 +143,92 @@ String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-i
                 }, TIME_OUT);
             }
         });
+
         examBtnOption2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                 examPresenter.buttonClick();
-                selectAnswer();
+                examBtnOption2.startAnimation(animation);
+                dialogFragment=new SuccessFrag3();
+                showDialog(dialogFragment);
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // This method will be executed once the timer is over
+                        // Start your app main activity
+                        dialogFragment.dismiss(); // when the task active then close the dialog
+                        selectAnswer();
+                    }
+                }, TIME_OUT);
             }
         });
         examBtnOption3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                 examPresenter.buttonClick();
-                selectAnswer();
+                examBtnOption3.startAnimation(animation);
+                dialogFragment=new SuccessFrag2();
+                showDialog(dialogFragment);
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // This method will be executed once the timer is over
+                        // Start your app main activity
+                        dialogFragment.dismiss(); // when the task active then close the dialog
+                        selectAnswer();
+                    }
+                }, TIME_OUT);
             }
         });
         examBtnOption4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                 examPresenter.buttonClick();
-                  selectAnswer();
+                examBtnOption4.startAnimation(animation);
+                dialogFragment=new SuccessFrag2();
+                showDialog(dialogFragment);
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // This method will be executed once the timer is over
+                        // Start your app main activity
+                        dialogFragment.dismiss(); // when the task active then close the dialog
+                        selectAnswer();
+                    }
+                }, TIME_OUT);
+
             }
-        }); examBtnOption5.setOnClickListener(new View.OnClickListener() {
+        });
+
+        examBtnOption5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                 examPresenter.buttonClick();
-                selectAnswer();
+                examBtnOption5.startAnimation(animation);
+                dialogFragment=new SuccessFrag3();
+                showDialog(dialogFragment);
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // This method will be executed once the timer is over
+                        // Start your app main activity
+                        dialogFragment.dismiss(); // when the task active then close the dialog
+                        selectAnswer();
+                    }
+                }, TIME_OUT);
+
             }
         });
 
 
     }
-    void fun(Fragment f)
+
+    @Override
+   public  void LoadFragment(Fragment f)
     {
         // Create new fragment and transaction
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -189,13 +253,14 @@ String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-i
         super.onResume();
 
     }
-    void selectAnswer()
+    @Override
+    public void selectAnswer()
     {
         flag++;
         Log.e("flag incre",flag+"");
         if(flag<data.size())
         {
-            spinExam.setVisibility(View.VISIBLE);
+            showLoading();
             examTxtQno.setText(data.get(flag).getId()+" ");
             examTxtQuestion.setText(Html.fromHtml(data.get(flag).getFirst_name(),
                     new Html.ImageGetter() {
@@ -206,17 +271,18 @@ String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-i
                             Toast.makeText(getContext(), source,
                                     Toast.LENGTH_LONG).show();
                             Log.e("image",source);
+
+                            hideLoading();
+
                             HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
                                     examTxtQuestion, data.get(flag).getFirst_name(),getContext());
                             httpGetDrawableTask.execute(source);
 
                             return null;
                         }
-
                     }, null));
 
             examTxtQuestion.setMovementMethod(LinkMovementMethod.getInstance());
-            spinExam.setVisibility(View.GONE);
             examBtnOption1.setText(data.get(flag).getOption1());
             examBtnOption2.setText(data.get(flag).getOption2());
             examBtnOption3.setText(data.get(flag).getOption3());
@@ -227,51 +293,18 @@ String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-i
         {
             Log.e("size","Reaches size"+data.size());
             Fragment f=new HomeFragment();
-            fun(f);
+            LoadFragment(f);
         }
     }
-    void dialog()
-    {
+
+    @Override
+    public void showDialog(DialogFragment dialogFragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("dialog");
         if (prev != null) {
             ft.remove(prev);
         }
         ft.addToBackStack(null);
-        dialogFragment = new SuccessFrag2();
-        dialogFragment.show(ft, "dialog");
-    }
-    void dialog2()
-    {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-        dialogFragment = new SuccessFrag1();
-        dialogFragment.show(ft, "dialog");
-    }
-    void dialog3()
-    {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-        dialogFragment = new SuccessFrag2();
-        dialogFragment.show(ft, "dialog");
-    }
-    void dialog4()
-    {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-        dialogFragment = new SuccessFrag4();
         dialogFragment.show(ft, "dialog");
     }
 

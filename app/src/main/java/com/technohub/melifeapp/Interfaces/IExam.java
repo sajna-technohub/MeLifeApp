@@ -2,6 +2,9 @@ package com.technohub.melifeapp.Interfaces;
 
 import android.content.Context;
 
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+
 import com.technohub.melifeapp.classes.Data;
 import com.technohub.melifeapp.classes.Root;
 import com.technohub.melifeapp.models.ErrorModel;
@@ -27,6 +30,12 @@ public interface IExam {
         void goToNextFragment();
 
         void setQuestion();
+
+        void showDialog(DialogFragment fragment);
+
+        void  selectAnswer();
+
+         void LoadFragment(Fragment f);
     }
 
     interface Presenter {

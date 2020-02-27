@@ -39,7 +39,6 @@ dependencies {
     // Retrofit & OkHttp
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-
     //progress bar
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     //Button
@@ -52,6 +51,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0-alpha01'
 //    alerts
     implementation 'com.github.f0ris.sweetalert:library:1.5.6'
-
+    // for showing mathematical/Chemical  expressions
+    implementation 'io.github.kexanie.library:MathView:0.0.6'
 
 }

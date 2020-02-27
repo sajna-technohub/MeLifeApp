@@ -24,6 +24,7 @@ Button Choosepage_btnChoose;
         getSupportActionBar().hide();
         setContentView(R.layout.activity_choose_page);
 //        mainSpinKit=findViewById(R.id.mainSpinKitchoose);
+
         Choosepage_btnChoose=findViewById(R.id.btn_signin);
         Choosepage_btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
