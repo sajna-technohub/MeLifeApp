@@ -37,7 +37,8 @@ import java.util.List;
 
 public class ExamFragment extends Fragment implements IExam.View {
 
-ElasticButton examBtnOption1,examBtnOption2,examBtnOption3,examBtnOption4,examBtnOption5;
+ElasticButton examBtnOption3,examBtnOption4,examBtnOption5;
+TextView examBtnOption1,examBtnOption2;
 TextView examTxtQuestion,examTxtQno;
 SpinKitView spinExam;
 int catid=0;
@@ -46,10 +47,7 @@ int catid=0;
     private static int TIME_OUT = 1000;
     List<Data> data=new ArrayList<>();
     View v;
-        String htmlText = "<h2>What is Android?</h2>\n" +
-            "<p>Android is an open source and Linux-based <b>Operating System</b> for mobile devices such as smartphones and tablet computers.Android was developed by the <i>Open Handset Alliance</i>, led by Google, and other companies.</p>\n" +
-            "<p>Android offers a unified approach to application development for mobile devices which means developers need onlydevelop for Android, and their applications should be able to run on different devices powered by Android.</p>\n" +
-            "<p>The first beta version of the Android Software Development Kit (SDK) was released by Google in 2007 whereasthe first commercial version, Android 1.0, was released in September 2008.</p><img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png'>";
+        String htmlText = "<img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png'>";
         String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-image-0013.gif";
    ExamPresenter examPresenter;
     Animation animation ;
@@ -96,10 +94,80 @@ int catid=0;
                 }, null));
 
         examTxtQuestion.setMovementMethod(LinkMovementMethod.getInstance());
-        examBtnOption1.setText(data.get(flag).getOption1());
-        examBtnOption2.setText(data.get(flag).getOption2());
-        examBtnOption3.setText(data.get(flag).getOption3());
-        examBtnOption4.setText(data.get(flag).getOption4());
+        Log.e("img",data.get(flag).getOption1());
+        if(data.get(flag).getOption1().contains("img"))
+        {
+            Log.e("img","it contains img");
+            examBtnOption1.setText(Html.fromHtml(data.get(flag).getOption1(),
+                    new Html.ImageGetter() {
+
+                        @Override
+                        public Drawable getDrawable(String source) {
+
+                            Toast.makeText(getContext(), source,
+                                    Toast.LENGTH_LONG).show();
+                            Log.e("image",source);
+                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+                                    examBtnOption1, data.get(flag).getOption1(),getContext());
+                            httpGetDrawableTask.execute(source);
+
+                            return null;
+                        }
+
+                    }, null));
+
+            examBtnOption1.setMovementMethod(LinkMovementMethod.getInstance());
+
+            examBtnOption2.setText(Html.fromHtml(data.get(flag).getOption2(),
+                    new Html.ImageGetter() {
+
+                        @Override
+                        public Drawable getDrawable(String source) {
+
+                            Toast.makeText(getContext(), source,
+                                    Toast.LENGTH_LONG).show();
+                            Log.e("image",source);
+                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+                                    examBtnOption2, data.get(flag).getOption2(),getContext());
+                            httpGetDrawableTask.execute(source);
+
+                            return null;
+                        }
+
+                    }, null));
+
+            examBtnOption2.setMovementMethod(LinkMovementMethod.getInstance());
+            examBtnOption3.setText(Html.fromHtml(data.get(flag).getOption3(),
+                    new Html.ImageGetter() {
+
+                        @Override
+                        public Drawable getDrawable(String source) {
+
+                            Toast.makeText(getContext(), source,
+                                    Toast.LENGTH_LONG).show();
+                            Log.e("image",source);
+                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+                                    examBtnOption3, data.get(flag).getOption3(),getContext());
+                            httpGetDrawableTask.execute(source);
+
+                            return null;
+                        }
+
+                    }, null));
+
+            examBtnOption3.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+
+
+
+
+        else {
+            Log.e("img","No img");
+            examBtnOption1.setText(data.get(flag).getOption1());
+            examBtnOption2.setText(data.get(flag).getOption2());
+            examBtnOption3.setText(data.get(flag).getOption3());
+            examBtnOption4.setText(data.get(flag).getOption4());
+        }
 
 
     }

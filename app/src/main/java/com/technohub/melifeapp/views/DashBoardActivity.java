@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 public class DashBoardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener  {
     private AppBarConfiguration mAppBarConfiguration;
+    int flag=1;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -80,7 +81,11 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
 //                    fragment = new ExamFragment();
                 break;
             case R.id.navigation_like:
+                if(flag==0)
                 fragment = new MathViewFragment();
+                else
+
+                    fragment = new ExamFragment();
                 break;
             case R.id.navigation_user:
                 fragment = new ProfileFragment();

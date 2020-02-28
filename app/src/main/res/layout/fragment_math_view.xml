@@ -15,12 +15,7 @@
             android:layout_marginTop="@dimen/dimen_40"
             android:layout_height="match_parent">
 
-            <com.github.ybq.android.spinkit.SpinKitView
-                android:layout_width="wrap_content"
-                android:id="@+id/mathSpinKit"
-                style="@style/SpinKitView.Small.ChasingDots"
-                android:visibility="visible"
-                android:layout_height="@dimen/margin_60"/>
+
             <!--        <LinearLayout-->
             <!--            android:layout_width="wrap_content"-->
             <!--            android:layout_height="wrap_content"-->
@@ -77,12 +72,19 @@
                 <io.github.kexanie.library.MathView
                     android:id="@+id/mathQuestionTxt"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    auto:text="When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\)
-        and they are $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
                     auto:engine="MathJax"
                     >
                 </io.github.kexanie.library.MathView>
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/mathSpinKit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_40"
+                    auto:SpinKit_Color="@color/colorAccent"
+                    style="@style/SpinKitView.Small.WanderingCubes"
+                    android:visibility="visible"/>
 
                 <com.skydoves.elasticviews.ElasticButton
                     style="@style/style_answer_button"
@@ -93,6 +95,8 @@
                     style="@style/style_answer_button"
                     android:id="@+id/mathBtnOption2"
                     android:text="@string/answerb"/>
+
+
 
                 <com.skydoves.elasticviews.ElasticButton
                     style="@style/style_answer_button"

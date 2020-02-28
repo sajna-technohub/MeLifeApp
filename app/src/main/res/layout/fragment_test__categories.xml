@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/purewhite"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.TestCategoriesFragment">
@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:padding="@dimen/margin_20"
         android:orientation="vertical"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_height="match_parent">
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="match_parent"
@@ -38,9 +38,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/test_recycler_view"
-        android:scrollbars="none"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
+
+
 </FrameLayout>

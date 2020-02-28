@@ -34,7 +34,6 @@ import io.github.kexanie.library.MathView;
 
 public class MathViewFragment extends Fragment  implements IExam.View  {
 
-
     ElasticButton mathBtnOption1,mathBtnOption2,mathBtnOption3,mathBtnOption4,mathBtnOption5;
 
     MathView mathTxtQuestion;
@@ -266,15 +265,29 @@ public class MathViewFragment extends Fragment  implements IExam.View  {
     }
 
     @Override
-    public void setQuestion() {
+    public void setQuestion()
+    {
         Log.e("in set","hsgskg");
+showLoading();
         String v="<p>the mass of water produced from <span class=\"math-tex\">\\(445 \\, \\mathrm{g}\\)</span> of <span class=\"math-tex\">\\(\\mathrm{C}_{57} \\mathrm{H}_{110} \\mathrm{O}_{6}\\)</span> is:</p>";
         mathTxtQno.setText(data.get(flag).getId()+" ");
         mathTxtQuestion.setText(data.get(flag).getFirst_name());
+        hideLoading();
+        Log.e("showload","loadingcomplete");
+
     }
 
     @Override
-    public void showDialog(DialogFragment fragment) {
+    public void showDialog(DialogFragment dialogFragment)
+    {
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        dialogFragment.show(ft, "dialog");
 
     }
 }
