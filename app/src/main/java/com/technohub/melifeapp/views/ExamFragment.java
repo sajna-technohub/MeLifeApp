@@ -2,6 +2,7 @@ package com.technohub.melifeapp.views;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -14,11 +15,13 @@ import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,13 +44,14 @@ ElasticButton examBtnOption3,examBtnOption4,examBtnOption5;
 TextView examBtnOption1,examBtnOption2;
 TextView examTxtQuestion,examTxtQno;
 SpinKitView spinExam;
+LinearLayout linearLayout;
 int catid=0;
      int flag=0;
     DialogFragment dialogFragment;
     private static int TIME_OUT = 1000;
     List<Data> data=new ArrayList<>();
     View v;
-        String htmlText = "<img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png'>";
+        String htmlText = "Choose the image from the figure and answer the question <img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png'>";
         String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-image-0013.gif";
    ExamPresenter examPresenter;
     Animation animation ;
@@ -76,26 +80,29 @@ int catid=0;
         examTxtQno.setText(data.get(flag).getId()+" ");
 //      examTxtQuestion.setText(data.get(flag).getFirst_name());
         examTxtQuestion.setText(Html.fromHtml(data.get(flag).getFirst_name(),
-                new Html.ImageGetter() {
+                source -> {
 
-                    @Override
-                    public Drawable getDrawable(String source) {
+                    Toast.makeText(getContext(), source,
+                            Toast.LENGTH_LONG).show();
+                            Log.e("image",source);
+                    HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+                            examTxtQuestion, data.get(flag).getFirst_name(),getContext());
+                    httpGetDrawableTask.execute(source);
 
-                        Toast.makeText(getContext(), source,
-                                Toast.LENGTH_LONG).show();
-                                Log.e("image",source);
-                        HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
-                                examTxtQuestion, data.get(flag).getFirst_name(),getContext());
-                        httpGetDrawableTask.execute(source);
-
-                        return null;
-                    }
-
+                    return null;
                 }, null));
 
         examTxtQuestion.setMovementMethod(LinkMovementMethod.getInstance());
         Log.e("img",data.get(flag).getOption1());
-        if(data.get(flag).getOption1().contains("img"))
+        String img=data.get(flag).getOption1();
+        boolean isFound = img.contains("img");
+        Log.e("imgg",img);
+        if (isFound) {
+
+            Log.e("img","found");
+            Log.e("img",img);
+        }
+       if(img.indexOf("img") !=-1? true: false) //true
         {
             Log.e("img","it contains img");
             examBtnOption1.setText(Html.fromHtml(data.get(flag).getOption1(),
@@ -183,6 +190,16 @@ int catid=0;
         examTxtQuestion=v.findViewById(R.id.examTxtQuestion);
         examTxtQno=v.findViewById(R.id.examTxtQno);
          spinExam=v.findViewById(R.id.examSpinKit);
+         linearLayout=v.findViewById(R.id.check);
+         TextView textView=new TextView(getActivity());
+         textView.setBackgroundColor(Color.CYAN);
+         textView.setText("check check check");
+         textView.setTypeface(Typeface.SERIF,Typeface.BOLD);
+         textView.setPadding(10,40,0,0);
+         textView.setTextColor(Color.BLUE);
+         textView.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+         textView.setLayoutParams(new ViewGroup.LayoutParams( ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+         linearLayout.addView(textView);
 
     }
 
@@ -257,7 +274,6 @@ int catid=0;
                 showDialog(dialogFragment);
 
                 new Handler().postDelayed(new Runnable() {
-
                     @Override
                     public void run() {
                         // This method will be executed once the timer is over
@@ -278,7 +294,6 @@ int catid=0;
                 showDialog(dialogFragment);
 
                 new Handler().postDelayed(new Runnable() {
-
                     @Override
                     public void run() {
                         // This method will be executed once the timer is over
@@ -330,23 +345,19 @@ int catid=0;
             showLoading();
             examTxtQno.setText(data.get(flag).getId()+" ");
             examTxtQuestion.setText(Html.fromHtml(data.get(flag).getFirst_name(),
-                    new Html.ImageGetter() {
+                    source -> {
 
-                        @Override
-                        public Drawable getDrawable(String source) {
+                        Toast.makeText(getContext(), source,
+                                Toast.LENGTH_LONG).show();
+                        Log.e("image",source);
 
-                            Toast.makeText(getContext(), source,
-                                    Toast.LENGTH_LONG).show();
-                            Log.e("image",source);
+                        hideLoading();
 
-                            hideLoading();
+                        HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+                                examTxtQuestion, data.get(flag).getFirst_name(),getContext());
+                        httpGetDrawableTask.execute(source);
 
-                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
-                                    examTxtQuestion, data.get(flag).getFirst_name(),getContext());
-                            httpGetDrawableTask.execute(source);
-
-                            return null;
-                        }
+                        return null;
                     }, null));
 
             examTxtQuestion.setMovementMethod(LinkMovementMethod.getInstance());

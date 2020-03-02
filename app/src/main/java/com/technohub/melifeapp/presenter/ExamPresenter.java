@@ -40,11 +40,11 @@ public class ExamPresenter implements IExam.Presenter {
 ////                "figure :<br />\n" +
 ////
 // "<img alt=\"\" src=\"http://192.168.1.4/prepido/ckfinder/userfiles/files/2016Q2.png\" style=\"height:166px; width:223px\" /></p>","option1","option2","option3","option4"));
-        String d="<img src='https://homepages.cae.wisc.edu/~ece533/images/boat.png'>";
-        String e="<img src='https://homepages.cae.wisc.edu/~ece533/images/boat.png'>";
-        datumList.add(new Data(3,"<p><span class=\"math-tex\">\\(\\mathrm{E}_{\\mathrm{Cr}^{3+} / \\mathrm{Cr}}^{0}=-0.74 \\mathrm{V} ; \\mathrm{E}_{\\mathrm{MnO}_{\\mathrm{i}} / \\mathrm{Mn}^{2+}}^{0}=1.51 \\mathrm{V}\\)</span></p>\n","option1","option2","option3","option4"));
-        datumList.add(new Data(4,"<p>For the reaction, <span class=\"math-tex\">\\(2 \\mathrm{C}_{57} \\mathrm{H}_{110} \\mathrm{O}_{6}(\\mathrm{s})+163 \\mathrm{O}_{2}(\\mathrm{g}) \\rightarrow 114 \\mathrm{CO}_{2}(\\mathrm{g})+110 \\mathrm{H}_{2} \\mathrm{O}_{(\\rm{l})}\\)</span></p>","option1","option2","option3","option4"));
-        datumList.add(new Data(5,"sdhsdgdkfggf","option1","option2","option3","option4"));
+        String d="<h1>fig.1</h1><img src='https://homepages.cae.wisc.edu/~ece533/images/boat.png'>";
+        String e="<h1>fig.2</h1><img src='https://homepages.cae.wisc.edu/~ece533/images/boat.png'>";
+        datumList.add(new Data(3,htmltext,d,e,"option3","option4"));
+        datumList.add(new Data(4,htmltext,d,e,"option2","option3"));
+        datumList.add(new Data(5,d,e,"option2","option3","option4"));
         datumList.add(new Data(6,"what is your name???","option1","option2","option3","option4"));
         datumList.add(new Data(7,"Hi how are you","option1","option2","option3","option4"));
         datumList.add(new Data(8,htmltext,d,e,"option3","option4"));
@@ -66,7 +66,8 @@ public class ExamPresenter implements IExam.Presenter {
     public void getQuestionsFromServer() {
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
         Call<Root> call = retrofitApi.getQuestions("2");
-        call.enqueue(new Callback<Root>() {
+        call.enqueue(new Callback<Root>()
+        {
             @Override
             public void onResponse(Call<Root> call, Response<Root> response)
             {

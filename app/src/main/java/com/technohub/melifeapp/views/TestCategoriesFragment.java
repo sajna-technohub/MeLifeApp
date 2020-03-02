@@ -104,6 +104,7 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     @Override
     public void init() {
         testSpinkit=v.findViewById(R.id.testSpinkit);
+
         recyclerView = (RecyclerView)v.findViewById(R.id.test_recycler_view);
     }
 }
