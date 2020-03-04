@@ -2,6 +2,8 @@ package com.technohub.melifeapp.presenter;
 
 import android.util.Log;
 import com.technohub.melifeapp.Interfaces.Itestcategory;
+import com.technohub.melifeapp.models.ExamRequest;
+import com.technohub.melifeapp.models.ExamResponse;
 import com.technohub.melifeapp.models.TestCategoriesModel;
 import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.Tests;
@@ -13,10 +15,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TestCategoryPresenter implements Itestcategory.Presenter {
+public class TestCategoryPresenter implements Itestcategory.Presenter
+{
     private Itestcategory.View view;
+    ExamResponse examResponse;
     TestCategoriesModel testCategoriesModel=new TestCategoriesModel();
     List<TestCategoriesModel> testList;
+    ExamRequest examRequest;
     User user;
 
     public TestCategoryPresenter(Itestcategory.View view,User user)
@@ -24,10 +29,16 @@ public class TestCategoryPresenter implements Itestcategory.Presenter {
         this.view = view;
         this.user=user;
     }
+
+    public TestCategoryPresenter(ExamRequest examRequest) {
+        this.examRequest = examRequest;
+    }
+
     @Override
     public void created() {
 
         view.init();
+        view.initClicks();
         load(user);
 
     }
@@ -36,8 +47,8 @@ public class TestCategoryPresenter implements Itestcategory.Presenter {
 
         view.showLoading();
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-        testCategoriesModel.setUser_email("7f7063c23d@mailboxok.club");
-        testCategoriesModel.setUser_id(448);
+        testCategoriesModel.setUser_email("anitha@3gl.me");
+        testCategoriesModel.setUser_id(450);
 
         Call<TestcategoryResponse> call = retrofitApi.dashboard(testCategoriesModel);
         call.enqueue(new Callback<TestcategoryResponse>() {
@@ -82,5 +93,44 @@ public class TestCategoryPresenter implements Itestcategory.Presenter {
 
             }
         });
+    }
+    @Override
+    public void initiateExam() {
+        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+        Call<ExamResponse> call = retrofitApi.displayquestions(examRequest);
+        call.enqueue(new Callback<ExamResponse>()
+        {
+            @Override
+            public void onResponse(Call<ExamResponse> call, Response<ExamResponse> response)
+            {
+                Log.e("presenter","kkvk");
+                examResponse=response.body();
+                if (response.isSuccessful() && response.body() != null)
+                {
+
+                    Log.e("exam initiate","success");
+                    Log.e("exam initiate cs",response.body().getExamCompletionsts());
+                    Log.e("exam initiate qe",response.body().getQnExiststs()+"");
+                    if(response.body().getQnExiststs()==0)
+                    {
+                        view.loadNoQns();
+                    }
+
+                }
+                else
+                {
+                    Log.e("exam initiate","no res");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ExamResponse> call, Throwable t)
+            {
+//                view.hideLoading();
+            }
+
+        });
+
     }
 }

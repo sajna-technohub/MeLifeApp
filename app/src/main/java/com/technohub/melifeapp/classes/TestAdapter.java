@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.technohub.melifeapp.R;
+import com.technohub.melifeapp.models.ExamRequest;
 import com.technohub.melifeapp.models.TestcategoryResponse;
+import com.technohub.melifeapp.presenter.TestCategoryPresenter;
 
 import java.util.Random;
 
@@ -22,6 +25,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
    View view1;
    Context context;
    ImageView testImageicon;
+   ExamRequest examRequest;
 
     public TestAdapter(TestcategoryResponse testDataModel,Context con) {
 
@@ -40,6 +44,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(TestAdapter.ViewHolder Viewholder, int i) {
 
+        examRequest=new ExamRequest();
         Viewholder.TestTitle.setText(testDataModel.getData().get(i).test_name);
         String test_id=testDataModel.getData().get(i).getTest_id()+"";
         Log.e("adapter",test_id);
@@ -47,6 +52,23 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
         Log.e("adapter",examid);
         String com=testDataModel.getData().get(i).getCmplts_status()+"";
         Log.e("adapter",com);
+        String userid=testDataModel.getUserid()+"";
+        Log.e("adapter",userid);
+        Viewholder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("click","click");
+                examRequest.setTest_id(test_id);
+                examRequest.setUser_id(userid);
+                examRequest.setUser_email(testDataModel.getUseremail());
+                examRequest.setDeviceToken("1");
+                examRequest.setDeviceType("gkg");
+                new TestCategoryPresenter(examRequest).initiateExam();
+            }
+        });
+
+
+
         if(test_id.equals("8"))
         {
             testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.skillfinder));
@@ -92,6 +114,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
             TestTitle = (TextView)view.findViewById(R.id.textTesttitle);
              cardView=(CardView) view.findViewById(R.id.card_view);
              testImageicon=(ImageView)view.findViewById(R.id.testImageicon);
+             cardView = (CardView)view.findViewById(R.id.card_view);
         }
     }
     }

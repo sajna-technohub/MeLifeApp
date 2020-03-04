@@ -88,7 +88,6 @@ int catid=0;
                     HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
                             examTxtQuestion, data.get(flag).getFirst_name(),getContext());
                     httpGetDrawableTask.execute(source);
-
                     return null;
                 }, null));
 
@@ -190,16 +189,16 @@ int catid=0;
         examTxtQuestion=v.findViewById(R.id.examTxtQuestion);
         examTxtQno=v.findViewById(R.id.examTxtQno);
          spinExam=v.findViewById(R.id.examSpinKit);
-         linearLayout=v.findViewById(R.id.check);
-         TextView textView=new TextView(getActivity());
-         textView.setBackgroundColor(Color.CYAN);
-         textView.setText("check check check");
-         textView.setTypeface(Typeface.SERIF,Typeface.BOLD);
-         textView.setPadding(10,40,0,0);
-         textView.setTextColor(Color.BLUE);
-         textView.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-         textView.setLayoutParams(new ViewGroup.LayoutParams( ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-         linearLayout.addView(textView);
+//         linearLayout=v.findViewById(R.id.check);
+//         TextView textView=new TextView(getActivity());
+//         textView.setBackgroundColor(Color.CYAN);
+//         textView.setText("check check check");
+//         textView.setTypeface(Typeface.SERIF,Typeface.BOLD);
+//         textView.setPadding(10,40,0,0);
+//         textView.setTextColor(Color.BLUE);
+//         textView.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+//         textView.setLayoutParams(new ViewGroup.LayoutParams( ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//         linearLayout.addView(textView);
 
     }
 
@@ -376,7 +375,8 @@ int catid=0;
     }
 
     @Override
-    public void showDialog(DialogFragment dialogFragment) {
+    public void showDialog(DialogFragment dialogFragment)
+    {
 
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("dialog");
@@ -411,7 +411,8 @@ int catid=0;
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
     }

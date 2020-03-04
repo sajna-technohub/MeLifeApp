@@ -1,5 +1,6 @@
 package com.technohub.melifeapp.Interfaces;
 
+import com.technohub.melifeapp.models.ExamRequest;
 import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.Tests;
 import com.technohub.melifeapp.models.User;
@@ -7,7 +8,8 @@ import com.technohub.melifeapp.models.User;
 import java.util.List;
 
 public interface Itestcategory {
-    interface View {
+    interface View
+    {
 
         void init();
 
@@ -19,6 +21,8 @@ public interface Itestcategory {
 
         void loadTestList(TestcategoryResponse testlist);
 
+        void loadNoQns();
+
 
     }
     interface Presenter {
@@ -27,6 +31,7 @@ public interface Itestcategory {
 
         void load(User user);
 
+        void initiateExam();
     }
 
     }

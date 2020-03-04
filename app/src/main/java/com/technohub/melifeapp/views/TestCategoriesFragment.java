@@ -1,6 +1,7 @@
 package com.technohub.melifeapp.views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.technohub.melifeapp.Interfaces.Itestcategory;
@@ -39,7 +41,8 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
 
         v=inflater.inflate(R.layout.fragment_test__categories, container, false);
 
@@ -49,8 +52,8 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
          userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
 
          User user=new User();
-         user.setUser_email(email);
-         user.setUserid(userid);
+        user.setUser_email(email);
+        user.setUserid(userid);
 
         testCategoryPresenter = new TestCategoryPresenter(this,user);
         testCategoryPresenter.created();
@@ -66,12 +69,14 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     }
 
     @Override
-    public void initClicks() {
+    public void initClicks()
+    {
 
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(Context context)
+    {
         super.onAttach(context);
 
     }
@@ -79,6 +84,12 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     @Override
     public void onDetach() {
         super.onDetach();
+
+    }
+
+    @Override
+    public void loadNoQns()
+    {
 
     }
 

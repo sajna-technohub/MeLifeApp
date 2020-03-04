@@ -3,6 +3,8 @@ package com.technohub.melifeapp.services;
 import android.database.Observable;
 
 import com.technohub.melifeapp.classes.Root;
+import com.technohub.melifeapp.models.ExamRequest;
+import com.technohub.melifeapp.models.ExamResponse;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.ProfileResponse;
 import com.technohub.melifeapp.models.RegisterResponse;
@@ -65,6 +67,12 @@ public interface IRetrofitApi {
     @Multipart
     @POST("uploadimage")
     Call<User> uploadImage(@Part("profile") RequestBody file, @Part("userid") RequestBody userid);
+
+    /*for  Get examinitiate*/
+    @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
+    @POST("displayquestions")
+    Call<ExamResponse> displayquestions(@Body ExamRequest examRequest);
+
 
 }
 
