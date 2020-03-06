@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.technohub.melifeapp.Interfaces.Itestcategory;
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.models.ExamRequest;
 import com.technohub.melifeapp.models.TestcategoryResponse;
@@ -26,15 +27,17 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
    Context context;
    ImageView testImageicon;
    ExamRequest examRequest;
-
-    public TestAdapter(TestcategoryResponse testDataModel,Context con) {
+    private Itestcategory.View view;
+    public TestAdapter(TestcategoryResponse testDataModel,Itestcategory.View view,Context con) {
 
         this.testDataModel = testDataModel;
+        this.view=view;
         this.context=con;
     }
 
     @Override
-    public TestAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public TestAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i)
+    {
 
         view1  = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, viewGroup, false);
         return new ViewHolder(view1);
@@ -47,13 +50,13 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
         examRequest=new ExamRequest();
         Viewholder.TestTitle.setText(testDataModel.getData().get(i).test_name);
         String test_id=testDataModel.getData().get(i).getTest_id()+"";
-        Log.e("adapter",test_id);
+        Log.e("adapter_test_id",test_id);
         String examid=testDataModel.getData().get(i).getExam_id()+"";
-        Log.e("adapter",examid);
+        Log.e("adapter_exam_id",examid);
         String com=testDataModel.getData().get(i).getCmplts_status()+"";
-        Log.e("adapter",com);
+        Log.e("adaptergetcompsttaus",com);
         String userid=testDataModel.getUserid()+"";
-        Log.e("adapter",userid);
+        Log.e("adapter_userid",userid);
         Viewholder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,11 +66,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
                 examRequest.setUser_email(testDataModel.getUseremail());
                 examRequest.setDeviceToken("1");
                 examRequest.setDeviceType("gkg");
-                new TestCategoryPresenter(examRequest).initiateExam();
+                new TestCategoryPresenter(examRequest,view).initiateExam();
             }
         });
-
-
 
         if(test_id.equals("8"))
         {

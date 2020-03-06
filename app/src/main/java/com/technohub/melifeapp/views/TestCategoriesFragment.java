@@ -1,15 +1,16 @@
 package com.technohub.melifeapp.views;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,6 @@ import com.technohub.melifeapp.models.Tests;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.presenter.TestCategoryPresenter;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class TestCategoriesFragment extends Fragment implements Itestcategory.View {
@@ -88,15 +87,47 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     }
 
     @Override
-    public void loadNoQns()
+    public void loadNoQnsFragment()
     {
+        Log.e("load","No qn fragment");
+        ShowNoQuestionsFragment showNoQuestionsFragment=new ShowNoQuestionsFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.testcatlayout, showNoQuestionsFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void loadExamFragment(String exam_id,String test_id) {
+        Log.e("load","exam fragment");
+        ExamFragment examFragment=new ExamFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("exam_id",exam_id);
+        bundle.putString("test_id",test_id);
+        examFragment.setArguments(bundle);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.testcatlayout, examFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+    @Override
+    public void loadReportFragment() {
+        Log.e("load","exam fragment");
+        ReportFragment reportFragment=new ReportFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.testcatlayout, reportFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
 
     }
 
     @Override
     public void loadTestList(TestcategoryResponse testlist) {
+        Log.e("load","testlist");
         this.testcategoryResponse=testlist;
-        RecyclerView.Adapter adapter = new TestAdapter(testcategoryResponse,getContext());
+
+        RecyclerView.Adapter adapter = new TestAdapter(testcategoryResponse,this,getContext());
         recyclerView.setAdapter(adapter);
     }
 

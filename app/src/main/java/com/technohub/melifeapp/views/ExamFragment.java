@@ -2,7 +2,6 @@ package com.technohub.melifeapp.views;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -15,7 +14,6 @@ import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +27,7 @@ import com.github.ybq.android.spinkit.SpinKitView;
 import com.skydoves.elasticviews.ElasticButton;
 import com.technohub.melifeapp.Interfaces.IExam;
 import com.technohub.melifeapp.R;
-import com.technohub.melifeapp.classes.Data;
+import com.technohub.melifeapp.classes.DataDATA;
 import com.technohub.melifeapp.classes.HtmlImgConverter;
 import com.technohub.melifeapp.presenter.ExamPresenter;
 import com.technohub.melifeapp.views.ui.home.HomeFragment;
@@ -49,12 +47,12 @@ int catid=0;
      int flag=0;
     DialogFragment dialogFragment;
     private static int TIME_OUT = 1000;
-    List<Data> data=new ArrayList<>();
+    List<DataDATA> data=new ArrayList<>();
     View v;
-        String htmlText = "Choose the image from the figure and answer the question <img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png'>";
-        String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-image-0013.gif";
-   ExamPresenter examPresenter;
-    Animation animation ;
+         String htmlText = "Choose the image from the figure and answer the question <img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png'>";
+         String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-image-0013.gif";
+         ExamPresenter examPresenter;
+         Animation animation ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,8 +62,14 @@ int catid=0;
         v.setBackgroundColor(Color.WHITE);
 
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.bounce_animation);
-
-        examPresenter = new ExamPresenter(this,htmlText);
+        Bundle args = getArguments();
+        if (args != null)
+        {
+            String exam_id=args.getString("exam_id");
+            String test_id=args.getString("test_id");
+            Log.e("exam fragment",exam_id+" "+test_id);
+        }
+        examPresenter = new ExamPresenter(this);
         examPresenter.created();
 
 //        examTxtQuestion.setText(data.get(flag).getFirst_name());
@@ -96,7 +100,8 @@ int catid=0;
         String img=data.get(flag).getOption1();
         boolean isFound = img.contains("img");
         Log.e("imgg",img);
-        if (isFound) {
+        if (isFound)
+        {
 
             Log.e("img","found");
             Log.e("img",img);
@@ -318,9 +323,9 @@ int catid=0;
         transaction.commit();
     }
     @Override
-    public void ShowQuestionList(List<Data> data) {
+    public void ShowQuestionList(List<DataDATA> data) {
         this.data=data;
-       for(Data d:this.data)
+       for(DataDATA d:this.data)
        {
            Log.e("plss",d.getFirst_name());
            Log.e("plss",""+d.getId());

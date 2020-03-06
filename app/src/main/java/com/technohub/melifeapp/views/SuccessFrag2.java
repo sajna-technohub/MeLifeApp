@@ -1,5 +1,6 @@
 package com.technohub.melifeapp.views;
 
+
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,8 +15,8 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-
 import androidx.fragment.app.DialogFragment;
+
 import com.technohub.melifeapp.R;
 
 public class SuccessFrag2 extends DialogFragment {

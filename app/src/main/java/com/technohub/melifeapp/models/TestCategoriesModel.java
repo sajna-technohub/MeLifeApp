@@ -4,7 +4,7 @@ public class TestCategoriesModel {
     String testtitle;
     public String DeviceType;
     public String DeviceToken;
-    public int user_id;
+    public String user_id;
     public String user_email;
 
     public TestCategoriesModel() {
@@ -38,11 +38,11 @@ public class TestCategoriesModel {
         DeviceToken = deviceToken;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 

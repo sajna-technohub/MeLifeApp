@@ -5,9 +5,7 @@ import android.content.Context;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import com.technohub.melifeapp.classes.Data;
-import com.technohub.melifeapp.classes.Root;
-import com.technohub.melifeapp.models.ErrorModel;
+import com.technohub.melifeapp.classes.DataDATA;
 
 import java.util.List;
 
@@ -23,7 +21,7 @@ public interface IExam {
 
         void showLoading();
 
-        void ShowQuestionList(List<Data> root);
+        void ShowQuestionList(List<DataDATA> root);
 
         void hideLoading();
 

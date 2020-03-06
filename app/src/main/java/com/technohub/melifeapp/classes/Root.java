@@ -12,7 +12,7 @@ public class Root
 
     private int total_pages;
 
-    private List<Data> data;
+    private List<DataDATA> data;
 
     public void setPage(int page){
         this.page = page;
@@ -38,10 +38,10 @@ public class Root
     public int getTotal_pages(){
         return this.total_pages;
     }
-    public void setData(List<Data> data){
+    public void setData(List<DataDATA> data){
         this.data = data;
     }
-    public List<Data> getData(){
+    public List<DataDATA> getData(){
         return this.data;
     }
 }

@@ -1,6 +1,6 @@
 package com.technohub.melifeapp.classes;
 
-public class Data
+public class DataDATA
 {
     private int id;
 
@@ -48,7 +48,7 @@ public class Data
         return this.avatar;
     }
 
-    public Data(int id, String email, String first_name, String last_name, String avatar) {
+    public DataDATA(int id, String email, String first_name, String last_name, String avatar) {
         this.id = id;
         this.email = email;
         this.first_name = first_name;
@@ -56,7 +56,7 @@ public class Data
         this.avatar = avatar;
     }
 
-    public Data(int id, String first_name, String option1, String option2, String option3, String option4) {
+    public DataDATA(int id, String first_name, String option1, String option2, String option3, String option4) {
         this.id = id;
         this.first_name = first_name;
         this.option1 = option1;
@@ -65,7 +65,7 @@ public class Data
         this.option4 = option4;
     }
 
-    public Data(int id, String first_name) {
+    public DataDATA(int id, String first_name) {
         this.id = id;
         this.first_name = first_name;
     }

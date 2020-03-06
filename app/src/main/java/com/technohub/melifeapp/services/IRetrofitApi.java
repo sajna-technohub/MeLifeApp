@@ -5,6 +5,8 @@ import android.database.Observable;
 import com.technohub.melifeapp.classes.Root;
 import com.technohub.melifeapp.models.ExamRequest;
 import com.technohub.melifeapp.models.ExamResponse;
+import com.technohub.melifeapp.models.LoadQuestionRequest;
+import com.technohub.melifeapp.models.LoadQuestionResponse;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.ProfileResponse;
 import com.technohub.melifeapp.models.RegisterResponse;
@@ -72,6 +74,11 @@ public interface IRetrofitApi {
     @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
     @POST("displayquestions")
     Call<ExamResponse> displayquestions(@Body ExamRequest examRequest);
+
+    /*for  loading questions*/
+    @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
+    @POST("loadquestions")
+    Call<LoadQuestionResponse> loadquestions(@Body LoadQuestionRequest loadQuestionRequest);
 
 
 }

@@ -2,7 +2,6 @@ package com.technohub.melifeapp.views;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +21,8 @@ import com.github.ybq.android.spinkit.SpinKitView;
 import com.skydoves.elasticviews.ElasticButton;
 import com.technohub.melifeapp.Interfaces.IExam;
 import com.technohub.melifeapp.R;
-import com.technohub.melifeapp.classes.Data;
-import com.technohub.melifeapp.presenter.ExamPresenter;
+import com.technohub.melifeapp.classes.DataDATA;
+import com.technohub.melifeapp.presenter.TestPresenter;
 import com.technohub.melifeapp.views.ui.home.HomeFragment;
 
 import java.util.ArrayList;
@@ -48,13 +46,13 @@ public class MathViewFragment extends Fragment  implements IExam.View  {
 
     private static int TIME_OUT = 1000;
 
-    ExamPresenter examPresenter;
+    TestPresenter examPresenter;
 
     Animation animation ;
 
     View v;
 
-    List<Data> data=new ArrayList<>();
+    List<DataDATA> data=new ArrayList<>();
 
 
 
@@ -75,7 +73,7 @@ public class MathViewFragment extends Fragment  implements IExam.View  {
 
         String s="\\(x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}\\)";
 
-        examPresenter = new ExamPresenter(this,s);
+        examPresenter = new TestPresenter(this,s);
         examPresenter.created();
 
 //        examTxtQuestion.setText(data.get(flag).getFirst_name());
@@ -254,9 +252,9 @@ public class MathViewFragment extends Fragment  implements IExam.View  {
     }
 
     @Override
-    public void ShowQuestionList(List<Data> data) {
+    public void ShowQuestionList(List<DataDATA> data) {
         this.data=data;
-        for(Data d:this.data)
+        for(DataDATA d:this.data)
         {
             Log.e("plss",d.getFirst_name());
             Log.e("plss",""+d.getId());

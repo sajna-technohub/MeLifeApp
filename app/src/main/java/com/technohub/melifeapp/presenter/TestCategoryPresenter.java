@@ -30,8 +30,11 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
         this.user=user;
     }
 
-    public TestCategoryPresenter(ExamRequest examRequest) {
+    public TestCategoryPresenter(ExamRequest examRequest,Itestcategory.View view) {
+
         this.examRequest = examRequest;
+        this.view = view;
+
     }
 
     @Override
@@ -47,8 +50,13 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
 
         view.showLoading();
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-        testCategoriesModel.setUser_email("anitha@3gl.me");
-        testCategoriesModel.setUser_id(450);
+
+        testCategoriesModel.setUser_email(user.getUser_email());
+        testCategoriesModel.setUser_id(user.getUserid());
+
+        Log.e("Test category userid", user.getUserid());
+        Log.e("Test category email", user.getUser_email());
+
 
         Call<TestcategoryResponse> call = retrofitApi.dashboard(testCategoriesModel);
         call.enqueue(new Callback<TestcategoryResponse>() {
@@ -96,6 +104,9 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
     }
     @Override
     public void initiateExam() {
+        view.showLoading();
+        Log.e("Test category testid",examRequest.getTest_id());
+        Log.e("Test category userid", examRequest.getUser_id());
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
         Call<ExamResponse> call = retrofitApi.displayquestions(examRequest);
         call.enqueue(new Callback<ExamResponse>()
@@ -105,15 +116,30 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
             {
                 Log.e("presenter","kkvk");
                 examResponse=response.body();
-                if (response.isSuccessful() && response.body() != null)
+                if (response.isSuccessful() && response.body() .getMessage().equals("Success"))
                 {
-
                     Log.e("exam initiate","success");
-                    Log.e("exam initiate cs",response.body().getExamCompletionsts());
-                    Log.e("exam initiate qe",response.body().getQnExiststs()+"");
-                    if(response.body().getQnExiststs()==0)
+                    Log.e("exam completion ",response.body().getExamCompletionsts());
+                    Log.e("exam qn exists",response.body().getQnExiststs()+"");
+                    Log.e("exam response",examResponse.getDisplayData().getLast_qn_no());
+                    if(response.body().getExamCompletionsts().equals("N"))
                     {
-                        view.loadNoQns();
+                        if(response.body().getQnExiststs().equals("Y"))
+                      {
+                          Log.e("load exam","qnexists");
+
+                          view.loadExamFragment( response.body().getDisplayData().getExam_id(),response.body().getDisplayData().getTest_id());
+                      }
+                      else
+                      {
+                          Log.e("load noqns","no qns");
+                          view.loadNoQnsFragment();
+                      }
+                    }
+                    else if(response.body().getExamCompletionsts().equals('Y'))
+                    {
+                        Log.e("load report","status y");
+                        view.loadReportFragment();
                     }
 
                 }
@@ -121,13 +147,13 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
                 {
                     Log.e("exam initiate","no res");
                 }
-
+                view.hideLoading();
             }
 
             @Override
             public void onFailure(Call<ExamResponse> call, Throwable t)
             {
-//                view.hideLoading();
+                view.hideLoading();
             }
 
         });
