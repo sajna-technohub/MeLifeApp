@@ -121,15 +121,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical">
+
                     <com.github.ybq.android.spinkit.SpinKitView
                         android:id="@+id/loginSpinKit"
-                        android:layout_width="@dimen/dimen_40"
-                        android:layout_height="@dimen/dimen_40"
                         style="@style/SpinKitView.Small.WanderingCubes"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
                         app:SpinKit_Color="@color/colorPrimaryDark"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="visible"/>
+                        app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="fill_parent"

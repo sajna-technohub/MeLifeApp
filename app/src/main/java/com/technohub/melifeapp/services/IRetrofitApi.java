@@ -38,10 +38,6 @@ public interface IRetrofitApi {
     @POST("signin")
     Call<LoginResponse> Login(@Body User user);
 
-    /*for getting question in exam fragment*/
-    @Headers({"Accept: application/json"})
-    @GET("users?")
-    Call<Root> getQuestions(@Query("page") String page);
 
     //    forgotpassord
       @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
@@ -79,7 +75,6 @@ public interface IRetrofitApi {
     @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
     @POST("loadquestions")
     Call<LoadQuestionResponse> loadquestions(@Body LoadQuestionRequest loadQuestionRequest);
-
 
 }
 

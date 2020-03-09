@@ -1,19 +1,22 @@
 package com.technohub.melifeapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class LoadQuestionResponse {
+public class LoadQuestionResponse implements Parcelable {
 
-    private float ErrorCode;
+    private String ErrorCode;
     private String Message;
     private String pagination;
     ArrayList< TotalQuestionsModel > examquestionData = new ArrayList < TotalQuestionsModel > ();
-    private float total_no_questions;
+    private String total_no_questions;
     private String test_id;
-    private float limit;
-    private float remainCount;
-    private float reviewCount;
-    private float log_id;
+    private String limit;
+    private String remainCount;
+    private String reviewCount;
+    private String log_id;
     Qtn_time_taken Qtn_time_takenObject;
     private String is_popup_display;
     private String idle_log_id;
@@ -21,13 +24,66 @@ public class LoadQuestionResponse {
     private String log_option_id;
     private String log_attended_time;
     private String last_question_id;
+    private String no_of_options_current_questions;
+    private String imgStatusQns;
+    private String imgStatusOpts;
 
-    public float getErrorCode() {
-        return ErrorCode;
+
+    protected LoadQuestionResponse(Parcel in) {
+        ErrorCode = in.readString();
+        Message = in.readString();
+        pagination = in.readString();
+        total_no_questions = in.readString();
+        test_id = in.readString();
+        limit = in.readString();
+        remainCount = in.readString();
+        reviewCount = in.readString();
+        log_id = in.readString();
+        is_popup_display = in.readString();
+        idle_log_id = in.readString();
+        log_qn_id = in.readString();
+        log_option_id = in.readString();
+        log_attended_time = in.readString();
+        last_question_id = in.readString();
+        no_of_options_current_questions = in.readString();
+        imgStatusQns = in.readString();
+        imgStatusOpts = in.readString();
     }
 
-    public void setErrorCode(float errorCode) {
-        ErrorCode = errorCode;
+    public static final Creator<LoadQuestionResponse> CREATOR = new Creator<LoadQuestionResponse>() {
+        @Override
+        public LoadQuestionResponse createFromParcel(Parcel in) {
+            return new LoadQuestionResponse(in);
+        }
+
+        @Override
+        public LoadQuestionResponse[] newArray(int size) {
+            return new LoadQuestionResponse[size];
+        }
+    };
+
+    public String getNo_of_options_current_questions() {
+        return no_of_options_current_questions;
+    }
+
+    public void setNo_of_options_current_questions(String no_of_options_current_questions) {
+        this.no_of_options_current_questions = no_of_options_current_questions;
+    }
+
+    public String getImgStatusQns() {
+        return imgStatusQns;
+    }
+
+    public void setImgStatusQns(String imgStatusQns) {
+        this.imgStatusQns = imgStatusQns;
+    }
+
+    public String getImgStatusOpts() {
+        return imgStatusOpts;
+    }
+
+    public void setImgStatusOpts(String imgStatusOpts) {
+        this.imgStatusOpts = imgStatusOpts;
     }
 
     public String getMessage() {
@@ -50,17 +106,59 @@ public class LoadQuestionResponse {
         return examquestionData;
     }
 
+    public String getErrorCode() {
+        return ErrorCode;
+    }
+
+    public void setErrorCode(String errorCode) {
+        ErrorCode = errorCode;
+    }
+
+    public String getTotal_no_questions() {
+        return total_no_questions;
+    }
+
+    public void setTotal_no_questions(String total_no_questions) {
+        this.total_no_questions = total_no_questions;
+    }
+
+    public String getLimit() {
+        return limit;
+    }
+
+    public void setLimit(String limit) {
+        this.limit = limit;
+    }
+
+    public String getRemainCount() {
+        return remainCount;
+    }
+
+    public void setRemainCount(String remainCount) {
+        this.remainCount = remainCount;
+    }
+
+    public String getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(String reviewCount) {
+        this.reviewCount = reviewCount;
+    }
+
+    public String getLog_id() {
+        return log_id;
+    }
+
+    public void setLog_id(String log_id) {
+        this.log_id = log_id;
+    }
+
     public void setExamquestionData(ArrayList<TotalQuestionsModel> examquestionData) {
         this.examquestionData = examquestionData;
     }
 
-    public float getTotal_no_questions() {
-        return total_no_questions;
-    }
 
-    public void setTotal_no_questions(float total_no_questions) {
-        this.total_no_questions = total_no_questions;
-    }
 
     public String getTest_id() {
         return test_id;
@@ -70,37 +168,14 @@ public class LoadQuestionResponse {
         this.test_id = test_id;
     }
 
-    public float getLimit() {
-        return limit;
-    }
 
-    public void setLimit(float limit) {
-        this.limit = limit;
-    }
 
-    public float getRemainCount() {
-        return remainCount;
-    }
 
-    public void setRemainCount(float remainCount) {
-        this.remainCount = remainCount;
-    }
 
-    public float getReviewCount() {
-        return reviewCount;
-    }
 
-    public void setReviewCount(float reviewCount) {
-        this.reviewCount = reviewCount;
-    }
 
-    public float getLog_id() {
-        return log_id;
-    }
 
-    public void setLog_id(float log_id) {
-        this.log_id = log_id;
-    }
+
 
     public Qtn_time_taken getQtn_time_takenObject() {
         return Qtn_time_takenObject;
@@ -156,5 +231,32 @@ public class LoadQuestionResponse {
 
     public void setLast_question_id(String last_question_id) {
         this.last_question_id = last_question_id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(ErrorCode);
+        dest.writeString(Message);
+        dest.writeString(pagination);
+        dest.writeString(total_no_questions);
+        dest.writeString(test_id);
+        dest.writeString(limit);
+        dest.writeString(remainCount);
+        dest.writeString(reviewCount);
+        dest.writeString(log_id);
+        dest.writeString(is_popup_display);
+        dest.writeString(idle_log_id);
+        dest.writeString(log_qn_id);
+        dest.writeString(log_option_id);
+        dest.writeString(log_attended_time);
+        dest.writeString(last_question_id);
+        dest.writeString(no_of_options_current_questions);
+        dest.writeString(imgStatusQns);
+        dest.writeString(imgStatusOpts);
     }
 }

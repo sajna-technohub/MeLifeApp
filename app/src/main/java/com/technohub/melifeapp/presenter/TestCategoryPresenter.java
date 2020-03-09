@@ -4,6 +4,8 @@ import android.util.Log;
 import com.technohub.melifeapp.Interfaces.Itestcategory;
 import com.technohub.melifeapp.models.ExamRequest;
 import com.technohub.melifeapp.models.ExamResponse;
+import com.technohub.melifeapp.models.LoadQuestionRequest;
+import com.technohub.melifeapp.models.LoadQuestionResponse;
 import com.technohub.melifeapp.models.TestCategoriesModel;
 import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.Tests;
@@ -123,12 +125,11 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
                     Log.e("exam qn exists",response.body().getQnExiststs()+"");
                     Log.e("exam response",examResponse.getDisplayData().getLast_qn_no());
                     if(response.body().getExamCompletionsts().equals("N"))
-                    {
-                        if(response.body().getQnExiststs().equals("Y"))
+                    { if(response.body().getQnExiststs().equals("Y"))
                       {
                           Log.e("load exam","qnexists");
-
-                          view.loadExamFragment( response.body().getDisplayData().getExam_id(),response.body().getDisplayData().getTest_id());
+                          getQuestionsFromServer(response.body().getDisplayData().getExam_id(),response.body().getDisplayData().getTest_id(),examRequest.getUser_id(),examRequest.getUser_email(),"0","1","kgk","0");
+//
                       }
                       else
                       {
@@ -158,5 +159,57 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
 
         });
 
+    }
+
+    public void getQuestionsFromServer(String exam_id,String test_id,String user_id,String user_email,String logid,String DeviceType,String DeviceToken,String record ) {
+
+        Log.e("in exam presenter","get method");
+        Log.e("in load qns exid",exam_id+"test "+test_id+" user"+user_id+" email "+user_email+" logid "+logid+"rec"+record);
+        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+        LoadQuestionRequest loadQuestionRequest=new LoadQuestionRequest();
+        loadQuestionRequest.setExam_id(exam_id);
+        loadQuestionRequest.setTest_id(test_id);
+        loadQuestionRequest.setUser_id(user_id);
+        loadQuestionRequest.setUser_email(user_email);
+        loadQuestionRequest.setLogid(logid);
+        loadQuestionRequest.setDeviceType(DeviceType);
+        loadQuestionRequest.setDeviceToken(DeviceToken);
+        loadQuestionRequest.setRecord(record);
+        Call<LoadQuestionResponse> call = retrofitApi.loadquestions(loadQuestionRequest);
+        call.enqueue(new Callback<LoadQuestionResponse>() {
+            @Override
+            public void onResponse(Call<LoadQuestionResponse> call, Response<LoadQuestionResponse> response) {
+                LoadQuestionResponse loadQuestionResponse = response.body();
+                if (response.isSuccessful() && response.body() != null)
+                {
+                    Log.e("in exam presenter","got response");
+                    if(response.body().getMessage().equals("success".trim()))
+                    {
+                        Log.e("load qns logid", loadQuestionResponse.getIdle_log_id());
+                        Log.e("load qns noqns", loadQuestionResponse.getTotal_no_questions());
+                        Log.e("load qns pop", loadQuestionResponse.getIs_popup_display());
+                        Log.e("load qns lmt", loadQuestionResponse.getLimit());
+                        Log.e("load qns revcnt", loadQuestionResponse.getReviewCount());
+                        Log.e("load qns log_opid", loadQuestionResponse.getLog_option_id());
+
+                        view.loadExamFragment(loadQuestionResponse);
+
+
+
+                    }
+                    else
+                    {
+
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoadQuestionResponse> call, Throwable t)
+            {
+
+            }
+        });
     }
 }

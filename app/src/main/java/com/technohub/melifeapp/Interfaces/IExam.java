@@ -6,6 +6,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.technohub.melifeapp.classes.DataDATA;
+import com.technohub.melifeapp.models.LoadQuestionResponse;
 
 import java.util.List;
 
@@ -21,26 +22,26 @@ public interface IExam {
 
         void showLoading();
 
-        void ShowQuestionList(List<DataDATA> root);
-
         void hideLoading();
 
         void goToNextFragment();
 
-        void setQuestion();
+        void setQuestion(LoadQuestionResponse loadQuestionResponse);
 
         void showDialog(DialogFragment fragment);
 
         void  selectAnswer();
 
          void LoadFragment(Fragment f);
+
+
     }
 
     interface Presenter {
 
         void created();
 
-        void getQuestionsFromServer();
+        void getQuestionsFromServer(String exam_id,String test_id,String user_id,String user_email,String logid,String DeviceType,String DeviceToken,String record );
 
 
 

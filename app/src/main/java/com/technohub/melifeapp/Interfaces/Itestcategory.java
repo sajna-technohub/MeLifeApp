@@ -3,6 +3,7 @@ package com.technohub.melifeapp.Interfaces;
 import android.content.Context;
 
 import com.technohub.melifeapp.models.ExamRequest;
+import com.technohub.melifeapp.models.LoadQuestionResponse;
 import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.Tests;
 import com.technohub.melifeapp.models.User;
@@ -27,7 +28,7 @@ public interface Itestcategory {
 
         void loadReportFragment();
 
-        void loadExamFragment(String exam_id,String test_id);
+        void loadExamFragment(LoadQuestionResponse loadQuestionResponse);
 
 
     }

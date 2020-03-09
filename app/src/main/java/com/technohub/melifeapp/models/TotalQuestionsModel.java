@@ -1,5 +1,7 @@
 package com.technohub.melifeapp.models;
 
+import java.util.ArrayList;
+
 public class TotalQuestionsModel {
     private String exam_question_id;
     private String question_order;
@@ -14,7 +16,34 @@ public class TotalQuestionsModel {
     private String section_name;
     private String description;
     private String test_name;
-    private All_questions all_questions;
+    ArrayList< All_questions > all_questions = new ArrayList < All_questions > ();
+    ArrayList < AnswerOptions > options = new ArrayList < AnswerOptions > ();
+    private String selected_option;
+
+
+    public ArrayList<All_questions> getAll_questions() {
+        return all_questions;
+    }
+
+    public void setAll_questions(ArrayList<All_questions> all_questions) {
+        this.all_questions = all_questions;
+    }
+
+    public ArrayList<AnswerOptions> getOptions() {
+        return options;
+    }
+
+    public void setOptions(ArrayList<AnswerOptions> options) {
+        this.options = options;
+    }
+
+    public String getSelected_option() {
+        return selected_option;
+    }
+
+    public void setSelected_option(String selected_option) {
+        this.selected_option = selected_option;
+    }
 
     public String getExam_question_id() {
         return exam_question_id;

@@ -20,6 +20,7 @@ import com.github.ybq.android.spinkit.SpinKitView;
 import com.technohub.melifeapp.Interfaces.Itestcategory;
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.classes.TestAdapter;
+import com.technohub.melifeapp.models.LoadQuestionResponse;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.Tests;
@@ -98,12 +99,11 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     }
 
     @Override
-    public void loadExamFragment(String exam_id,String test_id) {
+    public void loadExamFragment(LoadQuestionResponse loadQuestionResponse) {
         Log.e("load","exam fragment");
         ExamFragment examFragment=new ExamFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("exam_id",exam_id);
-        bundle.putString("test_id",test_id);
+        bundle.putParcelable("examResponse", loadQuestionResponse);
         examFragment.setArguments(bundle);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.testcatlayout, examFragment);

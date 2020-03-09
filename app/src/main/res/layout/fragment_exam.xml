@@ -88,24 +88,25 @@
             <TextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption1"
-                android:text="@string/answera"/>
+               />
             <TextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption2"
-                android:text="@string/answerb"/>
-            <com.skydoves.elasticviews.ElasticButton
+              />
+            <TextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption3"
-                android:text="@string/answerc"/>
+              />
 
-            <com.skydoves.elasticviews.ElasticButton
+            <TextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption4"
-                android:text="@string/answerd"/>
-            <com.skydoves.elasticviews.ElasticButton
+               />
+            <TextView
                 style="@style/style_answer_button"
+
                 android:id="@+id/examBtnOption5"
-                android:text="@string/answere"/>
+               />
         </LinearLayout>
 
 <!--<Space-->

@@ -29,6 +29,8 @@ import com.technohub.melifeapp.Interfaces.IExam;
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.classes.DataDATA;
 import com.technohub.melifeapp.classes.HtmlImgConverter;
+import com.technohub.melifeapp.models.LoadQuestionResponse;
+import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.presenter.ExamPresenter;
 import com.technohub.melifeapp.views.ui.home.HomeFragment;
 
@@ -38,17 +40,20 @@ import java.util.List;
 
 public class ExamFragment extends Fragment implements IExam.View {
 
-ElasticButton examBtnOption3,examBtnOption4,examBtnOption5;
+TextView examBtnOption3,examBtnOption4,examBtnOption5;
 TextView examBtnOption1,examBtnOption2;
 TextView examTxtQuestion,examTxtQno;
 SpinKitView spinExam;
 LinearLayout linearLayout;
 int catid=0;
+    LoadQuestionResponse loadQuestionResponse;
      int flag=0;
     DialogFragment dialogFragment;
     private static int TIME_OUT = 1000;
     List<DataDATA> data=new ArrayList<>();
     View v;
+    String userid,user_email;
+    String exam_id,test_id,logid;
          String htmlText = "Choose the image from the figure and answer the question <img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png'>";
          String urlimg="https://www.animatedimages.org/data/media/1574/animated-success-image-0013.gif";
          ExamPresenter examPresenter;
@@ -62,124 +67,145 @@ int catid=0;
         v.setBackgroundColor(Color.WHITE);
 
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.bounce_animation);
+
+
+        examPresenter=new ExamPresenter(this);
+        examPresenter.created();
+
         Bundle args = getArguments();
         if (args != null)
         {
-            String exam_id=args.getString("exam_id");
-            String test_id=args.getString("test_id");
-            Log.e("exam fragment",exam_id+" "+test_id);
+//             exam_id=args.getParcelable("examResponse");
+             loadQuestionResponse = (LoadQuestionResponse) args.getParcelable("examResponse");
+                  String c= loadQuestionResponse.getExamquestionData().get(flag).getQuestion_id();
+                  Log.e("obj",c);
+            examTxtQno.setText(c);
+            examTxtQuestion.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getQuestion()));
+            examBtnOption1.setText(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(0).getOption_descp());
+            examBtnOption2.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(1).getOption_descp()));
+            examBtnOption3.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(2).getOption_descp()));
+            examBtnOption4.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(3).getOption_descp()));
+            examBtnOption5.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(4).getOption_descp()));
         }
-        examPresenter = new ExamPresenter(this);
-        examPresenter.created();
+        userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
+        user_email=new LoginResponse().getSharedPreferences(getContext(),"email");
 
-//        examTxtQuestion.setText(data.get(flag).getFirst_name());
-//        examTxtQno.setText(data.get(flag).getId()+" ");
+        Log.e("Sessions Profile",userid+"  "+user_email);
+
 
         return v;
     }
 
     @Override
-    public void setQuestion()
+    public void setQuestion(LoadQuestionResponse loadQuestionResponse)
     {
-        examTxtQno.setText(data.get(flag).getId()+" ");
-//      examTxtQuestion.setText(data.get(flag).getFirst_name());
-        examTxtQuestion.setText(Html.fromHtml(data.get(flag).getFirst_name(),
-                source -> {
-
-                    Toast.makeText(getContext(), source,
-                            Toast.LENGTH_LONG).show();
-                            Log.e("image",source);
-                    HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
-                            examTxtQuestion, data.get(flag).getFirst_name(),getContext());
-                    httpGetDrawableTask.execute(source);
-                    return null;
-                }, null));
-
-        examTxtQuestion.setMovementMethod(LinkMovementMethod.getInstance());
-        Log.e("img",data.get(flag).getOption1());
-        String img=data.get(flag).getOption1();
-        boolean isFound = img.contains("img");
-        Log.e("imgg",img);
-        if (isFound)
-        {
-
-            Log.e("img","found");
-            Log.e("img",img);
-        }
-       if(img.indexOf("img") !=-1? true: false) //true
-        {
-            Log.e("img","it contains img");
-            examBtnOption1.setText(Html.fromHtml(data.get(flag).getOption1(),
-                    new Html.ImageGetter() {
-
-                        @Override
-                        public Drawable getDrawable(String source) {
-
-                            Toast.makeText(getContext(), source,
-                                    Toast.LENGTH_LONG).show();
-                            Log.e("image",source);
-                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
-                                    examBtnOption1, data.get(flag).getOption1(),getContext());
-                            httpGetDrawableTask.execute(source);
-
-                            return null;
-                        }
-
-                    }, null));
-
-            examBtnOption1.setMovementMethod(LinkMovementMethod.getInstance());
-
-            examBtnOption2.setText(Html.fromHtml(data.get(flag).getOption2(),
-                    new Html.ImageGetter() {
-
-                        @Override
-                        public Drawable getDrawable(String source) {
-
-                            Toast.makeText(getContext(), source,
-                                    Toast.LENGTH_LONG).show();
-                            Log.e("image",source);
-                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
-                                    examBtnOption2, data.get(flag).getOption2(),getContext());
-                            httpGetDrawableTask.execute(source);
-
-                            return null;
-                        }
-
-                    }, null));
-
-            examBtnOption2.setMovementMethod(LinkMovementMethod.getInstance());
-            examBtnOption3.setText(Html.fromHtml(data.get(flag).getOption3(),
-                    new Html.ImageGetter() {
-
-                        @Override
-                        public Drawable getDrawable(String source) {
-
-                            Toast.makeText(getContext(), source,
-                                    Toast.LENGTH_LONG).show();
-                            Log.e("image",source);
-                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
-                                    examBtnOption3, data.get(flag).getOption3(),getContext());
-                            httpGetDrawableTask.execute(source);
-
-                            return null;
-                        }
-
-                    }, null));
-
-            examBtnOption3.setMovementMethod(LinkMovementMethod.getInstance());
-        }
 
 
 
 
-        else {
-            Log.e("img","No img");
-            examBtnOption1.setText(data.get(flag).getOption1());
-            examBtnOption2.setText(data.get(flag).getOption2());
-            examBtnOption3.setText(data.get(flag).getOption3());
-            examBtnOption4.setText(data.get(flag).getOption4());
-        }
 
+//        examTxtQuestion.setText(Html.fromHtml(data.get(flag).getFirst_name(),
+//                source -> {
+//
+//                    Toast.makeText(getContext(), source,
+//                            Toast.LENGTH_LONG).show();
+//                            Log.e("image",source);
+//                    HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+//                            examTxtQuestion, data.get(flag).getFirst_name(),getContext());
+//                    httpGetDrawableTask.execute(source);
+//                    return null;
+//                }, null));
+//
+//        examTxtQuestion.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+
+
+
+//        Log.e("img",data.get(flag).getOption1());
+//        String img=data.get(flag).getOption1();
+//        boolean isFound = img.contains("img");
+//        Log.e("imgg",img);
+//        if (isFound)
+//        {
+//
+//            Log.e("img","found");
+//            Log.e("img",img);
+//        }
+//       if(img.indexOf("img") !=-1? true: false) //true
+//        {
+//            Log.e("img","it contains img");
+//            examBtnOption1.setText(Html.fromHtml(data.get(flag).getOption1(),
+//                    new Html.ImageGetter() {
+//
+//                        @Override
+//                        public Drawable getDrawable(String source) {
+//
+//                            Toast.makeText(getContext(), source,
+//                                    Toast.LENGTH_LONG).show();
+//                            Log.e("image",source);
+//                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+//                                    examBtnOption1, data.get(flag).getOption1(),getContext());
+//                            httpGetDrawableTask.execute(source);
+//
+//                            return null;
+//                        }
+//
+//                    }, null));
+//
+//            examBtnOption1.setMovementMethod(LinkMovementMethod.getInstance());
+//
+//            examBtnOption2.setText(Html.fromHtml(data.get(flag).getOption2(),
+//                    new Html.ImageGetter() {
+//
+//                        @Override
+//                        public Drawable getDrawable(String source) {
+//
+//                            Toast.makeText(getContext(), source,
+//                                    Toast.LENGTH_LONG).show();
+//                            Log.e("image",source);
+//                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+//                                    examBtnOption2, data.get(flag).getOption2(),getContext());
+//                            httpGetDrawableTask.execute(source);
+//
+//                            return null;
+//                        }
+//
+//                    }, null));
+//
+//            examBtnOption2.setMovementMethod(LinkMovementMethod.getInstance());
+//            examBtnOption3.setText(Html.fromHtml(data.get(flag).getOption3(),
+//                    new Html.ImageGetter() {
+//
+//                        @Override
+//                        public Drawable getDrawable(String source) {
+//
+//                            Toast.makeText(getContext(), source,
+//                                    Toast.LENGTH_LONG).show();
+//                            Log.e("image",source);
+//                            HtmlImgConverter httpGetDrawableTask = new HtmlImgConverter(
+//                                    examBtnOption3, data.get(flag).getOption3(),getContext());
+//                            httpGetDrawableTask.execute(source);
+//
+//                            return null;
+//                        }
+//
+//                    }, null));
+//
+//            examBtnOption3.setMovementMethod(LinkMovementMethod.getInstance());
+//        }
+//
+//
+//
+//
+//        else {
+//            Log.e("img","No img");
+//            examBtnOption1.setText(data.get(flag).getOption1());
+//            examBtnOption2.setText(data.get(flag).getOption2());
+//            examBtnOption3.setText(data.get(flag).getOption3());
+//            examBtnOption4.setText(data.get(flag).getOption4());
+//        }
+//
 
     }
 
@@ -322,17 +348,7 @@ int catid=0;
         transaction.addToBackStack(null);
         transaction.commit();
     }
-    @Override
-    public void ShowQuestionList(List<DataDATA> data) {
-        this.data=data;
-       for(DataDATA d:this.data)
-       {
-           Log.e("plss",d.getFirst_name());
-           Log.e("plss",""+d.getId());
 
-       }
-
-    }
 
     @Override
     public void onResume() {
