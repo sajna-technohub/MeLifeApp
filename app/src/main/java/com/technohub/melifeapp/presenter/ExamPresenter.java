@@ -1,17 +1,11 @@
 package com.technohub.melifeapp.presenter;
-
-
-
-import android.content.Context;
 import android.util.Log;
-
 import com.technohub.melifeapp.Interfaces.IExam;
 import com.technohub.melifeapp.models.LoadQuestionRequest;
 import com.technohub.melifeapp.models.LoadQuestionResponse;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.services.ApiClient;
 import com.technohub.melifeapp.services.IRetrofitApi;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -63,7 +57,7 @@ public class ExamPresenter implements IExam.Presenter {
                         Log.e("load qns log_opid", loadQuestionResponse.getLog_option_id());
 
                           view.hideLoading();
-                          view.setQuestion(loadQuestionResponse);
+
                     }
                     else
                     {

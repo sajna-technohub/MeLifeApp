@@ -51,12 +51,13 @@
 
 
     <!--Exam section-->
+    <string name="instruction">Instructions</string>
     <string name="answera">A. Like extremely </string>
     <string name="answerb">B. Like very much </string>
     <string name="answerc">  C. Neutral </string>
     <string name="answerd"> D. Dislike very much </string>
     <string name="answere">E. Dislike extremely</string>
-    <string name="terms"> I have read and understood the instructions.</string>
+    <string name="terms"> Agree with the instruction.</string>
     <string name="Title_proceed">Proceed</string>
 
     <string name="Title_Qn">Question</string>

@@ -192,9 +192,7 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
                         Log.e("load qns revcnt", loadQuestionResponse.getReviewCount());
                         Log.e("load qns log_opid", loadQuestionResponse.getLog_option_id());
 
-                        view.loadExamFragment(loadQuestionResponse);
-
-
+                        view.loadExamFragment(loadQuestionResponse,exam_id);
 
                     }
                     else

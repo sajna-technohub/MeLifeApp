@@ -28,7 +28,7 @@ public interface Itestcategory {
 
         void loadReportFragment();
 
-        void loadExamFragment(LoadQuestionResponse loadQuestionResponse);
+        void loadExamFragment(LoadQuestionResponse loadQuestionResponse,String exam_id);
 
 
     }

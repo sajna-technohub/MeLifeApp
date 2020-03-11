@@ -2,10 +2,12 @@ package com.technohub.melifeapp.views.ui.home;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -16,7 +18,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.models.LoginResponse;
+import com.technohub.melifeapp.views.ReportFragment;
 import com.technohub.melifeapp.views.TestCategoriesFragment;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class HomeFragment extends Fragment {
 
@@ -61,13 +69,38 @@ public class HomeFragment extends Fragment {
         homeCardReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                fragment=new ReportFragment();
+                loadFragment(fragment);
             }
         });
 
         homeCardFaq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String startDate = "20/03/11 17:15:15";
+                String stopDate = "20/03/11 17:16:05";
+
+// Custom date format
+                SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+
+                Date d1 = null;
+                Date d2 = null;
+                try {
+                    d1 = format.parse(startDate);
+                    d2 = format.parse(stopDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+// Get msec from each, and subtract.
+                long diff = d2.getTime() - d1.getTime();
+                long diffSeconds = diff / 1000;
+                long diffMinutes = diff / (60 * 1000);
+                long diffHours = diff / (60 * 60 * 1000);
+                Log.v("Time in seconds: " , diffSeconds + " seconds.");
+                Log.v("Time in minutes: " + diffMinutes , " minutes.");
+                Log.v("Time in hours: " + diffHours , " hours.");
+
 
             }
         });

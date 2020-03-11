@@ -4,11 +4,8 @@ import android.content.Context;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-
-import com.technohub.melifeapp.classes.DataDATA;
 import com.technohub.melifeapp.models.LoadQuestionResponse;
 
-import java.util.List;
 
 public interface IExam {
 
@@ -26,13 +23,12 @@ public interface IExam {
 
         void goToNextFragment();
 
-        void setQuestion(LoadQuestionResponse loadQuestionResponse);
 
         void showDialog(DialogFragment fragment);
 
         void  selectAnswer();
 
-         void LoadFragment(Fragment f);
+        void LoadFragment(Fragment f);
 
 
     }

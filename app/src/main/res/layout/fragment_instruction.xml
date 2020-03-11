@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/instruction_layout"
+    android:orientation="vertical"
+    >
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/instruction"
+                android:layout_marginTop="50dp"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold"
+                android:textSize="@dimen/margin_20" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_40"
+                android:typeface="serif"
+                android:id="@+id/instructionTxtdescription"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="7dp"
+                android:textColor="@color/darkblue"
+                android:textSize="15dp" />
+
+
+
+            <CheckBox
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_25"
+                android:textColor="@color/darkblue"
+                android:buttonTint="@color/darkblue"
+                android:textSize="@dimen/dimen_15"
+                android:id="@+id/instructionCheck"
+                android:typeface="serif"
+                android:text="@string/terms"
+                />
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/instructionSpinKit"
+                style="@style/SpinKitView.Small.Wave"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/margin_20"
+                android:layout_height="@dimen/dimen_40"
+                android:visibility="gone"
+                app:SpinKit_Color="@color/colorPrimaryDark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.skydoves.elasticviews.ElasticButton
+                android:layout_width="135dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="50dp"
+                android:background="@drawable/button_drawable"
+                android:text="@string/Title_proceed"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:id="@+id/instructionBtnProceed"
+                android:layout_marginTop="@dimen/dimen_35"
+                android:textColor="@color/darkblue"
+                android:textSize="17sp"
+                app:button_cornerRadius="4dp"
+                app:button_duration="250"
+                app:button_scale="0.87" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

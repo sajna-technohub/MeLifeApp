@@ -34,6 +34,10 @@ import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.presenter.ExamPresenter;
 import com.technohub.melifeapp.views.ui.home.HomeFragment;
 
+import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+import org.sufficientlysecure.htmltextview.OnClickATagListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +47,7 @@ public class ExamFragment extends Fragment implements IExam.View {
 TextView examBtnOption3,examBtnOption4,examBtnOption5;
 TextView examBtnOption1,examBtnOption2;
 TextView examTxtQuestion,examTxtQno;
+HtmlTextView htmlTextView;
 SpinKitView spinExam;
 LinearLayout linearLayout;
 int catid=0;
@@ -73,32 +78,60 @@ int catid=0;
         examPresenter.created();
 
         Bundle args = getArguments();
-        if (args != null)
-        {
-//             exam_id=args.getParcelable("examResponse");
-             loadQuestionResponse = (LoadQuestionResponse) args.getParcelable("examResponse");
-                  String c= loadQuestionResponse.getExamquestionData().get(flag).getQuestion_id();
-                  Log.e("obj",c);
-            examTxtQno.setText(c);
-            examTxtQuestion.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getQuestion()));
-            examBtnOption1.setText(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(0).getOption_descp());
-            examBtnOption2.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(1).getOption_descp()));
-            examBtnOption3.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(2).getOption_descp()));
-            examBtnOption4.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(3).getOption_descp()));
-            examBtnOption5.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(4).getOption_descp()));
-        }
-        userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
-        user_email=new LoginResponse().getSharedPreferences(getContext(),"email");
+
+        if (args != null) {
+
+                loadQuestionResponse = (LoadQuestionResponse) args.getParcelable("examResponse");
+
+
+                //load exam
+
+                //                    htmlTextView.setHtml("<h2>Hello wold</h2><img src=\"https://homepages.cae.wisc.edu/~ece533/images/fruits.png\"/>",
+                //                 new HtmlHttpImageGetter(htmlTextView));
+
+                examTxtQno.setText(loadQuestionResponse.getExamquestionData().get(flag).getQuestion_order());
+                examTxtQuestion.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getQuestion()));
+
+                Log.e("no_options", loadQuestionResponse.getNo_of_options_current_questions());
+
+                if (loadQuestionResponse.getNo_of_options_current_questions().equals("2")) {
+                    examBtnOption1.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(0).getOption_descp()));
+                    examBtnOption2.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(1).getOption_descp()));
+                    examBtnOption3.setVisibility(View.GONE);
+                    examBtnOption4.setVisibility(View.GONE);
+                    examBtnOption5.setVisibility(View.GONE);
+                } else if (loadQuestionResponse.getNo_of_options_current_questions().equals("3")) {
+                    examBtnOption1.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(0).getOption_descp()));
+                    examBtnOption2.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(1).getOption_descp()));
+                    examBtnOption3.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(2).getOption_descp()));
+                    examBtnOption4.setVisibility(View.GONE);
+                    examBtnOption5.setVisibility(View.GONE);
+                } else if (loadQuestionResponse.getNo_of_options_current_questions().equals("4")) {
+                    examBtnOption1.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(0).getOption_descp()));
+                    examBtnOption2.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(1).getOption_descp()));
+                    examBtnOption3.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(2).getOption_descp()));
+                    examBtnOption4.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(3).getOption_descp()));
+                    examBtnOption5.setVisibility(View.GONE);
+                } else {
+                    examBtnOption1.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(0).getOption_descp()));
+                    examBtnOption2.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(1).getOption_descp()));
+                    examBtnOption3.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(2).getOption_descp()));
+                    examBtnOption4.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(3).getOption_descp()));
+                    examBtnOption5.setText(Html.fromHtml(loadQuestionResponse.getExamquestionData().get(flag).getOptions().get(4).getOption_descp()));
+                }
+            }
+
+            userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
+            user_email=new LoginResponse().getSharedPreferences(getContext(),"email");
 
         Log.e("Sessions Profile",userid+"  "+user_email);
-
 
         return v;
     }
 
-    @Override
-    public void setQuestion(LoadQuestionResponse loadQuestionResponse)
-    {
+//    @Override
+//    public void setQuestion(LoadQuestionResponse loadQuestionResponse)
+//    {
 
 
 
@@ -207,7 +240,7 @@ int catid=0;
 //        }
 //
 
-    }
+//    }
 
     @Override
     public void init() {
@@ -217,6 +250,7 @@ int catid=0;
         examBtnOption3=v.findViewById(R.id.examBtnOption3);
         examBtnOption4=v.findViewById(R.id.examBtnOption4);
         examBtnOption5=v.findViewById(R.id.examBtnOption5);
+//        htmlTextView=v.findViewById(R.id.examTxtQuestion);
         examTxtQuestion=v.findViewById(R.id.examTxtQuestion);
         examTxtQno=v.findViewById(R.id.examTxtQno);
          spinExam=v.findViewById(R.id.examSpinKit);

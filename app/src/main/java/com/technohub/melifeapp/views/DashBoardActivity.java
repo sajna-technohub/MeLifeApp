@@ -64,7 +64,6 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         NavigationUI.setupWithNavController(navView, navController1);
 
         loadFragment(new HomeFragment());
-
         navView.setOnNavigationItemSelectedListener(this);
     }
     @Override
@@ -81,11 +80,11 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
 //                    fragment = new ExamFragment();
                 break;
             case R.id.navigation_like:
-                if(flag==1)
-                fragment = new MathViewFragment();
-                else
-
-                    fragment = new ExamFragment();
+//                if(flag==1)
+//                fragment = new MathViewFragment();
+//                else
+//
+//                    fragment = new ExamFragment();
                 break;
             case R.id.navigation_user:
                 fragment = new ProfileFragment();

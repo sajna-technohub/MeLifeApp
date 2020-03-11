@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/reveal_view"
     tools:context=".views.SuccessFrag2">
+
     <ImageView
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_width="wrap_content"

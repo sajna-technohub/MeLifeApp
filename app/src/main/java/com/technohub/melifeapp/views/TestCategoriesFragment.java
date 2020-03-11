@@ -99,14 +99,31 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     }
 
     @Override
-    public void loadExamFragment(LoadQuestionResponse loadQuestionResponse) {
-        Log.e("load","exam fragment");
+    public void loadExamFragment(LoadQuestionResponse loadQuestionResponse,String exam_id) {
+
+        Log.e("load","exam  or instruction fragment");
+
         ExamFragment examFragment=new ExamFragment();
+        InstructionFragment instructionFragment=new InstructionFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("examResponse", loadQuestionResponse);
-        examFragment.setArguments(bundle);
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.testcatlayout, examFragment);
+        FragmentTransaction transaction;
+
+        if (loadQuestionResponse.getExamquestionData().get(0).getIs_instruction_display().equals("0")) {
+
+             bundle.putParcelable("examResponse", loadQuestionResponse);
+             bundle.putString("exam_id",exam_id);
+             instructionFragment.setArguments(bundle);
+             transaction = getFragmentManager().beginTransaction();
+             transaction.replace(R.id.testcatlayout, instructionFragment);
+        }
+        else
+        {
+             bundle.putParcelable("examResponse", loadQuestionResponse);
+             examFragment.setArguments(bundle);
+             transaction = getFragmentManager().beginTransaction();
+             transaction.replace(R.id.testcatlayout, examFragment);
+        }
+
         transaction.addToBackStack(null);
         transaction.commit();
 
