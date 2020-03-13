@@ -2,6 +2,7 @@ package com.technohub.melifeapp.views.ui.home;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,9 @@ import com.technohub.melifeapp.views.TestCategoriesFragment;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class HomeFragment extends Fragment {
 
@@ -77,29 +80,49 @@ public class HomeFragment extends Fragment {
         homeCardFaq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String startDate = "20/03/11 17:15:15";
-                String stopDate = "20/03/11 17:16:05";
 
-// Custom date format
-                SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+                Date today = Calendar.getInstance().getTime();
+                   String s= dateFormat.format(today);
+                        Log.e("date",s);
 
-                Date d1 = null;
-                Date d2 = null;
-                try {
-                    d1 = format.parse(startDate);
-                    d2 = format.parse(stopDate);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Do something after 5s = 5000ms
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+                        Date today = Calendar.getInstance().getTime();
+                        String s= dateFormat.format(today);
+                        Log.e("date af delay",s);
+                    }
+                }, 5000);
 
-// Get msec from each, and subtract.
-                long diff = d2.getTime() - d1.getTime();
-                long diffSeconds = diff / 1000;
-                long diffMinutes = diff / (60 * 1000);
-                long diffHours = diff / (60 * 60 * 1000);
-                Log.v("Time in seconds: " , diffSeconds + " seconds.");
-                Log.v("Time in minutes: " + diffMinutes , " minutes.");
-                Log.v("Time in hours: " + diffHours , " hours.");
+
+
+//                String startDate = "20/03/11 17:15:15";
+//                String stopDate = "20/03/11 17:16:05";
+//
+//// Custom date format
+//                SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+//
+//                Date d1 = null;
+//                Date d2 = null;
+//                try {
+//                    d1 = format.parse(startDate);
+//                    d2 = format.parse(stopDate);
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//
+//// Get msec from each, and subtract.
+//                long diff = d2.getTime() - d1.getTime();
+//                long diffSeconds = diff / 1000;
+//                long diffMinutes = diff / (60 * 1000);
+//                long diffHours = diff / (60 * 60 * 1000);
+//                Log.v("Time in seconds: " , diffSeconds + " seconds.");
+//                Log.v("Time in minutes: " + diffMinutes , " minutes.");
+//                Log.v("Time in hours: " + diffHours , " hours.");
 
 
             }

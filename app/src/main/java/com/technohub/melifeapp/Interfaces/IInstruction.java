@@ -12,8 +12,6 @@ public interface IInstruction {
         void hideLoading();
 
         void loadExamFragment();
-
-
     }
     interface Presenter
     {

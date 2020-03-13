@@ -37,9 +37,9 @@ public interface IExam {
 
         void created();
 
-        void getQuestionsFromServer(String exam_id,String test_id,String user_id,String user_email,String logid,String DeviceType,String DeviceToken,String record );
+        void saveAnswer(String exam_id,String test_id,String user_id,String user_email,String logid,String DeviceType,String DeviceToken,String record );
 
-
+        void saveanswerbeforeidealtime();
 
     }
 }

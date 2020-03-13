@@ -82,8 +82,6 @@ int catid=0;
         if (args != null) {
 
                 loadQuestionResponse = (LoadQuestionResponse) args.getParcelable("examResponse");
-
-
                 //load exam
 
                 //                    htmlTextView.setHtml("<h2>Hello wold</h2><img src=\"https://homepages.cae.wisc.edu/~ece533/images/fruits.png\"/>",

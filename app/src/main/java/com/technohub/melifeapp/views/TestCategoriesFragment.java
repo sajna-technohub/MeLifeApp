@@ -27,6 +27,7 @@ import com.technohub.melifeapp.models.Tests;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.presenter.TestCategoryPresenter;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class TestCategoriesFragment extends Fragment implements Itestcategory.View {
@@ -90,12 +91,16 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     @Override
     public void loadNoQnsFragment()
     {
-        Log.e("load","No qn fragment");
-        ShowNoQuestionsFragment showNoQuestionsFragment=new ShowNoQuestionsFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.testcatlayout, showNoQuestionsFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        new SweetAlertDialog(getContext(), SweetAlertDialog.NORMAL_TYPE)
+                .setContentText("No Questions Available")
+                .setConfirmText("Ok!")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.dismissWithAnimation();
+                    }
+                })
+                .show();
     }
 
     @Override
@@ -108,7 +113,7 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
         Bundle bundle = new Bundle();
         FragmentTransaction transaction;
 
-        if (loadQuestionResponse.getExamquestionData().get(0).getIs_instruction_display().equals("0")) {
+        if (loadQuestionResponse.getExamquestionData().get(0).getIs_instruction_display().equals("1")) {
 
              bundle.putParcelable("examResponse", loadQuestionResponse);
              bundle.putString("exam_id",exam_id);
@@ -162,8 +167,8 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
 
     @Override
     public void init() {
-        testSpinkit=v.findViewById(R.id.testSpinkit);
 
+        testSpinkit=v.findViewById(R.id.testSpinkit);
         recyclerView = (RecyclerView)v.findViewById(R.id.test_recycler_view);
     }
 }

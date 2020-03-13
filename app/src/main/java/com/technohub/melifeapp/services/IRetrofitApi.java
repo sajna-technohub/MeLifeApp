@@ -12,6 +12,8 @@ import com.technohub.melifeapp.models.LoadQuestionResponse;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.ProfileResponse;
 import com.technohub.melifeapp.models.RegisterResponse;
+import com.technohub.melifeapp.models.SaveAnswerRequest;
+import com.technohub.melifeapp.models.SaveAnswerResponse;
 import com.technohub.melifeapp.models.SignUpModel;
 import com.technohub.melifeapp.models.TestCategoriesModel;
 import com.technohub.melifeapp.models.TestcategoryResponse;
@@ -82,6 +84,17 @@ public interface IRetrofitApi {
     @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
     @POST("saveinstructionpopupstatus")
     Call<InstructionResponse> saveinstructionpopupstatus(@Body InstructionRequest instructionRequest);
+
+    /*for  save answer*/
+    @Headers({"Content-Type:application/json","X-Api-Key:16f79  4caa2ae9a38"})
+    @POST("saveanswer")
+    Call<SaveAnswerResponse> saveanswer(@Body SaveAnswerRequest saveAnswerRequest);
+
+    /*for  save answer b4 ideal time*/
+    @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
+    @POST("saveanswerbeforeidealtime")
+    Call<SaveAnswerResponse> saveanswerbeforeidealtime(@Body SaveAnswerRequest saveAnswerRequest);
+
 
 }
 
