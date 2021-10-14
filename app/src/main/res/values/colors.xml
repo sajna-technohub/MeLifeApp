@@ -54,7 +54,9 @@
 
     <color name="colorPrimaryLight">#B2DFDB</color>
     <color name="btn_green">#01a0f9</color>
+    <color name="color_blue">#18b1c3</color>
     <color name="txtcolor_green">#037b78</color>
+    <color name="color_indigo">#f8a875</color>
     <color name="btn_blue">#09c778</color>
 
     <color name="colorPrimaryText">#212121</color>
