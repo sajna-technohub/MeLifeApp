@@ -6,6 +6,8 @@ import com.technohub.melifeapp.models.LoadQuestionResponse;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.SaveAnswerRequest;
 import com.technohub.melifeapp.models.SaveAnswerResponse;
+import com.technohub.melifeapp.models.SaveExamReponse;
+import com.technohub.melifeapp.models.SaveExamRequest;
 import com.technohub.melifeapp.services.ApiClient;
 import com.technohub.melifeapp.services.IRetrofitApi;
 import retrofit2.Call;
@@ -15,64 +17,255 @@ import retrofit2.Response;
 public class ExamPresenter implements IExam.Presenter {
 
     private IExam.View view;
+    private String email;
 
-    public ExamPresenter(IExam.View view) {
+    public ExamPresenter(IExam.View view,String email) {
         this.view = view;
+        this.email=email;
+
     }
 
     @Override
-    public void created() {
+    public void created()
+    {
         Log.e("load","exam presenter");
         view.init();
         view.initClicks();
     }
 
     @Override
-    public void saveAnswer(String exam_id,String test_id,String user_id,String user_email,String logid,String DeviceType,String DeviceToken,String record ) {
+    public void saveAnswer(String qnorder,String exam_id,String test_id,String user_id ,String logid,String DeviceType,String DeviceToken,String quesid,String optid,String totqns ) {
+
         view.showLoading();
-        Log.e("in exam presenter","get method");
+        Log.e("Request","save answer");
+        Log.e("email",email);
+        Log.e("exam id",exam_id);
+        Log.e("testid",test_id);
+        Log.e("userid",user_id);
+        Log.e("qid",quesid);
+        Log.e("optid",optid);
+        Log.e("totqns",totqns);
+        Log.e("qnorder",qnorder);
+
+        if(totqns.equals(qnorder))
+        {
+//            submitexam(exam_id,user_id,email);
+            view.hideLoading();
+        }
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+
         SaveAnswerRequest saveAnswerRequest=new SaveAnswerRequest();
         saveAnswerRequest.setExam_id(exam_id);
-
+        saveAnswerRequest.setTest_id(test_id);
+        saveAnswerRequest.setUser_id(user_id);
+        saveAnswerRequest.setDeviceToken(DeviceToken);
+        saveAnswerRequest.setDeviceType(DeviceType);
+        saveAnswerRequest.setQuestion_id(quesid);
+        saveAnswerRequest.setLog_id("0");
+        saveAnswerRequest.setOption_id(optid);
+        saveAnswerRequest.setChoose_option(optid);
         Call<SaveAnswerResponse> call = retrofitApi.saveanswer(saveAnswerRequest);
         call.enqueue(new Callback<SaveAnswerResponse>() {
             @Override
             public void onResponse(Call<SaveAnswerResponse> call, Response<SaveAnswerResponse> response) {
                 SaveAnswerResponse saveAnswerResponse = response.body();
-                if (response.isSuccessful() && response.body() != null)
-                {
-                    Log.e("in exam presenter","got response");
-//                    if(response.body().getMessage().equals("success".trim()))
-                    {
-//                        Log.e("load qns logid", loadQuestionResponse.getIdle_log_id());
-//                        Log.e("load qns noqns", loadQuestionResponse.getTotal_no_questions());
-//                        Log.e("load qns pop", loadQuestionResponse.getIs_popup_display());
-//                        Log.e("load qns lmt", loadQuestionResponse.getLimit());
-//                        Log.e("load qns revcnt", loadQuestionResponse.getReviewCount());
-//                        Log.e("load qns log_opid", loadQuestionResponse.getLog_option_id());
+                Log.e("in exam presenter b4msg", saveAnswerResponse.getMessage());
+                if(response.isSuccessful()) {
+                    Log.e("in exam presenter", "save answer");
+                    Log.e("in exam presenter msg", saveAnswerResponse.getMessage());
 
-                          view.hideLoading();
+                    if (response.body().getMessage().equals("success".trim())) {
 
-                    }
-//                    else
-                    {
-//                        Log.e("Responseloadqns", loadQuestionResponse.getMessage());
+                        if(totqns.equals(qnorder))
+                        {
+                            Log.e("in exam presenter", "success");
+                            Log.e("save answer msg", saveAnswerResponse.getMessage());
+                            Log.e("save answer qn", saveAnswerResponse.getRecord().getQn_dts().getQuestion());
+                            Log.e("save answer qnid", saveAnswerResponse.getRecord().getQn_dts().getQuestion_id());
+                            Log.e("save answer optnid", saveAnswerResponse.getRecord().getOpt_dts().get(0).getOption_id());
+                            Log.e("save answer opt desc", saveAnswerResponse.getRecord().getOpt_dts().get(0).getOption_descp());
+                            Log.e("save answer qn order", saveAnswerResponse.getRecord().getQn_dts().getQuestion_order());
+
+//                            submitexam(exam_id,user_id,email);
+                            view.hideLoading();
+                        }
+                        else {
+                            Log.e("in exam presenter", "success");
+                            Log.e("save answer msg", saveAnswerResponse.getMessage());
+                            Log.e("save answer qn", saveAnswerResponse.getRecord().getQn_dts().getQuestion());
+                            Log.e("save answer qnid", saveAnswerResponse.getRecord().getQn_dts().getQuestion_id());
+                            Log.e("save answer optnid", saveAnswerResponse.getRecord().getOpt_dts().get(0).getOption_id());
+                            Log.e("save answer opt desc", saveAnswerResponse.getRecord().getOpt_dts().get(0).getOption_descp());
+                            Log.e("save answer qn order", saveAnswerResponse.getRecord().getQn_dts().getQuestion_order());
+
+
+                            view.showNextQuestion(saveAnswerResponse);
+                            view.hideLoading();
+                        }
+                    } else {
+                        Log.e("in exam presenter", "failed");
+//                        submitexam(exam_id, user_id, email);
                         view.hideLoading();
                     }
+                }
+                else
+                {
+                    Log.e("in exam presenter", "notsuccessfull");
+                    view.hideLoading();
+                }
+
+            }
+
+
+            @Override
+            public void onFailure(Call<SaveAnswerResponse> call, Throwable t)
+            {
+
+                       view.hideLoading();
+                Log.e("in exam presenter", "SAnotsuccessfull");
+            }
+        });
+    }
+
+
+    @Override
+    public void saveanswerbeforeidealtime(String qnorder,String exam_id,String test_id,String user_id ,String logid,String DeviceType,String DeviceToken,String quesid,String optid ,String totqns) {
+        view.showLoading();
+        Log.e("in exam presenter b4","saveanswerb4ideal");
+        Log.e("Request","save answerb4ideal");
+        Log.e("email",email);
+        Log.e("exam id",exam_id);
+        Log.e("testid",test_id);
+        Log.e("userid",user_id);
+        Log.e("iqid",quesid);
+        Log.e("optid",optid);
+        Log.e("totqns",totqns);
+        Log.e("qnorder",qnorder);
+        if(totqns.equals(qnorder))
+        {
+//            submitexam(exam_id,user_id,email);
+            view.hideLoading();
+        }
+        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+
+        SaveAnswerRequest saveAnswerRequest=new SaveAnswerRequest();
+        saveAnswerRequest.setExam_id(exam_id);
+        saveAnswerRequest.setTest_id(test_id);
+        saveAnswerRequest.setUser_id(user_id);
+        saveAnswerRequest.setDeviceToken(DeviceToken);
+        saveAnswerRequest.setDeviceType(DeviceType);
+        saveAnswerRequest.setQuestion_id(quesid);
+        saveAnswerRequest.setLog_id("0");
+        saveAnswerRequest.setOption_id(optid);
+        saveAnswerRequest.setChoose_option(optid);
+
+        Call<SaveAnswerResponse> call = retrofitApi.saveanswerbeforeidealtime(saveAnswerRequest);
+        call.enqueue(new Callback<SaveAnswerResponse>() {
+            @Override
+            public void onResponse(Call<SaveAnswerResponse> call, Response<SaveAnswerResponse> response) {
+                SaveAnswerResponse saveAnswerResponse = response.body();
+                if(response.isSuccessful()) {
+                    if (response.body().getMessage().equals("success".trim())) {
+                        if(totqns.equals(qnorder))
+                        {
+                            Log.e("in exam presenter", "success");
+                            Log.e("save answer msg", saveAnswerResponse.getMessage());
+                            Log.e("save answer qn", saveAnswerResponse.getRecord().getQn_dts().getQuestion());
+                            Log.e("save answer qnid", saveAnswerResponse.getRecord().getQn_dts().getQuestion_id());
+                            Log.e("save answer optnid", saveAnswerResponse.getRecord().getOpt_dts().get(0).getOption_id());
+                            Log.e("save answer opt desc", saveAnswerResponse.getRecord().getOpt_dts().get(0).getOption_descp());
+                            Log.e("save answer qn order", saveAnswerResponse.getRecord().getQn_dts().getQuestion_order());
+//                            submitexam(exam_id,user_id,email);
+                            view.hideLoading();
+                        }else {
+                            Log.e("in exam presenter b4", "got response");
+                            Log.e("Response", "got response");
+                            Log.e("save answer b4 msg", saveAnswerResponse.getMessage());
+                            Log.e("save answer b4 qn", saveAnswerResponse.getRecord().getQn_dts().getQuestion());
+                            Log.e("save answer b4 qnid", saveAnswerResponse.getRecord().getQn_dts().getQuestion_id());
+                            Log.e("save answer b4 optnid", saveAnswerResponse.getRecord().getOpt_dts().get(0).getOption_id());
+                            Log.e("save answer b4 opt desc", saveAnswerResponse.getRecord().getOpt_dts().get(0).getOption_descp());
+                            Log.e("save answer b4 qn order", saveAnswerResponse.getRecord().getQn_dts().getQuestion_order());
+
+                            view.showNextQuestion(saveAnswerResponse);
+
+                            view.hideLoading();
+                        }
+
+                    } else
+                    {
+                        Log.e("in exam presenter b4", "failed else");
+//                        submitexam(exam_id, user_id, email);
+                        view.hideLoading();
+                    }
+                }
+                else
+                {
+                    Log.e("in exam presenter", "notsuccessfull");
+                    view.hideLoading();
                 }
             }
 
             @Override
             public void onFailure(Call<SaveAnswerResponse> call, Throwable t)
             {
-                       view.hideLoading();
+                view.hideLoading();
+                Log.e("in exam presenter", "SABInotsuccessfull");
             }
+
         });
     }
 
     @Override
-    public void saveanswerbeforeidealtime() {
+    public void submitexam(String examid,String userid,String useremail) {
 
+        view.showLoading();
+        Log.e("in exam presenter","submitexam"+examid+" "+useremail+" "+userid);
+
+        Log.e("in submt exam id",examid);
+        Log.e("in submt useremIL",useremail);
+        Log.e("in submt userid",userid);
+
+        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+
+        SaveExamRequest saveExamRequest=new SaveExamRequest();
+            saveExamRequest.setExam_id(examid);
+            saveExamRequest.setLogid("0");
+            saveExamRequest.setUser_email(useremail);
+            saveExamRequest.setUser_id(userid);
+            saveExamRequest.setDeviceToken("hsj");
+            saveExamRequest.setDeviceType("1");
+        Call<SaveExamReponse> call = retrofitApi.saveexamdetails(saveExamRequest);
+        call.enqueue(new Callback<SaveExamReponse>()
+        {
+            @Override
+            public void onResponse(Call<SaveExamReponse> call, Response<SaveExamReponse> response) {
+                SaveExamReponse saveExamReponse = response.body();
+
+                    Log.e("in exam presenter",saveExamReponse.getStatus()+"");
+                    if(response.body().getStatus()==1)
+                    {
+                        Log.e("in submit exam",response.body().getStatus()+"");
+
+                        view.hideLoading();
+                        view.goToDashboard();
+                    }
+                    else
+                    {
+                        view.hideLoading();
+                    }
+
+            }
+
+            @Override
+            public void onFailure(Call<SaveExamReponse> call, Throwable t)
+            {
+                Log.e("saveexam","failed");
+                Log.e("saveexamexcp",t.toString());
+                view.hideLoading();
+//                view.goToDashboard();
+
+            }
+        });
     }
 }

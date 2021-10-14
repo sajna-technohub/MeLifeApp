@@ -83,6 +83,68 @@
 <!--                android:textColor="@color/darkblue"-->
 <!--                android:textStyle="bold"-->
 <!--                />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imglayout"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imlayout"
+                    android:orientation="vertical">
+                <org.sufficientlysecure.htmltextview.HtmlTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="@dimen/dimen_17"
+                    android:typeface="serif"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:id="@+id/imgTxtQuestion"
+                    android:textColor="@color/darkblue"
+                    android:textStyle="bold"
+                    />
+                </RelativeLayout>
+                <ImageView
+                    style="@style/style_answer_image"
+                    android:id="@+id/imgOption1"
+                    />
+                <ImageView
+                    style="@style/style_answer_image"
+                    android:id="@+id/imgOption2"
+                    />
+
+                <ImageView
+                    style="@style/style_answer_image"
+                    android:id="@+id/imgOption3"
+                    />
+
+                <ImageView
+                    style="@style/style_answer_image"
+                    android:id="@+id/imgOption4"
+                    />
+
+                <ImageView
+                    style="@style/style_answer_image"
+                    android:id="@+id/imgOption5"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/htmllayout"
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageviewlayout"
+                    android:orientation="vertical">
             <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,31 +156,90 @@
                 android:textColor="@color/darkblue"
                 android:textStyle="bold"
                 />
+                    <WebView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textSize="@dimen/dimen_17"
+                        android:layout_below="@+id/examTxtQuestion"
+                        android:textColor="@color/darkblue"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        android:id="@+id/examWviewtable"
+                        />
 
-
-            <TextView
+                </RelativeLayout>
+            <org.sufficientlysecure.htmltextview.HtmlTextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption1"
                />
-            <TextView
+            <org.sufficientlysecure.htmltextview.HtmlTextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption2"
               />
-            <TextView
+            <org.sufficientlysecure.htmltextview.HtmlTextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption3"
               />
 
-            <TextView
+            <org.sufficientlysecure.htmltextview.HtmlTextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption4"
                />
-            <TextView
+            <org.sufficientlysecure.htmltextview.HtmlTextView
                 style="@style/style_answer_button"
-
                 android:id="@+id/examBtnOption5"
                />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mathlayout"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="vertical">
+                <io.github.kexanie.library.MathView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="@dimen/dimen_17"
+                    android:typeface="serif"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:id="@+id/mathTxtQuestion"
+                    android:textColor="@color/darkblue"
+                    android:textStyle="bold"
+                    />
+
+
+                <io.github.kexanie.library.MathView
+                    style="@style/style_answer_button"
+                    android:id="@+id/mathBtnOption1"
+                    />
+                <io.github.kexanie.library.MathView
+                    style="@style/style_answer_button"
+                    android:id="@+id/mathBtnOption2"
+                    />
+                <io.github.kexanie.library.MathView
+                    style="@style/style_answer_button"
+                    android:id="@+id/mathBtnOption3"
+                    />
+
+                <io.github.kexanie.library.MathView
+                    style="@style/style_answer_button"
+                    android:id="@+id/mathBtnOption4"
+                    />
+                <io.github.kexanie.library.MathView
+                    style="@style/style_answer_button"
+                    android:id="@+id/mathBtnOption5"
+                    />
+            </LinearLayout>
         </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/testbtnsubmit"
+            android:visibility="invisible"
+            android:text="submit test"/>
 
 <Space
     android:layout_width="match_parent"

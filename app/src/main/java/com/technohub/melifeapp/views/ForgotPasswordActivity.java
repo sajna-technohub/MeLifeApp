@@ -19,7 +19,6 @@ public class ForgotPasswordActivity extends AppCompatActivity implements IForgot
     Button forgotBtn;
     EditText forgotEditTxtEmail;
     ForgotPwdPresenter fogotPwdPresenter;
-    SpinKitView forgotSpinKit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class ForgotPasswordActivity extends AppCompatActivity implements IForgot
     public void init() {
          forgotBtn=findViewById(R.id.forgotBtn);
          forgotEditTxtEmail=findViewById(R.id.forgotEditTxtEmail);
-         forgotSpinKit=findViewById(R.id.forgotSpinKit);
     }
 
     @Override
@@ -67,7 +65,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements IForgot
     @Override
     public void showLoading() {
 
-        forgotSpinKit.setVisibility(View.VISIBLE);
+//        forgotSpinKit.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -78,7 +76,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements IForgot
     @Override
     public void hideLoading() {
 
-        forgotSpinKit.setVisibility(View.GONE);
+//        forgotSpinKit.setVisibility(View.GONE);
     }
     @Override
     public void goToLoginActivity() {

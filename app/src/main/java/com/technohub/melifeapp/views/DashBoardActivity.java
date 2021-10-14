@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.technohub.melifeapp.R;
+import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.views.ui.home.HomeFragment;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -54,8 +55,6 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         //botton navigatiomn
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder
                 (R.id.navigation_home,
-                R.id.navigation_loc,
-                R.id.navigation_like,
                 R.id.navigation_user,
                 R.id.navigation_logout)
                 .build();
@@ -75,23 +74,22 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
             case R.id.navigation_home:
                 fragment = new HomeFragment();
                 break;
-            case R.id.navigation_loc:
+//            case R.id.navigation_loc:
 //                    fragment = new ReportFragment();
 //                    fragment = new ExamFragment();
-                break;
-            case R.id.navigation_like:
-//                if(flag==1)
-//                fragment = new MathViewFragment();
-//                else
-//
-//                    fragment = new ExamFragment();
-                break;
+//                break;
+//            case R.id.navigation_like:
+//                fragment = new StreamFragment();
+//                break;
             case R.id.navigation_user:
                 fragment = new ProfileFragment();
                 break;
             case R.id.navigation_logout:
-                startActivity( new Intent(getApplicationContext(),LoginActivity.class));
-                finish();
+                if(new LoginResponse().removeSharedPreferences(getApplicationContext()))
+                {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    finish();
+                }
                 break;
         }
 

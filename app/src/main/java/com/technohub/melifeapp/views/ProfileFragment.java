@@ -2,6 +2,7 @@ package com.technohub.melifeapp.views;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -51,8 +52,8 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     TextView profileTxtDob,profileTxtName,profileTxtmobile,profileTxtemail,profileTxtpincode;
     TextView ProfileTxtEditqualification,profileContactEdit;
     Spinner profileSprstate,profileSprCountry,profileSprQuali;
-    ImageView profilenameEdit;
-    CircularImageView profileImgphoto;
+    TextView profileTxtwelcome;
+    ImageView profileImgphoto;
     Button profileBtnSave;
     ProfilePresenter profilePresenter;
     int mYear,mMonth,mDay;
@@ -60,6 +61,8 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     String completion_status,userid;
     String strcountry,strstate,strqualification;
     SpinKitView profProgressspin;
+    ProgressDialog progressdialog;
+    File file;
 
 
     @Override
@@ -67,7 +70,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
                              Bundle savedInstanceState)
     {
 
-        v=inflater.inflate(R.layout.fragment_profile, container, false);
+        v=inflater.inflate(R.layout.fragment_profile_new, container, false);
         v.setBackgroundColor(Color.WHITE);
 
         completion_status=new LoginResponse().getSharedPreferences(getContext(),"completion_status");
@@ -75,13 +78,14 @@ public class ProfileFragment extends Fragment implements IProfile.View {
 
         Log.e("Sessions Profile",userid+"  "+completion_status);
 
-        user.setUser_id(Integer.parseInt(userid));
+        user.setUser_id(userid);
         user.setCompletion_status(completion_status);
         user.setDeviceType("1");
         user.setDeviceToken("dfsdfs");
 
         profilePresenter = new ProfilePresenter(this,user);
         profilePresenter.created();
+        progressdialog.show();
 
         return v;
     }
@@ -97,13 +101,17 @@ public class ProfileFragment extends Fragment implements IProfile.View {
                   profileSprCountry=v.findViewById(R.id.profileSprCountry);
                 profileTxtpincode=v.findViewById(R.id.profileTxtpincode);
                  profileSprQuali=v.findViewById(R.id.profileSprQuali);
-                profilenameEdit=v.findViewById(R.id.profilenameEdit);
+//                profilenameEdit=v.findViewById(R.id.profilenameEdit);
                 ProfileTxtEditqualification=v.findViewById(R.id.ProfileTxtEditqualification);
                 profileContactEdit=v.findViewById(R.id.profileContactEdit);
                 profileBtnSave=v.findViewById(R.id.profileBtnSave);
                 profileImgphoto=v.findViewById(R.id.profileImgphoto);
                  profProgressspin=v.findViewById(R.id.profileSpinKit);
+                 profileTxtwelcome=v.findViewById(R.id.profileTxtwelcome);
                 profileSprCountry.setSelection(0);
+        progressdialog = new ProgressDialog(getContext());
+        progressdialog.setMessage("Please Wait....");
+        progressdialog.setCancelable(false);
     }
 
 public boolean validate() {
@@ -162,7 +170,7 @@ public boolean validate() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                              strcountry=profileSprCountry.getItemAtPosition(position).toString();
-                             Toast.makeText(getContext(),strcountry,Toast.LENGTH_LONG).show();
+//                             Toast.makeText(getContext(),strcountry,Toast.LENGTH_LONG).show();
                         }
 
                         @Override
@@ -176,7 +184,7 @@ public boolean validate() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 strstate=profileSprstate.getItemAtPosition(position).toString();
-                Toast.makeText(getContext(), strstate, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), strstate, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -191,7 +199,7 @@ public boolean validate() {
 //                Qualification qualification = (Qualification) parent.getSelectedItem();
 //                Toast.makeText(getContext(), "state ID: "+qualification.getQualification_id()+",  state Name : "+qualification.getQualification(), Toast.LENGTH_SHORT).show();
                 strqualification=profileSprQuali.getItemAtPosition(position).toString();
-                Toast.makeText(getContext(),strqualification,Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(),strqualification,Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -212,16 +220,17 @@ public boolean validate() {
                             user.setEmail(profileTxtemail.getText().toString());
                             user.setMobno(profileTxtmobile.getText().toString());
                             user.setPincode(profileTxtpincode.getText().toString());
+                            user.setProfile_icon("photo");
                             user.setDate(profileTxtDob.getText().toString());
-                            user.setUser_id(Integer.parseInt(userid));
+                            user.setUser_id(userid);
                             user.setDeviceType("1");
                             user.setDeviceToken("dfsdfs");
-                            user.setCountry("1");
+                            user.setCountry(strcountry);
                             user.setState(strstate);
                             user.setQualification(strqualification);
 
 
-                            profilePresenter.UpdateButtonClick(user);
+                            profilePresenter.UpdateProfile(user);
 
                         }
                         }
@@ -255,7 +264,7 @@ public boolean validate() {
                     profileContactEdit.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
+Toast.makeText(getContext(),"Edit mode activated",Toast.LENGTH_SHORT).show();
                         profileTxtmobile.setEnabled(true);
                         profileTxtpincode.setEnabled(true);
 
@@ -271,12 +280,13 @@ public boolean validate() {
                         }
                     });
 
-                    profilenameEdit.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            profileTxtName.setEnabled(true);
-                        }
-                    });
+//                    profilenameEdit.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            Toast.makeText(getContext(),"Edit mode activated",Toast.LENGTH_SHORT).show();
+//                            profileTxtName.setEnabled(true);
+//                        }
+//                    });
 
 
 
@@ -301,8 +311,9 @@ public boolean validate() {
             Uri selectedImage = data.getData();
 
             //calling the upload file method after choosing the file
-            File file = new File(getRealPathFromURI(selectedImage));
-            profilePresenter.uploadFile(file,selectedImage, "My Image",getContext());
+             file = new File(getRealPathFromURI(selectedImage));
+            Log.e("proimage",getRealPathFromURI(selectedImage));
+//            profilePresenter.uploadFile(file,user);
         }
     }
     private String getRealPathFromURI(Uri contentUri) {
@@ -319,9 +330,11 @@ public boolean validate() {
     public void setProfile(ProfileResponse profile) {
 
         profileTxtName.setText(profile.getData().get(0).getName());
+        profileTxtwelcome.setText(profile.getData().get(0).getName());
         profileTxtemail.setText(profile.getData().get(0).getEmail());
         profileTxtpincode.setText(profile.getData().get(0).getPincode());
         profileTxtDob.setText(profile.getData().get(0).getDob());
+        profileTxtwelcome.setText("Welcome  "+profile.getData().get(0).getName());
 
             List<String> countrylist=new ArrayList<>();
             List<String> statelist=new ArrayList<>();
@@ -331,6 +344,7 @@ public boolean validate() {
             {
             countrylist.add(profile.getCountry().get(i).getCountry_name());
             }
+            countrylist.add("UAE");
         for (int i = 0; i < profile.getState().size(); i++)
             {
             statelist.add(profile.getState().get(i).getState_name());
@@ -340,20 +354,30 @@ public boolean validate() {
             qualificatiobnlist.add(profile.getQualification().get(i).getQualification());
         }
 
+        String newcountry = profile.getData().get(0).getCountry();
         ArrayAdapter<String> countryArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,countrylist);
         countryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprCountry.setAdapter(countryArrayAdapter);
+        profileSprCountry.setSelection(countrylist.indexOf(newcountry));
 
+        String newstate = profile.getData().get(0).getState();
+        profileSprstate.setSelection(statelist.indexOf(newstate));
         ArrayAdapter<String> stateArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,statelist);
         stateArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprstate.setAdapter(stateArrayAdapter);
+        profileSprstate.setSelection(statelist.indexOf(newstate));
 
+
+        String newqual = profile.getData().get(0).getQualification();
         ArrayAdapter<String> qualificationArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,qualificatiobnlist);
         qualificationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprQuali.setAdapter(qualificationArrayAdapter);
+        profileSprQuali.setSelection(qualificatiobnlist.indexOf(newqual));
 
         profileTxtmobile.setText(profile.getData().get(0).getMobile_no());
 
+        new LoginResponse().setSharedPreferences(getContext(),profile.getData().get(0).getName());
+        progressdialog.dismiss();
     }
 
     @Override
@@ -389,4 +413,5 @@ public boolean validate() {
     public void showLoading() {
         profProgressspin.setVisibility(View.VISIBLE);
     }
+
 }

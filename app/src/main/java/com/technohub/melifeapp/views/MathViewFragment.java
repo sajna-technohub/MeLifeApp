@@ -54,8 +54,6 @@ public class MathViewFragment extends Fragment   {
     List<DataDATA> data=new ArrayList<>();
 
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -3,24 +3,24 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/icon_home"
+        android:icon="@drawable/homeblue"
         android:title="@string/title_home" />
 
-    <item
-        android:id="@+id/navigation_loc"
-        android:icon="@drawable/icon_map"
-        android:title="@string/title_dashboard" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_loc"-->
+<!--        android:icon="@drawable/icon_map"-->
+<!--        android:title="@string/title_dashboard" />-->
 
-    <item
-        android:id="@+id/navigation_like"
-        android:icon="@drawable/icon_heart"
-        android:title="@string/title_notifications" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_like"-->
+<!--        android:icon="@drawable/icon_heart"-->
+<!--        android:title="@string/title_notifications" />-->
     <item
         android:id="@+id/navigation_user"
-        android:icon="@drawable/icon_user"
+        android:icon="@drawable/profileblue"
         android:title="@string/title_Reports" />
     <item
         android:id="@+id/navigation_logout"
-        android:icon="@drawable/logout"
+        android:icon="@drawable/bluelogout"
         android:title="@string/title_logout" />
 </menu>

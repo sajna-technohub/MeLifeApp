@@ -1,5 +1,6 @@
 package com.technohub.melifeapp.views.ui.home;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,19 +8,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.models.LoginResponse;
+import com.technohub.melifeapp.views.AboutUsFragment;
+import com.technohub.melifeapp.views.Contact_us_fragment;
+import com.technohub.melifeapp.views.FaqFragment;
+import com.technohub.melifeapp.views.LoadingFragment;
 import com.technohub.melifeapp.views.ReportFragment;
+import com.technohub.melifeapp.views.ReportsFragment;
+import com.technohub.melifeapp.views.SuccessFrag2;
 import com.technohub.melifeapp.views.TestCategoriesFragment;
 
 import java.text.DateFormat;
@@ -31,27 +41,54 @@ import java.util.TimeZone;
 
 public class HomeFragment extends Fragment {
 
-    private TextView homeTxtName;
+    private TextView homeTxtName,homeTxtDesc,welcomeTxtname;
+    ImageView homeImgback;
     View root;
     CardView homeCardTests,homeCardReports,homeCardFaq,homeCardContactus,homeCardSettings,homeCardAboutus;
     Fragment fragment;
+    String quali;
+    DialogFragment dialogFragment;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-         root = inflater.inflate(R.layout.fragment_home, container, false);
+         root = inflater.inflate(R.layout.fragment_home_fragment_new, container, false);
          root.setBackgroundColor(getResources().getColor(R.color.lightgrey));
          init();
          initClicks();
          return root;
     }
+
+    public void showDialog(DialogFragment dialogFragment)
+    {
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        dialogFragment.show(ft, "dialog");
+    }
+
     void init()
     {
 
         homeTxtName=root.findViewById(R.id.homeTxtName);
+        homeTxtDesc=root.findViewById(R.id.homeTxtDesc);
+        homeImgback=root.findViewById(R.id.homeImgback);
+        welcomeTxtname=root.findViewById(R.id.welcomeTxtname);
 
         String name=new LoginResponse().getSharedPreferences(getContext(),"name");
-        homeTxtName.setText(name);
+        Log.e("name",name);
 
+        if(!new LoginResponse().getSharedPreferences(getContext(),"quali").equals(null)) {
+             quali = new LoginResponse().getSharedPreferences(getContext(), "quali");
+             Log.e("qualiprofile",quali);
+             homeTxtDesc.setText(quali);
+
+        }
+        welcomeTxtname.setText("Welcome "+name);
+        homeTxtName.setText(name);
         homeCardTests=root.findViewById(R.id.homeCardTests);
         homeCardReports=root.findViewById(R.id.homeCardReports);
         homeCardFaq=root.findViewById(R.id.homeCardFaq);
@@ -64,15 +101,22 @@ public class HomeFragment extends Fragment {
         homeCardTests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fragment=new TestCategoriesFragment();
-                    loadFragment(fragment);
+                if(homeCardTests.isEnabled())
+                homeCardTests.setEnabled(false);
+
+                fragment=new TestCategoriesFragment();
+                 loadFragment(fragment);
             }
         });
 
         homeCardReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment=new ReportFragment();
+                if(homeCardReports.isEnabled())
+                    homeCardReports.setEnabled(false);
+
+                fragment=new ReportsFragment();
+
                 loadFragment(fragment);
             }
         });
@@ -80,69 +124,47 @@ public class HomeFragment extends Fragment {
         homeCardFaq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
-                Date today = Calendar.getInstance().getTime();
-                   String s= dateFormat.format(today);
-                        Log.e("date",s);
-
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Do something after 5s = 5000ms
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
-                        Date today = Calendar.getInstance().getTime();
-                        String s= dateFormat.format(today);
-                        Log.e("date af delay",s);
-                    }
-                }, 5000);
-
-
-
-//                String startDate = "20/03/11 17:15:15";
-//                String stopDate = "20/03/11 17:16:05";
-//
-//// Custom date format
-//                SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
-//
-//                Date d1 = null;
-//                Date d2 = null;
-//                try {
-//                    d1 = format.parse(startDate);
-//                    d2 = format.parse(stopDate);
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//
-//// Get msec from each, and subtract.
-//                long diff = d2.getTime() - d1.getTime();
-//                long diffSeconds = diff / 1000;
-//                long diffMinutes = diff / (60 * 1000);
-//                long diffHours = diff / (60 * 60 * 1000);
-//                Log.v("Time in seconds: " , diffSeconds + " seconds.");
-//                Log.v("Time in minutes: " + diffMinutes , " minutes.");
-//                Log.v("Time in hours: " + diffHours , " hours.");
-
-
+                if(homeCardFaq.isEnabled())
+                    homeCardFaq.setEnabled(false);
+                fragment=new FaqFragment();
+                loadFragment(fragment);
+//                Toast.makeText(getContext(),"Will Release soon",Toast.LENGTH_LONG).show();
             }
         });
 
         homeCardAboutus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(homeCardAboutus.isEnabled())
+                    homeCardAboutus.setEnabled(false);
 
+                fragment=new AboutUsFragment();
+                loadFragment(fragment);
             }
         });
 
         homeCardContactus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(homeCardContactus.isEnabled())
+                    homeCardContactus.setEnabled(false);
 
+                fragment=new Contact_us_fragment();
+                loadFragment(fragment);
             }
         });
 
         homeCardSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(homeCardSettings.isEnabled())
+                    homeCardSettings.setEnabled(false);
+
+                startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+            }
+        });
+
+        homeImgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -155,9 +177,10 @@ public class HomeFragment extends Fragment {
         if (fragment != null)
         {
                      getFragmentManager()
-                    .beginTransaction()
+                    .beginTransaction().setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                     .replace(R.id.homelayout, fragment)
                     .commit();
+
             return true;
         }
         return false;

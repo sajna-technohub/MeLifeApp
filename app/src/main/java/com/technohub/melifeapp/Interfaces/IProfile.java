@@ -1,4 +1,6 @@
 package com.technohub.melifeapp.Interfaces;
+import android.content.Context;
+
 import com.technohub.melifeapp.models.ProfileResponse;
 import com.technohub.melifeapp.models.User;
 
@@ -20,13 +22,15 @@ public interface IProfile {
 
         void setProfile(ProfileResponse profile);
 
+        Context getContext();
+
     }
 
     interface Presenter {
 
         void created();
 
-        void UpdateButtonClick(User user);
+//        void UpdateButtonClick(User user);
 
         void getProfile();
     }

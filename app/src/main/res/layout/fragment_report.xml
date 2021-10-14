@@ -1331,7 +1331,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/button_yellobg"
+            android:background="@drawable/button_btngreenbg"
             android:gravity="center_horizontal"
             android:clickable="true"
             android:elevation="4dp"
@@ -1353,7 +1353,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
 
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"
@@ -1365,7 +1365,7 @@
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="50dp"-->
 <!--            android:layout_marginTop="60dp"-->
-<!--            android:background="@drawable/button_yellobg"-->
+<!--            android:background="@drawable/button_btngreenbg"-->
 <!--            android:gravity="center"-->
 <!--            android:text="IDENTIFY SKILLS BASED ON YOUR INTERESTS"-->
 <!--            android:textColor="@color/whiteLogocolor" />-->
@@ -1415,7 +1415,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"
@@ -1436,7 +1436,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"
@@ -1465,7 +1465,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"
@@ -1508,7 +1508,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"
@@ -1532,7 +1532,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"
@@ -1556,7 +1556,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"
@@ -1580,7 +1580,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"
@@ -1604,7 +1604,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_yellobg"
+        android:background="@drawable/button_btngreenbg"
         android:gravity="center_horizontal"
         android:clickable="true"
         android:elevation="4dp"

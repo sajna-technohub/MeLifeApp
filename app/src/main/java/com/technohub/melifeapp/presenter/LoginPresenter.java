@@ -40,7 +40,8 @@ public class LoginPresenter implements ILogin.Presenter {
          user.setUser_Password(password);
          user.setDeviceType("1");
         Call<LoginResponse> call = retrofitApi.Login(user);
-        call.enqueue(new Callback<LoginResponse>() {
+        call.enqueue(new Callback<LoginResponse>()
+        {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();

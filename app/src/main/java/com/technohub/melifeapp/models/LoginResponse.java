@@ -3,6 +3,7 @@ package com.technohub.melifeapp.models;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,10 +51,33 @@ public class LoginResponse {
         sharedPreferences.edit().putString("token",  token).apply();
 
     }
+    public void setSharedPreferences(Context context,String name)
+    {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        sharedPreferences.edit().putString("name", name).apply();
+    }
+    public void setSecSharedPreferences(Context context,String name)
+    {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        sharedPreferences.edit().putString("section", name).apply();
+    }
+    public void setQualiSharedPreferences(Context context,String name)
+    {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        sharedPreferences.edit().putString("quali", name).apply();
+    }
 
     public String getSharedPreferences(Context context,String key)
     {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPreferences.getString(key,"");
+    }
+    public boolean removeSharedPreferences(Context context)
+    {
+        Log.e("remove session","in");
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        return editor.commit();
     }
 }

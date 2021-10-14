@@ -1,11 +1,18 @@
 package com.technohub.melifeapp.presenter;
 
+import android.content.Context;
 import android.util.Log;
+
+import com.technohub.melifeapp.Interfaces.IExam;
 import com.technohub.melifeapp.Interfaces.Itestcategory;
 import com.technohub.melifeapp.models.ExamRequest;
 import com.technohub.melifeapp.models.ExamResponse;
 import com.technohub.melifeapp.models.LoadQuestionRequest;
 import com.technohub.melifeapp.models.LoadQuestionResponse;
+import com.technohub.melifeapp.models.LoadQuestionResponse;
+import com.technohub.melifeapp.models.LoginResponse;
+import com.technohub.melifeapp.models.SaveExamReponse;
+import com.technohub.melifeapp.models.SaveExamRequest;
 import com.technohub.melifeapp.models.TestCategoriesModel;
 import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.Tests;
@@ -26,10 +33,15 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
     ExamRequest examRequest;
     User user;
 
-    public TestCategoryPresenter(Itestcategory.View view,User user)
+    public TestCategoryPresenter(Itestcategory.View view) {
+        this.view=view;
+    }
+
+    public TestCategoryPresenter(Itestcategory.View view, User user)
     {
         this.view = view;
         this.user=user;
+
     }
 
     public TestCategoryPresenter(ExamRequest examRequest,Itestcategory.View view) {
@@ -51,6 +63,7 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
     public void load(User user) {
 
         view.showLoading();
+        Log.e("in  presenter","dashboard");
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
 
         testCategoriesModel.setUser_email(user.getUser_email());
@@ -81,7 +94,7 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
                            Log.e("id",t.getTest_id()+"");
                            Log.e("name",t.getTest_name()+"");
                            Log.e("complete status",t.getCmplts_status()+"");
-                           Log.e("examid",t.getExam_id()+"");
+
                        }
                         view.loadTestList(testcategoryResponse);
                         view.hideLoading();
@@ -90,7 +103,6 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
                     else
                     {
                         Log.e("Test category res", testcategoryResponse.getMessage());
-
                         view.hideLoading();
                     }
                 }
@@ -107,6 +119,7 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
     @Override
     public void initiateExam() {
         view.showLoading();
+        Log.e("in  presenter","displayquestions");
         Log.e("Test category testid",examRequest.getTest_id());
         Log.e("Test category userid", examRequest.getUser_id());
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
@@ -163,8 +176,8 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
 
     public void getQuestionsFromServer(String exam_id,String test_id,String user_id,String user_email,String logid,String DeviceType,String DeviceToken,String record ) {
 
-        Log.e("in exam presenter","get method");
-        Log.e("in load qns exid",exam_id+"test "+test_id+" user"+user_id+" email "+user_email+" logid "+logid+"rec"+record);
+        Log.e("in  presenter","loadquestions");
+        Log.e("in load questions exid=",exam_id+"testid= "+test_id+" userid="+user_id+" email= "+user_email+" logid= "+logid+"rec="+record);
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
         LoadQuestionRequest loadQuestionRequest=new LoadQuestionRequest();
         loadQuestionRequest.setExam_id(exam_id);
@@ -182,23 +195,34 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
                 LoadQuestionResponse loadQuestionResponse = response.body();
                 if (response.isSuccessful() && response.body() != null)
                 {
-                    Log.e("in exam presenter","got response");
-                    if(response.body().getMessage().equals("success".trim()))
+                    if(loadQuestionResponse.getMessage().equals("NO question available"))
                     {
-                        Log.e("load qns logid", loadQuestionResponse.getIdle_log_id());
-                        Log.e("load qns noqns", loadQuestionResponse.getTotal_no_questions());
-                        Log.e("load qns pop", loadQuestionResponse.getIs_popup_display());
-                        Log.e("load qns lmt", loadQuestionResponse.getLimit());
-                        Log.e("load qns revcnt", loadQuestionResponse.getReviewCount());
-                        Log.e("load qns log_opid", loadQuestionResponse.getLog_option_id());
-
-                        view.loadExamFragment(loadQuestionResponse,exam_id);
-
+                        view.loadExamFragment(loadQuestionResponse, exam_id);
                     }
-                    else
-                    {
+                    else{
+                    Log.e("in  presenter","got response");
+//                    if(response.body().getMessage().equals(""))
+//                    {
+                        Log.e("load qns response", loadQuestionResponse.getMessage());
+                        Log.e("load qnsno", loadQuestionResponse.getTotal_no_questions());
+                        Log.e("load qns question_id", loadQuestionResponse.getExamquestionData().get(0).getMcq_question_id());
+                        Log.e("load qns question", loadQuestionResponse.getExamquestionData().get(0).getQuestion());
+                        Log.e("load qns test", loadQuestionResponse.getExamquestionData().get(0).getTest_name());
+                        Log.e("load qns qn order", loadQuestionResponse.getExamquestionData().get(0).getQuestion_order());
+                        Log.e("load qns optionid1", loadQuestionResponse.getExamquestionData().get(0).getOptions().get(0).getOption_id());
+                        Log.e("load qns optiondesc", loadQuestionResponse.getExamquestionData().get(0).getOptions().get(0).getOption_descp());
+                        Log.e("load qns optiondesc", loadQuestionResponse.getExamquestionData().get(0).getOptions().get(1).getOption_descp());
+//                        Log.e("load qns optiondesc", loadQuestionResponse.getExamquestionData().get(0).getOptions().get(0).getOption_descp());
+//                        Log.e("load qns optiondesc", loadQuestionResponse.getExamquestionData().get(0).getOptions().get(0).getOption_descp());
+//                        Log.e("load qns optiondesc", loadQuestionResponse.getExamquestionData().get(0).getOptions().get(0).getOption_descp());
+//                        new LoginResponse().setSecSharedPreferences(loadQuestionResponse.getExamquestionData().get(0).getSection_id());
+                        view.loadExamFragment(loadQuestionResponse, exam_id);
 
-
+//                    }
+//                    else
+//                    {
+//
+//
                     }
                 }
             }
@@ -207,6 +231,55 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
             public void onFailure(Call<LoadQuestionResponse> call, Throwable t)
             {
 
+            }
+        });
+    }
+    public void submitexam(String examid,String userid,String useremail) {
+
+        view.showLoading();
+        Log.e("in exam presenter","submitexam"+examid+" "+useremail+" "+userid);
+
+        Log.e("in submt exam id",examid);
+        Log.e("in submt useremIL",useremail);
+        Log.e("in submt userid",userid);
+
+        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+
+        SaveExamRequest saveExamRequest=new SaveExamRequest();
+        saveExamRequest.setExam_id(examid);
+        saveExamRequest.setLogid("0");
+        saveExamRequest.setUser_email(useremail);
+        saveExamRequest.setUser_id(userid);
+        saveExamRequest.setDeviceToken("hsj");
+        saveExamRequest.setDeviceType("1");
+        Call<SaveExamReponse> call = retrofitApi.saveexamdetails(saveExamRequest);
+        call.enqueue(new Callback<SaveExamReponse>() {
+            @Override
+            public void onResponse(Call<SaveExamReponse> call, Response<SaveExamReponse> response) {
+                SaveExamReponse saveExamReponse = response.body();
+                if (response.isSuccessful() && response.body() != null)
+                {
+                    Log.e("in exam presenter","gotrespose");
+                    if(response.body().getStatus()==1)
+                    {
+                        Log.e("in submit exam",response.body().getStatus()+"");
+
+                        view.hideLoading();
+                        view.goToDashboard();
+                    }
+                    else
+                    {
+                        view.hideLoading();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SaveExamReponse> call, Throwable t)
+            {
+                Log.e("saveexam","failed");
+                view.hideLoading();
+                view.hideLoading();
             }
         });
     }

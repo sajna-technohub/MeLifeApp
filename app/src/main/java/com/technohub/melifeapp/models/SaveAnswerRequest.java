@@ -6,9 +6,20 @@ public class SaveAnswerRequest {
    private String exam_id;
    private String option_id;
    private String log_id;
-   private String choose_option;
-   private String DeviceToken;
-   private String DeviceType;
+   private String test_id;
+    private String choose_option;
+    private String DeviceToken;
+    private String DeviceType;
+
+    public String getTest_id() {
+        return test_id;
+    }
+
+    public void setTest_id(String test_id) {
+        this.test_id = test_id;
+    }
+
+
 
 
     public String getUser_id() {

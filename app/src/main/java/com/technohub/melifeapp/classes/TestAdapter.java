@@ -50,7 +50,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
         examRequest=new ExamRequest();
         Viewholder.TestTitle.setText(testDataModel.getData().get(i).test_name);
         String test_id=testDataModel.getData().get(i).getTest_id()+"";
-        Log.e("adapter_test_id",test_id);
+        Log.e("repoadapter_test_id",test_id);
         String examid=testDataModel.getData().get(i).getExam_id()+"";
         Log.e("adapter_exam_id",examid);
         String com=testDataModel.getData().get(i).getCmplts_status()+"";
@@ -60,19 +60,26 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
         Viewholder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("click","click");
+                Log.e("click", "click");
                 examRequest.setTest_id(test_id);
                 examRequest.setUser_id(userid);
                 examRequest.setUser_email(testDataModel.getUseremail());
                 examRequest.setDeviceToken("1");
                 examRequest.setDeviceType("gkg");
-                new TestCategoryPresenter(examRequest,view).initiateExam();
+                if (com!=null) {
+                    if (testDataModel.getData().get(i).getCmplts_status().equals("Y")) {
+                        Toast.makeText(context, "Test Already Attended", Toast.LENGTH_SHORT).show();
+                    } else if(testDataModel.getData().get(i).getCmplts_status().equals("N")) {
+                        view.showLoading();
+                        new TestCategoryPresenter(examRequest, view).initiateExam();
+                    }
+                }
             }
         });
 
         if(test_id.equals("8"))
         {
-            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.skillfinder));
+            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.brain));
         }
         if(test_id.equals("9"))
         {
@@ -84,17 +91,17 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
         }
         if(test_id.equals("11"))
         {
-            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.enggbranch));
+            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.engineer));
         } if(test_id.equals("12"))
         {
 
         } if(test_id.equals("13"))
         {
-            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.rightcareer));
+            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.careerfinder));
         }
         if(test_id.equals("27"))
         {
-            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.aljobrisk));
+            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.ai));
         }
     }
 
@@ -115,7 +122,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
             TestTitle = (TextView)view.findViewById(R.id.textTesttitle);
              cardView=(CardView) view.findViewById(R.id.card_view);
              testImageicon=(ImageView)view.findViewById(R.id.testImageicon);
-             cardView = (CardView)view.findViewById(R.id.card_view);
+;
         }
     }
     }

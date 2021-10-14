@@ -36,8 +36,8 @@ public class InstructionPresenter implements IInstruction.Presenter {
 
         InstructionRequest instructionRequest=new InstructionRequest();
              Log.e("ins presenter sid eid",sec_id+" "+exam_id);
-        instructionRequest.setSec_ids("19");
-        instructionRequest.setExam_id("904");
+        instructionRequest.setSec_ids(sec_id);
+        instructionRequest.setExam_id(exam_id);
         instructionRequest.setDeviceType("1");
         instructionRequest.setDeviceToken("hgcf");
 

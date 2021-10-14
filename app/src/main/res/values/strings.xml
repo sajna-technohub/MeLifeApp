@@ -1,18 +1,26 @@
 <resources>
     <string name="app_name">MeLife</string>
+    <string name="appname">Me Life</string>
     <!--Register-->
-    <string name="Title_Name"> Name </string>
+    <string name="Title_Name"> Name (Required)</string>
+    <string name="reportuserName"> Name : </string>
+    <string name="reportuserAge"> Age : </string>
+    <string name="reportuserEdu"> Education : </string>
+    <string name="reportusermob"> Mobile : </string>
+    <string name="reportuserEmail"> Email : </string>
+    <string name="reportuserdot"> Date Of Test : </string>
     <string name="Title_LastName">Last Name </string>
-    <string name="Title_Email">Email ID</string>
-    <string name="Title_mobile">Mobile Number</string>
-    <string name="Title_pincode">Pincode</string>
+    <string name="Title_Email">Email (Required)</string>
+    <string name="Title_mobile">Mobile (Required)</string>
+    <string name="Title_pincode">Pincode (Required)</string>
     <string name="Title_signup">Sign Up</string>
+    <string name="Title_version">Version 1.0</string>
     <string name="Title_create">Create an Account</string>
 
     <!--    Login-->
     <string name="Title_signin">Sign In</string>
     <string name="Title_forgot">Forgot Password</string>
-    <string name="Title_enter_email">Enter Your registered Email-ID</string>
+    <string name="Title_enter_email">Enter Email ID</string>
     <string name="title_activity_dash_board">DashBoardActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -36,9 +44,15 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Location</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_Reports">Reports</string>
+    <string name="title_Reports">Profile</string>
     <string name="title_user">User</string>
     <string name="title_logout">LogOut</string>
+    <string name="title_welcome">Lets Break The Barriers Together</string>
+    <string name="btn_welcome">Get Started</string>
+    <string name="title_melife">3G MELIFE</string>
+    <string name="login_title">Please Login</string>
+    <string name="signup_title">Please Sign Up</string>
+    <string name="desc_welcome">MeLife is an Initiative of 3G Institute of Research and Policy Studies.</string>
 
 
     <!--home fragment-->
@@ -48,6 +62,8 @@
     <string name="text_aboutus">About Us</string>
     <string name="text_setting">Setting </string>
     <string name="text_testreports">Reports </string>
+    <string name="title_connect">Connect with us </string>
+    <string name="title_testcat">Test Categories </string>
 
 
     <!--Exam section-->
@@ -61,11 +77,193 @@
     <string name="Title_proceed">Proceed</string>
 
     <string name="Title_Qn">Question</string>
+    <string name="Title_birth">Birth Date</string>
     <string name="Title_next">Next</string>
     <string name="Title_cele">cELeBrAtiONs</string>
+    <string name="emailhint">Email&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(Required)</string>
+    <string name="pwdhint">Password&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(Required)</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="noqn">No Questions Available</string>
+    <string name="cont_desc">*We dont end here.Our list of web and app designs and development solutions is broad and extensive.To meet your customised web and app development needs, Contact us.Our representatives will get back to you shortly**We dont end here.Our list of web and app designs and development solutions is broad and extensive.To meet your customised web and app development needs, Contact us.Our representatives will get back to you shortly*</string>
+
+    <!--    Report section-->
+
+
+    <string name="test_skill">Skill Finder Test</string>
+    <string name="test_skillrep">Skill Finder Test Report</string>
+    <string name="test_skill_contact">Contact</string>
+
+    <string name="test_skill_duties">Duties</string>
+    <string name="test_skill_intelli">Intelligence</string>
+    <string name="test_skill_score">score</string>
+    <string name="test_skill_common">Common Charecteristics</string>
+    <string name="test_skill_whats">Whats Next?</string>
+    <string name="test_skill_multiple">Multiple Intelligence</string>
+    <string name="test_skill_suggestedcareer">Suggested Careers</string>
+    <string name="test_skill_industries">Industries</string>
+    <string name="test_skill_testdesign">Test Design</string>
+    <string name="test_skill_disclaimer">Disclaimer</string>
+    <string name="test_sright_interest">Graph-Interest Area</string>
+    <string name="test_skill_taking">Taking Action</string>
+    <string name="test_skill_test_desc">Description</string>
+    <string name="test_skill_test_remember">Remember</string>
+    <string name="test_skill_test_naturalistic">Naturalistic Intelligence</string>
+    <string name="test_skill_test_multileintell_graph">Multiple Intelligence Graph</string>
+    <string name="test_skill_test_descriptionintelligence">Description Of Your Types Of Intelligence</string>
+    <string name="test_skill_test_public">PUBLIC ADMINISTRATION AND LAW</string>
+    <string name="test_skill_test_needs">Suggested career fields based on your interest</string>
+    <string name="test_skill_test_suggested">Identify skills based on your Interest</string>
+    <string name="test_skill_test_your">Your Interest Areas</string>
+    <string name="test_stream_identify">IDENTIFY YOUR RIGHT STREAM</string>
+    <string name="test_skill_test_publicdesc">Public administration concerns policy formulation and implementation and management of public affairs by competent civil servants who constitute public services or civil services. Public administration is essential for executing government orders and functions. A whole range of new career opportunities can be taken up in this sector.</string>
+    <string name="test_skill_test_brief">Brief Overview Of Interest Areas</string>
+    <string name="test_skill_test_what">WHAT IS INTEREST?</string>
+    <string name="test_skill_test_publicdetailed">Public administration is the implementation of government policy and also an academic discipline that studies this implementation and prepares civil servants for working in the public service. Public administration concerns policy formulation and implementation and management of public affairs by competent civil servants who constitute public services or civil services. Public administration is essential for executing government orders and functions.The civil service is the backbone of the administrative system of the country. Civil Services of India can be classified into two types - the All India Services and the Central Civil Services (Group A and B). The recruits are university graduates (or above) selected through a rigorous system of examinations, called the Civil Services Examination (CSE) conducted by the Union Public Service Commission (UPSC). Law related careers involve study, development and application of law.
+
+</string>
+    <string name="test_skill_test_detailed">Detailed Description of Suggested Career Fields</string>
+    <string name="test_skill_test_descrip">Description Of Your Interest Areas</string>
+    <string name="test_skill_test_socialdesc">The person with social interest is classified as helper. Helping jobs involve assisting, teaching, coaching, and serving other people. Helpers like working in cooperative environments to improve the lives of others. A person is classified as a Helper when he or she is mostly interested in jobs that help or serve other people (Social interest). Helpers are typically compassionate, caring people who like to see the impact of their work on others lives. Helpers often choose careers in health care, social service, counseling, human resources and personal care. Helpers like working closely with others in a way that allows you to make a positive impact on their lives. They like enjoy teaching, counseling, and caring for other people. Choosing work that allows you to live out your personal values is very important to you. Most Helpers dislike working alone. They place a high value on their relationships and want to work in cooperation and harmony with others.</string>
+    <string name="test_skill_test_whatdesc">Interests refer to an individual’s preference for engaging in one or more speciﬁc activities relative to others. It involves the activities that excites and gives you enjoyment, including what you like to watch, shows you like to attend, and the kind of people you admire and like to be with. Interests reﬂect a person’s preferences, attitudes, values, talents, and qualities. Interest is important in choosing a career because interest keeps you motivated and engaged in your work. Since you spend most of your time during a day and week at the workplace; if you have no interest in what you are doing, it can adversely aﬀect your personal life.</string>
+    <string name="test_skill_test_description">Skill ﬁnder test is designed to identify your interests and multiple intelligence. It will help you to ﬁnd the skills already developed in you and to identify the skills to be developed based on your interests. This test report will map out your interest areas and multiple intelligences and provide you with suggestions on which career ﬁeld you can ﬂourish.</string>
+
+
+    <!--    right careeer-->
+    <string name="test_right">Right Career Test Report</string>
+    <string name="test_right_pertypes">You are Deliberate +Factual+Gregarious+Imaginative</string>
+    <string name="test_right_edu1">1. Education and Training</string>
+    <string name="test_aptitude">Aptitude</string>
+    <string name="test_detaileddesc">Detailed Description of Suggested Career Fields</string>
+    <string name="test_challenge">Challenge</string>
+    <string name="test_desc">Description</string>
+    <string name="test_title_edu">Education and Training</string>
+    <string name="test_suggested">Suggested Career Fields</string>
+    <string name="test_brief">Brief Description of Your Career Fields</string>
+    <string name="test_personality">Personality</string>
+    <string name="test_careermot">CAREER MOTIVATOR</string>
+    <string name="test_desc_careermot">Description of Your Top career motivators</string>
+    <string name="test_desc_topinterest">Description of Your Top InterestAreas</string>
+    <string name="test_careermot_graph">Career Motivators-Graph</string>
+    <string name="test_career_some">Some sample answers for “what motivates you at work or course /specific career?</string>
+    <string name="test_personalitytype">Your Personality Types</string>
+    <string name="test_pertype">Personality Types</string>
+    <string name="test_char">Charecteristics</string>
+    <string name="test_career">Careers</string>
+    <string name="test_personalitydescrip">Description of Your PersonalityTypes</string>
+    <string name="test_apttype_descrip">Description of Your AptitudeTypes</string>
+    <string name="test_personalitydesc">Personality is a characteristic way of behaving. It includes behavioural characteristics, both inherent and acquired, that distinguish one person from another and that can be observed in people’s relations to the environment and to the social group.</string>
+    <string name="test_aptitudegraph">Aptitude Type Graph</string>
+    <string name="test_aptdesctitle">
+Description of Your Aptitude Types</string>
+    <string name="test_right_rep">Right Career Finder Test Report</string>
+    <string name="test_right_multiple">Multiple Intelligence</string>
+    <string name="test_right_multiplegraph">Multiple Intelligence Graph</string>
+    <string name="test_right_multipledesc">Description of Multiple Intelligence</string>
+    <string name="test_right_multiplescore">Multiple Intelligence Score</string>
+    <string name="test_right_naturilistic">NATURALISTIC INTELLIGENCE</string>
+    <string name="test_right_select">Selecting Your Right Career</string>
+    <string name="test_right_whats">Whats Next?</string>
+    <string name="test_right_aptdesc">An aptitude is a component of a competence to do a certain kind of work at a certain level. Outstanding aptitude can be considered "talent". An aptitude may be physical or mental. It is an inborn potential to do certain kinds of work whether developed or undeveloped. Aptitude tests are designed to assess your thinking performance.</string>
+    <string name="test_right_taking">Taking Action</string>
+    <string name="test_right_testdesign">Test Design</string>
+    <string name="test_right_disclaimer">Disclaimer</string>
+    <string name="test_right_test_desc">Right Career Finder test is designed to identify the right career that fit for you on the basis of your interest area, aptitude, personality type, multiple intelligence, career motivators, skills, knowledge, etc. Selecting right career is very important as you are going to spend a major part of your life for this career. This test will help you, to make decision on right career from a large number of career options before you and to select the skill improvement programs to be attended to make a good career growth.</string>
+
+
+    <string name="test_stream">Stream Finder Test</string>
+    <string name="test_stream_streamdes">DESCRIPTION OF YOUR STREAMS</string>
+    <string name="test_area">Area</string>
+    <string name="test_code">Code</string>
+    <string name="test_score">Score</string>
+    <string name="test_interest">Interest</string>
+    <string name="test_personty">Personality</string>
+    <string name="test_in_area">Interest Area</string>
+    <string name="test_stream_graphtitle">Graph-Stream finder graph</string>
+    <string name="test_work">Work Activity</string>
+    <string name="test_potential">Potential Skills</string>
+    <string name="test_value">Values</string>
+    <string name="test_stream_test_graph">Stream Finder Test Graph</string>
+    <string name="test_stream_test_multiple">Multiple Intelligence</string>
+    <string name="test_stream_test_wnext">Whats Next?</string>
+    <string name="test_stream_test_design">Test Design</string>
+    <string name="test_stream_test_descintell">Description of Your Types of Intelligence</string>
+    <string name="test_stream_test_multiplescore">Multiple Intelligence Score</string>
+    <string name="test_stream_test_intra">Multiple Intelligence Graph</string>
+    <string name="test_stream_test_multiplegraph">People with intrapersonal intelligence are skilled at looking inward and figuring out their own feelings, strengths, weakness, motivations and goals. They are introspective and seek understanding. They are intuitive and typically introverted. Planning of own life gets easier due to accurate perception of own inner abilities. This is referred as private intelligence as nobody can detect totally.</string>
+    <string name="test_stream_test_multipldesc">Multiple Intelligence Graph The theory of multiple intelligences was developed by Dr. Howard Gardner, Professor of Education at Harvard University. It suggests that the normal I.Q. testing doesn’t cater to the vast array of intelligences that every person possesses. Instead, Dr. Gardner proposes nine different intelligences to account for a broader range of human potential in children and adults. These intelligences are:</string>
+
+    <string name="test_stream_test_howto">How to Interpret Stream Finder Test Graph?</string>
+
+    <string name="test_commerce">Commerce Career Finder Test</string>
+    <string name="test_commerce_benefits">Benefits of Commerce Career Finder Test</string>
+    <string name="test_commerce_desctitle">Description of test</string>
+    <string name="test_commerce_titlefinancial">Financial Careers</string>
+    <string name="test_commerce_titlenonfinancial">Non-Financial Careers</string>
+    <string name="test_commerce_commtitle">COMMERCE AS YOUR CAREER</string>
+    <string name="test_commerce_commgraph">Graph- Commerce Career Finder Test</string>
+    <string name="test_commerce_descinterest">Description of Interest Level - Commerce Career Finder</string>
+    <string name="test_commerce_interpret">HOW TO INTERPRET THE RADAR CHART?</string>
+    <string name="test_commerce_interpretdesc">Radar chart shows your scores in commerce career finder test
+Radar chart shows total 18 commerce career fields which include 9 career fields in financial category finance and 9 career fields in non financial category
+The radar chart is equally divided into two halves
+The portion which has largest area is preferred commerce category for you</string>
+    <string name="test_commerce_commfinancial_graph">Financial and Non Financial Category Graph</string>
+    <string name="test_commerce_tableshowing">Table Showing Scores in Commerce Career Fields</string>
+    <string name="test_commerce_briefoverview">BRIEF OVERVIEW OF COMMERCE CAREER FIELDS</string>
+    <string name="test_commerce_desccarrerfield">Description of Your Commerce Career Fields</string>
+    <string name="test_commerce_courceoptions">Course Options in Commerce</string>
+    <string name="test_commerce_what">Whats Next?</string>
+    <string name="test_commerce_commcareer">Career fields in commerce are divided into two broad categories: financial and non- financial careers.  There are 9 career fields under each category. They are given below.</string>
+    <string name="test_commerce_desc">Commerce Career Finder test is designed to identify the right humanity career after 12th on the basis of your interests, aptitude and knowledge. Selecting the right career field is very important as it directs you to your dream career. This test will help you to make a decision on right career from a large number of options and to select the competitive or eligibility examinations to be prepared</string>
+
+
+    <string name="test_humanity">Humanity Career Finder Test</string>
+    <string name="test_humanity_benefits">Benefits of humanity Career Finder Test</string>
+    <string name="test_humanity_desctitle">Description of test</string>
+    <string name="test_humanity_titlefinancial">Financial Careers</string>
+    <string name="test_humanity_titlenonfinancial">Non-Financial Careers</string>
+    <string name="test_humanity_commtitle">humanity AS YOUR CAREER</string>
+    <string name="test_humanity_commgraph">Graph- humanity Career Finder Test</string>
+    <string name="test_humanity_descinterest">Description of Interest Level - Humanity Career Finder</string>
+    <string name="test_humanity_interpret">HOW TO INTERPRET THE RADAR CHART?</string>
+    <string name="test_humanity_interpretdesc">Radar chart shows your scores in humanity career finder test
+Radar chart shows total 18 humanity career fields which include 9 career fields in financial category finance and 9 career fields in non financial category
+The radar chart is equally divided into two halves
+The portion which has largest area is preferred humanity category for you</string>
+    <string name="test_humanity_careerfield_graph">Humanities Career Fields-Graph</string>
+    <string name="test_humanity_tableshowing">Table Showing Scores in humanity Career Fields</string>
+    <string name="test_humanity_briefoverview">BRIEF OVERVIEW OF HUMANITY CAREER FIELDS</string>
+    <string name="test_humanity_desccarrerfield">Description of Your humanity Career Fields</string>
+    <string name="test_humanity_courceoptions">Course Options in Humanity</string>
+    <string name="test_humanity_what">What Next?</string>
+    <string name="test_humanity_commcareer">Career fields in enggbranch are divided into two broad categories: financial and non- financial careers.  There are 9 career fields under each category. They are given below.</string>
+    <string name="test_humanity_desc">enggbranch Career Finder test is designed to identify the right enggbranch career after 12th on the basis of your interests, aptitude and knowledge. Selecting the right career field is very important as it directs you to your dream career. This test will help you to make a decision on right career from a large number of options and to select the competitive or eligibility examinations to be prepared</string>
+
+
+    <string name="test_enggbranch">Engineer Branch  Finder Test</string>
+    <string name="test_enggbranch_benefits">Benefits of Engineer Branch Finder Test</string>
+    <string name="test_enggbranch_desctitle">Description of test</string>
+    <string name="test_enggbranch_titlefinancial">Financial Careers</string>
+    <string name="test_enggbranch_titlenonfinancial">Non-Financial Careers</string>
+    <string name="test_enggbranch_commtitle">enggbranch AS YOUR CAREER</string>
+    <string name="test_enggbranch_commgraph">Graph- enggbranch Career Finder Test</string>
+    <string name="test_enggbranch_descinterest">Description of Interest Level - enggbranch Career Finder</string>
+    <string name="test_enggbranch_interpret">HOW TO INTERPRET THE RADAR CHART?</string>
+    <string name="test_enggbranch_interpretdesc">Radar chart shows your scores in enggbranch career finder test
+Radar chart shows total 18 enggbranch career fields which include 9 career fields in financial category finance and 9 career fields in non financial category
+The radar chart is equally divided into two halves
+The portion which has largest area is preferred enggbranch category for you</string>
+    <string name="test_enggbranch_careerfield_graph">Engineering branch finder-Graph</string>
+    <string name="test_enggbranch_tableshowing">Table Showing Scores in Engineering Branches</string>
+    <string name="test_skill_tableshowing">Table Showing Scores in Interest Areas</string>
+    <string name="test_enggbranch_briefoverview">BRIEF OVERVIEW OF enggbranch CAREER FIELDS</string>
+    <string name="test_enggbranch_descengg">Description of Your Interest Group in Engineering</string>
+    <string name="test_enggbranch_careerpaths">Career Paths to Become a Engineer</string>
+    <string name="test_enggbranch_what">What Next?</string>
+    <string name="test_enggbranch_commcareer">Career fields in enggbranch are divided into two broad categories: financial and non- financial careers.  There are 9 career fields under each category. They are given below.</string>
+    <string name="test_enggbranch_desc">enggbranch Career Finder test is designed to identify the right enggbranch career after 12th on the basis of your interests, aptitude and knowledge. Selecting the right career field is very important as it directs you to your dream career. This test will help you to make a decision on right career from a large number of options and to select the competitive or eligibility examinations to be prepared</string>
+
 
 </resources>

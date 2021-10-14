@@ -1,6 +1,7 @@
 package com.technohub.melifeapp.views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.SpinKitView;
@@ -23,7 +25,6 @@ import com.technohub.melifeapp.classes.TestAdapter;
 import com.technohub.melifeapp.models.LoadQuestionResponse;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.TestcategoryResponse;
-import com.technohub.melifeapp.models.Tests;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.presenter.TestCategoryPresenter;
 
@@ -31,9 +32,11 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class TestCategoriesFragment extends Fragment implements Itestcategory.View {
+
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
     SpinKitView testSpinkit;
+    LinearLayout whitelayout;
     TestCategoryPresenter testCategoryPresenter;
     TestcategoryResponse testcategoryResponse=new TestcategoryResponse();
     View v;
@@ -45,7 +48,7 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
                              Bundle savedInstanceState)
     {
 
-        v=inflater.inflate(R.layout.fragment_test__categories, container, false);
+        v=inflater.inflate(R.layout.testcategory_xml, container, false);
 
         v.setBackgroundColor(Color.WHITE);
 
@@ -104,33 +107,41 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     }
 
     @Override
-    public void loadExamFragment(LoadQuestionResponse loadQuestionResponse,String exam_id) {
+    public void loadExamFragment(LoadQuestionResponse loadQuestionResponse,String exam_id)
+    {
 
         Log.e("load","exam  or instruction fragment");
+        Log.e("load examid got",exam_id);
 
         ExamFragment examFragment=new ExamFragment();
         InstructionFragment instructionFragment=new InstructionFragment();
         Bundle bundle = new Bundle();
         FragmentTransaction transaction;
+        if(!loadQuestionResponse.getExamquestionData().isEmpty()) {
 
-        if (loadQuestionResponse.getExamquestionData().get(0).getIs_instruction_display().equals("1")) {
+            if (loadQuestionResponse.getExamquestionData().get(0).getIs_instruction_display().equals("0")) {
 
-             bundle.putParcelable("examResponse", loadQuestionResponse);
-             bundle.putString("exam_id",exam_id);
-             instructionFragment.setArguments(bundle);
-             transaction = getFragmentManager().beginTransaction();
-             transaction.replace(R.id.testcatlayout, instructionFragment);
+                bundle.putParcelable("examResponse", loadQuestionResponse);
+                bundle.putString("exam_id", exam_id);
+                instructionFragment.setArguments(bundle);
+                transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.testcatlayout, instructionFragment);
+            } else {
+                bundle.putParcelable("examResponse", loadQuestionResponse);
+                bundle.putString("exam_id", exam_id);
+                bundle.putString("testname", loadQuestionResponse.getExamquestionData().get(0).getTest_name());
+                examFragment.setArguments(bundle);
+                transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.testcatlayout, examFragment);
+            }
+
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
         else
         {
-             bundle.putParcelable("examResponse", loadQuestionResponse);
-             examFragment.setArguments(bundle);
-             transaction = getFragmentManager().beginTransaction();
-             transaction.replace(R.id.testcatlayout, examFragment);
+             Toast.makeText(getContext(), "No questions Available...", Toast.LENGTH_SHORT).show();
         }
-
-        transaction.addToBackStack(null);
-        transaction.commit();
 
     }
     @Override
@@ -148,14 +159,14 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     public void loadTestList(TestcategoryResponse testlist) {
         Log.e("load","testlist");
         this.testcategoryResponse=testlist;
-
+        whitelayout.setVisibility(View.VISIBLE);
         RecyclerView.Adapter adapter = new TestAdapter(testcategoryResponse,this,getContext());
         recyclerView.setAdapter(adapter);
     }
 
     @Override
-    public void showLoading() {
-
+    public void showLoading()
+    {
         testSpinkit.setVisibility(View.VISIBLE);
     }
 
@@ -166,9 +177,29 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     }
 
     @Override
-    public void init() {
+    public void goToDashboard() {
 
+        new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText("Alert")
+                .setContentText("Confirm Exam submit?")
+                .setConfirmText("Ok!")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog)
+                    {
+                        Intent intent = new Intent(getContext(), DashBoardActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                        sDialog.dismissWithAnimation();
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public void init() {
         testSpinkit=v.findViewById(R.id.testSpinkit);
         recyclerView = (RecyclerView)v.findViewById(R.id.test_recycler_view);
+        whitelayout = v.findViewById(R.id.whitelayout);
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.technohub.melifeapp.models.ExamRequest;
 import com.technohub.melifeapp.models.LoadQuestionResponse;
+import com.technohub.melifeapp.models.SaveAnswerResponse;
 import com.technohub.melifeapp.models.TestcategoryResponse;
 import com.technohub.melifeapp.models.Tests;
 import com.technohub.melifeapp.models.User;
@@ -11,6 +12,7 @@ import com.technohub.melifeapp.models.User;
 import java.util.List;
 
 public interface Itestcategory {
+  
     interface View
     {
 
@@ -20,6 +22,8 @@ public interface Itestcategory {
 
         void showLoading();
 
+        void goToDashboard();
+
         void hideLoading();
 
         void loadTestList(TestcategoryResponse testlist);
@@ -28,7 +32,7 @@ public interface Itestcategory {
 
         void loadReportFragment();
 
-        void loadExamFragment(LoadQuestionResponse loadQuestionResponse,String exam_id);
+        void loadExamFragment(LoadQuestionResponse loadQuestionResponse, String exam_id);
 
 
     }

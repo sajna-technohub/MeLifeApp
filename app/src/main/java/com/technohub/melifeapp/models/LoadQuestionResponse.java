@@ -9,6 +9,8 @@ public class LoadQuestionResponse implements Parcelable {
 
     private String ErrorCode;
     private String Message;
+    private ArrayList record=new ArrayList();
+    private String suggeted_career_image;
     private String pagination;
     ArrayList< TotalQuestionsModel > examquestionData = new ArrayList < TotalQuestionsModel > ();
     private String total_no_questions;
@@ -27,7 +29,48 @@ public class LoadQuestionResponse implements Parcelable {
     private String no_of_options_current_questions;
     private String imgStatusQns;
     private String imgStatusOpts;
+    private String eqStatusOpts;
 
+    public ArrayList getRecord() {
+        return record;
+    }
+
+    public void setRecord(ArrayList record) {
+        this.record = record;
+    }
+
+    public String getSuggeted_career_image() {
+        return suggeted_career_image;
+    }
+
+    public void setSuggeted_career_image(String suggeted_career_image) {
+        this.suggeted_career_image = suggeted_career_image;
+    }
+
+    public String getCurrent_qns() {
+        return current_qns;
+    }
+
+    public void setCurrent_qns(String current_qns) {
+        this.current_qns = current_qns;
+    }
+
+    private String eqStatusOptsQns;
+    private String current_qns;
+    private String next_record;
+
+
+    public String getNext_record() {
+        return next_record;
+    }
+
+    public void setNext_record(String next_record) {
+        this.next_record = next_record;
+    }
+
+    public static Creator<LoadQuestionResponse> getCREATOR() {
+        return CREATOR;
+    }
 
     protected LoadQuestionResponse(Parcel in) {
         ErrorCode = in.readString();
@@ -48,6 +91,10 @@ public class LoadQuestionResponse implements Parcelable {
         no_of_options_current_questions = in.readString();
         imgStatusQns = in.readString();
         imgStatusOpts = in.readString();
+        eqStatusOpts = in.readString();
+        eqStatusOptsQns = in.readString();
+        current_qns = in.readString();
+        next_record = in.readString();
     }
 
     public static final Creator<LoadQuestionResponse> CREATOR = new Creator<LoadQuestionResponse>() {
@@ -169,13 +216,21 @@ public class LoadQuestionResponse implements Parcelable {
     }
 
 
+    public String getEqStatusOpts() {
+        return eqStatusOpts;
+    }
 
+    public void setEqStatusOpts(String eqStatusOpts) {
+        this.eqStatusOpts = eqStatusOpts;
+    }
 
+    public String getEqStatusOptsQns() {
+        return eqStatusOptsQns;
+    }
 
-
-
-
-
+    public void setEqStatusOptsQns(String eqStatusOptsQns) {
+        this.eqStatusOptsQns = eqStatusOptsQns;
+    }
 
     public Qtn_time_taken getQtn_time_takenObject() {
         return Qtn_time_takenObject;
@@ -258,5 +313,9 @@ public class LoadQuestionResponse implements Parcelable {
         dest.writeString(no_of_options_current_questions);
         dest.writeString(imgStatusQns);
         dest.writeString(imgStatusOpts);
+        dest.writeString(eqStatusOptsQns);
+        dest.writeString(eqStatusOpts);
+        dest.writeString(current_qns);
+        dest.writeString(next_record);
     }
 }

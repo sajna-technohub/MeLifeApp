@@ -31,7 +31,8 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     private SpinKitView loginSpinKit;
     private LoginPresenter loginPresenter;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
@@ -75,7 +76,6 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
                 }
             }
         });
-
         loginBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
             loginEditTxtEmail.setError(null);
         }
         if (password.isEmpty() || password.length() < 6) {
-            loginEditTxtPassword.setError("Password should be minimum 6 charecters");
+            loginEditTxtPassword.setError("Password should be minimum 6 characters");
             valid = false;
         } else {
             loginEditTxtPassword.setError(null);

@@ -6,37 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".views.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/login_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_drawable"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView">
 
-        <ProgressBar
-            android:id="@+id/mainSpinKit"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="250dp"
-            android:indeterminate="true"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:foregroundGravity="center"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:id="@+id/bouncelayout"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+<ImageView
+    android:layout_width="90dp"
+    android:id="@+id/splash_ai"
+    android:src="@drawable/splash_ai"
+    android:layout_height="90dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/hardwhite"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/title_melife"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

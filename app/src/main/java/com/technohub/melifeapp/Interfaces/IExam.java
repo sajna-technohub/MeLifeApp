@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import com.technohub.melifeapp.models.LoadQuestionResponse;
+import com.technohub.melifeapp.models.SaveAnswerRequest;
+import com.technohub.melifeapp.models.SaveAnswerResponse;
 
 
 public interface IExam {
@@ -30,6 +32,10 @@ public interface IExam {
 
         void LoadFragment(Fragment f);
 
+        void showNextQuestion(SaveAnswerResponse saveAnswerResponse);
+
+        void goToDashboard();
+
 
     }
 
@@ -37,9 +43,11 @@ public interface IExam {
 
         void created();
 
-        void saveAnswer(String exam_id,String test_id,String user_id,String user_email,String logid,String DeviceType,String DeviceToken,String record );
+        void submitexam(String examid,String userid,String email);
 
-        void saveanswerbeforeidealtime();
+        void saveAnswer(String qnorder,String exam_id,String test_id,String user_id ,String logid,String DeviceType,String DeviceToken,String quesid,String optid ,String totqns);
+
+        void saveanswerbeforeidealtime(String qnorder,String exam_id,String test_id,String user_id ,String logid,String DeviceType,String DeviceToken,String quesid,String optid,String totqns );
 
     }
 }

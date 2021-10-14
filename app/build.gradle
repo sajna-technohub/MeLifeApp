@@ -45,6 +45,7 @@ dependencies {
     implementation "com.github.skydoves:elasticviews:2.0.6"
 //    circular imageview
     implementation 'com.mikhaellopez:circularimageview:4.1.1'
+
 //    Justified Text View
     implementation 'com.codesgood:justifiedtextview:1.1.0'
 
@@ -55,6 +56,24 @@ dependencies {
     // for showing mathematical/Chemical  expressions
     implementation 'io.github.kexanie.library:MathView:0.0.6'
 
+//for showing html text with img tags
     implementation 'org.sufficientlysecure:html-textview:3.9'
+//for showing percentage graph
+    implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.0'
+//for showing images
+    implementation 'com.squareup.picasso:picasso:2.71828'
+//for charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+//for radar views
+    implementation 'com.dzaitsev.android.widget:radarchartview:0.1.0'
+//for circle progress
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+
+    implementation 'com.alespero:expandable-cardview:0.8'
+
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
+
+    implementation 'com.github.traex.rippleeffect:library:1.3'
+
 
 }

@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/reportlayout"
-    >
+    android:id="@+id/reportlayout">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,7 +74,6 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/profileTxtName"
                                 android:fontFamily="@font/proximanovaregular"
-                                android:text="Tony Stork"
                                 android:textColor="@color/yellow"
                                 android:textSize="21sp"
                                 android:enabled="false"
@@ -226,7 +224,6 @@
                             android:fontFamily="@font/proximanovaregular"
                             android:gravity="center"
                             android:padding="13dp"
-                            android:text="22-11-2019"
                             android:textAllCaps="true"
                             android:textColor="@color/darkblue"
                             android:textSize="14sp"
@@ -301,7 +298,6 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:id="@+id/profileTxtmobile"
-                                        android:text="+91 7999193854"
                                         android:enabled="false"
                                         android:textSize="15sp"
                                         android:textColor="@color/darkblue"
@@ -327,7 +323,6 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/margin_20"
                                         android:textColor="@color/darkblue"
-                                        android:text="tony_sstrok@3gtechnohub.com"
                                         android:textSize="15sp"
                                         android:enabled="false"
                                         android:id="@+id/profileTxtemail"
@@ -353,7 +348,6 @@
                                         android:textColor="@color/darkblue"
                                         android:id="@+id/profileSprstate"
                                         android:layout_marginLeft="@dimen/margin_20"
-                                        android:text="Kerala"
                                         android:enabled="false"
                                         android:textSize="15sp" />
                                 </LinearLayout>
@@ -376,7 +370,6 @@
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/darkblue"
                                         android:layout_marginLeft="@dimen/margin_20"
-                                        android:text="India"
                                         android:enabled="false"
                                         android:id="@+id/profileSprCountry"
                                         android:textSize="15sp" />
@@ -399,7 +392,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/margin_20"
-                                        android:text="688537"
                                         android:id="@+id/profileTxtpincode"
                                         android:textSize="15sp"
                                         android:enabled="false"
@@ -470,7 +462,6 @@
                                         android:id="@+id/profileSprQuali"
                                         android:layout_marginLeft="20dp"
                                         android:enabled="false"
-                                        android:text="Expert in Photoshop, Adobe XD"
                                         android:textColor="@color/darkblue"
                                         android:textSize="15sp"/>
                                 </LinearLayout>

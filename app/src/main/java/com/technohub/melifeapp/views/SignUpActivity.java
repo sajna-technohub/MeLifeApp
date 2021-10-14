@@ -21,6 +21,7 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SignUpActivity extends AppCompatActivity implements IRegister.View {
+
     EditText registerEditTxtName,registerEditTxtPincode, registerEditTxtEmail, registerEditTxtMobile;
     TextView registerTxtNameError, registerTxtEmailError, registerTxtPinError,registerTxtMobileError;
     Button registerBtnRegister;
@@ -67,8 +68,9 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View 
         String email = registerEditTxtEmail.getText().toString();
         String mobile = registerEditTxtMobile.getText().toString();
         String pincode = registerEditTxtPincode.getText().toString();
-        if (name.isEmpty() || name.length() < 4) {
-            registerEditTxtName.setError("Name should be minimum 3 charecters");
+        if (name.isEmpty() || name.length() < 4|| !name.matches("^[a-zA-Z\\s]+$"))
+        {
+            registerEditTxtName.setError("Enter a valid name(minimum 4 characters)");
             valid = false;
         } else {
             registerEditTxtName.setError(null);
@@ -83,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View 
         }
 
 
-        if (mobile.isEmpty() || !android.util.Patterns.PHONE.matcher(mobile).matches()) {
+        if (mobile.isEmpty() || !mobile.matches("^[0][1-9]\\d{9}$|^[1-9]\\d{9}$")) {
             registerEditTxtMobile.setError("Enter valid mobile number");
             valid = false;
         } else {
@@ -144,7 +146,6 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View 
 
     @Override
     public void clearErrors() {
-
         registerTxtNameError.setVisibility(View.GONE);
         registerTxtEmailError.setVisibility(View.GONE);
         registerTxtMobileError.setVisibility(View.GONE);

@@ -1,6 +1,9 @@
 package com.technohub.melifeapp.models;
 
+import java.util.ArrayList;
+
 public class ProfileModel {
+
     String name;
     String email;
     String pincode;

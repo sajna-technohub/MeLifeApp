@@ -9,19 +9,48 @@ public class User {
     public String name;
     public String user_email;
     public String mobile;
+    public String mobile_no;
     public String mobno;
     public String email;
+
+    public String getMobile_no() {
+        return mobile_no;
+    }
+
+    public void setMobile_no(String mobile_no) {
+        this.mobile_no = mobile_no;
+    }
+
+    public String getProfile_icon() {
+        return profile_icon;
+    }
+
+    public void setProfile_icon(String profile_icon) {
+        this.profile_icon = profile_icon;
+    }
+
     public String pincode;
     public String user_Password;
+    public String profile_icon;
     public String token;
     public String DeviceType;
     public String DeviceToken;
     public String state;
+    public String dob;
     public String country;
     public String qualification;
     public int melife_user_id;
     String userid;
-    int user_id;
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    String user_id;
 
     public String getState() {
         return state;
@@ -75,13 +104,14 @@ public class User {
 
     private String completion_status;
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
+
     /*User Sign Up*/
 
     public String getName() {

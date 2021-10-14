@@ -16,7 +16,8 @@ import retrofit2.Response;
 public class ForgotPwdPresenter implements IForgot.Presenter{
     private IForgot.View view;
 
-    public ForgotPwdPresenter(IForgot.View view) {
+    public ForgotPwdPresenter(IForgot.View view)
+    {
         this.view = view;
     }
 
