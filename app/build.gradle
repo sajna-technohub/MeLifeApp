@@ -63,7 +63,7 @@ dependencies {
 //for showing images
     implementation 'com.squareup.picasso:picasso:2.71828'
 //for charts
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 //for radar views
     implementation 'com.dzaitsev.android.widget:radarchartview:0.1.0'
 //for circle progress

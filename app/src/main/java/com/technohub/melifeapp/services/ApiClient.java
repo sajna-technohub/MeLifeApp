@@ -11,8 +11,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "https://www.3gmelife.com:443/appmelife/webservice/Webservice/";
-    public static final String IMG_URL = "https://www.3gmelife.com:443/";
+    private static final String BASE_URL = "https://www.3gmelife.com/appmelife_alpha/webservice/Webservice/";
+    public static final String IMG_URL = "https://www.3gmelife.com/appmelife_alpha/";
     private static Retrofit retrofit;
     public static Retrofit getApiClient() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
