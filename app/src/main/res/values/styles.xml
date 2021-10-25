@@ -88,6 +88,19 @@
         <item name="android:gravity">left</item>
         <item name="android:padding">@dimen/dimen_15</item>
     </style>
+    <style name="style_stream_report_title">
+        <item name="android:textSize">@dimen/margin_20</item>
+        <item name="android:fontFamily">@font/barlowsemicondensedmedium</item>
+        <item name="android:textColor">@color/hardwhite</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/streamdrawable</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/margin_60</item>
+        <item name="android:clickable">true</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/dimen_15</item>
+    </style>
 
     <style name="style_skill_table_title">
         <item name="android:textSize">@dimen/dimen_15</item>
@@ -104,10 +117,15 @@
         <item name="android:fontFamily">@font/barlowsemicondensedmedium</item>
         <item name="android:textColor">@color/hardwhite</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/margin_60</item>
-        <item name="android:gravity">left</item>
+        <item name="android:background">@drawable/border</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:layout_height">@dimen/dimen_50</item>
+        <item name="android:gravity">center</item>
     </style>
+
+
+
     <style name="style_skill_table_item">
         <item name="android:layout_width">@dimen/dimen_100</item>
         <item name="android:layout_height">match_parent</item>

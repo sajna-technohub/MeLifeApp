@@ -7,6 +7,9 @@
     <color name="snowhite">#FFFAFA</color>
     <color name="purewhite">#ffffffff</color>
     <color name="lightblue">#29B6F6</color>
+    <color name="brief_green">#388d14</color>
+    <color name="average_color">#ffa93f</color>
+    <color name="low_color">#f33c3c</color>
     <color name="darkblue">#3B5998</color>
     <color name="google_red">#DC143C</color>
     <color name="edittext_blue">#dbF0F6</color>
@@ -31,6 +34,7 @@
     <item name="blue" type="color">#FF33B5E5</item>
     <item name="purple" type="color">#FFAA66CC</item>
     <item name="green" type="color">#FF99CC00</item>
+    <item name="color_flur" type="color">#77d214</item>
     <item name="orange" type="color">#FFFFBB33</item>
     <item name="red" type="color">#FFFF4444</item>
     <item name="darkkblue" type="color">#FF0099CC</item>
@@ -54,6 +58,7 @@
 
     <color name="colorPrimaryLight">#B2DFDB</color>
     <color name="btn_green">#01a0f9</color>
+    <color name="color_peech">#FFC3B1</color>
     <color name="colorsafron">#f8a875</color>
     <color name="color_blue">#18b1c3</color>
     <color name="color_redgradient">#ca3e47</color>
