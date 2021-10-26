@@ -63,6 +63,11 @@
     <color name="color_blue">#18b1c3</color>
     <color name="color_redgradient">#ca3e47</color>
     <color name="color_greygradient">#7f8ca4</color>
+    <color name="color_humviolet">#6e97ed</color>
+    <color name="color_humblue">#323b99</color>
+    <color name="color_humbarcolor">#7C01AF</color>
+    <color name="color_aiorange">#ff9d76</color>
+    <color name="color_aired">#eb4d55</color>
 
     <color name="txtcolor_green">#037b78</color>
     <color name="color_indigo">#f8a875</color>

@@ -101,7 +101,32 @@
         <item name="android:gravity">left</item>
         <item name="android:padding">@dimen/dimen_15</item>
     </style>
-
+    <style name="style_ai_report_title">
+        <item name="android:textSize">@dimen/margin_20</item>
+        <item name="android:fontFamily">@font/barlowsemicondensedmedium</item>
+        <item name="android:textColor">@color/hardwhite</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/aidrawable</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/margin_60</item>
+        <item name="android:clickable">true</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/dimen_15</item>
+    </style>
+    <style name="style_humanity_report_title">
+        <item name="android:textSize">@dimen/margin_20</item>
+        <item name="android:fontFamily">@font/barlowsemicondensedmedium</item>
+        <item name="android:textColor">@color/hardwhite</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/humanitydrawable</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/margin_60</item>
+        <item name="android:clickable">true</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/dimen_15</item>
+    </style>
     <style name="style_skill_table_title">
         <item name="android:textSize">@dimen/dimen_15</item>
         <item name="android:fontFamily">@font/barlowsemicondensedmedium</item>
@@ -123,7 +148,15 @@
         <item name="android:layout_height">@dimen/dimen_50</item>
         <item name="android:gravity">center</item>
     </style>
-
+    <style name="style_hum_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0.25</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/barlowsemicondensedlight</item>
+        <item name="android:textColor">@color/hardwhite</item>
+    </style>
 
 
     <style name="style_skill_table_item">
@@ -132,6 +165,15 @@
         <item name="android:layout_weight">0.25</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@color/transparent_blue</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/barlowsemicondensedlight</item>
+        <item name="android:textColor">@color/hardwhite</item>
+    </style>
+    <style name="style_hum_table_item">
+        <item name="android:layout_width">@dimen/margin_200</item>
+        <item name="android:layout_height">@dimen/dimen_50</item>
+        <item name="android:layout_weight">0.25</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">@font/barlowsemicondensedlight</item>
         <item name="android:textColor">@color/hardwhite</item>

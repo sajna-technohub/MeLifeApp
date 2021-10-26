@@ -247,9 +247,11 @@ The portion which has largest area is preferred commerce category for you</strin
     <string name="test_commerce_commcareer">Career fields in commerce are divided into two broad categories: financial and non- financial careers.  There are 9 career fields under each category. They are given below.</string>
     <string name="test_commerce_desc">Commerce Career Finder test is designed to identify the right humanity career after 12th on the basis of your interests, aptitude and knowledge. Selecting the right career field is very important as it directs you to your dream career. This test will help you to make a decision on right career from a large number of options and to select the competitive or eligibility examinations to be prepared</string>
 
-    <string name="test_humanity">Humanity Career Finder Test</string>
-    <string name="test_humanity_benefits">Benefits of humanity Career Finder Test</string>
+    <string name="test_humanity">HUMANITY CAREER FINDER TEST REPORT</string>
+    <string name="test_humanity_benefits">BENEFITS OF HUMANITY CAREER FINDER TEST</string>
     <string name="test_humanity_desctitle">Description of test</string>
+    <string name="test_humanity_inlevel">Description of Interest Level -</string>
+    <string name="test_humanity_inlevel2"> Humanities Career Finder</string>
     <string name="test_humanity_titlefinancial">Financial Careers</string>
     <string name="test_humanity_titlenonfinancial">Non-Financial Careers</string>
     <string name="test_humanity_commtitle">humanity AS YOUR CAREER</string>
@@ -260,17 +262,28 @@ The portion which has largest area is preferred commerce category for you</strin
 Radar chart shows total 18 humanity career fields which include 9 career fields in financial category finance and 9 career fields in non financial category
 The radar chart is equally divided into two halves
 The portion which has largest area is preferred humanity category for you</string>
-    <string name="test_humanity_careerfield_graph">Humanities Career Fields-Graph</string>
+    <string name="test_humanity_careerfield_graph">HUMANITIES CAREER FIELDS-GRAPH</string>
     <string name="test_humanity_tableshowing">Table Showing Scores in humanity Career Fields</string>
     <string name="test_humanity_briefoverview">BRIEF OVERVIEW OF HUMANITY CAREER FIELDS</string>
     <string name="test_humanity_desccarrerfield">Description of Your humanity Career Fields</string>
     <string name="test_humanity_courceoptions">Course Options in Humanity</string>
     <string name="test_humanity_what">What Next?</string>
+    <string name="test_humanity_cource">Cource Options</string>
+    <string name="test_humanity_cource2">in Commerce</string>
+    <string name="test_humanity_tabletitle">Table Showing Scores </string>
+    <string name="test_humanity_tabletitle2">in Humanities Career Fields</string>
+    <string name="test_humanity_graphtitle">HUMANITIES CAREER FIELDS-GRAPH</string>
     <string name="test_humanity_commcareer">Career fields in enggbranch are divided into two broad categories: financial and non- financial careers.  There are 9 career fields under each category. They are given below.</string>
     <string name="test_humanity_desc">enggbranch Career Finder test is designed to identify the right enggbranch career after 12th on the basis of your interests, aptitude and knowledge. Selecting the right career field is very important as it directs you to your dream career. This test will help you to make a decision on right career from a large number of options and to select the competitive or eligibility examinations to be prepared</string>
 
 
     <string name="test_enggbranch">Engineer Branch  Finder Test</string>
+    <string name="test_aijob">AI JOB RISK FINDER TEST REPORT</string>
+    <string name="test_aijob_find">FIND YOUR JOB RISK IN THE ERA OF AI</string>
+    <string name="test_aijob_yourjob">Your job is in </string>
+    <string name="test_aijob_yourjob2">the safe zone!</string>
+    <string name="test_aijob_safe">SAFE ZONE</string>
+    <string name="test_aijob_safezone">YOUR JOB IS IN THE SAFE ZONE</string>
     <string name="test_enggbranch_benefits">Benefits of Engineer Branch Finder Test</string>
     <string name="test_enggbranch_desctitle">Description of test</string>
     <string name="test_enggbranch_titlefinancial">FINANCIAL CAREERS</string>
