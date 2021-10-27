@@ -68,6 +68,8 @@
     <color name="color_humbarcolor">#7C01AF</color>
     <color name="color_aiorange">#ff9d76</color>
     <color name="color_aired">#eb4d55</color>
+    <color name="color_engggrey">#5a91af</color>
+    <color name="color_enggred">#ffa28a</color>
 
     <color name="txtcolor_green">#037b78</color>
     <color name="color_indigo">#f8a875</color>

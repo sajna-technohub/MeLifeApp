@@ -282,13 +282,21 @@ The portion which has largest area is preferred humanity category for you</strin
     <string name="test_aijob_find">FIND YOUR JOB RISK IN THE ERA OF AI</string>
     <string name="test_aijob_yourjob">Your job is in </string>
     <string name="test_aijob_yourjob2">the safe zone!</string>
+    <string name="test_aijob_yourdominant">Your dominant personality</string>
+    <string name="test_aijob_yourdominant2"> style is competitive</string>
     <string name="test_aijob_safe">SAFE ZONE</string>
+    <string name="test_aijob_naturalstrength">NATURAL STRENGTHS</string>
+    <string name="test_aijob_naturalweak">NATURAL WEAKNESSES</string>
     <string name="test_aijob_safezone">YOUR JOB IS IN THE SAFE ZONE</string>
-    <string name="test_enggbranch_benefits">Benefits of Engineer Branch Finder Test</string>
+    <string name="test_aijob_competitive">COMPETITIVE PERSONALITY</string>
+    <string name="test_aijob_yourcompetitive">YOUR DOMINANT PERSONALITY STYLE IS COMPETITIVE</string>
+    <string name="test_enggbranch_benefits">BENEFITS OF ENGINEERING BRANCH FINDER TEST</string>
+    <string name="test_enggbranch_rep">ENGINEERING BRANCH FINDER TEST REPORT</string>
     <string name="test_enggbranch_desctitle">Description of test</string>
     <string name="test_enggbranch_titlefinancial">FINANCIAL CAREERS</string>
     <string name="test_enggbranch_titlenonfinancial">NON FINANCIAL CAREERS</string>
     <string name="test_enggbranch_commtitle">enggbranch AS YOUR CAREER</string>
+    <string name="test_enggbranch_interst">ENGINEERING INTEREST GROUPS</string>
     <string name="test_enggbranch_commgraph">Graph- enggbranch Career Finder Test</string>
     <string name="test_enggbranch_descinterest">Description of Interest Level - enggbranch Career Finder</string>
     <string name="test_enggbranch_interpret">HOW TO INTERPRET THE RADAR CHART?</string>
@@ -303,6 +311,12 @@ The portion which has largest area is preferred enggbranch category for you</str
     <string name="test_enggbranch_descengg">Description of Your Interest Group in Engineering</string>
     <string name="test_enggbranch_careerpaths">Career Paths to Become a Engineer</string>
     <string name="test_enggbranch_what">What Next?</string>
+    <string name="test_enggbranch_table">Table Showing Your Scores </string>
+    <string name="test_enggbranch_table2">in Engineering Branches</string>
+    <string name="test_enggbranch_descingrp">Description of Your </string>
+    <string name="test_enggbranch_descingrp2">Interest Group in Engineering</string>
+    <string name="test_enggbranch_careerpath">Career Paths to</string>
+    <string name="test_enggbranch_careerpath2">Become a Engineer</string>
     <string name="test_enggbranch_commcareer">Career fields in enggbranch are divided into two broad categories: financial and non- financial careers.  There are 9 career fields under each category. They are given below.</string>
     <string name="test_enggbranch_desc">enggbranch Career Finder test is designed to identify the right enggbranch career after 12th on the basis of your interests, aptitude and knowledge. Selecting the right career field is very important as it directs you to your dream career. This test will help you to make a decision on right career from a large number of options and to select the competitive or eligibility examinations to be prepared</string>
 
