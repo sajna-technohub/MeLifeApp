@@ -81,11 +81,21 @@
 
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorenter">#6335d2</color>
+    <color name="colorskillbarblu">#14AAC0</color>
+    <color name="colorskillbaryel">#D3DE26</color>
+    <color name="colorskillbargre">#616161 </color>
     <color name="colorartis">#cd6464</color>
     <color name="colorconve">#e6cd1d</color>
     <color name="colorsocial">#434e9e</color>
     <color name="colorinves">#ae51c1</color>
     <color name="colorreal">#e89436</color>
+    <color name="colorhexred">#dc696a</color>
+    <color name="colorhexyel">#f48434</color>
+    <color name="colorhexvio">#d86a9c</color>
+    <color name="colorhexgre">#779b5b</color>
+    <color name="colorhexblu">#65a28e</color>
 
     <color name="colorRow">#E5E6EC</color>
+    <color name="colorskillblue">#04adcf</color>
+    <color name="colorskillgreen">#07bb79 </color>
 </resources>
