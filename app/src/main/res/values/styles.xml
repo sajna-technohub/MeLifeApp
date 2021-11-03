@@ -194,7 +194,20 @@
         <item name="android:fontFamily">@font/barlowsemicondensedlight</item>
         <item name="android:textColor">@color/hardwhite</item>
     </style>
-
+    <style name="style_right_report_title_blue">
+        <item name="android:textSize">@dimen/margin_20</item>
+        <item name="android:fontFamily">@font/barlowsemicondensedmedium</item>
+        <item name="android:textColor">@color/hardwhite</item>
+        <item name="android:background">@drawable/reportdrawable</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/margin_20</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:padding">@dimen/dimen_15</item>
+    </style>
     <style name="style_skill_report_title_blue">
         <item name="android:textSize">@dimen/margin_20</item>
         <item name="android:fontFamily">@font/barlowsemicondensedmedium</item>

@@ -209,11 +209,9 @@ Log.e("name and mob",file.getName()+user.getMobno());
             @Override
             public void onResponse(Call<ProfileRes> call, Response<ProfileRes> response) {
 
-                ProfileRes profileResponse = response.body();
+                if (response.isSuccessful()) {
 
-                if (response.isSuccessful() && response.body() != null) {
-
-
+                    ProfileRes profileResponse = response.body();
                         getProfile();
                         Log.e("ProfUpdate resss", profileResponse.getData() + "");
                         Log.e("ProfUpdate name", profileResponse.getData().getUserdetails().get(0).getName()+ "");

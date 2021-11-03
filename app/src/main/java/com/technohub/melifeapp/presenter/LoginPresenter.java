@@ -44,23 +44,24 @@ public class LoginPresenter implements ILogin.Presenter {
         {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse loginResponse = response.body();
+
                 if (response.isSuccessful() && response.body() != null) {
+                    LoginResponse loginResponse = response.body();
                     if(response.body().getMessage().equals("Success")) {
                         Log.e("LoginResponse", loginResponse.getMessage());
                         List<User> userdata = response.body().getData();
-                        for (User user : userdata)
-                        {
-                            Log.e("id", user.getMelife_user_id() + "");
-                            Log.e("complete status", user.getCompletion_status());
-                            Log.e("Name", user.getName());
-                            new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken(),email);
 
-                        }
                         view.hideLoading();
                         view.LoginSuccessful();
                         if( response.body().getData().get(0).getCompletion_status().equals("Y"))
                         {
+                            for (User user : userdata)
+                            {
+                                Log.e("id", user.getMelife_user_id() + "");
+                                Log.e("complete status", user.getCompletion_status());
+                                Log.e("Name", user.getName());
+                                new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken(),email);
+                            }
                             view.goToMainActivity();
                          }
                         else

@@ -61,14 +61,14 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
 
         testCategoryPresenter = new TestCategoryPresenter(this,user);
         testCategoryPresenter.created();
-
+        showLoading();
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
+            hideLoading();
         return v;
     }
 
@@ -152,7 +152,6 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
         transaction.replace(R.id.testcatlayout, reportFragment);
         transaction.addToBackStack(null);
         transaction.commit();
-
     }
 
     @Override

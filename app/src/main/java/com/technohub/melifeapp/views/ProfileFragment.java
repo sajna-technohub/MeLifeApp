@@ -122,19 +122,13 @@ public boolean validate() {
     String mobile = profileTxtmobile.getText().toString();
     String pincode = profileTxtpincode.getText().toString();
 
-    if (name.isEmpty() || name.length() < 4) {
-        profileTxtName.setError("Name should be minimum 3 charecters");
-        valid = false;
-    } else {
-        profileTxtName.setError(null);
-    }
-
-    if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-        profileTxtemail.setError("Enter a valid email address");
-        valid = false;
-    } else {
-        profileTxtemail.setError(null);
-    }
+//
+//    if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//        profileTxtemail.setError("Enter a valid email address");
+//        valid = false;
+//    } else {
+//        profileTxtemail.setError(null);
+//    }
 
 
     if (mobile.isEmpty() || !mobile.matches("^[1-9][0-9]{9}$") ) {

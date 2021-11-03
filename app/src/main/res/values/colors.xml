@@ -19,6 +19,7 @@
     <color name="lightgrey"> #ededed</color>
     <color name="themecolor">#14a0ca</color>
     <color name="grey">#A9A9A9</color>
+    <color name="textcolor">#212529</color>
     <color name="ylwcolor">#FFCF66</color>
     <color name="profblue">#3f51b5</color>
     <color name="shadowblue">#0D009CB9</color>
@@ -58,6 +59,7 @@
 
     <color name="colorPrimaryLight">#B2DFDB</color>
     <color name="btn_green">#01a0f9</color>
+    <color name="barblue">#0583E2</color>
     <color name="color_peech">#FFC3B1</color>
     <color name="colorsafron">#f8a875</color>
     <color name="color_blue">#18b1c3</color>
