@@ -102,6 +102,8 @@
                     android:layout_marginTop="20dp"
                     android:textSize="@dimen/dimen_17"
                     android:typeface="serif"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:paddingRight="@dimen/dimen_10"
                     android:textAppearance="@android:style/TextAppearance.Small"
                     android:id="@+id/imgTxtQuestion"
                     android:textColor="@color/darkblue"
@@ -135,16 +137,17 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/htmllayout"
                 android:visibility="visible"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:orientation="vertical">
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageviewlayout"
                     android:orientation="vertical">
+
             <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -156,23 +159,33 @@
                 android:textColor="@color/darkblue"
                 android:textStyle="bold"
                 />
-                    <WebView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:textSize="@dimen/dimen_17"
-                        android:layout_below="@+id/examTxtQuestion"
-                        android:textColor="@color/darkblue"
-                        android:textStyle="bold"
-                        android:visibility="gone"
-                        android:id="@+id/examWviewtable"
-                        />
 
-                </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="60dp"
+                        android:layout_height="@dimen/margin_200">
+
+                        <WebView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/dimen_17"
+                            android:textColor="@color/darkblue"
+                            android:textStyle="bold"
+                            android:visibility="gone"
+                            android:id="@+id/examWviewtable"
+                            />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
             <org.sufficientlysecure.htmltextview.HtmlTextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption1"
                />
+
+
             <org.sufficientlysecure.htmltextview.HtmlTextView
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption2"
@@ -190,6 +203,7 @@
                 style="@style/style_answer_button"
                 android:id="@+id/examBtnOption5"
                />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
