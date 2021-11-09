@@ -2,10 +2,12 @@ package com.technohub.melifeapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -166,12 +168,24 @@ public class LoginActivity extends AppCompatActivity implements ILogin.View {
     }
 
     @Override
-    public void goToProfileEdit() {
+    public void goToProfileEdit(int userid) {
+        Log.e("userid login",userid+"");
+        Bundle bundle=new Bundle();
+        ProfileFragment fragmentTaketest=new ProfileFragment();
+        bundle.putInt("userid", userid);
+        fragmentTaketest.setArguments(bundle);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.loginlayout, fragmentTaketest);
+        transaction.commit();
 
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.loginlayout, new ProfileFragment())
-                        .commit();
+//ProfileFragment profileFragment=new ProfileFragment();
+//
+//        bundle.putInt("userid", userid);
+//        profileFragment.setArguments(bundle);
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.loginlayout, profileFragment)
+//                        .commit();
 
     }
 

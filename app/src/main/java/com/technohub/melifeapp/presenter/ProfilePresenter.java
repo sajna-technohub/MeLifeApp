@@ -30,50 +30,59 @@ public class ProfilePresenter implements IProfile.Presenter {
     IProfile.View view;
     User user;
 
-
-    public ProfilePresenter(IProfile.View view, User user) {
+//
+//    public ProfilePresenter(IProfile.View view, User user) {
+//        this.view = view;
+//        this.user = user;
+//        Log.e("Prof presenter", "constructor");
+//    }
+ public ProfilePresenter(IProfile.View view) {
         this.view = view;
-        this.user = user;
-        Log.e("Prof presenter", "constructor");
+        Log.e("Prof presenter", "de constructor");
     }
 
     @Override
-    public void getProfile()
+    public void getProfile(String userid)
     {
-
         view.showLoading();
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+        User user=new User();
+        user.setUser_id(userid);
+        user.setDeviceType("1");
+        user.setDeviceToken("uhg");
         Call<ProfileResponse> call = retrofitApi.userdetails(user);
         call.enqueue(new Callback<ProfileResponse>() {
 
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
 
-                ProfileResponse profileResponse = response.body();
 
-                if (response.isSuccessful() && response.body() != null) {
 
-                    if (response.body().getMessage().equals("Success")) {
+                if (response.isSuccessful() ) {
 
-//                        for (ProfileModel p : profileResponse.getData())
-//                        {
-//
-//                            Log.e("name", p.getName());
-//                            Log.e("email", p.getEmail());
-//                            Log.e("phone", p.getMobile_no());
-////                            Log.e("pin", p.getPincode());
-////                            Log.e("dob", p.getDob());
-////                            Log.e("quali", p.getQualification());
-////                            Log.e("state", p.getState());
-//
-//                        }
-                        view.setProfile(profileResponse);
-                        view.hideLoading();
+                    ProfileResponse profileResponse = response.body();
 
-                    } else {
+
+                        for (ProfileModel p : profileResponse.getData())
+                        {
+
+                            Log.e("name", p.getName());
+                            Log.e("email", p.getEmail());
+                            Log.e("phone", p.getMobile_no());
+                            Log.e("pin", p.getPincode());
+//                            Log.e("dob", p.getDob());
+//                            Log.e("quali", p.getQualification());
+//                            Log.e("state", p.getState());
+
+                        }
+                    view.setProfile(profileResponse);
+                    view.hideLoading();
+                }
+
+                    else {
                         view.hideLoading();
                     }
-                }
+
             }
 
             @Override
@@ -90,7 +99,7 @@ public class ProfilePresenter implements IProfile.Presenter {
 
         view.init();
         view.initClicks();
-        getProfile();
+
     }
 
 //    public void UpdateButtonClick(User user) {
@@ -210,13 +219,12 @@ Log.e("name and mob",file.getName()+user.getMobno());
             public void onResponse(Call<ProfileRes> call, Response<ProfileRes> response) {
 
                 if (response.isSuccessful()) {
-
                     ProfileRes profileResponse = response.body();
-                        getProfile();
+//                        getProfile(user.getUserid());
                         Log.e("ProfUpdate resss", profileResponse.getData() + "");
                         Log.e("ProfUpdate name", profileResponse.getData().getUserdetails().get(0).getName()+ "");
                         view.hideLoading();
-                        view.goToDashboard();
+                        view.alert();
 
                     } else {
                         view.hideLoading();
@@ -227,6 +235,7 @@ Log.e("name and mob",file.getName()+user.getMobno());
             @Override
             public void onFailure(Call<ProfileRes> call, Throwable t) {
                 Log.e("Profile up res", "faileddd");
+                Log.e("Profile up res", t.getMessage());
                 view.hideLoading();
             }
         });

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     TestCategoryPresenter testCategoryPresenter;
     TestcategoryResponse testcategoryResponse=new TestcategoryResponse();
     View v;
+    ImageView testBtnBack;
     String email;
     String userid;
 
@@ -75,7 +77,12 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     @Override
     public void initClicks()
     {
-
+testBtnBack.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getContext(),DashBoardActivity.class));
+    }
+});
     }
 
     @Override
@@ -198,6 +205,7 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     @Override
     public void init() {
         testSpinkit=v.findViewById(R.id.testSpinkit);
+        testBtnBack=v.findViewById(R.id.testBtnBack);
         recyclerView = (RecyclerView)v.findViewById(R.id.test_recycler_view);
         whitelayout = v.findViewById(R.id.whitelayout);
     }

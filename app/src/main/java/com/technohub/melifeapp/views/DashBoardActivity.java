@@ -61,7 +61,6 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         NavController navController1 = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController1, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController1);
-
         loadFragment(new HomeFragment());
         navView.setOnNavigationItemSelectedListener(this);
     }

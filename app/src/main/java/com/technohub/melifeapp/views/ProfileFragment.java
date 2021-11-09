@@ -43,6 +43,8 @@ import java.util.Calendar;
 import java.util.List;
 
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static android.app.Activity.RESULT_OK;
 
 
@@ -58,11 +60,14 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     ProfilePresenter profilePresenter;
     int mYear,mMonth,mDay;
     User user=new User();
-    String completion_status,userid;
+    String uid;
+    String completion_status;
+    int userid;
     String strcountry,strstate,strqualification;
     SpinKitView profProgressspin;
     ProgressDialog progressdialog;
     File file;
+
 
 
     @Override
@@ -73,20 +78,35 @@ public class ProfileFragment extends Fragment implements IProfile.View {
         v=inflater.inflate(R.layout.fragment_profile_new, container, false);
         v.setBackgroundColor(Color.WHITE);
 
-        completion_status=new LoginResponse().getSharedPreferences(getContext(),"completion_status");
-        userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
-
-        Log.e("Sessions Profile",userid+"  "+completion_status);
-
-        user.setUser_id(userid);
-        user.setCompletion_status(completion_status);
-        user.setDeviceType("1");
-        user.setDeviceToken("dfsdfs");
-
-        profilePresenter = new ProfilePresenter(this,user);
+        profilePresenter = new ProfilePresenter(this);
         profilePresenter.created();
-        progressdialog.show();
 
+        Bundle args = getArguments();
+
+        if (args != null)
+        {
+            userid=args.getInt("userid");
+            Log.e("useridpro",userid+"");
+            progressdialog.show();
+            profilePresenter.getProfile(userid+"");
+        }
+
+        else if(new LoginResponse().getSharedPreferences(getContext(),"userid")!=null)
+        {
+            completion_status = new LoginResponse().getSharedPreferences(getContext(), "completion_status");
+            uid = new LoginResponse().getSharedPreferences(getContext(), "userid");
+            userid=Integer.parseInt(uid);
+            Log.e("Sessions Profile", userid + "  " + completion_status);
+            user.setUser_id(userid+"");
+            user.setCompletion_status(completion_status);
+            user.setDeviceType("1");
+            user.setDeviceToken("dfsdfs");
+            profilePresenter.getProfile(uid+"");
+        }
+        else
+        {
+            Log.e("sharedpre","no value");
+        }
         return v;
     }
 
@@ -114,7 +134,23 @@ public class ProfileFragment extends Fragment implements IProfile.View {
         progressdialog.setCancelable(false);
     }
 
-public boolean validate() {
+    @Override
+    public void alert() {
+        new SweetAlertDialog(getContext(), SweetAlertDialog.SUCCESS_TYPE)
+                .setContentText("Profile Update Success")
+                .setConfirmText("Ok!")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                      goToDashboard();
+                        sDialog.dismissWithAnimation();
+
+                    }
+                })
+                .show();
+    }
+
+    public boolean validate() {
 
     boolean valid = true;
     String name = profileTxtName.getText().toString();
@@ -216,14 +252,13 @@ public boolean validate() {
                             user.setPincode(profileTxtpincode.getText().toString());
                             user.setProfile_icon("photo");
                             user.setDate(profileTxtDob.getText().toString());
-                            user.setUser_id(userid);
+                            user.setUser_id(userid+"");
+                            user.setMelife_user_id(userid);
                             user.setDeviceType("1");
                             user.setDeviceToken("dfsdfs");
                             user.setCountry(strcountry);
                             user.setState(strstate);
                             user.setQualification(strqualification);
-
-
                             profilePresenter.UpdateProfile(user);
 
                         }

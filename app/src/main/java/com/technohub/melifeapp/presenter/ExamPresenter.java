@@ -1,5 +1,8 @@
 package com.technohub.melifeapp.presenter;
+import android.content.Context;
 import android.util.Log;
+
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.technohub.melifeapp.Interfaces.IExam;
 import com.technohub.melifeapp.models.LoadQuestionRequest;
 import com.technohub.melifeapp.models.LoadQuestionResponse;
@@ -18,10 +21,12 @@ public class ExamPresenter implements IExam.Presenter {
 
     private IExam.View view;
     private String email;
+    Context con;
 
-    public ExamPresenter(IExam.View view,String email) {
+    public ExamPresenter(IExam.View view,String email,Context con) {
         this.view = view;
         this.email=email;
+        this.con=con;
 
     }
 
@@ -235,6 +240,13 @@ public class ExamPresenter implements IExam.Presenter {
             saveExamRequest.setUser_id(userid);
             saveExamRequest.setDeviceToken("hsj");
             saveExamRequest.setDeviceType("1");
+        KProgressHUD kProgressHUD= KProgressHUD.create(con);
+        kProgressHUD.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel("Please wait..")
+                .setCancellable(true)
+                .setAnimationSpeed(5)
+                .setDimAmount(0.5f)
+                .show();
         Call<SaveExamReponse> call = retrofitApi.saveexamdetails(saveExamRequest);
         call.enqueue(new Callback<SaveExamReponse>()
         {
@@ -248,11 +260,14 @@ public class ExamPresenter implements IExam.Presenter {
                         Log.e("in submit exam",response.body().getStatus()+"");
 
                         view.hideLoading();
+                        kProgressHUD.dismiss();
                         view.goToDashboard();
                     }
                     else
                     {
                         view.hideLoading();
+                        kProgressHUD.dismiss();
+                        Log.e("in submit exam","cantsubmit");
                     }
 
             }
@@ -263,6 +278,7 @@ public class ExamPresenter implements IExam.Presenter {
                 Log.e("saveexam","failed");
                 Log.e("saveexamexcp",t.toString());
                 view.hideLoading();
+                kProgressHUD.dismiss();
 //                view.goToDashboard();
 
             }

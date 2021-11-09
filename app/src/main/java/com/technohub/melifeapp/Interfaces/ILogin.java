@@ -33,7 +33,7 @@ public interface ILogin {
 
         void  goToForgotActivity();
 
-        void  goToProfileEdit();
+        void  goToProfileEdit(int userid);
 
 
     }

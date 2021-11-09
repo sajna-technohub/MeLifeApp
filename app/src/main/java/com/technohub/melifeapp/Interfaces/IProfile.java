@@ -20,6 +20,8 @@ public interface IProfile {
 
         void initClicks();
 
+        void alert();
+
         void setProfile(ProfileResponse profile);
 
         Context getContext();
@@ -32,7 +34,7 @@ public interface IProfile {
 
 //        void UpdateButtonClick(User user);
 
-        void getProfile();
+        void getProfile(String userid);
     }
 
     }

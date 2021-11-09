@@ -55,6 +55,8 @@ public class HomeFragment extends Fragment {
          root.setBackgroundColor(getResources().getColor(R.color.lightgrey));
          init();
          initClicks();
+         if(new LoginResponse().getSharedPreferences(getContext(),"userid")!=null)
+         Log.e("sharedpre",new LoginResponse().getSharedPreferences(getContext(),"userid"));
          return root;
     }
 
@@ -75,7 +77,7 @@ public class HomeFragment extends Fragment {
 
         homeTxtName=root.findViewById(R.id.homeTxtName);
         homeTxtDesc=root.findViewById(R.id.homeTxtDesc);
-        homeImgback=root.findViewById(R.id.homeImgback);
+//        homeImgback=root.findViewById(R.id.homeImgback);
         welcomeTxtname=root.findViewById(R.id.welcomeTxtname);
 
         String name=new LoginResponse().getSharedPreferences(getContext(),"name");
@@ -116,7 +118,6 @@ public class HomeFragment extends Fragment {
                     homeCardReports.setEnabled(false);
 
                 fragment=new ReportsFragment();
-
                 loadFragment(fragment);
             }
         });
@@ -164,12 +165,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        homeImgback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        homeImgback.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     private boolean loadFragment(Fragment fragment) {

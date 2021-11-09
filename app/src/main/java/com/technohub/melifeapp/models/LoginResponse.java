@@ -49,6 +49,7 @@ public class LoginResponse {
         sharedPreferences.edit().putString("completion_status", completion_status).apply();
         sharedPreferences.edit().putString("email", email).apply();
         sharedPreferences.edit().putString("token",  token).apply();
+        Log.e("sharedpre","setcomplete");
 
     }
     public void setSharedPreferences(Context context,String name)

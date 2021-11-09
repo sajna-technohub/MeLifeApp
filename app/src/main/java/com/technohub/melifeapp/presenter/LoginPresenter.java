@@ -39,15 +39,15 @@ public class LoginPresenter implements ILogin.Presenter {
          user.setUser_email(email);
          user.setUser_Password(password);
          user.setDeviceType("1");
-        Call<LoginResponse> call = retrofitApi.Login(user);
-        call.enqueue(new Callback<LoginResponse>()
+         Call<LoginResponse> call = retrofitApi.Login(user);
+         call.enqueue(new Callback<LoginResponse>()
         {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
-                if (response.isSuccessful() && response.body() != null) {
-                    LoginResponse loginResponse = response.body();
-                    if(response.body().getMessage().equals("Success")) {
+                if (response.isSuccessful()) {
+
+                        LoginResponse loginResponse = response.body();
                         Log.e("LoginResponse", loginResponse.getMessage());
                         List<User> userdata = response.body().getData();
 
@@ -61,23 +61,25 @@ public class LoginPresenter implements ILogin.Presenter {
                                 Log.e("complete status", user.getCompletion_status());
                                 Log.e("Name", user.getName());
                                 new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken(),email);
+                           Log.e("sharedpre","set");
                             }
+
                             view.goToMainActivity();
                          }
                         else
                             {
-                            view.goToProfileEdit();
+                            view.goToProfileEdit(loginResponse.getData().get(0).getMelife_user_id());
                             }
 
                     }
                     else
                     {
-                        Log.e("LoginResponse", loginResponse.getMessage());
+
                         view.LoginFailed();
                         view.hideLoading();
                     }
                 }
-            }
+
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
