@@ -30,7 +30,21 @@
         <item name="android:layout_marginLeft"> @dimen/dimen_10</item>
         <item name="android:drawableLeft"> @drawable/ic_radio_button_unchecked_black_24dp</item>
         <item name="android:layout_marginRight"> @dimen/dimen_10</item>
-
+        <item name="android:typeface">serif</item>
+        <item name="android:textColor">@color/questionblack</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/exam_btn_background</item>
+    </style>
+    <style name="style_answer_test">
+        <item name="android:textSize">13dp</item>
+        <item name="android:gravity"> center</item>
+        <item name="android:paddingLeft"> @dimen/margin_20</item>
+        <item name="android:layout_marginTop"> @dimen/margin_20</item>
+        <item name="android:layout_marginLeft"> @dimen/dimen_10</item>
+        <item name="android:layout_marginRight"> @dimen/dimen_10</item>
         <item name="android:typeface">serif</item>
         <item name="android:textColor">@color/questionblack</item>
         <item name="android:textStyle">bold</item>

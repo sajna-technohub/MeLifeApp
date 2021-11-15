@@ -68,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity implements IRegister.View 
         String email = registerEditTxtEmail.getText().toString();
         String mobile = registerEditTxtMobile.getText().toString();
         String pincode = registerEditTxtPincode.getText().toString();
-        if (name.isEmpty() || name.length() < 4|| !name.matches("^[a-zA-Z\\s]+$"))
+        if (name.isEmpty() || name.length() < 4)
         {
             registerEditTxtName.setError("Enter a valid name(minimum 4 characters)");
             valid = false;

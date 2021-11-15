@@ -60,7 +60,7 @@ public class LoginPresenter implements ILogin.Presenter {
                                 Log.e("id", user.getMelife_user_id() + "");
                                 Log.e("complete status", user.getCompletion_status());
                                 Log.e("Name", user.getName());
-                                new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken(),email);
+                                new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken(),user.getEmail());
                            Log.e("sharedpre","set");
                             }
 

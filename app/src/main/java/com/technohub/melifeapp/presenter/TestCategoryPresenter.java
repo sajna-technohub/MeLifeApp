@@ -130,9 +130,10 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
             public void onResponse(Call<ExamResponse> call, Response<ExamResponse> response)
             {
                 Log.e("presenter","kkvk");
-                examResponse=response.body();
-                if (response.isSuccessful() && response.body() .getMessage().equals("Success"))
+
+                if (response.isSuccessful())
                 {
+                    examResponse=response.body();
                     Log.e("exam initiate","success");
                     Log.e("exam completion ",response.body().getExamCompletionsts());
                     Log.e("exam qn exists",response.body().getQnExiststs()+"");
@@ -142,7 +143,6 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
                       {
                           Log.e("load exam","qnexists");
                           getQuestionsFromServer(response.body().getDisplayData().getExam_id(),response.body().getDisplayData().getTest_id(),examRequest.getUser_id(),examRequest.getUser_email(),"0","1","kgk","0");
-//
                       }
                       else
                       {

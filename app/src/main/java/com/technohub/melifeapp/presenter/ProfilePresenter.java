@@ -210,6 +210,7 @@ Log.e("name and mob",file.getName()+user.getMobno());
     }
     public void UpdateProfile(User user) {
         view.showLoading();
+        this.user=user;
         Log.e("Prof buttonclick", "update");
         IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
         Call<ProfileRes> call = retrofitApi.userprofile(user);
@@ -223,6 +224,7 @@ Log.e("name and mob",file.getName()+user.getMobno());
 //                        getProfile(user.getUserid());
                         Log.e("ProfUpdate resss", profileResponse.getData() + "");
                         Log.e("ProfUpdate name", profileResponse.getData().getUserdetails().get(0).getName()+ "");
+                        new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken(),user.getEmail());
                         view.hideLoading();
                         view.alert();
 

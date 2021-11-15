@@ -81,7 +81,8 @@ public class HomeFragment extends Fragment {
         welcomeTxtname=root.findViewById(R.id.welcomeTxtname);
 
         String name=new LoginResponse().getSharedPreferences(getContext(),"name");
-        Log.e("name",name);
+        String userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
+        Log.e("name userid",name+userid);
 
         if(!new LoginResponse().getSharedPreferences(getContext(),"quali").equals(null)) {
              quali = new LoginResponse().getSharedPreferences(getContext(), "quali");
@@ -98,8 +99,7 @@ public class HomeFragment extends Fragment {
         homeCardSettings=root.findViewById(R.id.homeCardSettings);
         homeCardAboutus=root.findViewById(R.id.homeCardAboutus);
     }
-    void initClicks()
-    {
+    void initClicks(){
         homeCardTests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

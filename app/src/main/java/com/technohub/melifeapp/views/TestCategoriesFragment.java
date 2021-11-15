@@ -57,6 +57,11 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
          email=new LoginResponse().getSharedPreferences(getContext(),"email");
          userid=new LoginResponse().getSharedPreferences(getContext(),"userid");
 
+         if(userid!=null) {
+             Log.e("userid", userid);
+             Log.e("email", email);
+         }
+
          User user=new User();
         user.setUser_email(email);
         user.setUserid(userid);
