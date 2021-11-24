@@ -25,7 +25,7 @@ public class MarkerViewClass extends MarkerView {
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
 
-        tvContent.setText("" + e.getY()+e.getX()+"%");
+        tvContent.setText("" + e.getY()+"%");
 //        tvContent.setText("Time : "+e.getY() + "  " + "Question No : "+e.getX());
 
         // this will perform necessary layouting

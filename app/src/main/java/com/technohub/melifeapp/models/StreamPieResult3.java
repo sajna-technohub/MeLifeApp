@@ -1,6 +1,6 @@
 package com.technohub.melifeapp.models;
 
-class StreamPieResult3 {
+public class StreamPieResult3 {
     public String name1;
     public String name;
     public int y;
