@@ -25,9 +25,11 @@ import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.classes.AI_Result_Adapter;
 import com.technohub.melifeapp.classes.Helper;
 import com.technohub.melifeapp.models.AIJobResponse;
+import com.technohub.melifeapp.models.AINaturalStrengthWeakness;
 import com.technohub.melifeapp.models.EnggResponse;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.models.StreamFinderRequest;
+import com.technohub.melifeapp.models.StreamPieRecord;
 import com.technohub.melifeapp.presenter.AI_JobPresenter;
 import com.technohub.melifeapp.presenter.EngineeringPresenter;
 
@@ -43,7 +45,7 @@ public class AI_Job_Fragment extends Fragment implements IAIjob.View {
 
 View v;
 TextView aijob_Txt_Reportname,aijob_Txt_Name,aijob_Txt_age,aijob_Txt_edu,aijob_Txt_testdate,aijob_Txt_mobile,aijob_Txt_email,aijob_Txt_description,aijob_Txt_findtitle;
-TextView aijob_Txt_finddesc,aijob_Txt_titlename,aijob_Txt_aisafesonetitle,aijob_Txt_designdesc,aijob_Txt_safedesc,aijob_Txt_titledominant,aijob_Txt_dominantdesc,aijob_Txt_takingdesc;
+TextView aijob_Txt_finddesc,aijob_Txt_disclaimerdesc,aijob_Txt_titlename,aijob_Txt_strength,aijob_Txt_weakness,aijob_Txt_aisafesonetitle,aijob_Txt_designdesc,aijob_Txt_safedesc,aijob_Txt_titledominant,aijob_Txt_dominantdesc,aijob_Txt_takingdesc;
 ImageView aijob_Img;
 ListView ai_engg_list;
 ProgressDialog progressdialog;
@@ -108,10 +110,13 @@ StreamFinderRequest skillReportRequest=new StreamFinderRequest();
 //        aijob_Txt_Reportname=v.findViewById(R.id.aijob_Txt_Reportname);
         aijob_Txt_Name=v.findViewById(R.id.aijob_Txt_Name);
         aijob_Txt_testdate=v.findViewById(R.id.aijob_Txt_testdate);
+        aijob_Txt_disclaimerdesc=v.findViewById(R.id.aijob_Txt_disclaimerdesc);
         aijob_Txt_mobile=v.findViewById(R.id.aijob_Txt_mobile);
         aijob_Txt_email=v.findViewById(R.id.aijob_Txt_email);
         aijob_Txt_age=v.findViewById(R.id.aijob_Txt_Age);
         aijob_Txt_edu=v.findViewById(R.id.aijob_Txt_Education);
+        aijob_Txt_strength=v.findViewById(R.id.aijob_Txt_strength);
+        aijob_Txt_weakness=v.findViewById(R.id.aijob_Txt_weakness);
 //        aijob_Img=v.findViewById(R.id.aijob_Img);
         aijob_Txt_description=v.findViewById(R.id.aijob_Txt_description);
         aijob_Txt_findtitle=v.findViewById(R.id.aijob_Txt_findtitle);
@@ -140,14 +145,33 @@ StreamFinderRequest skillReportRequest=new StreamFinderRequest();
         aijob_Txt_description.setText(Html.fromHtml(aiJobResponse.getRecord().getAI_Job_Risk_Finder_Test_Report()));
         aijob_Txt_findtitle.setText(Html.fromHtml(aiJobResponse.getRecord().getResult().get(0).getTitle1()));
         aijob_Txt_finddesc.setText(Html.fromHtml(aiJobResponse.getRecord().getDescription3()));
+        aijob_Txt_disclaimerdesc.setText(Html.fromHtml(aiJobResponse.getRecord().getDisclaimer()));
 //        Picasso.get().load("http://"+aiJobResponse.getRecord().getTest_icon()).into(aijob_Img);
 //        aijob_Txt_titledominant.setText(Html.fromHtml(aiJobResponse.getRecord().getResult().get(0).getTitle3()));
-        aijob_Txt_dominantdesc.setText(Html.fromHtml(aiJobResponse.getRecord().getResult().get(0).getSub_dimension_brief_description()));
+        String dominanttext;
+        String nat_strength=aiJobResponse.getRecord().getResult().get(10).getSub_dimension_brief_description();
+        int nat_stindex=nat_strength.indexOf("Natural Strengths");
+        int nat_weindex=nat_strength.indexOf("Natural Weaknesses");
+        for(AINaturalStrengthWeakness n:aiJobResponse.getRecord().getNatural_strength_weakness())
+        {
+            if(n.getSub_dimension_id().equals("175"))
+            {
+                dominanttext=n.getSub_dimension_brief_description();
+                aijob_Txt_dominantdesc.setText(Html.fromHtml(dominanttext.substring(0,nat_stindex)));
+            }
+        }
+
+
         aijob_Txt_aisafesonetitle.setText(Html.fromHtml(aiJobResponse.getRecord().getResult().get(0).getTitle2()));
 
-        AI_Result_Adapter ai_result_adapter=new AI_Result_Adapter(this,aiJobResponse.getRecord().getResult(),getContext());
-        ai_engg_list.setAdapter(ai_result_adapter);
-        Helper.getListViewSize(ai_engg_list);
+
+
+        aijob_Txt_strength.setText(Html.fromHtml(nat_strength.substring(nat_stindex,nat_weindex)));
+        aijob_Txt_weakness.setText(Html.fromHtml(nat_strength.substring(nat_weindex)));
+
+//        AI_Result_Adapter ai_result_adapter=new AI_Result_Adapter(this,aiJobResponse.getRecord().getResult(),getContext());
+//        ai_engg_list.setAdapter(ai_result_adapter);
+//        Helper.getListViewSize(ai_engg_list);
 
         aijob_Txt_safedesc.setText(Html.fromHtml(aiJobResponse.getRecord().getResult().get(2).getSub_dimension_brief_description()));//not completed
         aijob_Txt_takingdesc.setText(Html.fromHtml(aiJobResponse.getRecord().getWhats_Next()));

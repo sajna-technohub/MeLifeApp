@@ -77,6 +77,8 @@
     <string name="Title_proceed">Proceed</string>
 
     <string name="Title_Qn">Question</string>
+    <string name="Title_strengh">Natural Strengths</string>
+    <string name="Title_weakness">Natural Weaknesses</string>
     <string name="Title_birth">Birth Date</string>
     <string name="Title_next">Next</string>
     <string name="Title_cele">cELeBrAtiONs</string>

@@ -1,15 +1,18 @@
 package com.technohub.melifeapp.views;
 
 import android.app.ProgressDialog;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -234,6 +237,7 @@ TableLayout commerce_table;
 //        commerce_Txt_titletable.setText(Html.fromHtml(commerceResponse.getRecord().getTabledata_sorted().get(0).getTitle_1()));
 
         LoadDescriptiontable(commerceResponse.getRecord());
+        loadradarFragment(commerceResponse.getRecord());
 
         commerce_Txt_highdesc.setText(commerceResponse.getRecord().getPriority_description().get(0).getHigh());
         commerce_Txt_avgdesc.setText(commerceResponse.getRecord().getPriority_description().get(0).getAverage());
@@ -362,6 +366,7 @@ TableLayout commerce_table;
 
     }
 
+
     void LoadDescriptiontable(CommerceRecord record)
     {
         float i=0;
@@ -391,16 +396,20 @@ TableLayout commerce_table;
 
         for(CommerceTableSorted t:record.getRadar_chart_non_financial())
         {
-            radarEntries1.add(new RadarEntry(t.getY(),t.getName()));
+            radarEntries1.add(new RadarEntry(t.getY(),i));
             labels1.add(t.getName());
             Log.e("nonfin",t.getName()+" "+t.getY());
+            i++;
         }
+        i=0;
         for(CommerceTableSorted t:record.getRadar_chart_financial())
         {
-            radarEntries.add(new RadarEntry(t.getY(),t.getName()));
+            radarEntries.add(new RadarEntry(t.getY(),i));
             labels.add(t.getName());
             Log.e("fin",t.getName()+" "+t.getY());
+            i++;
         }
+
         radarDataSet1 = new RadarDataSet(radarEntries1, "Non-Financial Careers");
         radarDataSet1.setColor(R.color.color_redgradient);
         radarDataSet1.setLabel("Non-Financial Careers");
@@ -428,7 +437,6 @@ TableLayout commerce_table;
 
 
         commerceradarChart.setData(radarData);
-
         commerceradarChart.notifyDataSetChanged();
         commerceradarChart.invalidate();
 //        commerceradarChart.setMarker(mv);
@@ -449,6 +457,18 @@ TableLayout commerce_table;
 
          }
 
+         void loadradarFragment(CommerceRecord record){
+
+             RadarFragment examFragment=new RadarFragment();
+             Bundle bundle=new Bundle();
+             bundle.putParcelable("radardata", record);
+             examFragment.setArguments(bundle);
+             FragmentTransaction transaction = getFragmentManager().beginTransaction();
+             transaction.replace(R.id.radarlayout, examFragment);
+             transaction.addToBackStack(null);
+             transaction.commit();
+
+         }
     void setanychart_bar(CommerceRecord record)
         {
             AnyChartView anyChartView = v.findViewById(R.id.hori_barchart_any);
