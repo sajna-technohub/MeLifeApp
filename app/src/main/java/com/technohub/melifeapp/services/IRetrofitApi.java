@@ -5,6 +5,7 @@ import com.technohub.melifeapp.models.CommerceResponse;
 import com.technohub.melifeapp.models.EnggResponse;
 import com.technohub.melifeapp.models.FaqResponse;
 import com.technohub.melifeapp.models.HumanityResponse;
+import com.technohub.melifeapp.models.InterestAreaImgResponse;
 import com.technohub.melifeapp.models.ProfileNew;
 import com.technohub.melifeapp.models.ProfileRes;
 import com.technohub.melifeapp.models.RightCareerInterest;
@@ -205,11 +206,11 @@ public interface IRetrofitApi {
     Call<FaqResponse> contact_us(@Body StreamFinderRequest streamFinderRequest);
 
     @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
-    @POST("interestareaimage")
-    Call<LoadQuestionResponse> interestareaimage(@Body SkillReportRequest skillReportRequest);
-
-    @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
     @POST("piechart")
     Call<StreamPieChartResponse> piechart(@Body StreamFinderRequest skillReportRequest);
+
+    @Headers({"Content-Type:application/json","X-Api-Key:16f794caa2ae9a38"})
+    @POST("interestareaimage")
+    Call<InterestAreaImgResponse> interestareaimage(@Body SkillReportRequest skillReportRequest);
 }
 

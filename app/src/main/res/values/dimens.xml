@@ -22,6 +22,7 @@
     <dimen name="margin_32">32dp</dimen>
     <dimen name="margin_200">200dp</dimen>
     <dimen name="margin_230">230dp</dimen>
+    <dimen name="margin_240">240dp</dimen>
     <dimen name="margin_250">250dp</dimen>
     <dimen name="margin_0">0dp</dimen>
 <!--    -->
@@ -32,6 +33,7 @@
     <dimen name="dimen_190">190dp</dimen>
     <dimen name="dimen_156">156dp</dimen>
     <dimen name="dimen_130">130dp</dimen>
+    <dimen name="dimen_140">140dp</dimen>
     <dimen name="dimen_100">100dp</dimen>
     <dimen name="dimen_110">110dp</dimen>
     <dimen name="dimen_70">70dp</dimen>

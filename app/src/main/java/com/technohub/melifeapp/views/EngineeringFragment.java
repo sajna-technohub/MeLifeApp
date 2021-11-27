@@ -16,6 +16,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -192,15 +193,26 @@ View v;
         pieDataSet.setSliceSpace(1f);
         enggbranch.setDrawHoleEnabled(false);
         enggbranch.setHoleRadius(0.0f);
+
+        Legend l = enggbranch.getLegend();
+        l.setWordWrapEnabled(true);
+
         MarkerViewClass markerViewClass=new MarkerViewClass(getContext(),R.layout.custom_marker_view_layout);
         enggbranch.setMarkerView(markerViewClass);
-        enggbranch.setDrawEntryLabels(false);
+        enggbranch.setDrawEntryLabels(true);
         pieDataSet.setXValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
-        pieDataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        pieDataSet.setValueLinePart1OffsetPercentage(90.f);
+        pieDataSet.setValueLinePart1Length(1f);
+        pieDataSet.setValueLinePart2Length(.2f);
+        pieDataSet.setValueTextColor(Color.BLACK);
+        pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        enggbranch.invalidate();
+
+//        pieDataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
 
         enggbranch_Txt_takingdesc.setText(Html.fromHtml(enggResponse.getRecord().getTest_data().getWhats_next()));
         enggbranch_Txt_designdesc.setText(Html.fromHtml(enggResponse.getRecord().getTest_data().getTest_design()));
-        Picasso.get().load("http://3.7.48.112/ckfinder/userfiles/files/What's%20Next(5).png").into(enggbranch_Img_taking);
+//        Picasso.get().load("http://3.7.48.112/ckfinder/userfiles/files/What's%20Next(5).png").into(enggbranch_Img_taking);
 //        engg_Txt_titlename.setText(new LoginResponse().getSharedPreferences(getContext(),"name"));
    progressdialog.dismiss();
     }

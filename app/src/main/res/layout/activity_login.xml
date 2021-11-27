@@ -146,6 +146,7 @@
                         android:fontFamily="@font/calibri"
                         android:typeface="serif"
                         android:layout_weight="1"
+                        android:foreground="?attr/selectableItemBackground"
                         android:text="@string/Title_create" />
 
                     <TextView
@@ -158,6 +159,7 @@
                         android:typeface="serif"
                         android:paddingRight="@dimen/margin_20"
                         android:fontFamily="@font/calibri"
+                        android:foreground="?attr/selectableItemBackground"
                         android:id="@+id/loginTxtForgotPassword"
                         android:layout_weight="1"
                         android:text="@string/Title_forgot"/>

@@ -415,6 +415,7 @@ SkillReportRequest skillReportRequest=new SkillReportRequest();
         dataSet.setColor(Color.parseColor("#7C01AF"));
         xAxis.setTextSize(2f);
         xAxis.setSpaceMax(5f);
+        xAxis.setLabelCount(rightCareerIntelligenceData.size());
         xAxis.setLabelRotationAngle(-45);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
@@ -453,6 +454,7 @@ void careergraph(RightCareerChart rightCareerChart)
     xAxis.setTextSize(2f);
     xAxis.setSpaceMax(5f);
     xAxis.setLabelRotationAngle(-45);
+    xAxis.setLabelCount(rightCareerChart.getRecord().size());
     xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
     xAxis.setValueFormatter(new IAxisValueFormatter() {
         @Override

@@ -74,36 +74,7 @@ CommerceRecord record;
         setData(record);
 //        chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
 
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setTextSize(9f);
-        xAxis.setYOffset(0f);
-        xAxis.setXOffset(0f);
-        xAxis.setValueFormatter(new IAxisValueFormatter() {
 
-            private final String[] mActivities = new String[]{"Burger", "Steak", "Salad", "Pasta", "Pizza"};
-
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                return mActivities[(int) value % mActivities.length];
-            }
-        });
-        xAxis.setTextColor(Color.WHITE);
-
-        YAxis yAxis = chart.getYAxis();
-        yAxis.setLabelCount(5, false);
-        yAxis.setTextSize(9f);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setAxisMaximum(80f);
-        yAxis.setDrawLabels(false);
-
-        Legend l = chart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        l.setDrawInside(false);
-        l.setXEntrySpace(7f);
-        l.setYEntrySpace(5f);
-        l.setTextColor(Color.BLACK);
 
         return v;
     }
@@ -116,24 +87,10 @@ void setData(CommerceRecord record)
     ArrayList<RadarEntry> entries1 = new ArrayList<>();
     ArrayList<RadarEntry> entries2 = new ArrayList<>();
 
-    for(CommerceTableSorted c:record.getRadar_chart_financial())
+    for(CommerceTableSorted c:record.getTabledata_sorted())
     {
         entries1.add(new RadarEntry(c.getY()));
     }
-    for(CommerceTableSorted c:record.getRadar_chart_non_financial())
-    {
-        entries2.add(new RadarEntry(c.getY()));
-    }
-
-    // NOTE: The order of the entries when being added to the entries array determines their position around the center of
-    // the chart.
-//    for (int i = 0; i < cnt; i++) {
-//        float val1 = (float) (Math.random() * mul) + min;
-//        entries1.add(new RadarEntry(val1));
-//
-//        float val2 = (float) (Math.random() * mul) + min;
-//        entries2.add(new RadarEntry(val2));
-//    }
 
     RadarDataSet set1 = new RadarDataSet(entries1, "Financial careers");
     set1.setFillColor(getResources().getColor(R.color.color_greygradient));

@@ -178,13 +178,13 @@ for(Tests t:testlist.getData())
 }
         RecyclerView.Adapter adapter = new ReportAdapter(tests,this,getContext());
         whitelayout.setVisibility(View.VISIBLE);
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        if(adapter.getItemCount()==0)
+
+        if(adapter.getItemCount()!=0)
 {
-           reportTxtmsg.setVisibility(View.VISIBLE);
+    recyclerView.setAdapter(adapter);
+    adapter.notifyDataSetChanged();
 }else {
-            reportTxtmsg.setVisibility(View.GONE);
+            reportTxtmsg.setVisibility(View.VISIBLE);
 
 //        recyclerView.setAdapter(adapter);
         }

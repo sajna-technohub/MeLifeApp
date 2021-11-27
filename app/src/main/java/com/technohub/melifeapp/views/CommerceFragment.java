@@ -335,14 +335,17 @@ TableLayout commerce_table;
         xl.setDrawAxisLine(true);
         xl.setDrawGridLines(false);
 //        CategoryBarChartXaxisFormatter xaxisFormatter = new CategoryBarChartXaxisFormatter(labels);
+
         xl.setValueFormatter((value, axis) -> labels.get((int) value));
         xl.setGranularity(1);
+        xl.setLabelCount(record.getTabledata_sorted().size());
 
         YAxis yl = mChart.getAxisLeft();
         yl.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         yl.setDrawGridLines(false);
         yl.setEnabled(false);
         yl.setAxisMinimum(0f);
+
 
         YAxis yr = mChart.getAxisRight();
         yr.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);

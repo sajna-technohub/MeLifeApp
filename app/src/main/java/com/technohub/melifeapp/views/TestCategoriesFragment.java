@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.SpinKitView;
@@ -38,6 +39,7 @@ public class TestCategoriesFragment extends Fragment implements Itestcategory.Vi
     private static RecyclerView recyclerView;
     SpinKitView testSpinkit;
     LinearLayout whitelayout;
+    TextView Txtnodata;
     TestCategoryPresenter testCategoryPresenter;
     TestcategoryResponse testcategoryResponse=new TestcategoryResponse();
     View v;
@@ -172,7 +174,13 @@ testBtnBack.setOnClickListener(new View.OnClickListener() {
         this.testcategoryResponse=testlist;
         whitelayout.setVisibility(View.VISIBLE);
         RecyclerView.Adapter adapter = new TestAdapter(testcategoryResponse,this,getContext());
-        recyclerView.setAdapter(adapter);
+        if(adapter.getItemCount()!=0){
+            recyclerView.setAdapter(adapter);
+        }
+        else{
+            Txtnodata.setVisibility(View.VISIBLE);
+            }
+
     }
 
     @Override
@@ -213,5 +221,6 @@ testBtnBack.setOnClickListener(new View.OnClickListener() {
         testBtnBack=v.findViewById(R.id.testBtnBack);
         recyclerView = (RecyclerView)v.findViewById(R.id.test_recycler_view);
         whitelayout = v.findViewById(R.id.whitelayout);
+        Txtnodata = v.findViewById(R.id.Txtnodata);
     }
 }

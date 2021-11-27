@@ -30,6 +30,7 @@ public class LoadQuestionResponse implements Parcelable {
     private String imgStatusQns;
     private String imgStatusOpts;
     private String eqStatusOpts;
+    private String lastQnflag;
 
     public ArrayList getRecord() {
         return record;
@@ -59,6 +60,13 @@ public class LoadQuestionResponse implements Parcelable {
     private String current_qns;
     private String next_record;
 
+    public String getLastQnflag() {
+        return lastQnflag;
+    }
+
+    public void setLastQnflag(String lastQnflag) {
+        this.lastQnflag = lastQnflag;
+    }
 
     public String getNext_record() {
         return next_record;
