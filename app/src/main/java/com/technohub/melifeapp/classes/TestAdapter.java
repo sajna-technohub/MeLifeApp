@@ -94,8 +94,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
             testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.engineer));
         } if(test_id.equals("12"))
         {
-
-        } if(test_id.equals("13"))
+            testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.humanities));
+        }
+        if(test_id.equals("13"))
         {
             testImageicon.setImageDrawable(context.getResources().getDrawable(R.drawable.careerfinder));
         }

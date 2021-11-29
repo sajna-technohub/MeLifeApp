@@ -22,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/instruction"
+                android:fontFamily="@font/barlowsemicondensedmedium"
                 android:layout_marginTop="50dp"
                 android:textColor="@color/darkblue"
                 android:textStyle="bold"
@@ -32,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_40"
                 android:typeface="serif"
+                android:fontFamily="@font/barlowsemicondensedmedium"
                 android:id="@+id/instructionTxtdescription"
                 android:gravity="center_vertical"
                 android:lineSpacingExtra="7dp"
@@ -47,6 +49,7 @@
                 android:textSize="@dimen/dimen_15"
                 android:id="@+id/instructionCheck"
                 android:typeface="serif"
+                android:fontFamily="@font/barlowsemicondensedmedium"
                 android:text="@string/terms"
                 />
 
@@ -68,6 +71,7 @@
                 android:background="@drawable/button_drawable"
                 android:text="@string/Title_proceed"
                 android:textStyle="bold"
+                android:fontFamily="@font/barlowsemicondensedmedium"
                 android:typeface="serif"
                 android:id="@+id/instructionBtnProceed"
                 android:layout_marginTop="@dimen/dimen_35"

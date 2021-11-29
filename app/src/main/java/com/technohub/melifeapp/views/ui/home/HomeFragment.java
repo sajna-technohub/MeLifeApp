@@ -22,6 +22,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.technohub.melifeapp.R;
+import com.technohub.melifeapp.classes.InternetConnection;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.views.AboutUsFragment;
 import com.technohub.melifeapp.views.Contact_us_fragment;
@@ -55,6 +56,12 @@ public class HomeFragment extends Fragment {
          root.setBackgroundColor(getResources().getColor(R.color.lightgrey));
          init();
          initClicks();
+        if (InternetConnection.checkConnection(getContext())) {
+            Log.e("networkconn","available");
+
+        } else {
+            Toast.makeText(getContext(), "OOps Something Went Wrong,Please Try Again", Toast.LENGTH_SHORT).show();
+        }
          if(new LoginResponse().getSharedPreferences(getContext(),"userid")!=null)
          Log.e("sharedpre",new LoginResponse().getSharedPreferences(getContext(),"userid"));
          return root;

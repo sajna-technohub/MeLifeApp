@@ -70,6 +70,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements IForgot
 
     @Override
     public void onBackPressed() {
+        fogotPwdPresenter.backPressed();
         super.onBackPressed();
     }
 

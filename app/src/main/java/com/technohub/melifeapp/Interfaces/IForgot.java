@@ -19,6 +19,8 @@ public interface IForgot {
     {
         void created();
 
+        void backPressed();
+
         void forgotButtonClick(String email);
 
     }

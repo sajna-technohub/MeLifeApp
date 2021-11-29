@@ -384,22 +384,22 @@ Toast.makeText(getContext(),"Edit mode activated",Toast.LENGTH_SHORT).show();
         }
 
         String newcountry = profile.getData().get(0).getCountry();
-        ArrayAdapter<String> countryArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,countrylist);
-        countryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        ArrayAdapter<String> countryArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinnerlayout,R.id.text,countrylist);
+//        countryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprCountry.setAdapter(countryArrayAdapter);
         profileSprCountry.setSelection(countrylist.indexOf(newcountry));
 
         String newstate = profile.getData().get(0).getState();
         profileSprstate.setSelection(statelist.indexOf(newstate));
-        ArrayAdapter<String> stateArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,statelist);
-        stateArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        ArrayAdapter<String> stateArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinnerlayout,R.id.text,statelist);
+//        stateArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprstate.setAdapter(stateArrayAdapter);
         profileSprstate.setSelection(statelist.indexOf(newstate));
 
 
         String newqual = profile.getData().get(0).getQualification();
-        ArrayAdapter<String> qualificationArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,qualificatiobnlist);
-        qualificationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        ArrayAdapter<String> qualificationArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinnerlayout,R.id.text,qualificatiobnlist);
+//        qualificationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprQuali.setAdapter(qualificationArrayAdapter);
         profileSprQuali.setSelection(qualificatiobnlist.indexOf(newqual));
 

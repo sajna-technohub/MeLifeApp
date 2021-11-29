@@ -64,7 +64,11 @@ public class ForgotPwdPresenter implements IForgot.Presenter{
             }
         });
     }
+    @Override
+    public void backPressed() {
 
+        view.goToLoginActivity();
+    }
 
 
 }

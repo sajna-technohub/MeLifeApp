@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.technohub.melifeapp.R;
+import com.technohub.melifeapp.classes.InternetConnection;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.views.ui.home.HomeFragment;
 
@@ -40,6 +42,8 @@ public class DashBoardActivity extends AppCompatActivity implements BottomNaviga
         setSupportActionBar(toolbar);
         getSupportActionBar().hide();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
