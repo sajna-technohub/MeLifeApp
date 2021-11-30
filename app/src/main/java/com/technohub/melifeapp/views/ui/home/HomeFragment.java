@@ -1,9 +1,12 @@
 package com.technohub.melifeapp.views.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,35 +15,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.technohub.melifeapp.R;
-import com.technohub.melifeapp.classes.InternetConnection;
+import com.technohub.melifeapp.classes.ConnectionReceiver;
 import com.technohub.melifeapp.models.LoginResponse;
 import com.technohub.melifeapp.views.AboutUsFragment;
 import com.technohub.melifeapp.views.Contact_us_fragment;
 import com.technohub.melifeapp.views.FaqFragment;
-import com.technohub.melifeapp.views.LoadingFragment;
-import com.technohub.melifeapp.views.ReportFragment;
 import com.technohub.melifeapp.views.ReportsFragment;
-import com.technohub.melifeapp.views.SuccessFrag2;
 import com.technohub.melifeapp.views.TestCategoriesFragment;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
-
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ConnectionReceiver.ReceiverListener {
 
     private TextView homeTxtName,homeTxtDesc,welcomeTxtname;
     ImageView homeImgback;
@@ -54,14 +45,9 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
          root = inflater.inflate(R.layout.fragment_home_fragment_new, container, false);
          root.setBackgroundColor(getResources().getColor(R.color.lightgrey));
+         checkConnection();
          init();
          initClicks();
-        if (InternetConnection.checkConnection(getContext())) {
-            Log.e("networkconn","available");
-
-        } else {
-            Toast.makeText(getContext(), "OOps Something Went Wrong,Please Try Again", Toast.LENGTH_SHORT).show();
-        }
          if(new LoginResponse().getSharedPreferences(getContext(),"userid")!=null)
          Log.e("sharedpre",new LoginResponse().getSharedPreferences(getContext(),"userid"));
          return root;
@@ -179,7 +165,77 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
     }
+    private void checkConnection() {
 
+        // initialize intent filter
+        IntentFilter intentFilter = new IntentFilter();
+
+        // add action
+        intentFilter.addAction("android.new.conn.CONNECTIVITY_CHANGE");
+
+        // register receiver
+        getActivity().registerReceiver(new ConnectionReceiver(), intentFilter);
+
+        // Initialize listener
+        ConnectionReceiver.Listener = this;
+
+        // Initialize connectivity manager
+        ConnectivityManager manager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // Initialize network info
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+
+        // get connection status
+        boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
+
+        // display snack bar
+        showSnackBar(isConnected);
+    }
+
+    private void showSnackBar(boolean isConnected) {
+
+        // initialize color and message
+        String message;
+        int color;
+
+        // check condition
+        if (isConnected) {
+
+            // when internet is connected
+//            // set message
+//            message = "Connected to Internet";
+//            Log.e("networkconn",message);
+//
+//            // set text color
+//            color = Color.WHITE;
+
+        } else {
+
+            // when internet
+            // is disconnected
+            // set message
+            message = "Not Connected to Internet";
+            Log.e("networkconn",message);
+            // set text color
+            color = Color.RED;
+            Snackbar snackbar = Snackbar.make(root.findViewById(R.id.homeCardAboutus), message, Snackbar.LENGTH_SHORT);
+
+            // initialize view
+            View view = snackbar.getView();
+
+            // Assign variable
+            TextView textView = view.findViewById(R.id.snackbar_text);
+
+            // set text color
+            textView.setTextColor(color);
+
+            // show snack bar
+            snackbar.show();
+        }
+
+        // initialize snack bar
+
+    }
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null)
@@ -195,4 +251,20 @@ public class HomeFragment extends Fragment {
     }
 
 
+    @Override
+    public void onNetworkChange(boolean isConnected) {
+        showSnackBar(isConnected);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        checkConnection();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        checkConnection();
+    }
 }

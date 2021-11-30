@@ -67,14 +67,13 @@ CommerceRecord record;
 
         // create a custom MarkerView (extend MarkerView) and specify the layout
         // to use for it
+
         MarkerView mv = new RadarMarkVew(getContext(), R.layout.custom_marker_view_layout);
         mv.setChartView(chart); // For bounds control
         chart.setMarker(mv); // Set the marker to the chart
 
         setData(record);
-//        chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
-
-
+//       chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
 
         return v;
     }
@@ -82,40 +81,44 @@ void setData(CommerceRecord record)
 {
     float mul = 80;
     float min = 20;
-    int cnt = 5;
+       int cnt = 5;
 
     ArrayList<RadarEntry> entries1 = new ArrayList<>();
     ArrayList<RadarEntry> entries2 = new ArrayList<>();
 
-    for(CommerceTableSorted c:record.getTabledata_sorted())
+    for(CommerceTableSorted c:record.getRadar_chart_financial())
     {
-        entries1.add(new RadarEntry(c.getY()));
+        entries1.add(new RadarEntry(c.getY(),c.getName()));
+    }
+    for(CommerceTableSorted c:record.getRadar_chart_non_financial())
+    {
+                entries2.add(new RadarEntry(c.getY(),c.getName()));
     }
 
     RadarDataSet set1 = new RadarDataSet(entries1, "Financial careers");
-    set1.setFillColor(getResources().getColor(R.color.color_greygradient));
+    set1.setFillColor(getResources().getColor(R.color.color_redgradient));
     set1.setDrawFilled(true);
-    set1.setFillAlpha(180);
+    set1.setFillAlpha(360);
     set1.setLineWidth(2f);
     set1.setDrawHighlightCircleEnabled(true);
-    set1.setDrawHighlightIndicators(false);
+    set1.setDrawHighlightIndicators(true);
 
     RadarDataSet set2 = new RadarDataSet(entries2, "Non-Financial Careers");
-    set2.setFillColor(getResources().getColor(R.color.color_redgradient));
+    set2.setFillColor(getResources().getColor(R.color.color_greygradient));
     set2.setDrawFilled(true);
-    set2.setFillAlpha(180);
+    set2.setFillAlpha(360);
     set2.setLineWidth(2f);
     set2.setDrawHighlightCircleEnabled(true);
-    set2.setDrawHighlightIndicators(false);
+    set2.setDrawHighlightIndicators(true);
 
     ArrayList<IRadarDataSet> sets = new ArrayList<>();
     sets.add(set1);
     sets.add(set2);
 
     RadarData data = new RadarData(sets);
-    data.setValueTextSize(8f);
-    data.setDrawValues(false);
-    data.setValueTextColor(Color.WHITE);
+    data.setValueTextSize(10f);
+    data.setDrawValues(true);
+    data.setValueTextColor(Color.BLACK);
 
     chart.setData(data);
     chart.invalidate();

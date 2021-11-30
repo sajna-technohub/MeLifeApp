@@ -418,18 +418,18 @@ TableLayout commerce_table;
         radarDataSet1.setLabel("Non-Financial Careers");
         radarDataSet1.setValueTextColor(Color.rgb(55, 70, 73));
         radarDataSet1.setValueTextSize(10f);
-//        radarDataSet1.setDrawFilled(true);
-//        Drawable drawable1 = ContextCompat.getDrawable(getContext(), R.drawable.radargrey);
-//        radarDataSet1.setFillDrawable(drawable1);
+        radarDataSet1.setDrawFilled(true);
+        Drawable drawable1 = ContextCompat.getDrawable(getContext(), R.drawable.radargrey);
+        radarDataSet1.setFillDrawable(drawable1);
 
         radarDataSet = new RadarDataSet(radarEntries, "Financial Careers");
         radarDataSet.setColor(R.color.color_greygradient);
         radarDataSet.setValueTextColor(Color.rgb(55, 70, 73));
         radarDataSet.setValueTextSize(10f);
         radarDataSet.setLabel("Financial Careers");
-//        radarDataSet.setDrawFilled(true);
-//        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.radarred);
-//        radarDataSet.setFillDrawable(drawable);
+        radarDataSet.setDrawFilled(true);
+        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.radarred);
+        radarDataSet.setFillDrawable(drawable);
 
 
 
