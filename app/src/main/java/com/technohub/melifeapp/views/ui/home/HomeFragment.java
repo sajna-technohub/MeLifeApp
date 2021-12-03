@@ -31,7 +31,7 @@ import com.technohub.melifeapp.views.FaqFragment;
 import com.technohub.melifeapp.views.ReportsFragment;
 import com.technohub.melifeapp.views.TestCategoriesFragment;
 
-public class HomeFragment extends Fragment implements ConnectionReceiver.ReceiverListener {
+    public class HomeFragment extends Fragment{
 
     private TextView homeTxtName,homeTxtDesc,welcomeTxtname;
     ImageView homeImgback;
@@ -45,7 +45,6 @@ public class HomeFragment extends Fragment implements ConnectionReceiver.Receive
                              ViewGroup container, Bundle savedInstanceState) {
          root = inflater.inflate(R.layout.fragment_home_fragment_new, container, false);
          root.setBackgroundColor(getResources().getColor(R.color.lightgrey));
-         checkConnection();
          init();
          initClicks();
          if(new LoginResponse().getSharedPreferences(getContext(),"userid")!=null)
@@ -165,77 +164,7 @@ public class HomeFragment extends Fragment implements ConnectionReceiver.Receive
 //            }
 //        });
     }
-    private void checkConnection() {
 
-        // initialize intent filter
-        IntentFilter intentFilter = new IntentFilter();
-
-        // add action
-        intentFilter.addAction("android.new.conn.CONNECTIVITY_CHANGE");
-
-        // register receiver
-        getActivity().registerReceiver(new ConnectionReceiver(), intentFilter);
-
-        // Initialize listener
-        ConnectionReceiver.Listener = this;
-
-        // Initialize connectivity manager
-        ConnectivityManager manager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        // Initialize network info
-        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
-
-        // get connection status
-        boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
-
-        // display snack bar
-        showSnackBar(isConnected);
-    }
-
-    private void showSnackBar(boolean isConnected) {
-
-        // initialize color and message
-        String message;
-        int color;
-
-        // check condition
-        if (isConnected) {
-
-            // when internet is connected
-//            // set message
-//            message = "Connected to Internet";
-//            Log.e("networkconn",message);
-//
-//            // set text color
-//            color = Color.WHITE;
-
-        } else {
-
-            // when internet
-            // is disconnected
-            // set message
-            message = "Not Connected to Internet";
-            Log.e("networkconn",message);
-            // set text color
-            color = Color.RED;
-            Snackbar snackbar = Snackbar.make(root.findViewById(R.id.homeCardAboutus), message, Snackbar.LENGTH_SHORT);
-
-            // initialize view
-            View view = snackbar.getView();
-
-            // Assign variable
-            TextView textView = view.findViewById(R.id.snackbar_text);
-
-            // set text color
-            textView.setTextColor(color);
-
-            // show snack bar
-            snackbar.show();
-        }
-
-        // initialize snack bar
-
-    }
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null)
@@ -251,20 +180,5 @@ public class HomeFragment extends Fragment implements ConnectionReceiver.Receive
     }
 
 
-    @Override
-    public void onNetworkChange(boolean isConnected) {
-        showSnackBar(isConnected);
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        checkConnection();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        checkConnection();
-    }
 }

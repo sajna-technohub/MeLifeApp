@@ -38,6 +38,9 @@
 
     <string name="edit">Edit</string>
     <string name="saveprofile">Save Updates</string>
+    <string name="networkstring1">Oops! No Internet Connection</string>
+    <string name="networkstring2">Make Sure Wifi or cellular data is turned on and try again</string>
+    <string name="networkstring3">Try Again</string>
 
 
     <!--    navigations-->

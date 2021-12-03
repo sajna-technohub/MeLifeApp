@@ -220,7 +220,7 @@ TableLayout commerce_table;
 //        commerce_Txt_financialgraphtitle.setText(Html.fromHtml(commerceResponse.getRecord().getGraph_data1().getTitle()));
 //        commerce_Txt_howtointerprettitle.setText(Html.fromHtml(commerceResponse.getRecord().getGraph_data1().getHeading()));
         String text=commerceResponse.getRecord().getFinancial_careers().getBrief_description();
-        int end = text.indexOf("Financial Careers ");
+        int end = text.indexOf("Financial Careers");
 //    String s=img.substring(start, end);
         String s = text.substring(0, end);
         Log.e("comerceas",s);
