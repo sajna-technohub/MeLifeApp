@@ -254,12 +254,11 @@ public class ExamPresenter implements IExam.Presenter {
             public void onResponse(Call<SaveExamReponse> call, Response<SaveExamReponse> response) {
 
 
-                    if(response.body().getStatus()==1)
+                    if(response.isSuccessful())
 
                     {
                         SaveExamReponse saveExamReponse = response.body();
-                        Log.e("in submit exam",saveExamReponse.getStatus()+"");
-
+                        Log.e("in submit exam",saveExamReponse.getMessage()+"");
                         view.hideLoading();
                         kProgressHUD.dismiss();
                         view.goToDashboard();

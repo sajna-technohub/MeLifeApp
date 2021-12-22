@@ -1,20 +1,25 @@
 package com.technohub.melifeapp.views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.loader.content.CursorLoader;
 
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +27,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,7 +63,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     Spinner profileSprstate,profileSprCountry,profileSprQuali;
     TextView profileTxtwelcome;
     ImageView profileImgphoto;
-    Button profileBtnSave;
+    Button profileBtnSave,addboxprevious,addboxcurrent;
     ProfilePresenter profilePresenter;
     int mYear,mMonth,mDay;
     User user=new User();
@@ -67,8 +74,13 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     SpinKitView profProgressspin;
     ProgressDialog progressdialog;
     File file;
-
-
+    LinearLayout currentlayout,previouslayout;
+    int k = -1;
+    int flag;
+    int ss=0;
+    ArrayList<String> applnserverinstnos = new ArrayList<String>();
+    public static EditText textView[] = new EditText[100];
+    public static EditText textView1[] = new EditText[100];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -127,6 +139,10 @@ public class ProfileFragment extends Fragment implements IProfile.View {
                 profileBtnSave=v.findViewById(R.id.profileBtnSave);
                 profileImgphoto=v.findViewById(R.id.profileImgphoto);
                  profProgressspin=v.findViewById(R.id.profileSpinKit);
+        currentlayout=v.findViewById(R.id.currentlayout);
+        addboxcurrent=v.findViewById(R.id.addboxcurrent);
+        addboxprevious=v.findViewById(R.id.addboxprevious);
+        previouslayout=v.findViewById(R.id.previouslayout);
                  profileTxtwelcome=v.findViewById(R.id.profileTxtwelcome);
                 profileSprCountry.setSelection(0);
         progressdialog = new ProgressDialog(getContext());
@@ -196,6 +212,217 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     @Override
     public void initClicks() {
 
+        //or to support all versions use
+        Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.barlowsemicondensedmedium);
+
+        addboxcurrent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                k++;
+                    flag=k;
+                LinearLayout linearLayout = new LinearLayout(getContext());
+                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                p.setMargins(45,0,0,0);
+                EditText et1 = new EditText(getContext());
+
+
+                et1.setLayoutParams(p);
+                et1.setTextColor(getResources().getColor(R.color.darkblue));
+                   et1.setTextSize(15f);
+                    et1.setHint("Subject Name");
+                    et1.setGravity(Gravity.LEFT);
+                   et1.setTypeface(typeface);
+                   et1.setLayoutParams(p);
+                  et1.setId(flag);
+//                et1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
+
+                EditText et2 = new EditText(getContext());
+                et2.setLayoutParams(p);
+                et2.setTextColor(getResources().getColor(R.color.darkblue));
+                et2.setTextSize(15f);
+                et2.setHint("Score");
+                et2.setGravity(Gravity.LEFT);
+                et2.setTypeface(typeface);
+                et2.setLayoutParams(p);
+                et2.setId(flag);
+//                et2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
+                Button tv = new Button(getContext());
+                tv.setBackgroundResource(R.drawable.minus);
+                LinearLayout.LayoutParams p1 = new LinearLayout.LayoutParams(40,40);
+                p1.setMargins(20,0,0,0);
+                tv.setLayoutParams(p1);
+//                tv.setBackgroundColor(getResources().getColor(R.color.red));
+
+                linearLayout.addView(et1);
+                linearLayout.addView(et2);
+                linearLayout.addView(tv);
+                currentlayout.addView(linearLayout);
+                tv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Delete entry")
+                                .setMessage("Are you sure you want to delete this entry?")
+
+                                // Specifying a listener allows you to take an action before dismissing the dialog.
+                                // The dialog is automatically dismissed when a dialog button is clicked.
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        linearLayout.removeAllViews();
+                                    }
+                                })
+
+                                // A null listener allows the button to dismiss the dialog and take no further action.
+                                .setNegativeButton(android.R.string.no, null)
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+
+
+                    }
+                });
+//
+//                try
+//                {
+//                    k++;
+//                    flag=k;
+//                    textView[flag] = new EditText(getContext());
+//                    textView1[flag] = new EditText(getContext());
+//                    LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//                    p.setMargins(45,0,0,0);
+//                    textView[flag].setLayoutParams(p);
+//                    textView[flag].setTextColor(getResources().getColor(R.color.darkblue));
+//                    textView[flag].setTextSize(15f);
+//                    textView[flag].setHint("Subject Name");
+//                    textView[flag].setGravity(Gravity.LEFT);
+//                    textView[flag].setTypeface(typeface);
+//                    textView[flag].setLayoutParams(p);
+//                    textView[flag].setId(flag);
+//
+//                    textView1[flag].setLayoutParams(p);
+//                    textView1[flag].setTextColor(getResources().getColor(R.color.darkblue));
+//                    textView1[flag].setTextSize(15f);
+//                    textView1[flag].setHint("Score");
+//                    textView1[flag].setGravity(Gravity.LEFT);
+//                    textView1[flag].setTypeface(typeface);
+//                    textView1[flag].setLayoutParams(p);
+//                    textView1[flag].setId(flag);
+//
+//
+//                }
+//                catch(Exception e)
+//                {
+//                    e.printStackTrace();
+//                }
+//                previouslayout.addView(textView[flag]);
+//                previouslayout.addView(textView1[flag]);
+            }
+        });
+        addboxprevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                k++;
+                flag=k;
+                LinearLayout linearLayout = new LinearLayout(getContext());
+                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                p.setMargins(45,0,0,0);
+                EditText et1 = new EditText(getContext());
+
+
+                et1.setLayoutParams(p);
+                et1.setTextColor(getResources().getColor(R.color.darkblue));
+                et1.setTextSize(15f);
+                et1.setHint("Subject Name");
+                et1.setGravity(Gravity.LEFT);
+                et1.setTypeface(typeface);
+                et1.setLayoutParams(p);
+                et1.setId(flag);
+//                et1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
+
+                EditText et2 = new EditText(getContext());
+                et2.setLayoutParams(p);
+                et2.setTextColor(getResources().getColor(R.color.darkblue));
+                et2.setTextSize(15f);
+                et2.setHint("Score");
+                et2.setGravity(Gravity.LEFT);
+                et2.setTypeface(typeface);
+                et2.setLayoutParams(p);
+                et2.setId(flag);
+//                et2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
+                Button tv = new Button(getContext());
+                tv.setBackgroundResource(R.drawable.minus);
+                LinearLayout.LayoutParams p1 = new LinearLayout.LayoutParams(40,40);
+                p1.setMargins(20,0,0,0);
+                tv.setLayoutParams(p1);
+//                tv.setBackgroundColor(getResources().getColor(R.color.red));
+
+                linearLayout.addView(et1);
+                linearLayout.addView(et2);
+                linearLayout.addView(tv);
+                previouslayout.addView(linearLayout);
+                tv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Delete entry")
+                                .setMessage("Are you sure you want to delete this entry?")
+
+                                // Specifying a listener allows you to take an action before dismissing the dialog.
+                                // The dialog is automatically dismissed when a dialog button is clicked.
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        linearLayout.removeAllViews();
+                                    }
+                                })
+
+                                // A null listener allows the button to dismiss the dialog and take no further action.
+                                .setNegativeButton(android.R.string.no, null)
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+
+
+                    }
+                });
+//
+//                try
+//                {
+//                    k++;
+//                    flag=k;
+//                    textView[flag] = new EditText(getContext());
+//                    textView1[flag] = new EditText(getContext());
+//                    LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//                    p.setMargins(45,0,0,0);
+//                    textView[flag].setLayoutParams(p);
+//                    textView[flag].setTextColor(getResources().getColor(R.color.darkblue));
+//                    textView[flag].setTextSize(15f);
+//                    textView[flag].setHint("Subject Name");
+//                    textView[flag].setGravity(Gravity.LEFT);
+//                    textView[flag].setTypeface(typeface);
+//                    textView[flag].setLayoutParams(p);
+//                    textView[flag].setId(flag);
+//
+//                    textView1[flag].setLayoutParams(p);
+//                    textView1[flag].setTextColor(getResources().getColor(R.color.darkblue));
+//                    textView1[flag].setTextSize(15f);
+//                    textView1[flag].setHint("Score");
+//                    textView1[flag].setGravity(Gravity.LEFT);
+//                    textView1[flag].setTypeface(typeface);
+//                    textView1[flag].setLayoutParams(p);
+//                    textView1[flag].setId(flag);
+//
+//
+//                }
+//                catch(Exception e)
+//                {
+//                    e.printStackTrace();
+//                }
+//                previouslayout.addView(textView[flag]);
+//                previouslayout.addView(textView1[flag]);
+            }
+        });
         profileSprCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -23,7 +23,7 @@
             android:textSize="40dp"
             android:textColor="@color/whiteLogocolor"
             android:id="@+id/spo"
-            android:text=" Spontaneouss"/>
+            android:text="Quick!!"/>
 
 </LinearLayout>
 </FrameLayout>

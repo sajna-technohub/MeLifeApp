@@ -472,73 +472,8 @@ TableLayout commerce_table;
              transaction.commit();
 
          }
-    void setanychart_bar(CommerceRecord record)
-        {
-            AnyChartView anyChartView = v.findViewById(R.id.hori_barchart_any);
-
-            Cartesian barChart = AnyChart.bar();
-
-            barChart.animation(true);
-
-            barChart.padding(10d, 20d, 5d, 20d);
-
-            barChart.yScale().stackMode(ScaleStackMode.VALUE);
-//
-            barChart.yAxis(0).labels().format(
-                    "function() {\n" +
-                            "    return Math.abs(this.value);\n" +
-                            "  }");
-            barChart.xAxis(0d).overlapMode(LabelsOverlapMode.ALLOW_OVERLAP);
-
-            barChart.interactivity().hoverMode(HoverMode.BY_X);
-
-            barChart.tooltip()
-                    .title(false)
-                    .separator(false)
-                    .displayMode(TooltipDisplayMode.SEPARATED)
-                    .positionMode(TooltipPositionMode.POINT)
-                    .useHtml(true)
-                    .fontSize(12d)
-                    .offsetX(5d)
-                    .offsetY(0d)
-                    .format(
-                            "function() {\n" +
-                                    "      return '<span style=\"color: #000\"></span>' + Math.abs(this.value);\n" +
-                                    "    }");
-
-            List<DataEntry> seriesData = new ArrayList<>();
-
-            for(CommerceTableSorted f:record.getRadar_chart_financial())
-            {
-                Log.e("hai",f.getName());
-                seriesData.add(new CustomDataEntry(f.getSub_dimension(), Integer.parseInt(f.getSub_dimension_score()),Integer.parseInt(f.getSub_dimension_score())));
-            }
-            for(CommerceTableSorted f:record.getRadar_chart_non_financial())
-            {
-                seriesData.add(new CustomDataEntry(f.getSub_dimension(), Integer.parseInt(f.getSub_dimension_score()),Integer.parseInt(f.getSub_dimension_score())));
-            }
 
 
-            Bar series1 = barChart.bar(seriesData);
-            series1.color("#FF0000");
-            series1.tooltip()
-                    .position("right")
-                    .anchor(Anchor.LEFT_CENTER);
-
-            barChart.legend().enabled(true);
-            barChart.legend().maxHeight(1f);
-            barChart.legend().inverted(false);
-            barChart.legend().fontSize(13d);
-            barChart.legend().padding(0d, 0d, 20d, 0d);
-            anyChartView.setChart(barChart);
-        }
-    private class CustomDataEntry extends ValueDataEntry {
-
-        CustomDataEntry(String x, Number value, Number value2) {
-            super(x, value);
-//            setValue("value2", value2);
-        }
-    }
     @Override
     public void showLoading() {
 

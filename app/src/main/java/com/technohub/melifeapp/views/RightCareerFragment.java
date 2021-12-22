@@ -266,8 +266,6 @@ SkillReportRequest skillReportRequest=new SkillReportRequest();
             TextView tv_personality = (TextView) tableRow.findViewById(R.id.right_Txt_personalitytype);
             TextView tv_charecteristics = (TextView) tableRow.findViewById(R.id.right_Txt_charecteristics);
             TextView tv_career  = (TextView) tableRow.findViewById(R.id.right_Txt_career);
-
-
             tv_personality.setText(s.getName());
             tv_charecteristics.setText(Html.fromHtml(s.getSub_dimension_descr()));
             tv_career.setText(Html.fromHtml(s.getSub_dimension_career()));

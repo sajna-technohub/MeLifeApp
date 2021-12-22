@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.technohub.melifeapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,8 +21,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".views.NetworkNotifyActivity"></activity>
-        <activity android:name=".views.WelcomeActivity">
+        <activity android:name=".views.NetworkNotifyActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".views.WelcomeActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,16 +33,17 @@
         </activity>
         <service android:name=".classes.MyService" />
 
-        <activity android:name=".views.ResetPasswordActivity" />
-        <activity android:name=".views.ForgotPasswordActivity" />
+        <activity android:name=".views.ResetPasswordActivity"   android:screenOrientation="portrait" />
+        <activity android:name=".views.ForgotPasswordActivity"   android:screenOrientation="portrait"/>
         <activity
             android:name=".views.DashBoardActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_dash_board"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".views.ChoosePageActivity" />
-        <activity android:name=".views.LoginActivity" />
-        <activity android:name=".views.SignUpActivity" />
-        <activity android:name=".views.MainActivity"></activity>
+        <activity android:name=".views.ChoosePageActivity" android:screenOrientation="portrait" />
+        <activity android:name=".views.LoginActivity"   android:screenOrientation="portrait"/>
+        <activity android:name=".views.SignUpActivity"   android:screenOrientation="portrait"/>
+        <activity android:name=".views.MainActivity"   android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

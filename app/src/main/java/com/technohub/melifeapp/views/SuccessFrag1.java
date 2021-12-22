@@ -22,9 +22,29 @@ import com.technohub.melifeapp.R;
 
 public class SuccessFrag1 extends DialogFragment {
 
-        View viw;
+        View v;
         ImageView succ;
         TextView tv;
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        v= inflater.inflate(R.layout.fragment_success_frag1, container, false);
+        succ=v.findViewById(R.id.succ);
+
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
+        //I want to start animation here
+        succ.startAnimation(animation);
+        return v;
+    }
+
+
+
+
 
     @Override
     public void onResume() {
@@ -37,23 +57,5 @@ public class SuccessFrag1 extends DialogFragment {
         window.setAttributes(params);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        viw=inflater.inflate(R.layout.fragment_success_frag1, container, false);
-         succ=(ImageView)viw.findViewById(R.id.succ) ;
-         tv=(TextView) viw.findViewById(R.id.tv) ;
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
-        //I want to start animation here
-        succ.startAnimation(animation);
-        return viw;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
-
-    }
 
 }

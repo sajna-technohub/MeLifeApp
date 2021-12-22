@@ -34,7 +34,7 @@
         <item name="android:textColor">@color/questionblack</item>
         <item name="android:fontFamily">@font/barlowsemicondensedmedium</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">60dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:background">@drawable/exam_btn_background</item>

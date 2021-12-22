@@ -50,10 +50,11 @@ public class WelcomeActivity extends AppCompatActivity  implements ConnectionRec
         });
 
     }
-     boolean checkConnection() {
-
+     boolean checkConnection()
+     {
         // initialize intent filter
-        IntentFilter intentFilter = new IntentFilter();
+
+         IntentFilter intentFilter = new IntentFilter();
 
         // add action
         intentFilter.addAction("android.new.conn.CONNECTIVITY_CHANGE");

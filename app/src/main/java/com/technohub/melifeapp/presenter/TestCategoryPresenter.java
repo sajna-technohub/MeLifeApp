@@ -234,53 +234,53 @@ public class TestCategoryPresenter implements Itestcategory.Presenter
             }
         });
     }
-    public void submitexam(String examid,String userid,String useremail) {
-
-        view.showLoading();
-        Log.e("in exam presenter","submitexam"+examid+" "+useremail+" "+userid);
-
-        Log.e("in submt exam id",examid);
-        Log.e("in submt useremIL",useremail);
-        Log.e("in submt userid",userid);
-
-        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
-
-        SaveExamRequest saveExamRequest=new SaveExamRequest();
-        saveExamRequest.setExam_id(examid);
-        saveExamRequest.setLogid("0");
-        saveExamRequest.setUser_email(useremail);
-        saveExamRequest.setUser_id(userid);
-        saveExamRequest.setDeviceToken("hsj");
-        saveExamRequest.setDeviceType("1");
-        Call<SaveExamReponse> call = retrofitApi.saveexamdetails(saveExamRequest);
-        call.enqueue(new Callback<SaveExamReponse>() {
-            @Override
-            public void onResponse(Call<SaveExamReponse> call, Response<SaveExamReponse> response) {
-                SaveExamReponse saveExamReponse = response.body();
-                if (response.isSuccessful() && response.body() != null)
-                {
-                    Log.e("in exam presenter","gotrespose");
-                    if(response.body().getStatus()==1)
-                    {
-                        Log.e("in submit exam",response.body().getStatus()+"");
-
-                        view.hideLoading();
-                        view.goToDashboard();
-                    }
-                    else
-                    {
-                        view.hideLoading();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SaveExamReponse> call, Throwable t)
-            {
-                Log.e("saveexam","failed");
-                view.hideLoading();
-                view.hideLoading();
-            }
-        });
-    }
+//    public void submitexam(String examid,String userid,String useremail) {
+//
+//        view.showLoading();
+//        Log.e("in exam presenter","submitexam"+examid+" "+useremail+" "+userid);
+//
+//        Log.e("in submt exam id",examid);
+//        Log.e("in submt useremIL",useremail);
+//        Log.e("in submt userid",userid);
+//
+//        IRetrofitApi retrofitApi = ApiClient.getApiClient().create(IRetrofitApi.class);
+//
+//        SaveExamRequest saveExamRequest=new SaveExamRequest();
+//        saveExamRequest.setExam_id(examid);
+//        saveExamRequest.setLogid("0");
+//        saveExamRequest.setUser_email(useremail);
+//        saveExamRequest.setUser_id(userid);
+//        saveExamRequest.setDeviceToken("hsj");
+//        saveExamRequest.setDeviceType("1");
+//        Call<SaveExamReponse> call = retrofitApi.saveexamdetails(saveExamRequest);
+//        call.enqueue(new Callback<SaveExamReponse>() {
+//            @Override
+//            public void onResponse(Call<SaveExamReponse> call, Response<SaveExamReponse> response) {
+//                SaveExamReponse saveExamReponse = response.body();
+//                if (response.isSuccessful() && response.body() != null)
+//                {
+//                    Log.e("in exam presenter","gotrespose");
+//                    if(response.body().getStatus()==1)
+//                    {
+//                        Log.e("in submit exam",response.body().getStatus()+"");
+//
+//                        view.hideLoading();
+//                        view.goToDashboard();
+//                    }
+//                    else
+//                    {
+//                        view.hideLoading();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<SaveExamReponse> call, Throwable t)
+//            {
+//                Log.e("saveexam","failed");
+//                view.hideLoading();
+//                view.hideLoading();
+//            }
+//        });
+//    }
 }
