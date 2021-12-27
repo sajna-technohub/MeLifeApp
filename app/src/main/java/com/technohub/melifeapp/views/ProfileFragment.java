@@ -39,6 +39,7 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import com.technohub.melifeapp.Interfaces.IProfile;
 import com.technohub.melifeapp.R;
 import com.technohub.melifeapp.models.LoginResponse;
+import com.technohub.melifeapp.models.ProfileAcademicDet;
 import com.technohub.melifeapp.models.ProfileResponse;
 import com.technohub.melifeapp.models.User;
 import com.technohub.melifeapp.presenter.ProfilePresenter;
@@ -63,6 +64,7 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     Spinner profileSprstate,profileSprCountry,profileSprQuali;
     TextView profileTxtwelcome;
     ImageView profileImgphoto;
+    EditText profileTxtfather,profileTxtmother,profileTxtfa_profession,profileTxtmo_profession;
     Button profileBtnSave,addboxprevious,addboxcurrent;
     ProfilePresenter profilePresenter;
     int mYear,mMonth,mDay;
@@ -78,10 +80,18 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     int k = -1;
     int flag;
     int ss=0;
-    ArrayList<String> applnserverinstnos = new ArrayList<String>();
-    public static EditText textView[] = new EditText[100];
-    public static EditText textView1[] = new EditText[100];
+    LinearLayout linearLayout,linearLayoutscore;
+    LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+    ArrayList<String> applnserverinstnos = new ArrayList<String>();
+    public ArrayList <ProfileAcademicDet> academic_details_current = new ArrayList < ProfileAcademicDet > ();
+    public ArrayList < ProfileAcademicDet > academic_details_previous = new ArrayList < ProfileAcademicDet > ();
+    List<EditText> Edscurrentsub = new ArrayList<EditText>();
+    List<EditText> EdsPrevioussub = new ArrayList<EditText>();
+    List<EditText> EdsPreviousscore = new ArrayList<EditText>();
+    List<EditText> Edscurrentscore= new ArrayList<EditText>();
+
+    Typeface typeface;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
@@ -89,10 +99,17 @@ public class ProfileFragment extends Fragment implements IProfile.View {
 
         v=inflater.inflate(R.layout.fragment_profile_new, container, false);
         v.setBackgroundColor(Color.WHITE);
-
+        typeface = ResourcesCompat.getFont(getContext(), R.font.barlowsemicondensedmedium);
         profilePresenter = new ProfilePresenter(this);
         profilePresenter.created();
+        linearLayout = new LinearLayout(getContext());
+        linearLayoutscore = new LinearLayout(getContext());
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        linearLayoutscore.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
 
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        linearLayoutscore.setOrientation(LinearLayout.VERTICAL);
+         p.setMargins(45,0,0,0);
         Bundle args = getArguments();
 
         if (args != null)
@@ -138,8 +155,13 @@ public class ProfileFragment extends Fragment implements IProfile.View {
                 profileContactEdit=v.findViewById(R.id.profileContactEdit);
                 profileBtnSave=v.findViewById(R.id.profileBtnSave);
                 profileImgphoto=v.findViewById(R.id.profileImgphoto);
-                 profProgressspin=v.findViewById(R.id.profileSpinKit);
+        profileTxtfather=v.findViewById(R.id.profileTxtfather);
+        profileTxtmother=v.findViewById(R.id.profileTxtmother);
+        profileTxtfa_profession=v.findViewById(R.id.profileTxtfa_profession);
+        profileTxtmo_profession=v.findViewById(R.id.profileTxtmo_profession);
+
         currentlayout=v.findViewById(R.id.currentlayout);
+        profProgressspin=v.findViewById(R.id.profileSpinKit);
         addboxcurrent=v.findViewById(R.id.addboxcurrent);
         addboxprevious=v.findViewById(R.id.addboxprevious);
         previouslayout=v.findViewById(R.id.previouslayout);
@@ -209,218 +231,47 @@ public class ProfileFragment extends Fragment implements IProfile.View {
     return valid;
 
 }
+
     @Override
     public void initClicks() {
 
         //or to support all versions use
-        Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.barlowsemicondensedmedium);
+
+
 
         addboxcurrent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                k++;
-                    flag=k;
-                LinearLayout linearLayout = new LinearLayout(getContext());
-                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                p.setMargins(45,0,0,0);
-                EditText et1 = new EditText(getContext());
+
+                LayoutInflater inflater=(LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View rowView=inflater.inflate(R.layout.dynamicedittextlayout, null);
+                // Add the new row before the add field button.
+                currentlayout.addView(rowView, currentlayout.getChildCount() - 1);
+
+                EditText sub=rowView.findViewById(R.id.subnamedynamic);
+                EditText score=rowView.findViewById(R.id.scoredynamic);
+                    Edscurrentsub.add(sub);
+                   Edscurrentscore.add(score);
 
 
-                et1.setLayoutParams(p);
-                et1.setTextColor(getResources().getColor(R.color.darkblue));
-                   et1.setTextSize(15f);
-                    et1.setHint("Subject Name");
-                    et1.setGravity(Gravity.LEFT);
-                   et1.setTypeface(typeface);
-                   et1.setLayoutParams(p);
-                  et1.setId(flag);
-//                et1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
 
-                EditText et2 = new EditText(getContext());
-                et2.setLayoutParams(p);
-                et2.setTextColor(getResources().getColor(R.color.darkblue));
-                et2.setTextSize(15f);
-                et2.setHint("Score");
-                et2.setGravity(Gravity.LEFT);
-                et2.setTypeface(typeface);
-                et2.setLayoutParams(p);
-                et2.setId(flag);
-//                et2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
-                Button tv = new Button(getContext());
-                tv.setBackgroundResource(R.drawable.minus);
-                LinearLayout.LayoutParams p1 = new LinearLayout.LayoutParams(40,40);
-                p1.setMargins(20,0,0,0);
-                tv.setLayoutParams(p1);
-//                tv.setBackgroundColor(getResources().getColor(R.color.red));
-
-                linearLayout.addView(et1);
-                linearLayout.addView(et2);
-                linearLayout.addView(tv);
-                currentlayout.addView(linearLayout);
-                tv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        new AlertDialog.Builder(getContext())
-                                .setTitle("Delete entry")
-                                .setMessage("Are you sure you want to delete this entry?")
-
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
-                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        linearLayout.removeAllViews();
-                                    }
-                                })
-
-                                // A null listener allows the button to dismiss the dialog and take no further action.
-                                .setNegativeButton(android.R.string.no, null)
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show();
-
-
-                    }
-                });
-//
-//                try
-//                {
-//                    k++;
-//                    flag=k;
-//                    textView[flag] = new EditText(getContext());
-//                    textView1[flag] = new EditText(getContext());
-//                    LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//                    p.setMargins(45,0,0,0);
-//                    textView[flag].setLayoutParams(p);
-//                    textView[flag].setTextColor(getResources().getColor(R.color.darkblue));
-//                    textView[flag].setTextSize(15f);
-//                    textView[flag].setHint("Subject Name");
-//                    textView[flag].setGravity(Gravity.LEFT);
-//                    textView[flag].setTypeface(typeface);
-//                    textView[flag].setLayoutParams(p);
-//                    textView[flag].setId(flag);
-//
-//                    textView1[flag].setLayoutParams(p);
-//                    textView1[flag].setTextColor(getResources().getColor(R.color.darkblue));
-//                    textView1[flag].setTextSize(15f);
-//                    textView1[flag].setHint("Score");
-//                    textView1[flag].setGravity(Gravity.LEFT);
-//                    textView1[flag].setTypeface(typeface);
-//                    textView1[flag].setLayoutParams(p);
-//                    textView1[flag].setId(flag);
-//
-//
-//                }
-//                catch(Exception e)
-//                {
-//                    e.printStackTrace();
-//                }
-//                previouslayout.addView(textView[flag]);
-//                previouslayout.addView(textView1[flag]);
             }
         });
         addboxprevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                k++;
-                flag=k;
-                LinearLayout linearLayout = new LinearLayout(getContext());
-                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                p.setMargins(45,0,0,0);
-                EditText et1 = new EditText(getContext());
+                LayoutInflater inflater=(LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View rowView=inflater.inflate(R.layout.dynamicedittextlayout, null);
+                // Add the new row before the add field button.
+                previouslayout.addView(rowView, previouslayout.getChildCount() - 1);
+                EditText sub=rowView.findViewById(R.id.subnamedynamic);
+                EditText score=rowView.findViewById(R.id.scoredynamic);
+                    EdsPrevioussub.add(sub);
+                    EdsPreviousscore.add(score);
 
 
-                et1.setLayoutParams(p);
-                et1.setTextColor(getResources().getColor(R.color.darkblue));
-                et1.setTextSize(15f);
-                et1.setHint("Subject Name");
-                et1.setGravity(Gravity.LEFT);
-                et1.setTypeface(typeface);
-                et1.setLayoutParams(p);
-                et1.setId(flag);
-//                et1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
-
-                EditText et2 = new EditText(getContext());
-                et2.setLayoutParams(p);
-                et2.setTextColor(getResources().getColor(R.color.darkblue));
-                et2.setTextSize(15f);
-                et2.setHint("Score");
-                et2.setGravity(Gravity.LEFT);
-                et2.setTypeface(typeface);
-                et2.setLayoutParams(p);
-                et2.setId(flag);
-//                et2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f));
-                Button tv = new Button(getContext());
-                tv.setBackgroundResource(R.drawable.minus);
-                LinearLayout.LayoutParams p1 = new LinearLayout.LayoutParams(40,40);
-                p1.setMargins(20,0,0,0);
-                tv.setLayoutParams(p1);
-//                tv.setBackgroundColor(getResources().getColor(R.color.red));
-
-                linearLayout.addView(et1);
-                linearLayout.addView(et2);
-                linearLayout.addView(tv);
-                previouslayout.addView(linearLayout);
-                tv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        new AlertDialog.Builder(getContext())
-                                .setTitle("Delete entry")
-                                .setMessage("Are you sure you want to delete this entry?")
-
-                                // Specifying a listener allows you to take an action before dismissing the dialog.
-                                // The dialog is automatically dismissed when a dialog button is clicked.
-                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        linearLayout.removeAllViews();
-                                    }
-                                })
-
-                                // A null listener allows the button to dismiss the dialog and take no further action.
-                                .setNegativeButton(android.R.string.no, null)
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show();
 
 
-                    }
-                });
-//
-//                try
-//                {
-//                    k++;
-//                    flag=k;
-//                    textView[flag] = new EditText(getContext());
-//                    textView1[flag] = new EditText(getContext());
-//                    LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//                    p.setMargins(45,0,0,0);
-//                    textView[flag].setLayoutParams(p);
-//                    textView[flag].setTextColor(getResources().getColor(R.color.darkblue));
-//                    textView[flag].setTextSize(15f);
-//                    textView[flag].setHint("Subject Name");
-//                    textView[flag].setGravity(Gravity.LEFT);
-//                    textView[flag].setTypeface(typeface);
-//                    textView[flag].setLayoutParams(p);
-//                    textView[flag].setId(flag);
-//
-//                    textView1[flag].setLayoutParams(p);
-//                    textView1[flag].setTextColor(getResources().getColor(R.color.darkblue));
-//                    textView1[flag].setTextSize(15f);
-//                    textView1[flag].setHint("Score");
-//                    textView1[flag].setGravity(Gravity.LEFT);
-//                    textView1[flag].setTypeface(typeface);
-//                    textView1[flag].setLayoutParams(p);
-//                    textView1[flag].setId(flag);
-//
-//
-//                }
-//                catch(Exception e)
-//                {
-//                    e.printStackTrace();
-//                }
-//                previouslayout.addView(textView[flag]);
-//                previouslayout.addView(textView1[flag]);
             }
         });
         profileSprCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -466,10 +317,29 @@ public class ProfileFragment extends Fragment implements IProfile.View {
         });
 
 
+
+
+
         profileBtnSave.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            for(EditText e:Edscurrentsub)
+                            {
+                                Log.e("Edittext1",e.getText().toString());
+                            }
+                            for(EditText e:Edscurrentscore)
+                            {
+                                Log.e("Edittext2",e.getText().toString());
+                            }
+                            for(EditText e:EdsPrevioussub)
+                            {
+                                Log.e("Edittext3",e.getText().toString());
+                            }
 
+                            for(EditText e:EdsPreviousscore)
+                            {
+                                Log.e("Edittext4",e.getText().toString());
+                            }
 
                         if(validate()) {
 
@@ -486,7 +356,47 @@ public class ProfileFragment extends Fragment implements IProfile.View {
                             user.setCountry(strcountry);
                             user.setState(strstate);
                             user.setQualification(strqualification);
-                            profilePresenter.UpdateProfile(user);
+
+
+//                            for(int j=0;j< Edscurrentsub.size();j++)
+//                            {
+//
+//                                if(academic_details_current.contains(Edscurrentsub.get(j).getText().toString()))
+//                                {
+//
+//                                }
+//                                else
+//                                {
+//                                    Log.e("currentedittest",Edscurrentsub.get(j).getText().toString());
+//                                    academic_details_current.add(new ProfileAcademicDet(Edscurrentsub.get(j).getText().toString(),Edscurrentscore.get(j).getText().toString()));
+//                                }
+//                                if(academic_details_previous.contains(EdsPrevioussub.get(j).getText().toString()))
+//                                {
+//
+//                                }
+//                                else {
+//                                    Log.e("previousedittest",EdsPrevioussub.get(j).getText().toString());
+//                                    academic_details_previous.add(new ProfileAcademicDet(EdsPrevioussub.get(j).getText().toString(),EdsPreviousscore.get(j).getText().toString()));
+//                                }
+//
+//                            }
+//                            Log.e("forloop","startspre");
+//                            for(ProfileAcademicDet p:academic_details_previous)
+//                            {
+//                                Log.e("sub",p.getName());
+//                                Log.e("score",p.getY());
+//                            }
+//                            Log.e("forloop","startscur");
+//                            for(ProfileAcademicDet p:academic_details_current)
+//                            {
+//                                Log.e("sub",p.getName());
+//                                Log.e("score",p.getY());
+//                            }
+
+
+//                            profilePresenter.UpdateProfile(user);
+
+
 
                         }
                         }
@@ -585,12 +495,16 @@ Toast.makeText(getContext(),"Edit mode activated",Toast.LENGTH_SHORT).show();
     @Override
     public void setProfile(ProfileResponse profile) {
 
-        profileTxtName.setText(profile.getData().get(0).getName());
-        profileTxtwelcome.setText(profile.getData().get(0).getName());
-        profileTxtemail.setText(profile.getData().get(0).getEmail());
-        profileTxtpincode.setText(profile.getData().get(0).getPincode());
-        profileTxtDob.setText(profile.getData().get(0).getDob());
-        profileTxtwelcome.setText("Welcome  "+profile.getData().get(0).getName());
+        profileTxtName.setText(profile.getData().getUser_details().get(0).getName());
+        profileTxtwelcome.setText(profile.getData().getUser_details().get(0).getName());
+        profileTxtemail.setText(profile.getData().getUser_details().get(0).getEmail());
+        profileTxtpincode.setText(profile.getData().getUser_details().get(0).getPincode());
+        profileTxtDob.setText(profile.getData().getUser_details().get(0).getDob());
+        profileTxtfather.setText(profile.getData().getUser_details().get(0).getFather_name());
+        profileTxtmother.setText(profile.getData().getUser_details().get(0).getMother_name());
+        profileTxtfa_profession.setText(profile.getData().getUser_details().get(0).getFather_prof());
+        profileTxtmo_profession.setText(profile.getData().getUser_details().get(0).getMother_prof());
+        profileTxtwelcome.setText("Welcome  "+profile.getData().getUser_details().get(0).getName());
 
             List<String> countrylist=new ArrayList<>();
             List<String> statelist=new ArrayList<>();
@@ -610,13 +524,13 @@ Toast.makeText(getContext(),"Edit mode activated",Toast.LENGTH_SHORT).show();
             qualificatiobnlist.add(profile.getQualification().get(i).getQualification());
         }
 
-        String newcountry = profile.getData().get(0).getCountry();
+        String newcountry = profile.getData().getCountry_details().get(0).getCountry_name();
         ArrayAdapter<String> countryArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinnerlayout,R.id.text,countrylist);
 //        countryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprCountry.setAdapter(countryArrayAdapter);
         profileSprCountry.setSelection(countrylist.indexOf(newcountry));
 
-        String newstate = profile.getData().get(0).getState();
+        String newstate = profile.getData().getState_details().get(0).getState_name();
         profileSprstate.setSelection(statelist.indexOf(newstate));
         ArrayAdapter<String> stateArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinnerlayout,R.id.text,statelist);
 //        stateArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
@@ -624,15 +538,103 @@ Toast.makeText(getContext(),"Edit mode activated",Toast.LENGTH_SHORT).show();
         profileSprstate.setSelection(statelist.indexOf(newstate));
 
 
-        String newqual = profile.getData().get(0).getQualification();
+        String newqual = profile.getData().getQualification_details().get(0).getQualification();
         ArrayAdapter<String> qualificationArrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinnerlayout,R.id.text,qualificatiobnlist);
 //        qualificationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         profileSprQuali.setAdapter(qualificationArrayAdapter);
         profileSprQuali.setSelection(qualificatiobnlist.indexOf(newqual));
 
-        profileTxtmobile.setText(profile.getData().get(0).getMobile_no());
+        profileTxtmobile.setText(profile.getData().getUser_details().get(0).getMobile_no());
 
-        new LoginResponse().setSharedPreferences(getContext(),profile.getData().get(0).getName());
+        Log.e("current",profile.getAcademic_details_previous().size()+"");
+        EditText et1,et2;
+        if(profile.getAcademic_details_previous().size()!=0) {
+            for (int i = 0; i < profile.getAcademic_details_previous().size(); i++) {
+                LayoutInflater inflater=(LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View rowView=inflater.inflate(R.layout.dynamicedittextlayout, null);
+                EditText sub=rowView.findViewById(R.id.subnamedynamic);
+                EditText score=rowView.findViewById(R.id.scoredynamic);
+                EdsPrevioussub.add(sub);
+                EdsPreviousscore.add(score);
+                Button remove=rowView.findViewById(R.id.removebox);
+                sub.setText(profile.academic_details_previous.get(i).getName());
+                score.setText(profile.academic_details_previous.get(i).getY());
+                // Add the new row before the add field button.
+                previouslayout.addView(rowView, previouslayout.getChildCount() - 1);
+
+                remove.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Delete entry")
+                                .setMessage("Are you sure you want to delete this entry?")
+
+                                // Specifying a listener allows you to take an action before dismissing the dialog.
+                                // The dialog is automatically dismissed when a dialog button is clicked.
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        previouslayout.removeView(rowView);
+//                                        EdsPrevioussub.remove(which);
+//                                        EdsPreviousscore.remove(which);
+                                    }
+                                })
+
+                                // A null listener allows the button to dismiss the dialog and take no further action.
+                                .setNegativeButton(android.R.string.no, null)
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+
+                    }
+                });
+            }
+        }
+        if(profile.getAcademic_details_current().size()!=0) {
+
+            for (int i = 0; i < profile.getAcademic_details_current().size(); i++) {
+
+                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View rowView = inflater.inflate(R.layout.dynamicedittextlayout, null);
+                EditText sub = rowView.findViewById(R.id.subnamedynamic);
+                EditText score = rowView.findViewById(R.id.scoredynamic);
+                Edscurrentscore.add(score);
+                Edscurrentsub.add(sub);
+                Button remove = rowView.findViewById(R.id.removebox);
+                sub.setText(profile.academic_details_current.get(i).getName());
+                score.setText(profile.academic_details_current.get(i).getY());
+                // Add the new row before the add field button.
+                currentlayout.addView(rowView, currentlayout.getChildCount() - 1);
+
+                remove.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Delete entry")
+                                .setMessage("Are you sure you want to delete this entry?")
+
+                                // Specifying a listener allows you to take an action before dismissing the dialog.
+                                // The dialog is automatically dismissed when a dialog button is clicked.
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        currentlayout.removeView(rowView);
+//                                        Edscurrentsub.remove();
+//                                        Edscurrentscore.remove(Edscurrentscore.get(which));
+                                    }
+                                })
+
+                                // A null listener allows the button to dismiss the dialog and take no further action.
+                                .setNegativeButton(android.R.string.no, null)
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+
+                    }
+                });
+
+            }
+        }
+
+
+        new LoginResponse().setSharedPreferences(getContext(),profile.getData().getUser_details().get(0).getName());
         progressdialog.dismiss();
     }
 

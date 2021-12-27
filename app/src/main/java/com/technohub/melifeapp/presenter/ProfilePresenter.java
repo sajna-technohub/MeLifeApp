@@ -63,18 +63,7 @@ public class ProfilePresenter implements IProfile.Presenter {
                     ProfileResponse profileResponse = response.body();
 
 
-                        for (ProfileModel p : profileResponse.getData())
-                        {
 
-                            Log.e("name", p.getName());
-                            Log.e("email", p.getEmail());
-                            Log.e("phone", p.getMobile_no());
-                            Log.e("pin", p.getPincode());
-//                            Log.e("dob", p.getDob());
-//                            Log.e("quali", p.getQualification());
-//                            Log.e("state", p.getState());
-
-                        }
                     view.setProfile(profileResponse);
                     view.hideLoading();
                 }
@@ -223,7 +212,7 @@ Log.e("name and mob",file.getName()+user.getMobno());
                     ProfileRes profileResponse = response.body();
 //                        getProfile(user.getUserid());
                         Log.e("ProfUpdate resss", profileResponse.getData() + "");
-                        Log.e("ProfUpdate name", profileResponse.getData().getUserdetails().get(0).getName()+ "");
+                         Log.e("ProfUpdate name", profileResponse.getData().getUserdetails().get(0).getName()+ "");
                         new LoginResponse().setSharedPreferences(view.getContext(), user.getName(), user.getMelife_user_id(), user.getCompletion_status(), user.getDeviceToken(),user.getEmail());
                         view.hideLoading();
                         view.alert();

@@ -5,16 +5,34 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ProfileResponse {
+
     public int ErrorCode;
     public String Message;
-    List<ProfileModel> Data=new ArrayList();
+    ProfileModel Data=new ProfileModel();
     List<Country> Country=new ArrayList();
     List<State> State=new ArrayList();
     List<Qualification> Qualification=new ArrayList();
-
+   public ArrayList < ProfileAcademicDet > academic_details_current = new ArrayList < ProfileAcademicDet > ();
+    public ArrayList < ProfileAcademicDet > academic_details_previous = new ArrayList < ProfileAcademicDet > ();
 
     public List<com.technohub.melifeapp.models.Country> getCountry() {
         return Country;
+    }
+
+    public ArrayList<ProfileAcademicDet> getAcademic_details_current() {
+        return academic_details_current;
+    }
+
+    public void setAcademic_details_current(ArrayList<ProfileAcademicDet> academic_details_current) {
+        this.academic_details_current = academic_details_current;
+    }
+
+    public ArrayList<ProfileAcademicDet> getAcademic_details_previous() {
+        return academic_details_previous;
+    }
+
+    public void setAcademic_details_previous(ArrayList<ProfileAcademicDet> academic_details_previous) {
+        this.academic_details_previous = academic_details_previous;
     }
 
     public void setCountry(List<com.technohub.melifeapp.models.Country> country) {
@@ -53,12 +71,11 @@ public class ProfileResponse {
         Message = message;
     }
 
-
-    public List<ProfileModel> getData() {
+    public ProfileModel getData() {
         return Data;
     }
 
-    public void setData(List<ProfileModel> data) {
+    public void setData(ProfileModel data) {
         Data = data;
     }
 }
